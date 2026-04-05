@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barınak Watch</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+:root {
+  --green:#4CAF7D; --yellow:#E8B84B; --red:#E05252; --gray:#9B9B9B;
+  --bg:#F5F3EE; --surface:#FDFCFA;
+  --border:rgba(0,0,0,0.09); --border-mid:rgba(0,0,0,0.14);
+  --text:#1A1917; --text-mid:#6B6860; --text-faint:#A8A59E;
+  --serif:"DM Serif Display",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;font-family:var(--sans);background:var(--bg);color:var(--text);display:flex;flex-direction:column;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--surface);border-bottom:0.5px solid var(--border);flex-shrink:0;z-index:1000;}
+.nav-logo{font-family:var(--serif);font-size:20px;letter-spacing:-0.02em;}
+.nav-logo span{color:var(--green);}
+.lang-toggle{display:flex;gap:4px;}
+.lang-btn{font-size:12px;font-family:var(--sans);padding:5px 12px;border-radius:20px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;transition:all 0.15s;}
+.lang-btn.active{background:var(--text);color:var(--surface);border-color:var(--text);}
+.nav-actions{display:flex;align-items:center;gap:8px;}
+.nav-btn{font-size:12px;font-family:var(--sans);padding:6px 14px;border-radius:20px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.nav-btn:hover{background:var(--bg);color:var(--text);}
+.nav-btn.primary{background:var(--green);color:white;border-color:var(--green);}
+.nav-btn.primary:hover{opacity:0.88;}
+.app{display:flex;flex:1;min-height:0;position:relative;}
+#map{flex:1;min-height:0;z-index:1;}
+.leaflet-container{font-family:var(--sans);background:#DDE3EC;}
+
+/* Province label */
+.city-label{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  font-family:"DM Sans",system-ui,sans-serif !important;
+  font-size:10px !important;
+  font-weight:500 !important;
+  color:#5A6880 !important;
+  text-shadow:0 0 4px #F5F3EE,0 0 4px #F5F3EE,0 0 4px #F5F3EE,0 0 4px #F5F3EE !important;
+  letter-spacing:0.05em !important;
+  text-transform:uppercase !important;
+  white-space:nowrap;
+  pointer-events:none !important;
+}
+.city-label::before{display:none !important;}
+
+.map-legend{position:absolute;bottom:28px;left:28px;z-index:500;background:var(--surface);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:7px;}
+.leg-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-mid);}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.leg-title{font-size:10px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.filter-row{cursor:pointer;border-radius:6px;padding:3px 5px;margin:0 -5px;transition:opacity 0.15s,background 0.15s;pointer-events:all;justify-content:space-between;gap:6px;}
+.filter-row:hover{background:var(--bg);}
+.filter-row.inactive{opacity:0.35;}
+.filter-row.inactive .leg-check{opacity:0;}
+.leg-check{font-size:10px;color:var(--green);margin-left:auto;flex-shrink:0;}
+
+.side-panel{width:360px;flex-shrink:0;background:var(--surface);border-left:0.5px solid var(--border);display:flex;flex-direction:column;overflow:hidden;z-index:2;}
+.panel-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;}
+.panel-empty-icon{width:48px;height:48px;border-radius:50%;background:var(--bg);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;}
+.panel-empty h3{font-size:14px;font-weight:500;color:var(--text-mid);margin-bottom:6px;}
+.panel-empty p{font-size:12px;line-height:1.6;color:var(--text-faint);}
+.shelter-info{display:none;flex-direction:column;flex:1;overflow-y:auto;}
+.shelter-info.visible{display:flex;}
+.info-header{padding:20px 22px 16px;border-bottom:0.5px solid var(--border);}
+.info-badge{display:inline-flex;align-items:center;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.info-name{font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:-0.02em;line-height:1.2;}
+.info-city{font-size:12px;color:var(--text-mid);margin-top:4px;}
+.info-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);}
+.stat-cell{background:var(--surface);padding:13px 16px;}
+.stat-label{font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+.stat-val{font-size:18px;font-weight:500;}
+.score-wrap{padding:14px 22px;border-bottom:0.5px solid var(--border);}
+.score-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.score-title{font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;}
+.score-big{font-size:22px;font-weight:500;}
+.bar-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:2px;transition:width 0.5s;}
+.log-btn-wrap{padding:14px 22px;}
+.log-btn{width:100%;padding:11px;background:var(--text);color:var(--surface);font-family:var(--sans);font-size:13px;font-weight:500;border:none;border-radius:8px;cursor:pointer;}
+.log-btn:hover{opacity:0.82;}
+.visit-history{padding:0 22px 24px;}
+.history-title{font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+.visit-item{display:flex;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--border);}
+.visit-item:last-child{border-bottom:none;}
+.vscore{font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;flex-shrink:0;margin-top:2px;}
+.vdate{font-size:12px;color:var(--text-mid);}
+.vnote{font-size:11px;color:var(--text-faint);margin-top:2px;line-height:1.5;}
+
+.overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,25,23,0.55);align-items:center;justify-content:center;padding:20px;}
+.modal-sm{background:var(--surface);border-radius:14px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;border:0.5px solid var(--border-mid);}
+.modal-header{padding:18px 22px 14px;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
+.modal-title{font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:-0.01em;}
+.modal-sub{font-size:12px;color:var(--text-mid);margin-top:3px;line-height:1.5;}
+.modal-body{padding:20px 22px;}
+.field-group{margin-bottom:16px;}
+.field-label{font-size:11px;font-weight:500;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;display:flex;align-items:center;gap:4px;}
+.field-req{color:var(--red);font-size:10px;}
+.field-input{width:100%;padding:9px 12px;font-size:13px;font-family:var(--sans);color:var(--text);border:0.5px solid var(--border-mid);border-radius:8px;background:var(--bg);outline:none;transition:border-color 0.15s;}
+.field-input:focus{border-color:var(--green);}
+.field-input.error{border-color:var(--red);}
+.field-hint{font-size:11px;color:var(--text-faint);margin-top:4px;line-height:1.5;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+select.field-input{cursor:pointer;}
+textarea.field-input{min-height:72px;resize:vertical;}
+.modal-footer{padding:14px 22px 20px;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.modal-cancel{font-size:13px;padding:8px 16px;border-radius:8px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;font-family:var(--sans);}
+.modal-submit{font-size:13px;padding:8px 22px;border-radius:8px;border:none;background:var(--green);color:white;cursor:pointer;font-family:var(--sans);font-weight:500;}
+.modal-submit:hover{opacity:0.88;}
+.modal-submit:disabled{opacity:0.45;cursor:not-allowed;}
+.modal-notice{background:var(--bg);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:16px;border:0.5px solid var(--border);}
+.success-modal{text-align:center;padding:32px 22px;}
+.success-modal h3{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:8px;}
+.success-modal p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:14px;width:100%;max-width:510px;max-height:90vh;overflow-y:auto;border:0.5px solid var(--border-mid);}
+.form-top{padding:18px 22px 14px;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
+.form-sname{font-family:var(--serif);font-size:16px;font-weight:400;}
+.form-sub{font-size:12px;color:var(--text-mid);margin-top:2px;}
+.close-btn{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--border-mid);background:transparent;cursor:pointer;font-size:16px;color:var(--text-mid);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-bar{display:flex;gap:5px;padding:14px 22px 12px;}
+.step-seg{flex:1;height:2px;border-radius:1px;background:var(--border);transition:background 0.3s;}
+.step-seg.done{background:var(--green);}
+.step-seg.active{background:var(--green);opacity:0.55;}
+.step-meta{padding:0 22px 14px;}
+.step-num-lbl{font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;}
+.step-name-lbl{font-size:13px;font-weight:500;}
+.fbody{padding:0 22px;}
+.qsec{margin-bottom:18px;}
+.qsec-title{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin-bottom:10px;padding-bottom:8px;border-bottom:0.5px solid var(--border);}
+.qrow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;gap:16px;}
+.qrow+.qrow{border-top:0.5px solid var(--border);}
+.qt{font-size:13px;flex:1;}
+.qs{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.yn{display:flex;gap:4px;flex-shrink:0;}
+.yn-btn{font-size:11px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;font-family:var(--sans);transition:all 0.12s;}
+.yn-btn.yes.on{background:#4CAF7D18;border-color:var(--green);color:#27500A;}
+.yn-btn.no.on{background:#E0525218;border-color:var(--red);color:#791F1F;}
+.stars{display:flex;gap:4px;flex-shrink:0;}
+.star{width:22px;height:22px;border-radius:50%;border:0.5px solid var(--border-mid);background:transparent;font-size:10px;color:var(--text-mid);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--sans);transition:all 0.12s;}
+.star.on{background:var(--green);border-color:var(--green);color:white;font-weight:500;}
+.star.on.mid{background:var(--yellow);border-color:var(--yellow);}
+.star.on.bad{background:var(--red);border-color:var(--red);}
+.photo-zone{border:0.5px dashed var(--border-mid);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:background 0.15s;margin-bottom:14px;}
+.photo-zone:hover{background:var(--bg);}
+.pz-lbl{font-size:13px;color:var(--text-mid);margin-top:6px;}
+.pz-sub{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.photo-previews{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;}
+.photo-thumb{width:52px;height:52px;border-radius:6px;object-fit:cover;border:0.5px solid var(--border);}
+.notes-box{width:100%;min-height:80px;resize:vertical;font-size:13px;font-family:var(--sans);color:var(--text);padding:10px 12px;border:0.5px solid var(--border-mid);border-radius:8px;background:var(--bg);outline:none;margin-bottom:14px;}
+.notes-box:focus{border-color:var(--green);}
+.alert-strip{display:none;align-items:center;gap:8px;background:#E0525210;border:0.5px solid rgba(224,82,82,0.3);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#791F1F;}
+.alert-strip.on{display:flex;}
+.alert-pip{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.score-live{display:flex;align-items:center;gap:16px;background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:18px;}
+.score-live-num{font-size:30px;font-weight:500;min-width:44px;}
+.slb{flex:1;}
+.slb-lbl{font-size:11px;color:var(--text-faint);margin-bottom:6px;}
+.form-footer{padding:14px 22px 22px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border);margin-top:4px;}
+.btn-back{font-size:13px;padding:9px 18px;border-radius:8px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;font-family:var(--sans);visibility:hidden;}
+.btn-next{font-size:13px;padding:9px 24px;border-radius:8px;border:none;background:var(--text);color:var(--surface);cursor:pointer;font-family:var(--sans);font-weight:500;}
+.btn-next.submit{background:var(--green);}
+.success-pane{display:none;padding:40px 22px;text-align:center;}
+.success-pane.on{display:block;}
+.success-circle{width:56px;height:56px;border-radius:50%;background:#4CAF7D18;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;}
+.success-pane h2{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:8px;}
+.success-pane p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.success-alert{display:none;margin-top:14px;background:#E0525210;border:0.5px solid rgba(224,82,82,0.3);border-radius:8px;padding:12px 16px;font-size:12px;color:#791F1F;line-height:1.6;}
+.success-alert.on{display:block;}
+.close-success{margin-top:22px;font-size:13px;padding:10px 28px;border-radius:8px;border:0.5px solid var(--border-mid);background:transparent;cursor:pointer;font-family:var(--sans);}
+
+/* Auth modals */
+.auth-modal{background:var(--surface);border-radius:14px;width:100%;max-width:420px;border:0.5px solid var(--border-mid);}
+.auth-logo{font-family:var(--serif);font-size:22px;letter-spacing:-0.02em;text-align:center;margin-bottom:4px;}
+.auth-logo span{color:var(--green);}
+.auth-tagline{font-size:12px;color:var(--text-faint);text-align:center;margin-bottom:24px;}
+.auth-tabs{display:flex;border-bottom:0.5px solid var(--border);margin-bottom:24px;}
+.auth-tab{flex:1;padding:12px;font-size:13px;font-weight:500;text-align:center;cursor:pointer;color:var(--text-faint);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s;}
+.auth-tab.active{color:var(--green);border-bottom-color:var(--green);}
+.auth-body{padding:0 28px 28px;}
+.auth-google-btn{width:100%;padding:10px;border:0.5px solid var(--border-mid);border-radius:8px;background:var(--surface);font-size:13px;font-family:var(--sans);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;transition:background 0.15s;}
+.auth-google-btn:hover{background:var(--bg);}
+.auth-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.auth-divider-line{flex:1;height:0.5px;background:var(--border);}
+.auth-divider-text{font-size:11px;color:var(--text-faint);}
+.auth-field{margin-bottom:14px;}
+.auth-label{font-size:11px;font-weight:500;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;display:block;}
+.auth-input{width:100%;padding:9px 12px;font-size:13px;font-family:var(--sans);color:var(--text);border:0.5px solid var(--border-mid);border-radius:8px;background:var(--bg);outline:none;transition:border-color 0.15s;}
+.auth-input:focus{border-color:var(--green);}
+.auth-input.error{border-color:var(--red);}
+.auth-input-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.auth-submit{width:100%;padding:11px;background:var(--green);color:white;font-family:var(--sans);font-size:13px;font-weight:500;border:none;border-radius:8px;cursor:pointer;margin-top:4px;transition:opacity 0.15s;}
+.auth-submit:hover{opacity:0.88;}
+.auth-notice{background:var(--bg);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--text-mid);line-height:1.6;margin-top:14px;border:0.5px solid var(--border);}
+.auth-error{background:#E0525210;border:0.5px solid rgba(224,82,82,0.3);border-radius:8px;padding:9px 14px;font-size:12px;color:#791F1F;margin-bottom:14px;display:none;}
+.auth-error.on{display:block;}
+.auth-success{text-align:center;padding:8px 0;}
+.auth-success-icon{width:52px;height:52px;border-radius:50%;background:#4CAF7D18;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
+.auth-success h3{font-family:var(--serif);font-size:19px;font-weight:400;margin-bottom:8px;}
+.auth-success p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Nav auth area */
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-btn{font-size:12px;font-family:var(--sans);padding:6px 14px;border-radius:20px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.nav-btn:hover{background:var(--bg);color:var(--text);}
+.nav-btn.primary{background:var(--green);color:white;border-color:var(--green);}
+.nav-btn.primary:hover{opacity:0.88;}
+.avatar-wrap{position:relative;}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:white;cursor:pointer;flex-shrink:0;border:0.5px solid rgba(0,0,0,0.08);}
+.avatar-menu{position:absolute;top:40px;right:0;background:var(--surface);border:0.5px solid var(--border-mid);border-radius:10px;padding:6px;min-width:190px;z-index:2000;display:none;flex-direction:column;}
+.avatar-menu.open{display:flex;}
+.avatar-menu-user{padding:8px 10px 10px;border-bottom:0.5px solid var(--border);margin-bottom:4px;}
+.avatar-menu-name{font-size:13px;font-weight:500;color:var(--text);}
+.avatar-menu-email{font-size:11px;color:var(--text-faint);margin-top:1px;}
+.avatar-menu-badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin-top:4px;}
+.badge-pending{background:#E8B84B18;color:#854F0B;border:0.5px solid #E8B84B44;}
+.badge-approved{background:#4CAF7D18;color:#27500A;border:0.5px solid #4CAF7D44;}
+.avatar-menu-item{font-size:13px;padding:8px 10px;border-radius:6px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:8px;transition:background 0.12s;}
+.avatar-menu-item:hover{background:var(--bg);}
+.avatar-menu-item.danger{color:var(--red);}
+/* Profile modal */
+.profile-grid{display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:start;margin-bottom:20px;}
+.profile-avatar-lg{width:80px;height:80px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:500;color:white;flex-shrink:0;cursor:pointer;position:relative;overflow:hidden;}
+.profile-avatar-lg img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.profile-avatar-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.15s;border-radius:50%;}
+.profile-avatar-lg:hover .profile-avatar-overlay{opacity:1;}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.profile-stat{background:var(--bg);border-radius:8px;padding:12px 14px;}
+.profile-stat-num{font-size:22px;font-weight:500;}
+.profile-stat-lbl{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.shelter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.shelter-chip{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid);}
+/* Pending banner */
+.pending-banner{background:#E8B84B12;border-bottom:0.5px solid #E8B84B44;padding:9px 28px;font-size:12px;color:#633806;display:none;align-items:center;gap:8px;}
+.pending-banner.on{display:flex;}
+.pending-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Barınak<span>Watch</span></div>
+  <div class="nav-right">
+    <button class="nav-btn primary" id="btn-add-shelter" style="display:none">+ Add shelter</button>
+    <button class="nav-btn" id="btn-feedback">Feedback</button>
+    <button class="nav-btn" id="btn-login" style="font-weight:500">Sign in</button>
+    <div class="avatar-wrap" id="avatar-wrap" style="display:none">
+      <div class="avatar" id="nav-avatar" title="Your profile"></div>
+      <div class="avatar-menu" id="avatar-menu">
+        <div class="avatar-menu-user">
+          <div class="avatar-menu-name" id="menu-name"></div>
+          <div class="avatar-menu-email" id="menu-email"></div>
+          <div class="avatar-menu-badge" id="menu-badge"></div>
+        </div>
+        <div class="avatar-menu-item" id="menu-profile">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          My profile
+        </div>
+        <div class="avatar-menu-item" id="menu-logout" style="margin-top:2px;border-top:0.5px solid var(--border);padding-top:8px" class="danger">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign out
+        </div>
+      </div>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    </div>
+  </div>
+</nav>
+<!-- Pending approval banner -->
+<div class="pending-banner" id="pending-banner">
+  <div class="pending-dot"></div>
+  <span id="pending-text">Your account is pending approval. You can browse the map but cannot submit visits yet.</span>
+</div>
+
+<div class="app">
+  <div id="map"></div>
+
+  <div class="map-legend">
+    <div class="leg-title" data-en="Filter by status" data-tr="Duruma göre filtrele">Filter by status</div>
+    <div class="leg-row filter-row active" data-filter="green" onclick="toggleFilter('green')">
+      <div class="leg-dot" style="background:var(--green)"></div>
+      <span data-en="1–2 weeks" data-tr="1–2 hafta">1–2 weeks</span>
+      <span class="leg-check">✓</span>
+    </div>
+    <div class="leg-row filter-row active" data-filter="yellow" onclick="toggleFilter('yellow')">
+      <div class="leg-dot" style="background:var(--yellow)"></div>
+      <span data-en="3–4 weeks" data-tr="3–4 hafta">3–4 weeks</span>
+      <span class="leg-check">✓</span>
+    </div>
+    <div class="leg-row filter-row active" data-filter="red" onclick="toggleFilter('red')">
+      <div class="leg-dot" style="background:var(--red)"></div>
+      <span data-en="Over a month" data-tr="1 aydan fazla">Over a month</span>
+      <span class="leg-check">✓</span>
+    </div>
+    <div class="leg-row filter-row active" data-filter="gray" onclick="toggleFilter('gray')">
+      <div class="leg-dot" style="background:var(--gray)"></div>
+      <span data-en="Never reported" data-tr="Hiç rapor yok">Never reported</span>
+      <span class="leg-check">✓</span>
+    </div>
+  </div>
+
+  <div class="side-panel">
+    <div class="panel-empty" id="panel-empty">
+      <div class="panel-empty-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#A8A59E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L3 8v9h5v-4h4v4h5V8L10 2z"/></svg>
+      </div>
+      <h3 data-en="Select a shelter" data-tr="Barınak seçin">Select a shelter</h3>
+      <p data-en="Click any dot on the map to view shelter details and visit history." data-tr="Barınak detaylarını görmek için haritadaki noktaya tıklayın.">Click any dot on the map to view shelter details and visit history.</p>
+    </div>
+    <div class="shelter-info" id="shelter-info">
+      <div class="info-header">
+        <div class="info-badge" id="info-badge"></div>
+        <div class="info-name" id="info-name"></div>
+        <div class="info-city" id="info-city"></div>
+      </div>
+      <div class="info-stats">
+        <div class="stat-cell"><div class="stat-label" data-en="Capacity" data-tr="Kapasite">Capacity</div><div class="stat-val" id="stat-cap">—</div></div>
+        <div class="stat-cell"><div class="stat-label" data-en="Last visit" data-tr="Son ziyaret">Last visit</div><div class="stat-val" id="stat-last" style="font-size:13px;padding-top:4px">—</div></div>
+        <div class="stat-cell"><div class="stat-label" data-en="Total visits" data-tr="Toplam ziyaret">Total visits</div><div class="stat-val" id="stat-vis">—</div></div>
+        <div class="stat-cell"><div class="stat-label" data-en="Alerts sent" data-tr="Uyarı gönderildi">Alerts sent</div><div class="stat-val" id="stat-alt">—</div></div>
+      </div>
+      <div class="score-wrap">
+        <div class="score-row">
+          <span class="score-title" data-en="Condition score" data-tr="Durum puanı">Condition score</span>
+          <span class="score-big" id="info-score">—</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" id="info-fill" style="width:0%"></div></div>
+      </div>
+      <div class="log-btn-wrap">
+        <button class="log-btn" onclick="openForm()" data-en="Log a visit" data-tr="Ziyaret kaydet">Log a visit</button>
+      </div>
+      <div class="visit-history">
+        <div class="history-title" data-en="Recent visits" data-tr="Son ziyaretler">Recent visits</div>
+        <div id="visit-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="bgClick(event)">
+  <div class="modal">
+    <div id="form-main">
+      <div class="form-top">
+        <div><div class="form-sname" id="form-name"></div><div class="form-sub" data-en="Visit report" data-tr="Ziyaret raporu">Visit report</div></div>
+        <button class="close-btn" onclick="closeForm()">×</button>
+      </div>
+      <div class="step-bar"><div class="step-seg active" id="s0"></div><div class="step-seg" id="s1"></div><div class="step-seg" id="s2"></div></div>
+      <div class="step-meta"><div class="step-num-lbl" id="fnum">Step 1 of 3</div><div class="step-name-lbl" id="fname">Basic conditions</div></div>
+      <div class="alert-strip" id="alert-strip"><div class="alert-pip"></div><span data-en="Critical issues flagged — animal rights organizations will be notified." data-tr="Kritik sorunlar işaretlendi — hayvan hakları kuruluşları bildirilecek.">Critical issues flagged — animal rights organizations will be notified.</span></div>
+      <div class="fbody">
+        <div id="fs1">
+          <div class="qsec">
+            <div class="qsec-title" data-en="Food & water" data-tr="Yiyecek ve su">Food & water</div>
+            <div class="qrow"><div class="qt" data-en="Do animals have access to fresh water?" data-tr="Hayvanlara temiz su veriliyor mu?">Do animals have access to fresh water?</div><div class="yn"><button class="yn-btn yes" data-key="water" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="water" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div class="qt" data-en="Is food provided regularly?" data-tr="Yiyecek düzenli veriliyor mu?">Is food provided regularly?</div><div class="yn"><button class="yn-btn yes" data-key="food" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="food" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+          </div>
+          <div class="qsec">
+            <div class="qsec-title" data-en="Space & cleanliness" data-tr="Alan ve temizlik">Space & cleanliness</div>
+            <div class="qrow"><div class="qt" data-en="Are cages / pens clean?" data-tr="Kafesler / bölmeler temiz mi?">Are cages / pens clean?</div><div class="yn"><button class="yn-btn yes" data-key="clean" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="clean" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div class="qt" data-en="Do animals have adequate space?" data-tr="Hayvanların yeterli alanı var mı?">Do animals have adequate space?</div><div class="yn"><button class="yn-btn yes" data-key="space" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="space" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div><div class="qt" data-en="Overall cleanliness rating" data-tr="Genel temizlik puanı">Overall cleanliness rating</div><div class="qs" data-en="1 = filthy · 5 = spotless" data-tr="1 = kirli · 5 = pırıl pırıl">1 = filthy · 5 = spotless</div></div><div class="stars"><div class="star bad" data-key="cr" data-val="1" onclick="rateStar(this)">1</div><div class="star bad" data-key="cr" data-val="2" onclick="rateStar(this)">2</div><div class="star mid" data-key="cr" data-val="3" onclick="rateStar(this)">3</div><div class="star" data-key="cr" data-val="4" onclick="rateStar(this)">4</div><div class="star" data-key="cr" data-val="5" onclick="rateStar(this)">5</div></div></div>
+          </div>
+        </div>
+        <div id="fs2" style="display:none">
+          <div class="qsec">
+            <div class="qsec-title" data-en="Animal health & safety" data-tr="Hayvan sağlığı ve güvenliği">Animal health & safety</div>
+            <div class="qrow"><div class="qt" data-en="Are there visibly sick or injured animals?" data-tr="Görünürde hasta ya da yaralı hayvan var mı?">Are there visibly sick or injured animals?</div><div class="yn"><button class="yn-btn yes" data-key="sick" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="sick" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div class="qt" data-en="Any signs of physical abuse or neglect?" data-tr="Fiziksel istismar ya da ihmal belirtisi var mı?">Any signs of physical abuse or neglect?</div><div class="yn"><button class="yn-btn yes" data-key="abuse" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="abuse" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div><div class="qt" data-en="Are animals showing extreme stress?" data-tr="Hayvanlar aşırı stres belirtisi gösteriyor mu?">Are animals showing extreme stress?</div><div class="qs" data-en="e.g. self-harm, aggression, freezing" data-tr="örn. kendine zarar verme, saldırganlık">e.g. self-harm, aggression, freezing</div></div><div class="yn"><button class="yn-btn yes" data-key="stress" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="stress" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+          </div>
+          <div class="qsec">
+            <div class="qsec-title" data-en="Staff & management" data-tr="Personel ve yönetim">Staff & management</div>
+            <div class="qrow"><div class="qt" data-en="Were staff present during your visit?" data-tr="Ziyaretiniz sırasında personel var mıydı?">Were staff present during your visit?</div><div class="yn"><button class="yn-btn yes" data-key="staff" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="staff" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+            <div class="qrow"><div class="qt" data-en="Were staff responsive and cooperative?" data-tr="Personel ilgili ve iş birlikçi miydi?">Were staff responsive and cooperative?</div><div class="yn"><button class="yn-btn yes" data-key="resp" data-val="yes" onclick="pick(this)" data-en="Yes" data-tr="Evet">Yes</button><button class="yn-btn no" data-key="resp" data-val="no" onclick="pick(this)" data-en="No" data-tr="Hayır">No</button></div></div>
+          </div>
+        </div>
+        <div id="fs3" style="display:none">
+          <div class="photo-zone" onclick="document.getElementById('photo-input').click()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8A59E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8.5 6l1.5-2h4l1.5 2"/></svg>
+            <div class="pz-lbl" data-en="Tap to add photos" data-tr="Fotoğraf eklemek için dokunun">Tap to add photos</div>
+            <div class="pz-sub" data-en="Evidence of conditions, animals, facilities" data-tr="Koşullar, hayvanlar, tesise dair kanıtlar">Evidence of conditions, animals, facilities</div>
+            <div class="photo-previews" id="photo-previews"></div>
+          </div>
+          <input type="file" id="photo-input" accept="image/*" multiple style="display:none" onchange="addPhotos(this)">
+          <textarea class="notes-box" id="notes-box" placeholder="Additional observations..."></textarea>
+          <div class="score-live"><div class="score-live-num" id="sc-num">—</div><div class="slb"><div class="slb-lbl" data-en="Condition score" data-tr="Durum puanı">Condition score</div><div class="bar-track"><div class="bar-fill" id="sc-fill" style="width:0%;background:var(--gray)"></div></div></div></div>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn-back" id="btn-back" onclick="fStep(-1)" data-en="Back" data-tr="Geri">Back</button>
+        <button class="btn-next" id="btn-next" onclick="fStep(1)" data-en="Continue" data-tr="Devam">Continue</button>
+      </div>
+    </div>
+    <div class="success-pane" id="success-pane">
+      <div class="success-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h2 data-en="Visit logged" data-tr="Ziyaret kaydedildi">Visit logged</h2>
+      <p id="success-msg"></p>
+      <div class="success-alert" id="success-alert"><span data-en="Critical issues were flagged. Animal rights organizations in this city are being notified." data-tr="Kritik sorunlar işaretlendi. Bu şehirdeki hayvan hakları kuruluşları bilgilendiriliyor.">Critical issues were flagged. Animal rights organizations in this city are being notified.</span></div>
+      <button class="close-success" onclick="closeForm()" data-en="Close" data-tr="Kapat">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+// Global stubs for onclick attributes
+function setLang(l){if(window._a)window._a.setLang(l);}
+function openForm(){if(window._a)window._a.openForm();}
+function closeForm(){if(window._a)window._a.closeForm();}
+function bgClick(e){if(window._a)window._a.bgClick(e);}
+function pick(b){if(window._a)window._a.pick(b);}
+function rateStar(d){if(window._a)window._a.rateStar(d);}
+function fStep(n){if(window._a)window._a.fStep(n);}
+function addPhotos(i){if(window._a)window._a.addPhotos(i);}
+function toggleFilter(s){if(window._toggleFilter)window._toggleFilter(s);}
+
+
+window.addEventListener('load',function(){
+
+const LANG={current:'en'};
+let selId=null,fstep=1;
+const ans={};
+
+const SHELTERS=[
+  {id:1,name:"İstanbul Pendik Barınağı",city:"İstanbul",lat:40.870,lng:29.260,days:3,cap:350,lv:"3 days ago",lvtr:"3 gün önce",score:82,vis:14,alts:1,
+   hist:[{s:82,d:"Apr 2, 2026",n:"Good overall. Water bowls full. Minor cleanliness issues in section B."},{s:78,d:"Mar 25, 2026",n:"Staff present, cooperative. 2 dogs showing stress."},{s:74,d:"Mar 18, 2026",n:"Food adequate. Needs better ventilation."}]},
+  {id:2,name:"Ankara Mamak Barınağı",city:"Ankara",lat:39.920,lng:32.950,days:18,cap:280,lv:"18 days ago",lvtr:"18 gün önce",score:61,vis:9,alts:2,
+   hist:[{s:61,d:"Mar 18, 2026",n:"Understaffed. Several cages overcrowded."},{s:55,d:"Mar 5, 2026",n:"Food irregular. 3 sick animals observed."},{s:68,d:"Feb 20, 2026",n:"Improvement since last visit."}]},
+  {id:3,name:"İzmir Çiğli Barınağı",city:"İzmir",lat:38.490,lng:27.030,days:5,cap:220,lv:"5 days ago",lvtr:"5 gün önce",score:75,vis:11,alts:0,
+   hist:[{s:75,d:"Mar 31, 2026",n:"Clean facility. Animals calm and well-fed."},{s:72,d:"Mar 24, 2026",n:"One injured cat, receiving care on-site."},{s:80,d:"Mar 17, 2026",n:"Best conditions seen in region."}]},
+  {id:4,name:"Bursa Büyükşehir Barınağı",city:"Bursa",lat:40.190,lng:29.060,days:45,cap:400,lv:"45 days ago",lvtr:"45 gün önce",score:28,vis:5,alts:3,
+   hist:[{s:28,d:"Feb 19, 2026",n:"Severe overcrowding. No fresh water in 2 sections. Alert sent."},{s:34,d:"Feb 5, 2026",n:"Signs of abuse reported. Contacted HAYTAP."},{s:41,d:"Jan 22, 2026",n:"Poor conditions but staff present."}]},
+  {id:5,name:"Adana Büyükşehir Barınağı",city:"Adana",lat:37.000,lng:35.320,days:14,cap:310,lv:"14 days ago",lvtr:"14 gün önce",score:55,vis:7,alts:1,
+   hist:[{s:55,d:"Mar 22, 2026",n:"Mixed conditions. New staff seem untrained."},{s:60,d:"Mar 8, 2026",n:"Food OK. Space tight."},{s:48,d:"Feb 22, 2026",n:"Alert sent for lack of vet care."}]},
+  {id:6,name:"Konya Selçuklu Barınağı",city:"Konya",lat:37.870,lng:32.490,days:38,cap:180,lv:"38 days ago",lvtr:"38 gün önce",score:34,vis:4,alts:2,
+   hist:[{s:34,d:"Feb 27, 2026",n:"Very poor. Animals in distress. Alert sent."},{s:39,d:"Feb 10, 2026",n:"Cages filthy. No staff found during visit."},{s:45,d:"Jan 28, 2026",n:"Declining conditions."}]},
+  {id:7,name:"Trabzon Büyükşehir Barınağı",city:"Trabzon",lat:41.002,lng:39.720,days:null,cap:120,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
+  {id:8,name:"Erzurum Barınağı",city:"Erzurum",lat:39.910,lng:41.270,days:null,cap:90,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
+  {id:9,name:"Diyarbakır Barınağı",city:"Diyarbakır",lat:37.910,lng:40.230,days:52,cap:260,lv:"52 days ago",lvtr:"52 gün önce",score:22,vis:3,alts:4,
+   hist:[{s:22,d:"Feb 13, 2026",n:"Critical. Starvation signs. Multiple alerts sent."},{s:30,d:"Jan 30, 2026",n:"Water supply cut off. Emergency reported."},{s:35,d:"Jan 15, 2026",n:"Severely understaffed."}]},
+  {id:10,name:"Antalya Büyükşehir Barınağı",city:"Antalya",lat:36.890,lng:30.700,days:2,cap:195,lv:"2 days ago",lvtr:"2 gün önce",score:88,vis:18,alts:0,
+   hist:[{s:88,d:"Apr 3, 2026",n:"Excellent conditions. Model facility."},{s:85,d:"Mar 27, 2026",n:"All animals fed and healthy."},{s:90,d:"Mar 20, 2026",n:"New vet on staff — huge improvement."}]},
+  {id:11,name:"Mersin Yenişehir Barınağı",city:"Mersin",lat:36.800,lng:34.630,days:16,cap:230,lv:"16 days ago",lvtr:"16 gün önce",score:58,vis:6,alts:1,
+   hist:[{s:58,d:"Mar 20, 2026",n:"Adequate but overcrowded."},{s:62,d:"Mar 6, 2026",n:"Food supply improved since last alert."},{s:44,d:"Feb 20, 2026",n:"Alert sent — no water in cat section."}]},
+  {id:12,name:"Gaziantep Barınağı",city:"Gaziantep",lat:37.060,lng:37.380,days:null,cap:150,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
+  {id:13,name:"Samsun Büyükşehir Barınağı",city:"Samsun",lat:41.286,lng:36.330,days:20,cap:170,lv:"20 days ago",lvtr:"20 gün önce",score:60,vis:5,alts:1,
+   hist:[{s:60,d:"Mar 16, 2026",n:"Reasonable conditions. Overcrowded in winter."},{s:55,d:"Mar 2, 2026",n:"Heating issues in shelter."}]},
+  {id:14,name:"Kayseri Büyükşehir Barınağı",city:"Kayseri",lat:38.730,lng:35.480,days:40,cap:200,lv:"40 days ago",lvtr:"40 gün önce",score:30,vis:3,alts:3,
+   hist:[{s:30,d:"Feb 25, 2026",n:"Critical. No food observed. Alert sent."},{s:38,d:"Feb 11, 2026",n:"Sick animals left without care."}]},
+]
+
+const COL={green:"#4CAF7D",yellow:"#E8B84B",red:"#E05252",gray:"#9B9B9B"};
+const SLB={
+  green:{en:"Visited in last 1–2 weeks",tr:"Son 1–2 haftada ziyaret edildi"},
+  yellow:{en:"Visited 3–4 weeks ago",tr:"3–4 hafta önce ziyaret edildi"},
+  red:{en:"No report in 30+ days",tr:"30+ gündür rapor yok"},
+  gray:{en:"Never reported",tr:"Hiç rapor yok"},
+};
+
+
+
+// All 81 Turkish provinces with accurate center coordinates
+const PROVINCE_LABELS=[
+  ["Adana",37.00,35.32],["Adıyaman",37.76,38.28],["Afyonkarahisar",38.76,30.54],
+  ["Ağrı",39.72,43.05],["Aksaray",38.37,34.04],["Amasya",40.65,35.83],
+  ["Ankara",39.92,32.85],["Antalya",37.07,30.69],["Ardahan",41.11,42.70],
+  ["Artvin",41.18,41.82],["Aydın",37.84,28.00],["Balıkesir",39.64,27.88],
+  ["Bartın",41.64,32.34],["Batman",37.88,41.13],["Bayburt",40.25,40.23],
+  ["Bilecik",40.15,29.98],["Bingöl",38.88,40.50],["Bitlis",38.40,42.11],
+  ["Bolu",40.74,31.61],["Burdur",37.72,30.29],["Bursa",40.18,29.06],
+  ["Çanakkale",40.15,26.41],["Çankırı",40.60,33.62],["Çorum",40.55,34.96],
+  ["Denizli",37.78,29.09],["Diyarbakır",37.91,40.22],["Düzce",40.84,31.16],
+  ["Edirne",41.68,26.56],["Elazığ",38.68,39.22],["Erzincan",39.75,39.50],
+  ["Erzurum",39.90,41.27],["Eskişehir",39.78,30.52],["Gaziantep",37.06,37.38],
+  ["Giresun",40.91,38.39],["Gümüşhane",40.46,39.48],["Hakkari",37.58,43.74],
+  ["Hatay",36.40,36.35],["Iğdır",39.89,44.05],["Isparta",37.76,30.55],
+  ["İstanbul",41.01,28.96],["İzmir",38.42,27.14],["Kahramanmaraş",37.59,36.92],
+  ["Karabük",41.20,32.63],["Karaman",37.18,33.22],["Kars",40.60,43.10],
+  ["Kastamonu",41.38,33.78],["Kayseri",38.73,35.49],["Kırıkkale",39.85,33.51],
+  ["Kırklareli",41.73,27.22],["Kırşehir",39.15,34.17],["Kilis",36.72,37.12],
+  ["Kocaeli",40.77,29.92],["Konya",37.87,32.49],["Kütahya",39.42,29.99],
+  ["Malatya",38.35,38.31],["Manisa",38.61,27.43],["Mardin",37.31,40.74],
+  ["Mersin",36.80,34.63],["Muğla",37.22,28.36],["Muş",38.73,41.49],
+  ["Nevşehir",38.62,34.71],["Niğde",37.97,34.68],["Ordu",40.98,37.88],
+  ["Osmaniye",37.07,36.25],["Rize",41.02,40.52],["Sakarya",40.69,30.43],
+  ["Samsun",41.29,36.33],["Siirt",37.93,41.95],["Sinop",42.03,35.15],
+  ["Sivas",39.75,37.01],["Şanlıurfa",37.16,38.80],["Şırnak",37.52,42.46],
+  ["Tekirdağ",40.98,27.51],["Tokat",40.31,36.55],["Trabzon",41.00,39.72],
+  ["Tunceli",39.10,39.55],["Uşak",38.68,29.41],["Van",38.49,43.38],
+  ["Yalova",40.65,29.27],["Yozgat",39.82,34.81],["Zonguldak",41.45,31.80],
+];
+
+const map=L.map('map',{center:[39.0,35.5],zoom:6,zoomControl:true});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains:'abcd',maxZoom:19
+}).addTo(map);
+
+// Province borders from CDN
+fetch('https://cdn.jsdelivr.net/gh/deldersveld/topojson@master/countries/turkey/turkey-provinces.json')
+  .then(r=>r.json())
+  .then(topo=>{
+    const key=Object.keys(topo.objects)[0];
+    const geojson=topojson.feature(topo,topo.objects[key]);
+    L.geoJSON(geojson,{
+      style:()=>({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
+      onEachFeature:(_,layer)=>{
+        layer.on({
+          mouseover:e=>e.target.setStyle({fillColor:'#D6DCE8',fillOpacity:0.9,color:'#7A88A0',weight:1.2}),
+          mouseout:e=>e.target.setStyle({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
+        });
+      }
+    }).addTo(map);
+  })
+  .catch(()=>{
+    fetch('https://cdn.jsdelivr.net/gh/cihadturhan/tr-geojson@master/geo/tr-provinces-simple.json')
+      .then(r=>r.json())
+      .then(data=>{
+        L.geoJSON(data,{
+          style:()=>({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
+        }).addTo(map);
+      }).catch(()=>{});
+  });
+
+map.fitBounds([[35.8,25.6],[42.1,44.8]],{padding:[20,20]});
+
+// Province name labels — hardcoded coordinates, no GeoJSON dependency
+PROVINCE_LABELS.forEach(([name,lat,lng])=>{
+  L.tooltip({permanent:true,direction:'center',className:'city-label',offset:[0,0]})
+   .setContent(name)
+   .setLatLng([lat,lng])
+   .addTo(map);
+});
+
+// Shelter markers
+function statusFromDays(d){if(d===null||d===undefined)return"gray";if(d<=13)return"green";if(d<=29)return"yellow";return"red";}
+
+function mkIcon(color,sel=false){
+  const sz=sel?20:14,bw=sel?3:2;
+  return L.divIcon({
+    className:'',
+    html:`<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${color};border:${bw}px solid white;box-shadow:0 1px ${sel?8:4}px rgba(0,0,0,${sel?0.35:0.22});cursor:pointer;"></div>`,
+    iconSize:[sz,sz],iconAnchor:[sz/2,sz/2],
+  });
+}
+const markers={};
+SHELTERS.forEach(s=>{
+  markers[s.id]=L.marker([s.lat,s.lng],{icon:mkIcon(COL[statusFromDays(s.days)]),zIndexOffset:1000})
+    .addTo(map).on('click',()=>selectShelter(s.id));
+});
+
+function selectShelter(id){
+  selId=id;
+  const s=SHELTERS.find(x=>x.id===id);
+  SHELTERS.forEach(sh=>markers[sh.id].setIcon(mkIcon(COL[statusFromDays(sh.days)],sh.id===id)));
+  document.getElementById('panel-empty').style.display='none';
+  document.getElementById('shelter-info').classList.add('visible');
+  const col=COL[statusFromDays(s.days)];
+  const b=document.getElementById('info-badge');
+  b.textContent=SLB[statusFromDays(s.days)][LANG.current];
+  b.style.cssText=`background:${col}22;color:${col};border:0.5px solid ${col}44;display:inline-flex;align-items:center;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;`;
+  document.getElementById('info-name').textContent=s.name;
+  document.getElementById('info-city').textContent=s.city;
+  document.getElementById('stat-cap').textContent=s.cap;
+  document.getElementById('stat-last').textContent=s.lv?(LANG.current==='en'?s.lv:s.lvtr):'—';
+  document.getElementById('stat-vis').textContent=s.vis;
+  document.getElementById('stat-alt').textContent=s.alts;
+  const sf=document.getElementById('info-fill'),sn=document.getElementById('info-score');
+  if(s.score!==null){sn.textContent=s.score;sf.style.width=s.score+'%';sf.style.background=s.score>=70?'#4CAF7D':s.score>=40?'#E8B84B':'#E05252';}
+  else{sn.textContent='—';sf.style.width='0%';}
+  const vl=document.getElementById('visit-list');
+  vl.innerHTML='';
+  if(!s.hist.length){vl.innerHTML=`<div style="font-size:12px;color:var(--text-faint);padding:12px 0">${LANG.current==='en'?'No visits recorded yet.':'Henüz ziyaret kaydı yok.'}</div>`;}
+  else s.hist.forEach(v=>{
+    const sc=v.s>=70?'#4CAF7D':v.s>=40?'#E8B84B':'#E05252';
+    const submitter = v.username ? `<span style="font-size:10px;color:var(--text-faint);margin-left:6px">${v.username}</span>` : '';
+    vl.innerHTML+=`<div class="visit-item"><div><span class="vscore" style="background:${sc}22;color:${sc};border:0.5px solid ${sc}44">${v.s}</span></div><div><div class="vdate">${v.d}${submitter}</div><div class="vnote">${v.n}</div></div></div>`;
+  });
+}
+
+function _openForm(){
+  const s=SHELTERS.find(x=>x.id===selId);if(!s)return;
+  document.getElementById('form-name').textContent=s.name;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('form-main').style.display='block';
+  document.getElementById('success-pane').classList.remove('on');
+  resetForm();
+}
+function _closeForm(){document.getElementById('overlay').classList.remove('open');}
+function _bgClick(e){if(e.target===document.getElementById('overlay'))_closeForm();}
+
+function resetForm(){
+  Object.keys(ans).forEach(k=>delete ans[k]);
+  fstep=1;showStep(1);
+  document.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.star').forEach(d=>d.classList.remove('on'));
+  document.getElementById('photo-previews').innerHTML='';
+  document.getElementById('notes-box').value='';
+  document.getElementById('alert-strip').classList.remove('on');
+  calcScore();
+}
+
+function showStep(n){
+  [1,2,3].forEach(i=>document.getElementById('fs'+i).style.display=i===n?'block':'none');
+  [0,1,2].forEach(i=>{const seg=document.getElementById('s'+i);seg.className='step-seg'+(i<n-1?' done':i===n-1?' active':'');});
+  const names={en:['Basic conditions','Animal welfare & staff','Photos & notes'],tr:['Temel koşullar','Hayvan refahı ve personel','Fotoğraflar ve notlar']};
+  document.getElementById('fnum').textContent=`${LANG.current==='en'?'Step':'Adım'} ${n} / 3`;
+  document.getElementById('fname').textContent=names[LANG.current][n-1];
+  document.getElementById('btn-back').style.visibility=n>1?'visible':'hidden';
+  const nb=document.getElementById('btn-next');
+  if(n===3){nb.textContent=LANG.current==='en'?'Submit report':'Raporu gönder';nb.classList.add('submit');}
+  else{nb.textContent=LANG.current==='en'?'Continue':'Devam';nb.classList.remove('submit');}
+  if(n===3)calcScore();
+}
+
+function _fStep(d){const nx=fstep+d;if(nx<1)return;if(nx>3){_submit();return;}fstep=nx;showStep(fstep);}
+
+function _pick(btn){
+  ans[btn.dataset.key]=btn.dataset.val;
+  btn.closest('.yn').querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const crit=ans.abuse==='yes'||ans.water==='no'||ans.sick==='yes'||ans.stress==='yes';
+  document.getElementById('alert-strip').classList.toggle('on',crit);
+  calcScore();
+}
+
+function _rateStar(dot){
+  const val=parseInt(dot.dataset.val);ans[dot.dataset.key]=val;
+  dot.closest('.stars').querySelectorAll('.star').forEach((d,i)=>d.classList.toggle('on',i<val));
+  calcScore();
+}
+
+function calcScore(){
+  const good=['water','food','clean','space','staff','resp'],bad=['sick','abuse','stress'];
+  let total=0;
+  good.forEach(k=>{if(ans[k]==='yes')total+=10;});
+  bad.forEach(k=>{if(ans[k]==='no')total+=10;});
+  if(ans.cr)total+=(ans.cr-1)*2.5;
+  const answered=[...good,...bad].filter(k=>ans[k]).length;
+  const n=document.getElementById('sc-num'),f=document.getElementById('sc-fill');
+  if(!answered){n.textContent='—';f.style.width='0%';return;}
+  const sc=Math.min(100,Math.round((total/((good.length+bad.length)*10+10))*100));
+  n.textContent=sc;f.style.width=sc+'%';
+  f.style.background=sc>=70?'#4CAF7D':sc>=40?'#E8B84B':'#E05252';
+}
+
+function _addPhotos(input){
+  const prev=document.getElementById('photo-previews');
+  Array.from(input.files).forEach(f=>{const img=document.createElement('img');img.src=URL.createObjectURL(f);img.className='photo-thumb';prev.appendChild(img);});
+}
+
+function _submit(){
+  const s=SHELTERS.find(x=>x.id===selId);
+  const crit=ans.abuse==='yes'||ans.water==='no'||ans.sick==='yes'||ans.stress==='yes';
+  document.getElementById('form-main').style.display='none';
+  document.getElementById('success-pane').classList.add('on');
+  document.getElementById('success-msg').textContent=LANG.current==='en'
+    ?`Thank you for visiting ${s.name}. Your report helps keep animals safe.`
+    :`${s.name} ziyaretiniz için teşekkürler. Raporunuz hayvanların güvende kalmasına yardımcı oluyor.`;
+  document.getElementById('success-alert').classList.toggle('on',crit);
+}
+
+function _setLang(l){
+  LANG.current=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  document.querySelectorAll('[data-en]').forEach(el=>{if(!el.dataset.key)el.textContent=el.dataset[l]||el.dataset.en;});
+  document.querySelectorAll('.yn-btn').forEach(b=>{b.textContent=b.dataset[l]||b.dataset.en;});
+  if(selId)selectShelter(selId);
+  if(document.getElementById('overlay').classList.contains('open'))showStep(fstep);
+}
+
+// Filter state
+const activeFilters=new Set(['green','yellow','red','gray']);
+
+function toggleFilter(status){
+  if(activeFilters.has(status)){
+    if(activeFilters.size===1)return; // keep at least one active
+    activeFilters.delete(status);
+  } else {
+    activeFilters.add(status);
+  }
+  // Update legend UI
+  document.querySelectorAll('.filter-row').forEach(row=>{
+    const s=row.dataset.filter;
+    row.classList.toggle('inactive',!activeFilters.has(s));
+  });
+  // Show/hide markers
+  SHELTERS.forEach(s=>{
+    const st=statusFromDays(s.days);
+    const marker=markers[s.id];
+    if(activeFilters.has(st)){
+      if(!map.hasLayer(marker)) marker.addTo(map);
+    } else {
+      if(map.hasLayer(marker)) map.removeLayer(marker);
+    }
+  });
+}
+
+window._a={setLang:_setLang,openForm:_openForm,closeForm:_closeForm,bgClick:_bgClick,pick:_pick,rateStar:_rateStar,fStep:_fStep,addPhotos:_addPhotos};
+window._toggleFilter=toggleFilter;
+
+// ── Modal wiring via addEventListener (no onclick attrs needed) ──────────────
+
+// Nav buttons
+document.getElementById('btn-add-shelter').addEventListener('click', openAddShelter);
+document.getElementById('btn-feedback').addEventListener('click', openFeedback);
+
+// Overlay background clicks
+document.getElementById('add-shelter-overlay').addEventListener('click', function(e){
+  if(e.target===this) closeAddShelter();
+});
+document.getElementById('feedback-overlay').addEventListener('click', function(e){
+  if(e.target===this) closeFeedback();
+});
+
+// Close buttons
+document.querySelector('#add-shelter-modal .close-btn').addEventListener('click', closeAddShelter);
+document.querySelector('#feedback-modal-inner .close-btn').addEventListener('click', closeFeedback);
+
+// Submit buttons
+document.getElementById('as-submit').addEventListener('click', submitAddShelter);
+document.getElementById('fb-submit').addEventListener('click', submitFeedback);
+
+// Cancel buttons
+document.querySelectorAll('#add-shelter-modal .modal-cancel').forEach(b=>b.addEventListener('click', closeAddShelter));
+document.querySelectorAll('.feedback-cancel').forEach(b=>b.addEventListener('click', closeFeedback));
+
+function openAddShelter(){
+  document.getElementById('add-shelter-overlay').classList.add('open');
+  document.getElementById('add-shelter-form').style.display='block';
+  document.getElementById('add-shelter-success').style.display='none';
+  document.querySelectorAll('#add-shelter-modal .field-input').forEach(i=>i.classList.remove('error'));
+}
+function closeAddShelter(){document.getElementById('add-shelter-overlay').classList.remove('open');}
+
+function openFeedback(){
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-form').style.display='block';
+  document.getElementById('feedback-success').style.display='none';
+}
+function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');}
+
+function submitAddShelter(){
+  const email=document.getElementById('as-email').value.trim();
+  const name=document.getElementById('as-name').value.trim();
+  const province=document.getElementById('as-province').value.trim();
+  const lat=document.getElementById('as-lat').value.trim();
+  const lng=document.getElementById('as-lng').value.trim();
+  const source=document.getElementById('as-source').value.trim();
+  let valid=true;
+  document.querySelectorAll('#add-shelter-modal .field-input').forEach(i=>i.classList.remove('error'));
+  if(!email||!email.includes('@')){document.getElementById('as-email').classList.add('error');valid=false;}
+  if(!name){document.getElementById('as-name').classList.add('error');valid=false;}
+  if(!province){document.getElementById('as-province').classList.add('error');valid=false;}
+  if(!lat||isNaN(parseFloat(lat))){document.getElementById('as-lat').classList.add('error');valid=false;}
+  if(!lng||isNaN(parseFloat(lng))){document.getElementById('as-lng').classList.add('error');valid=false;}
+  if(!source){document.getElementById('as-source').classList.add('error');valid=false;}
+  if(!valid)return;
+  const YOUR_EMAIL='barinakwatch@gmail.com';
+  const district=document.getElementById('as-district').value.trim();
+  const address=document.getElementById('as-address').value.trim();
+  const cap=document.getElementById('as-cap').value.trim();
+  const op=document.getElementById('as-op').value.trim();
+  const notes=document.getElementById('as-notes').value.trim();
+  const subject=encodeURIComponent('[Barınak Watch] New shelter: '+name);
+  const body=encodeURIComponent(
+    'NEW SHELTER SUBMISSION\n'+'='.repeat(40)+'\n\n'+
+    'Submitter: '+email+'\n'+
+    'Name: '+name+'\n'+
+    'Province: '+province+'\n'+
+    'District: '+(district||'—')+'\n'+
+    'Address: '+(address||'—')+'\n'+
+    'Lat: '+lat+' / Lng: '+lng+'\n'+
+    'Capacity: '+(cap||'—')+'\n'+
+    'Operator: '+(op||'—')+'\n'+
+    'Source: '+source+'\n'+
+    'Notes: '+(notes||'—')+'\n\n'+
+    'Reply to submitter at: '+email
+  );
+  window.open('mailto:'+YOUR_EMAIL+'?subject='+subject+'&body='+body);
+  document.getElementById('add-shelter-form').style.display='none';
+  document.getElementById('add-shelter-success').style.display='block';
+  document.getElementById('as-success-msg').textContent=
+    LANG.current==='en'
+      ?'We will review your submission and email you at '+email+' with the result.'
+      :email+' adresine inceleme sonucunu göndereceğiz.';
+}
+
+function submitFeedback(){
+  const type=document.getElementById('fb-type').value;
+  const msg=document.getElementById('fb-message').value.trim();
+  document.getElementById('fb-type').classList.remove('error');
+  document.getElementById('fb-message').classList.remove('error');
+  if(!type){document.getElementById('fb-type').classList.add('error');return;}
+  if(!msg){document.getElementById('fb-message').classList.add('error');return;}
+  const fbEmail=document.getElementById('fb-email').value.trim();
+  const YOUR_EMAIL='barinakwatch@gmail.com';
+  const subject=encodeURIComponent('[Barınak Watch] Feedback: '+type);
+  const body=encodeURIComponent('Type: '+type+'\nFrom: '+(fbEmail||'anonymous')+'\n\n'+msg);
+  window.open('mailto:'+YOUR_EMAIL+'?subject='+subject+'&body='+body);
+  document.getElementById('feedback-form').style.display='none';
+  document.getElementById('feedback-success').style.display='block';
+}
+
+// Update nav button labels on lang change
+function updateNavLang(l){
+  document.getElementById('btn-add-shelter').textContent=l==='en'?'+ Add shelter':'+ Barınak ekle';
+  document.getElementById('btn-feedback').textContent=l==='en'?'Feedback':'Geri bildirim';
+}
+// Call once on load
+updateNavLang(LANG.current);
+// Patch _setLang to also update nav buttons
+const _origSetLang=_setLang;
+_setLang=function(l){_origSetLang(l);updateNavLang(l);};
+window._a.setLang=_setLang;
+// ── Auth state ────────────────────────────────────────────────────────────────
+// In production this comes from Supabase. Here we simulate with localStorage.
+const AUTH = {
+  user: null,  // {id, firstName, lastName, email, city, org, photoUrl, status, visits, sheltersVisited}
+  load() {
+    try { this.user = JSON.parse(localStorage.getItem('bw_user')); } catch(e) { this.user = null; }
+  },
+  save() { localStorage.setItem('bw_user', JSON.stringify(this.user)); },
+  clear() { localStorage.removeItem('bw_user'); this.user = null; },
+  get isLoggedIn() { return !!this.user; },
+  get isApproved() { return this.user && this.user.status === 'approved'; },
+  get initials() {
+    if(!this.user) return '';
+    if(this.user.username) return this.user.username.slice(0,2).toUpperCase();
+    return (this.user.firstName[0] + (this.user.lastName[0]||'')).toUpperCase();
+  }
+};
+
+AUTH.load();
+
+function updateAuthUI() {
+  const loggedIn = AUTH.isLoggedIn;
+  const approved = AUTH.isApproved;
+  const u = AUTH.user;
+
+  // Nav
+  document.getElementById('btn-login').style.display = loggedIn ? 'none' : '';
+  document.getElementById('avatar-wrap').style.display = loggedIn ? '' : 'none';
+  document.getElementById('btn-add-shelter').style.display = approved ? '' : 'none';
+
+  // Pending banner
+  const banner = document.getElementById('pending-banner');
+  if (loggedIn && !approved) {
+    banner.classList.add('on');
+    document.getElementById('pending-text').textContent =
+      LANG.current === 'en'
+        ? 'Your account is pending approval. You can browse the map but cannot submit visits yet.'
+        : 'Hesabınız onay bekliyor. Haritaya göz atabilirsiniz ancak henüz ziyaret gönderemiyor sunuz.';
+  } else {
+    banner.classList.remove('on');
+  }
+
+  if (!loggedIn) return;
+
+  // Avatar initials
+  const avatar = document.getElementById('nav-avatar');
+  if (u.photoUrl) {
+    avatar.style.backgroundImage = `url(${u.photoUrl})`;
+    avatar.style.backgroundSize = 'cover';
+    avatar.textContent = '';
+  } else {
+    avatar.style.backgroundImage = '';
+    avatar.textContent = AUTH.initials;
+  }
+
+  // Menu
+  document.getElementById('menu-name').textContent = u.username ? '@' + u.username : u.firstName + ' ' + u.lastName;
+  document.getElementById('menu-email').textContent = u.email;
+  const badge = document.getElementById('menu-badge');
+  badge.textContent = approved ? 'Approved member' : 'Pending approval';
+  badge.className = 'avatar-menu-badge ' + (approved ? 'badge-approved' : 'badge-pending');
+
+  // "Log a visit" button — only show if approved
+  document.querySelectorAll('.log-btn').forEach(btn => {
+    btn.disabled = !approved;
+    btn.style.opacity = approved ? '1' : '0.4';
+    btn.title = approved ? '' : 'Your account is pending approval';
+  });
+}
+
+// Auth modal open/close
+document.getElementById('btn-login').addEventListener('click', () => {
+  document.getElementById('auth-overlay').classList.add('open');
+  showAuthTab('login');
+});
+document.getElementById('auth-overlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+document.getElementById('btn-close-auth-success').addEventListener('click', () => {
+  document.getElementById('auth-overlay').classList.remove('open');
+});
+
+// Tabs
+document.getElementById('tab-login').addEventListener('click', () => showAuthTab('login'));
+document.getElementById('tab-signup').addEventListener('click', () => showAuthTab('signup'));
+
+function showAuthTab(tab) {
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+  document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+  document.getElementById('signup-success').style.display = 'none';
+  document.getElementById('auth-error').classList.remove('on');
+}
+
+// Avatar menu toggle
+document.getElementById('nav-avatar').addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.getElementById('avatar-menu').classList.toggle('open');
+});
+document.addEventListener('click', () => {
+  document.getElementById('avatar-menu').classList.remove('open');
+});
+document.getElementById('menu-profile').addEventListener('click', openProfile);
+document.getElementById('menu-logout').addEventListener('click', doLogout);
+
+// Google auth (stub — wire to Supabase in production)
+document.getElementById('btn-google-auth').addEventListener('click', () => {
+  showAuthError('Google sign-in requires backend setup. Use email/password for now.');
+});
+
+// Login
+document.getElementById('btn-do-login').addEventListener('click', doLogin);
+document.getElementById('login-password').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pw = document.getElementById('login-password').value;
+  document.getElementById('login-email').classList.remove('error');
+  document.getElementById('login-password').classList.remove('error');
+  if (!email || !email.includes('@')) { document.getElementById('login-email').classList.add('error'); return; }
+  if (!pw) { document.getElementById('login-password').classList.add('error'); return; }
+
+  // In production: call Supabase auth.signInWithPassword({email, pw})
+  // For demo: check if a user with this email exists in localStorage
+  const stored = JSON.parse(localStorage.getItem('bw_user') || 'null');
+  if (stored && stored.email === email) {
+    AUTH.user = stored;
+    AUTH.save();
+    document.getElementById('auth-overlay').classList.remove('open');
+    updateAuthUI();
+  } else {
+    showAuthError('No account found with this email. Please sign up first.');
+  }
+}
+
+// Signup
+let signupPhotoUrl = null;
+document.getElementById('signup-photo-input').addEventListener('change', function() {
+  if (!this.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    signupPhotoUrl = e.target.result;
+    const preview = document.getElementById('signup-avatar-preview');
+    preview.innerHTML = `<img src="${signupPhotoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+  };
+  reader.readAsDataURL(this.files[0]);
+});
+// Init preview initials reactively
+['signup-firstname','signup-lastname','signup-username'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateSignupPreview);
+});
+function updateSignupPreview() {
+  if (signupPhotoUrl) return;
+  const u = document.getElementById('signup-username').value.trim();
+  const f = document.getElementById('signup-firstname').value.trim();
+  const l = document.getElementById('signup-lastname').value.trim();
+  const initials = u ? u.slice(0,2).toUpperCase() : ((f[0]||'')+(l[0]||'')).toUpperCase() || '?';
+  document.getElementById('signup-avatar-preview').textContent = initials;
+  document.getElementById('signup-avatar-preview').style.fontSize = '16px';
+}
+
+document.getElementById('btn-do-signup').addEventListener('click', doSignup);
+
+function doSignup() {
+  const firstName = document.getElementById('signup-firstname').value.trim();
+  const lastName  = document.getElementById('signup-lastname').value.trim();
+  const username  = document.getElementById('signup-username').value.trim().replace(/\s+/g,'');
+  const email     = document.getElementById('signup-email').value.trim();
+  const pw        = document.getElementById('signup-password').value;
+  const city      = document.getElementById('signup-city').value.trim();
+  const org       = document.getElementById('signup-org').value.trim();
+  const checkEmployee = document.getElementById('signup-check-employee').checked;
+  const checkAccurate = document.getElementById('signup-check-accurate').checked;
+
+  // Validate fields
+  let valid = true;
+  [['signup-firstname',firstName],['signup-lastname',lastName],
+   ['signup-username',username],['signup-email',email],
+   ['signup-password',pw],['signup-city',city]].forEach(([id,val])=>{
+    const el = document.getElementById(id);
+    el.classList.remove('error');
+    if(!val || (id==='signup-email'&&!val.includes('@')) || (id==='signup-password'&&val.length<8)) {
+      el.classList.add('error'); valid = false;
+    }
+  });
+
+  // Validate username format (letters, numbers, underscores only)
+  if(username && !/^[a-zA-Z0-9_]{3,20}$/.test(username)){
+    document.getElementById('signup-username').classList.add('error');
+    showAuthError('Username must be 3–20 characters, letters, numbers and underscores only.');
+    valid = false;
+  }
+
+  // Validate checkboxes
+  const checkErr = document.getElementById('signup-check-error');
+  if(!checkEmployee || !checkAccurate){
+    checkErr.style.display = 'block'; valid = false;
+  } else { checkErr.style.display = 'none'; }
+
+  if(!valid) return;
+
+  // In production: call Supabase auth.signUp() then insert profile row
+  const newUser = {
+    id: 'u_' + Date.now(),
+    firstName, lastName, username, email, city,
+    org: org || null,
+    photoUrl: signupPhotoUrl || null,
+    status: 'pending',
+    visits: 0,
+    sheltersVisited: [],
+    createdAt: new Date().toISOString(),
+  };
+  AUTH.user = newUser;
+  AUTH.save();
+
+  document.getElementById('signup-form').style.display = 'none';
+  document.getElementById('signup-success').style.display = 'block';
+  updateAuthUI();
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('auth-error');
+  el.textContent = msg;
+  el.classList.add('on');
+}
+
+// Logout
+function doLogout() {
+  AUTH.clear();
+  document.getElementById('avatar-menu').classList.remove('open');
+  updateAuthUI();
+  // If profile modal is open, close it
+  document.getElementById('profile-overlay').classList.remove('open');
+}
+
+// Profile modal
+document.getElementById('btn-close-profile').addEventListener('click', () => {
+  document.getElementById('profile-overlay').classList.remove('open');
+});
+document.getElementById('profile-overlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+document.getElementById('btn-profile-logout').addEventListener('click', doLogout);
+document.getElementById('profile-avatar-lg').addEventListener('click', () => {
+  // In production: open photo upload
+});
+
+function openProfile() {
+  document.getElementById('avatar-menu').classList.remove('open');
+  if (!AUTH.user) return;
+  const u = AUTH.user;
+
+  // Avatar
+  const avatarEl = document.getElementById('profile-avatar-lg');
+  if (u.photoUrl) {
+    avatarEl.innerHTML = `<img src="${u.photoUrl}"><div class="profile-avatar-overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>`;
+  } else {
+    avatarEl.innerHTML = `<span style="font-size:28px;font-weight:500">${AUTH.initials}</span><div class="profile-avatar-overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>`;
+  }
+
+  document.getElementById('profile-name').textContent = u.username ? '@' + u.username : u.firstName + ' ' + u.lastName;
+  document.getElementById('profile-email').textContent = u.email;
+  document.getElementById('profile-city-badge').textContent = u.city || '';
+  const orgBadge = document.getElementById('profile-org-badge');
+  if (u.org) { orgBadge.textContent = u.org; orgBadge.style.display = ''; }
+  else orgBadge.style.display = 'none';
+
+  document.getElementById('profile-visit-count').textContent = u.visits || 0;
+  document.getElementById('profile-shelter-count').textContent = (u.sheltersVisited||[]).length;
+
+  const chips = document.getElementById('profile-shelter-chips');
+  if ((u.sheltersVisited||[]).length) {
+    chips.innerHTML = u.sheltersVisited.map(n =>
+      `<span class="shelter-chip">${n}</span>`
+    ).join('');
+  } else {
+    chips.innerHTML = '<span style="font-size:12px;color:var(--text-faint)">No visits logged yet.</span>';
+  }
+
+  document.getElementById('profile-overlay').classList.add('open');
+}
+
+// Guard "Log a visit" button — prompt login if not approved
+document.querySelectorAll('.log-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    if (!AUTH.isLoggedIn) {
+      e.stopImmediatePropagation();
+      document.getElementById('auth-overlay').classList.add('open');
+      showAuthTab('login');
+    } else if (!AUTH.isApproved) {
+      e.stopImmediatePropagation();
+      // Banner already visible
+    }
+  }, true); // capture phase so it fires before openForm
+});
+
+// Update visit count when a visit is submitted
+const _origSubmit = _submit;
+_submit = function() {
+  _origSubmit();
+  if (AUTH.isApproved && selId) {
+    const s = SHELTERS.find(x => x.id === selId);
+    AUTH.user.visits = (AUTH.user.visits || 0) + 1;
+    if (s && !AUTH.user.sheltersVisited.includes(s.name)) {
+      AUTH.user.sheltersVisited = [...(AUTH.user.sheltersVisited||[]), s.name];
+    }
+    // Tag the visit with username for the log
+    AUTH.user.lastVisitTag = AUTH.user.username ? '@'+AUTH.user.username : AUTH.user.firstName;
+    AUTH.save();
+  }
+};
+window._a.submit = _submit;
+
+// Init
+updateAuthUI();
+
+});
+</script>
+
+<!-- ADD SHELTER MODAL -->
+<div class="overlay" id="add-shelter-overlay" >
+  <div class="modal-sm" id="add-shelter-modal">
+    <div id="add-shelter-form">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" data-en="Report a missing shelter" data-tr="Eksik barınak bildir">Report a missing shelter</div>
+          <div class="modal-sub" data-en="We'll review your submission before adding it to the map." data-tr="Haritaya eklemeden önce bilgileri inceleyeceğiz.">We'll review your submission before adding it to the map.</div>
+        </div>
+        <button class="close-btn">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-notice" data-en="All submissions are reviewed manually. You'll receive an email when your shelter is approved or if we need more information." data-tr="Tüm başvurular manuel olarak incelenir. Barınağınız onaylandığında veya daha fazla bilgiye ihtiyaç duyduğumuzda e-posta alacaksınız.">All submissions are reviewed manually. You'll receive an email when your shelter is approved or if we need more information.</div>
+        <div class="field-group">
+          <div class="field-label" data-en="Your email" data-tr="E-posta adresiniz">Your email <span class="field-req">*</span></div>
+          <input class="field-input" type="email" id="as-email" placeholder="you@example.com">
+          <div class="field-hint" data-en="We'll send you the result of our review." data-tr="İnceleme sonucunu size göndereceğiz.">We'll send you the result of our review.</div>
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Shelter name (Turkish)" data-tr="Barınak adı (Türkçe)">Shelter name (Turkish) <span class="field-req">*</span></div>
+          <input class="field-input" type="text" id="as-name" placeholder="e.g. Pendik Hayvan Barınağı">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <div class="field-label" data-en="Province (İl)" data-tr="İl">Province (İl) <span class="field-req">*</span></div>
+            <input class="field-input" type="text" id="as-province" placeholder="e.g. İstanbul">
+          </div>
+          <div class="field-group">
+            <div class="field-label" data-en="District (İlçe)" data-tr="İlçe">District (İlçe)</div>
+            <input class="field-input" type="text" id="as-district" placeholder="e.g. Pendik">
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Address" data-tr="Adres">Address</div>
+          <input class="field-input" type="text" id="as-address" placeholder="Street address or area">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <div class="field-label" data-en="Latitude" data-tr="Enlem">Latitude <span class="field-req">*</span></div>
+            <input class="field-input" type="number" step="any" id="as-lat" placeholder="e.g. 40.870">
+            <div class="field-hint" data-en="Right-click on Google Maps to copy." data-tr="Google Maps'te sağ tıklayarak kopyalayın.">Right-click on Google Maps to copy.</div>
+          </div>
+          <div class="field-group">
+            <div class="field-label" data-en="Longitude" data-tr="Boylam">Longitude <span class="field-req">*</span></div>
+            <input class="field-input" type="number" step="any" id="as-lng" placeholder="e.g. 29.260">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <div class="field-label" data-en="Capacity (animals)" data-tr="Kapasite (hayvan)">Capacity (animals)</div>
+            <input class="field-input" type="number" id="as-cap" placeholder="e.g. 350">
+          </div>
+          <div class="field-group">
+            <div class="field-label" data-en="Operator" data-tr="İşletici">Operator</div>
+            <input class="field-input" type="text" id="as-op" placeholder="e.g. İBB">
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Source / how you found it" data-tr="Kaynak / nasıl buldunuz">Source / how you found it <span class="field-req">*</span></div>
+          <input class="field-input" type="text" id="as-source" placeholder="e.g. Google Maps, municipality website, news article">
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Additional notes" data-tr="Ek notlar">Additional notes</div>
+          <textarea class="field-input" id="as-notes" placeholder="Anything else we should know about this shelter..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" data-en="Cancel" data-tr="İptal">Cancel</button>
+        <button class="modal-submit" id="as-submit" data-en="Submit for review" data-tr="İncelemeye gönder">Submit for review</button>
+      </div>
+    </div>
+    <div class="success-modal" id="add-shelter-success" style="display:none">
+      <div class="success-circle" style="margin:0 auto 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3 data-en="Submitted — thank you!" data-tr="Gönderildi — teşekkürler!">Submitted — thank you!</h3>
+      <p id="as-success-msg"></p>
+      <button class="modal-cancel" style="margin-top:20px" data-en="Close" data-tr="Kapat">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div class="overlay" id="feedback-overlay" >
+  <div class="modal-sm" id="feedback-modal-inner">
+    <div id="feedback-form">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" data-en="Send feedback" data-tr="Geri bildirim gönder">Send feedback</div>
+          <div class="modal-sub" data-en="Questions, suggestions, or anything else." data-tr="Sorular, öneriler veya başka her şey.">Questions, suggestions, or anything else.</div>
+        </div>
+        <button class="close-btn" onclick="closeFeedback()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="field-group">
+          <div class="field-label" data-en="Type" data-tr="Tür">Type <span class="field-req">*</span></div>
+          <select class="field-input" id="fb-type">
+            <option value="" data-en="Select..." data-tr="Seçin...">Select...</option>
+            <option value="bug" data-en="Something is broken" data-tr="Bir şey çalışmıyor">Something is broken</option>
+            <option value="suggestion" data-en="Suggestion or idea" data-tr="Öneri veya fikir">Suggestion or idea</option>
+            <option value="shelter" data-en="Wrong shelter info" data-tr="Yanlış barınak bilgisi">Wrong shelter info</option>
+            <option value="other" data-en="Other" data-tr="Diğer">Other</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Your email" data-tr="E-posta adresiniz">Your email</div>
+          <input class="field-input" type="email" id="fb-email" placeholder="Optional — only if you want a reply">
+        </div>
+        <div class="field-group">
+          <div class="field-label" data-en="Message" data-tr="Mesaj">Message <span class="field-req">*</span></div>
+          <textarea class="field-input" id="fb-message" placeholder="Tell us what's on your mind..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel feedback-cancel" data-en="Cancel" data-tr="İptal">Cancel</button>
+        <button class="modal-submit" id="fb-submit" data-en="Send" data-tr="Gönder">Send</button>
+      </div>
+    </div>
+    <div class="success-modal" id="feedback-success" style="display:none">
+      <div class="success-circle" style="margin:0 auto 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3 data-en="Feedback sent!" data-tr="Geri bildirim gönderildi!">Feedback sent!</h3>
+      <p data-en="Thanks for helping make Barınak Watch better." data-tr="Barınak Watch'ı daha iyi yapmamıza yardımcı olduğunuz için teşekkürler.">Thanks for helping make Barınak Watch better.</p>
+      <button class="modal-cancel feedback-cancel" style="margin-top:20px" data-en="Close" data-tr="Kapat">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="overlay" id="auth-overlay">
+  <div class="auth-modal">
+    <div style="padding:28px 28px 0">
+      <div class="auth-logo">Barınak<span>Watch</span></div>
+      <div class="auth-tagline" id="auth-tagline">Community monitoring of animal shelters across Turkey</div>
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="tab-login">Sign in</div>
+        <div class="auth-tab" id="tab-signup">Create account</div>
+      </div>
+    </div>
+    <div class="auth-body">
+      <div class="auth-error" id="auth-error"></div>
+
+      <!-- Google btn -->
+      <button class="auth-google-btn" id="btn-google-auth">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+      <div class="auth-divider"><div class="auth-divider-line"></div><div class="auth-divider-text">or</div><div class="auth-divider-line"></div></div>
+
+      <!-- Login form -->
+      <div id="login-form">
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" type="email" id="login-email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button class="auth-submit" id="btn-do-login">Sign in</button>
+      </div>
+
+      <!-- Signup form -->
+      <div id="signup-form" style="display:none">
+        <div class="auth-input-row">
+          <div class="auth-field">
+            <label class="auth-label">First name</label>
+            <input class="auth-input" type="text" id="signup-firstname" placeholder="Ayşe" autocomplete="given-name">
+          </div>
+          <div class="auth-field">
+            <label class="auth-label">Last name</label>
+            <input class="auth-input" type="text" id="signup-lastname" placeholder="Kaya" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Username <span style="color:var(--text-faint);font-weight:400;text-transform:none;font-size:10px">— shown publicly on visit logs</span></label>
+          <input class="auth-input" type="text" id="signup-username" placeholder="e.g. pati_izci_34" pattern="[a-zA-Z0-9_]+" pattern="[a-zA-Z0-9_]{3,20}" autocomplete="username" style="font-family:var(--sans)">
+          <div style="font-size:11px;color:var(--text-faint);margin-top:4px">3–20 characters. Letters, numbers and underscores only. No spaces or special characters.</div>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" type="email" id="signup-email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="signup-password" placeholder="At least 8 characters" autocomplete="new-password">
+        </div>
+        <div class="auth-input-row">
+          <div class="auth-field">
+            <label class="auth-label">City / Province</label>
+            <select class="auth-input" id="signup-city" style="cursor:pointer">
+              <option value="">Select province...</option>
+            <option value="Adana">Adana</option>
+            <option value="Adıyaman">Adıyaman</option>
+            <option value="Afyonkarahisar">Afyonkarahisar</option>
+            <option value="Ağrı">Ağrı</option>
+            <option value="Aksaray">Aksaray</option>
+            <option value="Amasya">Amasya</option>
+            <option value="Ankara">Ankara</option>
+            <option value="Antalya">Antalya</option>
+            <option value="Ardahan">Ardahan</option>
+            <option value="Artvin">Artvin</option>
+            <option value="Aydın">Aydın</option>
+            <option value="Balıkesir">Balıkesir</option>
+            <option value="Bartın">Bartın</option>
+            <option value="Batman">Batman</option>
+            <option value="Bayburt">Bayburt</option>
+            <option value="Bilecik">Bilecik</option>
+            <option value="Bingöl">Bingöl</option>
+            <option value="Bitlis">Bitlis</option>
+            <option value="Bolu">Bolu</option>
+            <option value="Burdur">Burdur</option>
+            <option value="Bursa">Bursa</option>
+            <option value="Çanakkale">Çanakkale</option>
+            <option value="Çankırı">Çankırı</option>
+            <option value="Çorum">Çorum</option>
+            <option value="Denizli">Denizli</option>
+            <option value="Diyarbakır">Diyarbakır</option>
+            <option value="Düzce">Düzce</option>
+            <option value="Edirne">Edirne</option>
+            <option value="Elazığ">Elazığ</option>
+            <option value="Erzincan">Erzincan</option>
+            <option value="Erzurum">Erzurum</option>
+            <option value="Eskişehir">Eskişehir</option>
+            <option value="Gaziantep">Gaziantep</option>
+            <option value="Giresun">Giresun</option>
+            <option value="Gümüşhane">Gümüşhane</option>
+            <option value="Hakkari">Hakkari</option>
+            <option value="Hatay">Hatay</option>
+            <option value="Iğdır">Iğdır</option>
+            <option value="Isparta">Isparta</option>
+            <option value="İstanbul">İstanbul</option>
+            <option value="İzmir">İzmir</option>
+            <option value="Kahramanmaraş">Kahramanmaraş</option>
+            <option value="Karabük">Karabük</option>
+            <option value="Karaman">Karaman</option>
+            <option value="Kars">Kars</option>
+            <option value="Kastamonu">Kastamonu</option>
+            <option value="Kayseri">Kayseri</option>
+            <option value="Kırıkkale">Kırıkkale</option>
+            <option value="Kırklareli">Kırklareli</option>
+            <option value="Kırşehir">Kırşehir</option>
+            <option value="Kilis">Kilis</option>
+            <option value="Kocaeli">Kocaeli</option>
+            <option value="Konya">Konya</option>
+            <option value="Kütahya">Kütahya</option>
+            <option value="Malatya">Malatya</option>
+            <option value="Manisa">Manisa</option>
+            <option value="Mardin">Mardin</option>
+            <option value="Mersin">Mersin</option>
+            <option value="Muğla">Muğla</option>
+            <option value="Muş">Muş</option>
+            <option value="Nevşehir">Nevşehir</option>
+            <option value="Niğde">Niğde</option>
+            <option value="Ordu">Ordu</option>
+            <option value="Osmaniye">Osmaniye</option>
+            <option value="Rize">Rize</option>
+            <option value="Sakarya">Sakarya</option>
+            <option value="Samsun">Samsun</option>
+            <option value="Siirt">Siirt</option>
+            <option value="Sinop">Sinop</option>
+            <option value="Sivas">Sivas</option>
+            <option value="Şanlıurfa">Şanlıurfa</option>
+            <option value="Şırnak">Şırnak</option>
+            <option value="Tekirdağ">Tekirdağ</option>
+            <option value="Tokat">Tokat</option>
+            <option value="Trabzon">Trabzon</option>
+            <option value="Tunceli">Tunceli</option>
+            <option value="Uşak">Uşak</option>
+            <option value="Van">Van</option>
+            <option value="Yalova">Yalova</option>
+            <option value="Yozgat">Yozgat</option>
+            <option value="Zonguldak">Zonguldak</option>
+            </select>
+          </div>
+          <div class="auth-field">
+            <label class="auth-label">Organization <span style="color:var(--text-faint);font-weight:400;text-transform:none">(optional)</span></label>
+            <input class="auth-input" type="text" id="signup-org" placeholder="e.g. HAYTAP">
+          </div>
+        </div>
+        <div class="auth-field" style="margin-bottom:6px">
+          <label class="auth-label">Profile photo <span style="color:var(--text-faint);font-weight:400;text-transform:none">(optional)</span></label>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div id="signup-avatar-preview" style="width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:white;flex-shrink:0;cursor:pointer;overflow:hidden" onclick="document.getElementById('signup-photo-input').click()"></div>
+            <button type="button" style="font-size:12px;padding:6px 12px;border-radius:8px;border:0.5px solid var(--border-mid);background:transparent;color:var(--text-mid);cursor:pointer;font-family:var(--sans)" onclick="document.getElementById('signup-photo-input').click()">Upload photo</button>
+            <input type="file" id="signup-photo-input" accept="image/*" style="display:none">
+          </div>
+        </div>
+        <div style="border-top:0.5px solid var(--border);padding-top:16px;margin-top:4px;display:flex;flex-direction:column;gap:10px">
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text);line-height:1.5">
+            <input type="checkbox" id="signup-check-employee" style="margin-top:2px;accent-color:var(--green);flex-shrink:0;width:15px;height:15px">
+            <span>I confirm that I am <strong>not an employee, contractor, or affiliate</strong> of any animal shelter in Turkey.</span>
+          </label>
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text);line-height:1.5">
+            <input type="checkbox" id="signup-check-accurate" style="margin-top:2px;accent-color:var(--green);flex-shrink:0;width:15px;height:15px">
+            <span>I commit to providing <strong>accurate, first-hand observations</strong> in all visit reports I submit.</span>
+          </label>
+          <div id="signup-check-error" style="font-size:11px;color:var(--red);display:none">Please confirm both statements above before creating your account.</div>
+        </div>
+        <button class="auth-submit" id="btn-do-signup" style="margin-top:14px">Create account</button>
+        <div class="auth-notice">Your account will be reviewed before you can submit shelter visits or add shelters. You'll receive an email once approved.</div>
+      </div>
+
+      <!-- Signup success -->
+      <div id="signup-success" style="display:none" class="auth-success">
+        <div class="auth-success-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Account created!</h3>
+        <p>Check your email to verify your address. Once approved by our team, you'll be able to log visits and submit shelters.</p>
+        <button class="nav-btn" style="margin-top:16px;width:100%;justify-content:center" id="btn-close-auth-success">Got it</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE MODAL -->
+<div class="overlay" id="profile-overlay">
+  <div class="modal-sm" style="max-width:480px">
+    <div class="modal-header">
+      <div><div class="modal-title">My profile</div></div>
+      <button class="close-btn" id="btn-close-profile">×</button>
+    </div>
+    <div style="padding:20px 22px 24px">
+      <div class="profile-grid">
+        <div class="profile-avatar-lg" id="profile-avatar-lg">
+          <div class="profile-avatar-overlay">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:-0.01em" id="profile-name"></div>
+          <div style="font-size:12px;color:var(--text-mid);margin-top:3px" id="profile-email"></div>
+          <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
+            <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid)" id="profile-city-badge"></span>
+            <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid)" id="profile-org-badge" style="display:none"></span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profile-visit-count">0</div>
+          <div class="profile-stat-lbl">Visits logged</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profile-shelter-count">0</div>
+          <div class="profile-stat-lbl">Shelters visited</div>
+        </div>
+      </div>
+      <div style="font-size:11px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Shelters visited</div>
+      <div class="shelter-chips" id="profile-shelter-chips">
+        <span style="font-size:12px;color:var(--text-faint)">No visits yet.</span>
+      </div>
+      <div style="border-top:0.5px solid var(--border);margin-top:20px;padding-top:16px;display:flex;gap:8px">
+        <button class="modal-cancel" id="btn-profile-logout" style="color:var(--red);border-color:rgba(224,82,82,0.3)">Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
