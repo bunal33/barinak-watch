@@ -238,6 +238,30 @@ textarea.field-input{min-height:72px;resize:vertical;}
 .pending-banner{background:#E8B84B12;border-bottom:0.5px solid #E8B84B44;padding:9px 28px;font-size:12px;color:#633806;display:none;align-items:center;gap:8px;}
 .pending-banner.on{display:flex;}
 .pending-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;}
+
+/* Hayvan Dostu verified badge */
+.hd-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#4CAF7D18;color:#1A7A5E;border:0.5px solid #4CAF7D55;flex-shrink:0;}
+.hd-badge svg{flex-shrink:0;}
+.hd-badge-lg{font-size:11px;padding:3px 10px;}
+.hd-paw{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;}
+/* Org verification section in signup */
+.verify-section{border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:6px;}
+.verify-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;cursor:pointer;background:var(--bg);transition:background 0.15s;gap:12px;}
+.verify-header:hover{background:#E6F4F0;}
+.verify-header-left{display:flex;align-items:center;gap:10px;}
+.verify-header-title{font-size:13px;font-weight:500;color:var(--text);}
+.verify-header-sub{font-size:11px;color:var(--text-faint);margin-top:1px;}
+.verify-toggle{font-size:11px;color:var(--green);font-weight:500;white-space:nowrap;flex-shrink:0;}
+.verify-body{padding:14px;border-top:0.5px solid var(--border);display:none;}
+.verify-body.open{display:block;}
+.upload-zone{border:0.5px dashed var(--border-mid);border-radius:8px;padding:14px;text-align:center;cursor:pointer;transition:background 0.15s;margin-bottom:12px;}
+.upload-zone:hover{background:var(--bg);}
+.upload-zone-label{font-size:12px;color:var(--text-mid);margin-top:6px;}
+.upload-zone-sub{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.upload-previews{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;justify-content:center;}
+.upload-file-chip{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid);display:flex;align-items:center;gap:5px;}
+/* Visit log verified indicator */
+.visit-verified{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:#1A7A5E;font-weight:500;margin-top:3px;}
 </style>
 </head>
 <body>
@@ -582,7 +606,10 @@ function selectShelter(id){
   else s.hist.forEach(v=>{
     const sc=v.s>=70?'#4CAF7D':v.s>=40?'#E8B84B':'#E05252';
     const submitter = v.username ? `<span style="font-size:10px;color:var(--text-faint);margin-left:6px">${v.username}</span>` : '';
-    vl.innerHTML+=`<div class="visit-item"><div><span class="vscore" style="background:${sc}22;color:${sc};border:0.5px solid ${sc}44">${v.s}</span></div><div><div class="vdate">${v.d}${submitter}</div><div class="vnote">${v.n}</div></div></div>`;
+    const hdBadge = v.hayvandostu
+      ? `<span class="visit-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Hayvan Dostu</span>`
+      : '';
+    vl.innerHTML+=`<div class="visit-item"><div><span class="vscore" style="background:${sc}22;color:${sc};border:0.5px solid ${sc}44">${v.s}</span></div><div><div class="vdate">${v.d}${submitter}</div>${hdBadge}<div class="vnote">${v.n}</div></div></div>`;
   });
 }
 
@@ -810,6 +837,47 @@ function submitFeedback(){
   document.getElementById('feedback-success').style.display='block';
 }
 
+// Verify section toggle
+let hdDocFiles = [];
+document.getElementById('verify-toggle-btn').addEventListener('click', () => {
+  const body = document.getElementById('verify-body');
+  const label = document.getElementById('verify-toggle-label');
+  const open = body.classList.toggle('open');
+  label.textContent = open ? '− Remove' : '+ Add';
+  if (!open) {
+    // Clear fields when closed
+    ['hd-org-name','hd-org-phone','hd-org-email','hd-org-role'].forEach(id => {
+      document.getElementById(id).value = '';
+      document.getElementById(id).classList.remove('error');
+    });
+    hdDocFiles = [];
+    document.getElementById('hd-doc-previews').innerHTML = '';
+  }
+});
+
+// Doc upload
+document.getElementById('hd-doc-input').addEventListener('change', function() {
+  const maxFiles = 3;
+  const newFiles = Array.from(this.files).slice(0, maxFiles - hdDocFiles.length);
+  hdDocFiles = [...hdDocFiles, ...newFiles].slice(0, maxFiles);
+  const previews = document.getElementById('hd-doc-previews');
+  previews.innerHTML = hdDocFiles.map(f =>
+    `<div class="upload-file-chip">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      ${f.name.length > 20 ? f.name.slice(0,18)+'…' : f.name}
+    </div>`
+  ).join('');
+  this.value = '';
+});
+
+// Add demo visit with HD badge to Antalya shelter (for preview)
+SHELTERS.find(s=>s.id===10).hist.unshift({
+  s:91,d:"Apr 5, 2026",
+  n:"Outstanding. All animals healthy, vet on duty. Zero issues found.",
+  username:"@pati_dostu",
+  hayvandostu:true
+});
+
 // Update nav button labels on lang change
 function updateNavLang(l){
   document.getElementById('btn-add-shelter').textContent=l==='en'?'+ Add shelter':'+ Barınak ekle';
@@ -880,8 +948,11 @@ function updateAuthUI() {
   document.getElementById('menu-name').textContent = u.username ? '@' + u.username : u.firstName + ' ' + u.lastName;
   document.getElementById('menu-email').textContent = u.email;
   const badge = document.getElementById('menu-badge');
-  badge.textContent = approved ? 'Approved member' : 'Pending approval';
-  badge.className = 'avatar-menu-badge ' + (approved ? 'badge-approved' : 'badge-pending');
+  const isHD = approved && u.hayvandostu === 'approved';
+  badge.innerHTML = isHD
+    ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> Hayvan Dostu'
+    : approved ? 'Approved member' : 'Pending approval';
+  badge.className = 'avatar-menu-badge ' + (isHD ? 'badge-approved' : approved ? 'badge-approved' : 'badge-pending');
 
   // "Log a visit" button — only show if approved
   document.querySelectorAll('.log-btn').forEach(btn => {
@@ -1024,12 +1095,38 @@ function doSignup() {
   if(!valid) return;
 
   // In production: call Supabase auth.signUp() then insert profile row
+  // Collect HD verification data if section was opened
+  const hdOpen = document.getElementById('verify-body').classList.contains('open');
+  const hdOrgName  = document.getElementById('hd-org-name').value.trim();
+  const hdOrgPhone = document.getElementById('hd-org-phone').value.trim();
+  const hdOrgEmail = document.getElementById('hd-org-email').value.trim();
+  const hdRole     = document.getElementById('hd-org-role').value.trim();
+
+  // Validate HD fields if section is open and org name was started
+  if (hdOpen && hdOrgName) {
+    if (!hdOrgPhone || !hdOrgEmail) {
+      if (!hdOrgPhone) document.getElementById('hd-org-phone').classList.add('error');
+      if (!hdOrgEmail) document.getElementById('hd-org-email').classList.add('error');
+      showAuthError('Please provide the organization phone and email so we can verify your membership.');
+      return;
+    }
+  }
+
   const newUser = {
     id: 'u_' + Date.now(),
     firstName, lastName, username, email, city,
-    org: org || null,
+    org: org || hdOrgName || null,
     photoUrl: signupPhotoUrl || null,
     status: 'pending',
+    hayvandostu: (hdOpen && hdOrgName) ? 'pending' : null,
+    hdVerification: (hdOpen && hdOrgName) ? {
+      orgName: hdOrgName,
+      orgPhone: hdOrgPhone,
+      orgEmail: hdOrgEmail,
+      role: hdRole,
+      docsCount: hdDocFiles.length,
+      submittedAt: new Date().toISOString(),
+    } : null,
     visits: 0,
     sheltersVisited: [],
     createdAt: new Date().toISOString(),
@@ -1088,6 +1185,8 @@ function openProfile() {
   const orgBadge = document.getElementById('profile-org-badge');
   if (u.org) { orgBadge.textContent = u.org; orgBadge.style.display = ''; }
   else orgBadge.style.display = 'none';
+  const hdBadgeEl = document.getElementById('profile-hd-badge');
+  hdBadgeEl.style.display = (u.hayvandostu === 'approved') ? '' : 'none';
 
   document.getElementById('profile-visit-count').textContent = u.visits || 0;
   document.getElementById('profile-shelter-count').textContent = (u.sheltersVisited||[]).length;
@@ -1426,6 +1525,55 @@ updateAuthUI();
             <input type="file" id="signup-photo-input" accept="image/*" style="display:none">
           </div>
         </div>
+
+        <!-- Hayvan Dostu verification (optional) -->
+        <div class="verify-section" style="margin-bottom:14px">
+          <div class="verify-header" id="verify-toggle-btn">
+            <div class="verify-header-left">
+              <div>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF7D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <div>
+                <div class="verify-header-title">Apply for Hayvan Dostu <span style="font-size:10px;color:var(--text-faint);font-weight:400">(optional)</span></div>
+                <div class="verify-header-sub">Verified animal advocacy members get a special badge on their reports</div>
+              </div>
+            </div>
+            <div class="verify-toggle" id="verify-toggle-label">+ Add</div>
+          </div>
+          <div class="verify-body" id="verify-body">
+            <div style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:12px;padding:10px 12px;background:#4CAF7D08;border-radius:8px;border:0.5px solid #4CAF7D22">
+              Hayvan Dostu status is granted to members of registered animal advocacy organizations in Turkey. We'll contact your organization to verify before approving.
+            </div>
+            <div class="auth-field">
+              <label class="auth-label">Organization name <span class="field-req">*</span></label>
+              <input class="auth-input" type="text" id="hd-org-name" placeholder="Exact official name, e.g. HAYTAP Hayvan Hakları Federasyonu">
+            </div>
+            <div class="auth-input-row">
+              <div class="auth-field">
+                <label class="auth-label">Organization phone <span class="field-req">*</span></label>
+                <input class="auth-input" type="tel" id="hd-org-phone" placeholder="+90 XXX XXX XXXX">
+              </div>
+              <div class="auth-field">
+                <label class="auth-label">Organization email <span class="field-req">*</span></label>
+                <input class="auth-input" type="email" id="hd-org-email" placeholder="info@org.org.tr">
+              </div>
+            </div>
+            <div class="auth-field">
+              <label class="auth-label">Your role / membership proof</label>
+              <input class="auth-input" type="text" id="hd-org-role" placeholder="e.g. Board member, volunteer coordinator, active member since 2021">
+            </div>
+            <div class="auth-field">
+              <label class="auth-label">Supporting documents <span style="color:var(--text-faint);font-weight:400;text-transform:none">(optional but helpful)</span></label>
+              <div class="upload-zone" onclick="document.getElementById('hd-doc-input').click()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A59E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                <div class="upload-zone-label">Upload membership card, certificate, or letter</div>
+                <div class="upload-zone-sub">PDF, JPG, PNG — up to 3 files</div>
+                <div class="upload-previews" id="hd-doc-previews"></div>
+              </div>
+              <input type="file" id="hd-doc-input" accept=".pdf,.jpg,.jpeg,.png" multiple style="display:none">
+            </div>
+          </div>
+        </div>
         <div style="border-top:0.5px solid var(--border);padding-top:16px;margin-top:4px;display:flex;flex-direction:column;gap:10px">
           <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text);line-height:1.5">
             <input type="checkbox" id="signup-check-employee" style="margin-top:2px;accent-color:var(--green);flex-shrink:0;width:15px;height:15px">
@@ -1469,9 +1617,13 @@ updateAuthUI();
         <div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:-0.01em" id="profile-name"></div>
           <div style="font-size:12px;color:var(--text-mid);margin-top:3px" id="profile-email"></div>
-          <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
+          <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
             <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid)" id="profile-city-badge"></span>
-            <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid)" id="profile-org-badge" style="display:none"></span>
+            <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid)" id="profile-org-badge"></span>
+            <span class="hd-badge hd-badge-lg" id="profile-hd-badge" style="display:none">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              Hayvan Dostu
+            </span>
           </div>
         </div>
       </div>
