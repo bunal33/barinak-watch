@@ -644,30 +644,39 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 }).addTo(map);
 
 // Province borders from CDN
-fetch('https://cdn.jsdelivr.net/gh/deldersveld/topojson@master/countries/turkey/turkey-provinces.json')
-  .then(r=>r.json())
-  .then(topo=>{
-    const key=Object.keys(topo.objects)[0];
-    const geojson=topojson.feature(topo,topo.objects[key]);
-    L.geoJSON(geojson,{
-      style:()=>({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
-      onEachFeature:(_,layer)=>{
-        layer.on({
-          mouseover:e=>e.target.setStyle({fillColor:'#D6DCE8',fillOpacity:0.9,color:'#7A88A0',weight:1.2}),
-          mouseout:e=>e.target.setStyle({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
-        });
+// Try multiple GeoJSON sources for Turkey provinces
+const GEO_URLS = [
+  'https://raw.githubusercontent.com/deldersveld/topojson/master/countries/turkey/turkey-provinces.json',
+  'https://cdn.jsdelivr.net/npm/turkey-geojson@1.0.0/turkey.json',
+];
+
+async function loadProvinces() {
+  for (const url of GEO_URLS) {
+    try {
+      const r = await fetch(url);
+      if (!r.ok) continue;
+      const data = await r.json();
+      // Handle both TopoJSON and GeoJSON
+      let geojson = data;
+      if (data.type === 'Topology') {
+        const key = Object.keys(data.objects)[0];
+        geojson = topojson.feature(data, data.objects[key]);
       }
-    }).addTo(map);
-  })
-  .catch(()=>{
-    fetch('https://cdn.jsdelivr.net/gh/cihadturhan/tr-geojson@master/geo/tr-provinces-simple.json')
-      .then(r=>r.json())
-      .then(data=>{
-        L.geoJSON(data,{
-          style:()=>({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
-        }).addTo(map);
-      }).catch(()=>{});
-  });
+      if (!geojson || !geojson.features) continue;
+      L.geoJSON(geojson, {
+        style: () => ({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
+        onEachFeature: (_, layer) => {
+          layer.on({
+            mouseover: e => e.target.setStyle({fillColor:'#D6DCE8',fillOpacity:0.9,color:'#7A88A0',weight:1.2}),
+            mouseout:  e => e.target.setStyle({fillColor:'#E4E8F0',fillOpacity:0.75,color:'#A8B2C4',weight:0.8}),
+          });
+        }
+      }).addTo(map);
+      return; // success
+    } catch(e) { continue; }
+  }
+}
+loadProvinces();
 
 map.fitBounds([[35.8,25.6],[42.1,44.8]],{padding:[20,20]});
 
@@ -1248,7 +1257,7 @@ function updateSignupPreview() {
 
 document.getElementById('btn-do-signup').addEventListener('click', doSignup);
 
-function doSignup() {
+async function doSignup() {
   const firstName = document.getElementById('signup-firstname').value.trim();
   const lastName  = document.getElementById('signup-lastname').value.trim();
   const username  = document.getElementById('signup-username').value.trim().replace(/\s+/g,'');
@@ -1259,7 +1268,6 @@ function doSignup() {
   const checkEmployee = document.getElementById('signup-check-employee').checked;
   const checkAccurate = document.getElementById('signup-check-accurate').checked;
 
-  // Validate fields
   let valid = true;
   [['signup-firstname',firstName],['signup-lastname',lastName],
    ['signup-username',username],['signup-email',email],
@@ -1271,14 +1279,12 @@ function doSignup() {
     }
   });
 
-  // Validate username format (letters, numbers, underscores only)
-  if(username && !/^[a-zA-Z0-9_]{3,20}$/.test(username)){
+  if(username && !/^[a-zA-Z0-9_çğışöüÇĞİŞÖÜ]{3,20}$/.test(username)){
     document.getElementById('signup-username').classList.add('error');
     showAuthError('Username must be 3–20 characters, letters, numbers and underscores only.');
     valid = false;
   }
 
-  // Validate checkboxes
   const checkErr = document.getElementById('signup-check-error');
   if(!checkEmployee || !checkAccurate){
     checkErr.style.display = 'block'; valid = false;
@@ -1286,50 +1292,66 @@ function doSignup() {
 
   if(!valid) return;
 
-  // In production: call Supabase auth.signUp() then insert profile row
-  // Collect HD verification data if section was opened
-  const hdOpen = document.getElementById('verify-body').classList.contains('open');
-  const hdOrgName  = document.getElementById('hd-org-name').value.trim();
-  const hdOrgPhone = document.getElementById('hd-org-phone').value.trim();
-  const hdOrgEmail = document.getElementById('hd-org-email').value.trim();
-  const hdRole     = document.getElementById('hd-org-role').value.trim();
+  const hdOpen    = document.getElementById('verify-body').classList.contains('open');
+  const hdOrgName = document.getElementById('hd-org-name').value.trim();
+  const hdOrgPhone= document.getElementById('hd-org-phone').value.trim();
+  const hdOrgEmail= document.getElementById('hd-org-email').value.trim();
+  const hdRole    = document.getElementById('hd-org-role').value.trim();
 
-  // Validate HD fields if section is open and org name was started
-  if (hdOpen && hdOrgName) {
-    if (!hdOrgPhone || !hdOrgEmail) {
-      if (!hdOrgPhone) document.getElementById('hd-org-phone').classList.add('error');
-      if (!hdOrgEmail) document.getElementById('hd-org-email').classList.add('error');
-      showAuthError('Please provide the organization phone and email so we can verify your membership.');
-      return;
-    }
+  if(hdOpen && hdOrgName && (!hdOrgPhone || !hdOrgEmail)){
+    if(!hdOrgPhone) document.getElementById('hd-org-phone').classList.add('error');
+    if(!hdOrgEmail) document.getElementById('hd-org-email').classList.add('error');
+    showAuthError('Please provide the organization phone and email so we can verify your membership.');
+    return;
   }
 
-  const newUser = {
-    id: 'u_' + Date.now(),
-    firstName, lastName, username, email, city,
+  const btn = document.getElementById('btn-do-signup');
+  btn.textContent = 'Creating account...';
+  btn.disabled = true;
+
+  const { data: authData, error: authError } = await sb.auth.signUp({
+    email,
+    password: pw,
+    options: { data: { first_name: firstName, last_name: lastName } }
+  });
+
+  if (authError) {
+    btn.textContent = 'Create account';
+    btn.disabled = false;
+    showAuthError(authError.message);
+    return;
+  }
+
+  const { error: profileError } = await sb.from('profiles').insert({
+    id: authData.user.id,
+    username,
+    first_name: firstName,
+    last_name: lastName,
+    email,
+    city,
     org: org || hdOrgName || null,
-    photoUrl: signupPhotoUrl || null,
     status: 'pending',
     hayvandostu: (hdOpen && hdOrgName) ? 'pending' : null,
-    hdVerification: (hdOpen && hdOrgName) ? {
-      orgName: hdOrgName,
-      orgPhone: hdOrgPhone,
-      orgEmail: hdOrgEmail,
-      role: hdRole,
-      docsCount: hdDocFiles.length,
-      submittedAt: new Date().toISOString(),
-    } : null,
-    visits: 0,
-    sheltersVisited: [],
-    createdAt: new Date().toISOString(),
-  };
-  AUTH.user = newUser;
-  AUTH.save();
+    hd_org_name:  hdOpen ? hdOrgName  : null,
+    hd_org_phone: hdOpen ? hdOrgPhone : null,
+    hd_org_email: hdOpen ? hdOrgEmail : null,
+    hd_org_role:  hdOpen ? hdRole     : null,
+    visit_count: 0,
+  });
+
+  btn.textContent = 'Create account';
+  btn.disabled = false;
+
+  if (profileError) {
+    showAuthError('Account created but profile save failed: ' + profileError.message);
+    return;
+  }
 
   document.getElementById('signup-form').style.display = 'none';
   document.getElementById('signup-success').style.display = 'block';
-  updateAuthUI();
 }
+
+
 
 function showAuthError(msg) {
   const el = document.getElementById('auth-error');
