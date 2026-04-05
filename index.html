@@ -54,6 +54,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 2
 .leg-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-mid);}
 .leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 .leg-title{font-size:10px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.leg-mode-row{display:flex;gap:4px;margin-bottom:8px;background:var(--bg);border-radius:8px;padding:3px;}
+.leg-mode-btn{flex:1;font-size:11px;font-family:var(--sans);padding:5px 6px;border-radius:6px;border:none;background:transparent;color:var(--text-faint);cursor:pointer;transition:all 0.15s;font-weight:400;white-space:nowrap;}
+.leg-mode-btn.active{background:var(--surface);color:var(--text);font-weight:500;box-shadow:0 0.5px 2px rgba(0,0,0,0.08);}
 .filter-row{cursor:pointer;border-radius:6px;padding:3px 5px;margin:0 -5px;transition:opacity 0.15s,background 0.15s;pointer-events:all;justify-content:space-between;gap:6px;}
 .filter-row:hover{background:var(--bg);}
 .filter-row.inactive{opacity:0.35;}
@@ -262,6 +265,71 @@ textarea.field-input{min-height:72px;resize:vertical;}
 .upload-file-chip{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg);border:0.5px solid var(--border);color:var(--text-mid);display:flex;align-items:center;gap:5px;}
 /* Visit log verified indicator */
 .visit-verified{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:#1A7A5E;font-weight:500;margin-top:3px;}
+
+/* About / Vision page */
+.about-overlay{display:none;position:fixed;inset:0;z-index:8000;background:var(--surface);overflow-y:auto;flex-direction:column;}
+.about-overlay.open{display:flex;}
+.about-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;border-bottom:0.5px solid var(--border);flex-shrink:0;position:sticky;top:0;background:var(--surface);z-index:10;}
+.about-nav-logo{font-family:var(--serif);font-size:20px;letter-spacing:-0.02em;}
+.about-nav-logo span{color:var(--green);}
+.about-close{font-size:13px;padding:7px 16px;border-radius:20px;border:0.5px solid var(--border-mid);background:transparent;cursor:pointer;font-family:var(--sans);color:var(--text-mid);display:flex;align-items:center;gap:6px;}
+.about-close:hover{background:var(--bg);}
+.about-hero{padding:72px 40px 56px;max-width:720px;margin:0 auto;width:100%;}
+.about-eyebrow{font-size:11px;font-weight:500;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;}
+.about-title{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:400;letter-spacing:-0.03em;line-height:1.1;color:var(--text);margin-bottom:24px;}
+.about-title em{color:var(--green);font-style:normal;}
+.about-lead{font-size:17px;color:var(--text-mid);line-height:1.75;max-width:580px;}
+.about-body{max-width:720px;margin:0 auto;padding:0 40px 80px;width:100%;}
+.about-section{margin-bottom:52px;}
+.about-section-label{font-size:10px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
+.about-section h2{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.2;}
+.about-section p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;}
+.about-section p:last-child{margin-bottom:0;}
+.about-values{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:8px;}
+.about-value{background:var(--bg);border-radius:12px;padding:20px;}
+.about-value-icon{width:36px;height:36px;border-radius:10px;background:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.about-value h3{font-size:14px;font-weight:500;margin-bottom:6px;}
+.about-value p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0;}
+.about-cta{background:var(--bg);border-radius:14px;padding:32px;text-align:center;margin-top:8px;}
+.about-cta h2{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:10px;}
+.about-cta p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:20px;}
+.about-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+/* Guide & Scoring pages — reuse about-overlay structure */
+.guide-step{display:flex;gap:20px;margin-bottom:32px;align-items:flex-start;}
+.guide-step-num{width:36px;height:36px;border-radius:50%;background:var(--green);color:white;font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.guide-step-body h3{font-size:15px;font-weight:500;margin-bottom:6px;}
+.guide-step-body p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;}
+.guide-step-body p:last-child{margin-bottom:0;}
+.guide-checklist{list-style:none;padding:0;margin:8px 0 0;}
+.guide-checklist li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-mid);padding:5px 0;border-bottom:0.5px solid var(--border);line-height:1.5;}
+.guide-checklist li:last-child{border-bottom:none;}
+.guide-checklist li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;}
+.guide-tip{background:#4CAF7D08;border:0.5px solid #4CAF7D22;border-radius:10px;padding:14px 16px;margin-top:12px;}
+.guide-tip-label{font-size:10px;font-weight:500;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;}
+.guide-tip p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0;}
+.guide-warn{background:#E8B84B08;border:0.5px solid #E8B84B33;border-radius:10px;padding:14px 16px;margin-top:12px;}
+.guide-warn-label{font-size:10px;font-weight:500;color:#854F0B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;}
+.guide-warn p{font-size:13px;color:var(--text-mid);line-height:1.6;margin:0;}
+/* Scoring page */
+.score-tier{border-radius:12px;padding:20px 22px;margin-bottom:14px;}
+.score-tier-header{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.score-tier-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.score-tier-range{font-family:var(--serif);font-size:22px;letter-spacing:-0.02em;}
+.score-tier-label{font-size:13px;font-weight:500;margin-top:1px;}
+.score-tier p{font-size:13px;color:var(--text-mid);line-height:1.7;margin:0;}
+.score-breakdown{background:var(--bg);border-radius:10px;padding:18px 20px;margin-top:8px;}
+.score-breakdown-title{font-size:11px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+.score-q-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;}
+.score-q-row:last-child{border-bottom:none;}
+.score-q-label{color:var(--text-mid);flex:1;}
+.score-q-pts{font-weight:500;color:var(--green);font-size:12px;white-space:nowrap;margin-left:12px;}
+.score-q-pts.bad{color:var(--red);}
+.score-example{border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-top:16px;}
+.score-example-header{background:var(--bg);padding:12px 16px;font-size:12px;font-weight:500;color:var(--text-mid);border-bottom:0.5px solid var(--border);}
+.score-example-row{display:flex;justify-content:space-between;padding:8px 16px;font-size:12px;border-bottom:0.5px solid var(--border);}
+.score-example-row:last-child{border-bottom:none;}
+.score-example-row.total{font-weight:500;background:var(--bg);}
 </style>
 </head>
 <body>
@@ -269,7 +337,10 @@ textarea.field-input{min-height:72px;resize:vertical;}
 <nav>
   <div class="nav-logo">Barınak<span>Watch</span></div>
   <div class="nav-right">
-    <button class="nav-btn primary" id="btn-add-shelter" style="display:none">+ Add shelter</button>
+    <button class="nav-btn" id="btn-about" data-en="About" data-tr="Hakkımızda">Hakkımızda</button>
+    <button class="nav-btn" id="btn-guide">Ziyaret Rehberi</button>
+    <button class="nav-btn" id="btn-scoring">Puanlama</button>
+    <button class="nav-btn primary" id="btn-add-shelter">+ Barınak ekle</button>
     <button class="nav-btn" id="btn-feedback">Feedback</button>
     <button class="nav-btn" id="btn-login" style="font-weight:500">Sign in</button>
     <div class="avatar-wrap" id="avatar-wrap" style="display:none">
@@ -306,26 +377,58 @@ textarea.field-input{min-height:72px;resize:vertical;}
   <div id="map"></div>
 
   <div class="map-legend">
-    <div class="leg-title" data-en="Filter by status" data-tr="Duruma göre filtrele">Filter by status</div>
-    <div class="leg-row filter-row active" data-filter="green" onclick="toggleFilter('green')">
-      <div class="leg-dot" style="background:var(--green)"></div>
-      <span data-en="1–2 weeks" data-tr="1–2 hafta">1–2 weeks</span>
-      <span class="leg-check">✓</span>
+    <!-- Mode toggle -->
+    <div class="leg-mode-row">
+      <button class="leg-mode-btn active" id="mode-btn-date" onclick="setLegendMode('date')" data-en="Visit date" data-tr="Ziyaret tarihi">Ziyaret tarihi</button>
+      <button class="leg-mode-btn" id="mode-btn-score" onclick="setLegendMode('score')" data-en="Condition" data-tr="Durum puanı">Durum puanı</button>
     </div>
-    <div class="leg-row filter-row active" data-filter="yellow" onclick="toggleFilter('yellow')">
-      <div class="leg-dot" style="background:var(--yellow)"></div>
-      <span data-en="3–4 weeks" data-tr="3–4 hafta">3–4 weeks</span>
-      <span class="leg-check">✓</span>
+
+    <!-- Date filters -->
+    <div id="legend-date">
+      <div class="leg-row filter-row active" data-filter="green" onclick="toggleFilter('green')">
+        <div class="leg-dot" style="background:var(--green)"></div>
+        <span data-en="1–2 weeks" data-tr="1–2 hafta">1–2 hafta</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="yellow" onclick="toggleFilter('yellow')">
+        <div class="leg-dot" style="background:var(--yellow)"></div>
+        <span data-en="3–4 weeks" data-tr="3–4 hafta">3–4 hafta</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="red" onclick="toggleFilter('red')">
+        <div class="leg-dot" style="background:var(--red)"></div>
+        <span data-en="Over a month" data-tr="1 aydan fazla">1 aydan fazla</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="gray" onclick="toggleFilter('gray')">
+        <div class="leg-dot" style="background:var(--gray)"></div>
+        <span data-en="Never reported" data-tr="Hiç rapor yok">Hiç rapor yok</span>
+        <span class="leg-check">✓</span>
+      </div>
     </div>
-    <div class="leg-row filter-row active" data-filter="red" onclick="toggleFilter('red')">
-      <div class="leg-dot" style="background:var(--red)"></div>
-      <span data-en="Over a month" data-tr="1 aydan fazla">Over a month</span>
-      <span class="leg-check">✓</span>
-    </div>
-    <div class="leg-row filter-row active" data-filter="gray" onclick="toggleFilter('gray')">
-      <div class="leg-dot" style="background:var(--gray)"></div>
-      <span data-en="Never reported" data-tr="Hiç rapor yok">Never reported</span>
-      <span class="leg-check">✓</span>
+
+    <!-- Score filters -->
+    <div id="legend-score" style="display:none">
+      <div class="leg-row filter-row active" data-filter="score-good" onclick="toggleFilter('score-good')">
+        <div class="leg-dot" style="background:var(--green)"></div>
+        <span data-en="75–100 Good" data-tr="75–100 İyi">75–100 İyi</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="score-mid" onclick="toggleFilter('score-mid')">
+        <div class="leg-dot" style="background:var(--yellow)"></div>
+        <span data-en="50–75 Needs work" data-tr="50–75 İyileştirmeli">50–75 İyileştirmeli</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="score-bad" onclick="toggleFilter('score-bad')">
+        <div class="leg-dot" style="background:var(--red)"></div>
+        <span data-en="1–50 Poor" data-tr="1–50 Kötü">1–50 Kötü</span>
+        <span class="leg-check">✓</span>
+      </div>
+      <div class="leg-row filter-row active" data-filter="score-none" onclick="toggleFilter('score-none')">
+        <div class="leg-dot" style="background:var(--gray)"></div>
+        <span data-en="No score yet" data-tr="Henüz puanı yok">Henüz puanı yok</span>
+        <span class="leg-check">✓</span>
+      </div>
     </div>
   </div>
 
@@ -355,6 +458,11 @@ textarea.field-input{min-height:72px;resize:vertical;}
           <span class="score-big" id="info-score">—</span>
         </div>
         <div class="bar-track"><div class="bar-fill" id="info-fill" style="width:0%"></div></div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <span style="font-size:10px;padding:2px 7px;border-radius:20px;background:#E0525210;color:#791F1F;border:0.5px solid #E0525230" data-en="1–50 Poor" data-tr="1–50 Kötü">1–50 Kötü</span>
+          <span style="font-size:10px;padding:2px 7px;border-radius:20px;background:#E8B84B10;color:#633806;border:0.5px solid #E8B84B30" data-en="50–75 Needs work" data-tr="50–75 İyileştirmeli">50–75 İyileştirmeli</span>
+          <span style="font-size:10px;padding:2px 7px;border-radius:20px;background:#4CAF7D10;color:#27500A;border:0.5px solid #4CAF7D30" data-en="75–100 Good" data-tr="75–100 İyi">75–100 İyi</span>
+        </div>
       </div>
       <div class="log-btn-wrap">
         <button class="log-btn" onclick="openForm()" data-en="Log a visit" data-tr="Ziyaret kaydet">Log a visit</button>
@@ -432,6 +540,7 @@ textarea.field-input{min-height:72px;resize:vertical;}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script>
 // Global stubs for onclick attributes
@@ -444,9 +553,15 @@ function rateStar(d){if(window._a)window._a.rateStar(d);}
 function fStep(n){if(window._a)window._a.fStep(n);}
 function addPhotos(i){if(window._a)window._a.addPhotos(i);}
 function toggleFilter(s){if(window._toggleFilter)window._toggleFilter(s);}
+function setLegendMode(m){if(window._setLegendMode)window._setLegendMode(m);}
 
 
 window.addEventListener('load',function(){
+
+// ── Supabase client ───────────────────────────────────────────────────────────
+const SUPABASE_URL = 'https://suetemezhacsazpcteza.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1ZXRlbWV6aGFjc2F6cGN0ZXphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MjM4MDEsImV4cCI6MjA5MDk5OTgwMX0.ONDdwpl2lHEzRutY_DAy9_D5FtlNkA5-sa4MKpvej34';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const LANG={current:'tr'};
 let selId=null,fstep=1;
@@ -471,8 +586,8 @@ const SHELTERS=[
    hist:[{s:22,d:"Feb 13, 2026",n:"Critical. Starvation signs. Multiple alerts sent."},{s:30,d:"Jan 30, 2026",n:"Water supply cut off. Emergency reported."},{s:35,d:"Jan 15, 2026",n:"Severely understaffed."}]},
   {id:10,name:"Antalya Büyükşehir Barınağı",city:"Antalya",lat:36.890,lng:30.700,days:2,cap:195,lv:"2 days ago",lvtr:"2 gün önce",score:88,vis:18,alts:0,
    hist:[{s:88,d:"Apr 3, 2026",n:"Excellent conditions. Model facility."},{s:85,d:"Mar 27, 2026",n:"All animals fed and healthy."},{s:90,d:"Mar 20, 2026",n:"New vet on staff — huge improvement."}]},
-  {id:11,name:"Mersin Yenişehir Barınağı",city:"Mersin",lat:36.800,lng:34.630,days:16,cap:230,lv:"16 days ago",lvtr:"16 gün önce",score:58,vis:6,alts:1,
-   hist:[{s:58,d:"Mar 20, 2026",n:"Adequate but overcrowded."},{s:62,d:"Mar 6, 2026",n:"Food supply improved since last alert."},{s:44,d:"Feb 20, 2026",n:"Alert sent — no water in cat section."}]},
+  {id:11,name:"Mersin Yenişehir Barınağı",city:"Mersin",lat:36.800,lng:34.630,days:4,cap:230,lv:"4 days ago",lvtr:"4 gün önce",score:30,vis:7,alts:2,
+   hist:[{s:30,d:"Apr 1, 2026",n:"Critical conditions. Severe overcrowding, animals visibly distressed. No clean water in multiple sections. Alert sent."},{s:58,d:"Mar 20, 2026",n:"Adequate but overcrowded."},{s:62,d:"Mar 6, 2026",n:"Food supply improved since last alert."},{s:44,d:"Feb 20, 2026",n:"Alert sent — no water in cat section."}]},
   {id:12,name:"Gaziantep Barınağı",city:"Gaziantep",lat:37.060,lng:37.380,days:null,cap:150,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
   {id:13,name:"Samsun Büyükşehir Barınağı",city:"Samsun",lat:41.286,lng:36.330,days:20,cap:170,lv:"20 days ago",lvtr:"20 gün önce",score:60,vis:5,alts:1,
    hist:[{s:60,d:"Mar 16, 2026",n:"Reasonable conditions. Overcrowded in winter."},{s:55,d:"Mar 2, 2026",n:"Heating issues in shelter."}]},
@@ -575,9 +690,29 @@ function mkIcon(color,sel=false){
     iconSize:[sz,sz],iconAnchor:[sz/2,sz/2],
   });
 }
+// Legend mode + score helpers — defined here so markerColor can use them
+let legendMode = 'date';
+
+function scoreStatus(s) {
+  if (s.score === null || s.score === undefined) return 'score-none';
+  if (s.score >= 75) return 'score-good';
+  if (s.score >= 50) return 'score-mid';
+  return 'score-bad';
+}
+
+function scoreColor(s) {
+  const st = scoreStatus(s);
+  if (st === 'score-good') return '#4CAF7D';
+  if (st === 'score-mid') return '#E8B84B';
+  if (st === 'score-bad') return '#E05252';
+  return '#9B9B9B';
+}
+
+function markerColor(s){ return legendMode==='score' ? scoreColor(s) : COL[statusFromDays(s.days)]; }
+
 const markers={};
 SHELTERS.forEach(s=>{
-  markers[s.id]=L.marker([s.lat,s.lng],{icon:mkIcon(COL[statusFromDays(s.days)]),zIndexOffset:1000})
+  markers[s.id]=L.marker([s.lat,s.lng],{icon:mkIcon(markerColor(s)),zIndexOffset:1000})
     .addTo(map).on('click',()=>selectShelter(s.id));
 });
 
@@ -598,13 +733,13 @@ function selectShelter(id){
   document.getElementById('stat-vis').textContent=s.vis;
   document.getElementById('stat-alt').textContent=s.alts;
   const sf=document.getElementById('info-fill'),sn=document.getElementById('info-score');
-  if(s.score!==null){sn.textContent=s.score;sf.style.width=s.score+'%';sf.style.background=s.score>=70?'#4CAF7D':s.score>=40?'#E8B84B':'#E05252';}
+  if(s.score!==null){sn.textContent=s.score;sf.style.width=s.score+'%';sf.style.background=s.score>=75?'#4CAF7D':s.score>=50?'#E8B84B':'#E05252';}
   else{sn.textContent='—';sf.style.width='0%';}
   const vl=document.getElementById('visit-list');
   vl.innerHTML='';
   if(!s.hist.length){vl.innerHTML=`<div style="font-size:12px;color:var(--text-faint);padding:12px 0">${LANG.current==='en'?'No visits recorded yet.':'Henüz ziyaret kaydı yok.'}</div>`;}
   else s.hist.forEach(v=>{
-    const sc=v.s>=70?'#4CAF7D':v.s>=40?'#E8B84B':'#E05252';
+    const sc=v.s>=75?'#4CAF7D':v.s>=50?'#E8B84B':'#E05252';
     const submitter = v.username ? `<span style="font-size:10px;color:var(--text-faint);margin-left:6px">${v.username}</span>` : '';
     const hdBadge = v.hayvandostu
       ? `<span class="visit-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Hayvan Dostu</span>`
@@ -676,7 +811,7 @@ function calcScore(){
   if(!answered){n.textContent='—';f.style.width='0%';return;}
   const sc=Math.min(100,Math.round((total/((good.length+bad.length)*10+10))*100));
   n.textContent=sc;f.style.width=sc+'%';
-  f.style.background=sc>=70?'#4CAF7D':sc>=40?'#E8B84B':'#E05252';
+  f.style.background=sc>=75?'#4CAF7D':sc>=50?'#E8B84B':'#E05252';
 }
 
 function _addPhotos(input){
@@ -704,35 +839,56 @@ function _setLang(l){
   if(document.getElementById('overlay').classList.contains('open'))showStep(fstep);
 }
 
-// Filter state
-const activeFilters=new Set(['green','yellow','red','gray']);
+// Filter state (legendMode/scoreStatus/scoreColor moved earlier — see below)
+const activeFilters = new Set(['green','yellow','red','gray']);
+const activeScoreFilters = new Set(['score-good','score-mid','score-bad','score-none']);
 
-function toggleFilter(status){
-  if(activeFilters.has(status)){
-    if(activeFilters.size===1)return; // keep at least one active
-    activeFilters.delete(status);
-  } else {
-    activeFilters.add(status);
-  }
-  // Update legend UI
-  document.querySelectorAll('.filter-row').forEach(row=>{
-    const s=row.dataset.filter;
-    row.classList.toggle('inactive',!activeFilters.has(s));
+function setLegendMode(mode) {
+  legendMode = mode;
+  document.getElementById('mode-btn-date').classList.toggle('active', mode === 'date');
+  document.getElementById('mode-btn-score').classList.toggle('active', mode === 'score');
+  document.getElementById('legend-date').style.display = mode === 'date' ? 'block' : 'none';
+  document.getElementById('legend-score').style.display = mode === 'score' ? 'block' : 'none';
+  // Re-render all markers with new color scheme
+  SHELTERS.forEach(s => {
+    markers[s.id].setIcon(mkIcon(markerColor(s), selId === s.id));
   });
-  // Show/hide markers
-  SHELTERS.forEach(s=>{
-    const st=statusFromDays(s.days);
-    const marker=markers[s.id];
-    if(activeFilters.has(st)){
-      if(!map.hasLayer(marker)) marker.addTo(map);
+  applyMarkerVisibility();
+}
+
+function toggleFilter(filter) {
+  const set = filter.startsWith('score-') ? activeScoreFilters : activeFilters;
+  if (set.has(filter)) {
+    if (set.size === 1) return;
+    set.delete(filter);
+  } else {
+    set.add(filter);
+  }
+  document.querySelectorAll('.filter-row').forEach(row => {
+    const f = row.dataset.filter;
+    const active = f.startsWith('score-') ? activeScoreFilters.has(f) : activeFilters.has(f);
+    row.classList.toggle('inactive', !active);
+  });
+  applyMarkerVisibility();
+}
+
+function applyMarkerVisibility() {
+  SHELTERS.forEach(s => {
+    const marker = markers[s.id];
+    let visible;
+    if (legendMode === 'date') {
+      visible = activeFilters.has(statusFromDays(s.days));
     } else {
-      if(map.hasLayer(marker)) map.removeLayer(marker);
+      visible = activeScoreFilters.has(scoreStatus(s));
     }
+    if (visible) { if (!map.hasLayer(marker)) marker.addTo(map); }
+    else { if (map.hasLayer(marker)) map.removeLayer(marker); }
   });
 }
 
 window._a={setLang:_setLang,openForm:_openForm,closeForm:_closeForm,bgClick:_bgClick,pick:_pick,rateStar:_rateStar,fStep:_fStep,addPhotos:_addPhotos};
 window._toggleFilter=toggleFilter;
+window._setLegendMode=setLegendMode;
 
 // ── Modal wiring via addEventListener (no onclick attrs needed) ──────────────
 
@@ -890,24 +1046,51 @@ const _origSetLang=_setLang;
 _setLang=function(l){_origSetLang(l);updateNavLang(l);};
 window._a.setLang=_setLang;
 // ── Auth state ────────────────────────────────────────────────────────────────
-// In production this comes from Supabase. Here we simulate with localStorage.
 const AUTH = {
-  user: null,  // {id, firstName, lastName, email, city, org, photoUrl, status, visits, sheltersVisited}
-  load() {
-    try { this.user = JSON.parse(localStorage.getItem('bw_user')); } catch(e) { this.user = null; }
-  },
-  save() { localStorage.setItem('bw_user', JSON.stringify(this.user)); },
-  clear() { localStorage.removeItem('bw_user'); this.user = null; },
+  user: null,
+  session: null,
   get isLoggedIn() { return !!this.user; },
   get isApproved() { return this.user && this.user.status === 'approved'; },
   get initials() {
     if(!this.user) return '';
     if(this.user.username) return this.user.username.slice(0,2).toUpperCase();
-    return (this.user.firstName[0] + (this.user.lastName[0]||'')).toUpperCase();
+    return ((this.user.firstName||'?')[0] + ((this.user.lastName||'')[0]||'')).toUpperCase();
   }
 };
 
-AUTH.load();
+// Check for existing session on load
+async function initAuth() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    AUTH.session = session;
+    await loadProfile(session.user.id);
+  }
+  updateAuthUI();
+}
+
+async function loadProfile(userId) {
+  const { data, error } = await sb
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single();
+  if (data) {
+    AUTH.user = {
+      id: data.id,
+      firstName: data.first_name,
+      lastName: data.last_name,
+      username: data.username,
+      email: data.email,
+      city: data.city,
+      org: data.org,
+      photoUrl: data.photo_url,
+      status: data.status,
+      hayvandostu: data.hayvandostu,
+      visits: data.visit_count || 0,
+      sheltersVisited: [],
+    };
+  }
+}
 
 function updateAuthUI() {
   const loggedIn = AUTH.isLoggedIn;
@@ -917,7 +1100,7 @@ function updateAuthUI() {
   // Nav
   document.getElementById('btn-login').style.display = loggedIn ? 'none' : '';
   document.getElementById('avatar-wrap').style.display = loggedIn ? '' : 'none';
-  document.getElementById('btn-add-shelter').style.display = approved ? '' : 'none';
+  // btn-add-shelter always visible
 
   // Pending banner
   const banner = document.getElementById('pending-banner');
@@ -1007,7 +1190,7 @@ document.getElementById('btn-google-auth').addEventListener('click', () => {
 document.getElementById('btn-do-login').addEventListener('click', doLogin);
 document.getElementById('login-password').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 
-function doLogin() {
+async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const pw = document.getElementById('login-password').value;
   document.getElementById('login-email').classList.remove('error');
@@ -1015,17 +1198,26 @@ function doLogin() {
   if (!email || !email.includes('@')) { document.getElementById('login-email').classList.add('error'); return; }
   if (!pw) { document.getElementById('login-password').classList.add('error'); return; }
 
-  // In production: call Supabase auth.signInWithPassword({email, pw})
-  // For demo: check if a user with this email exists in localStorage
-  const stored = JSON.parse(localStorage.getItem('bw_user') || 'null');
-  if (stored && stored.email === email) {
-    AUTH.user = stored;
-    AUTH.save();
-    document.getElementById('auth-overlay').classList.remove('open');
-    updateAuthUI();
-  } else {
-    showAuthError('No account found with this email. Please sign up first.');
+  const btnLogin = document.getElementById('btn-do-login');
+  btnLogin.textContent = 'Signing in...';
+  btnLogin.disabled = true;
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pw });
+
+  btnLogin.textContent = 'Sign in';
+  btnLogin.disabled = false;
+
+  if (error) {
+    showAuthError(error.message === 'Invalid login credentials'
+      ? 'Wrong email or password. Please try again.'
+      : error.message);
+    return;
   }
+
+  AUTH.session = data.session;
+  await loadProfile(data.user.id);
+  document.getElementById('auth-overlay').classList.remove('open');
+  updateAuthUI();
 }
 
 // Signup
@@ -1146,12 +1338,13 @@ function showAuthError(msg) {
 }
 
 // Logout
-function doLogout() {
-  AUTH.clear();
+async function doLogout() {
+  await sb.auth.signOut();
+  AUTH.user = null;
+  AUTH.session = null;
   document.getElementById('avatar-menu').classList.remove('open');
-  updateAuthUI();
-  // If profile modal is open, close it
   document.getElementById('profile-overlay').classList.remove('open');
+  updateAuthUI();
 }
 
 // Profile modal
@@ -1219,23 +1412,114 @@ document.querySelectorAll('.log-btn').forEach(btn => {
 
 // Update visit count when a visit is submitted
 const _origSubmit = _submit;
-_submit = function() {
+_submit = async function() {
   _origSubmit();
   if (AUTH.isApproved && selId) {
     const s = SHELTERS.find(x => x.id === selId);
+    const isCritical = ans.abuse==='yes'||ans.water==='no'||ans.sick==='yes'||ans.stress==='yes';
+
+    // Calculate score
+    const good=['water','food','clean','space','staff','resp'], bad=['sick','abuse','stress'];
+    let total=0;
+    good.forEach(k=>{if(ans[k]==='yes')total+=10;});
+    bad.forEach(k=>{if(ans[k]==='no')total+=10;});
+    if(ans.cr)total+=(ans.cr-1)*2.5;
+    const score=Math.min(100,Math.round((total/((good.length+bad.length)*10+10))*100));
+
+    // Save visit to Supabase
+    await sb.from('visits').insert({
+      shelter_id: String(selId),
+      user_id: AUTH.user.id,
+      username: AUTH.user.username ? '@'+AUTH.user.username : AUTH.user.firstName,
+      score,
+      water: ans.water === 'yes',
+      food:  ans.food  === 'yes',
+      clean: ans.clean === 'yes',
+      space: ans.space === 'yes',
+      sick:  ans.sick  === 'yes',
+      abuse: ans.abuse === 'yes',
+      stress:ans.stress=== 'yes',
+      staff: ans.staff === 'yes',
+      responsive: ans.resp === 'yes',
+      clean_rating: ans.cr || null,
+      notes: document.getElementById('notes-box').value.trim() || null,
+      is_critical: isCritical,
+      hayvandostu: AUTH.user.hayvandostu === 'approved',
+    });
+
+    // Update visit count on profile
+    await sb.from('profiles')
+      .update({ visit_count: (AUTH.user.visits || 0) + 1 })
+      .eq('id', AUTH.user.id);
+
     AUTH.user.visits = (AUTH.user.visits || 0) + 1;
-    if (s && !AUTH.user.sheltersVisited.includes(s.name)) {
-      AUTH.user.sheltersVisited = [...(AUTH.user.sheltersVisited||[]), s.name];
-    }
-    // Tag the visit with username for the log
-    AUTH.user.lastVisitTag = AUTH.user.username ? '@'+AUTH.user.username : AUTH.user.firstName;
-    AUTH.save();
   }
 };
 window._a.submit = _submit;
 
+// ── About page ────────────────────────────────────────────────────────────────
+document.getElementById('btn-about').addEventListener('click', () => {
+  document.getElementById('about-overlay').classList.add('open');
+  // Apply current language to about page
+  applyLang(LANG.current);
+});
+document.getElementById('btn-close-about').addEventListener('click', () => {
+  document.getElementById('about-overlay').classList.remove('open');
+});
+document.getElementById('about-btn-map').addEventListener('click', () => {
+  document.getElementById('about-overlay').classList.remove('open');
+});
+document.getElementById('about-btn-signup').addEventListener('click', () => {
+  document.getElementById('about-overlay').classList.remove('open');
+  document.getElementById('auth-overlay').classList.add('open');
+  showAuthTab('signup');
+});
+
+// Helper: apply language to ALL data-en/data-tr elements including about page
+function applyLang(l) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (!el.dataset.key) el.innerHTML = el.dataset[l] || el.dataset.en;
+  });
+  document.querySelectorAll('.yn-btn').forEach(b => {
+    b.textContent = b.dataset[l] || b.dataset.en;
+  });
+}
+
+// Patch _setLang to use applyLang
+const __origSetLang = _setLang;
+_setLang = function(l) {
+  LANG.current = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  applyLang(l);
+  updateNavLang(l);
+  if (selId) selectShelter(selId);
+  if (document.getElementById('overlay').classList.contains('open')) showStep(fstep);
+};
+window._a.setLang = _setLang;
+
+// Apply Turkish on load
+applyLang('tr');
+
+// ── Guide & Scoring pages ─────────────────────────────────────────────────────
+document.getElementById('btn-guide').addEventListener('click', () => {
+  document.getElementById('guide-overlay').classList.add('open');
+});
+document.getElementById('btn-close-guide').addEventListener('click', () => {
+  document.getElementById('guide-overlay').classList.remove('open');
+});
+document.getElementById('guide-btn-map').addEventListener('click', () => {
+  document.getElementById('guide-overlay').classList.remove('open');
+});
+
+document.getElementById('btn-scoring').addEventListener('click', () => {
+  document.getElementById('scoring-overlay').classList.add('open');
+});
+document.getElementById('btn-close-scoring').addEventListener('click', () => {
+  document.getElementById('scoring-overlay').classList.remove('open');
+});
+
 // Init
-updateAuthUI();
+initAuth();
 
 });
 </script>
@@ -1645,6 +1929,383 @@ updateAuthUI();
         <button class="modal-cancel" id="btn-profile-logout" style="color:var(--red);border-color:rgba(224,82,82,0.3)">Sign out</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ABOUT / VISION PAGE -->
+<div class="about-overlay" id="about-overlay">
+  <div class="about-nav">
+    <div class="about-nav-logo">Barınak<span>Watch</span></div>
+    <button class="about-close" id="btn-close-about">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <span data-en="Back to map" data-tr="Haritaya dön">Haritaya dön</span>
+    </button>
+  </div>
+
+  <div class="about-hero">
+    <div class="about-eyebrow" data-en="Our mission" data-tr="Misyonumuz">Misyonumuz</div>
+    <h1 class="about-title" data-en="Every shelter, <em>visible</em>. Every animal, <em>counted</em>." data-tr="Her barınak, <em>görünür</em>. Her hayvan, <em>sayılır</em>.">Her barınak, <em>görünür</em>. Her hayvan, <em>sayılır</em>.</h1>
+    <p class="about-lead" data-en="Turkey's stray animal law brought millions of dogs into shelters. Barınak Watch exists to make sure those shelters are accountable — through community monitoring, transparent reporting, and public pressure." data-tr="Türkiye'nin sokak hayvanları yasası milyonlarca köpeği barınaklara taşıdı. Barınak Watch, bu barınakların hesap verebilir olmasını sağlamak için var — topluluk denetimi, şeffaf raporlama ve kamuoyu baskısıyla.">Türkiye'nin sokak hayvanları yasası milyonlarca köpeği barınaklara taşıdı. Barınak Watch, bu barınakların hesap verebilir olmasını sağlamak için var — topluluk denetimi, şeffaf raporlama ve kamuoyu baskısıyla.</p>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-section">
+      <div class="about-section-label" data-en="The problem" data-tr="Sorun">Sorun</div>
+      <h2 data-en="Out of sight, out of mind" data-tr="Görünmezlik, sorumsuzluk demektir">Görünmezlik, sorumsuzluk demektir</h2>
+      <p data-en="Since the 2024 stray animal law passed, hundreds of thousands of dogs have been rounded up and placed in municipal shelters across Turkey. But there is no national inspection system, no public database, and no mechanism for citizens to know what is happening inside these facilities." data-tr="2024 yılında çıkan sokak hayvanları yasasından bu yana yüz binlerce köpek Türkiye genelindeki belediye barınaklarına götürüldü. Ancak ulusal bir denetim sistemi, kamuya açık bir veri tabanı ve vatandaşların bu tesislerde neler olduğunu öğrenmesini sağlayacak hiçbir mekanizma yok.">2024 yılında çıkan sokak hayvanları yasasından bu yana yüz binlerce köpek Türkiye genelindeki belediye barınaklarına götürüldü. Ancak ulusal bir denetim sistemi, kamuya açık bir veri tabanı ve vatandaşların bu tesislerde neler olduğunu öğrenmesini sağlayacak hiçbir mekanizma yok.</p>
+      <p data-en="Animal rights organizations expose individual shelters when conditions become critical — but these are isolated moments. By the time a shelter makes the news, animals have already suffered for months. We believe systematic, continuous monitoring is the only real answer." data-tr="Hayvan hakları örgütleri, koşullar kritik bir boyuta ulaştığında tek tek barınakları ifşa ediyor — ancak bunlar yalnızca anlık müdahaleler. Bir barınak haberlere girerken, hayvanlar aylarca acı çekmiş oluyor. Sistematik ve sürekli denetimin tek gerçek çözüm olduğuna inanıyoruz.">Hayvan hakları örgütleri, koşullar kritik bir boyuta ulaştığında tek tek barınakları ifşa ediyor — ancak bunlar yalnızca anlık müdahaleler. Bir barınak haberlere girerken, hayvanlar aylarca acı çekmiş oluyor. Sistematik ve sürekli denetimin tek gerçek çözüm olduğuna inanıyoruz.</p>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label" data-en="Our vision" data-tr="Vizyonumuz">Vizyonumuz</div>
+      <h2 data-en="A country where no shelter goes unwatched" data-tr="Hiçbir barınağın gözden kaçmadığı bir Türkiye">Hiçbir barınağın gözden kaçmadığı bir Türkiye</h2>
+      <p data-en="We envision a live map of every animal shelter in Turkey — updated weekly by volunteers on the ground — where any citizen, journalist, or official can see the current condition of any facility at any time." data-tr="Türkiye'deki her hayvan barınağını kapsayan, sahada gönüllüler tarafından haftalık olarak güncellenen ve herhangi bir vatandaşın, gazetecinin ya da yetkilinin istediği zaman istediği tesisin güncel durumunu görebildiği canlı bir harita hayal ediyoruz.">Türkiye'deki her hayvan barınağını kapsayan, sahada gönüllüler tarafından haftalık olarak güncellenen ve herhangi bir vatandaşın, gazetecinin ya da yetkilinin istediği zaman istediği tesisin güncel durumunu görebildiği canlı bir harita hayal ediyoruz.</p>
+      <p data-en="Shelters with good conditions get recognized. Shelters in crisis get flagged immediately — and the right organizations get notified automatically. Accountability through visibility." data-tr="İyi koşullardaki barınaklar takdir görür. Kriz içindeki barınaklar anında işaretlenir — ve ilgili kuruluşlar otomatik olarak bilgilendirilir. Görünürlük yoluyla hesap verebilirlik.">İyi koşullardaki barınaklar takdir görür. Kriz içindeki barınaklar anında işaretlenir — ve ilgili kuruluşlar otomatik olarak bilgilendirilir. Görünürlük yoluyla hesap verebilirlik.</p>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label" data-en="Our values" data-tr="Değerlerimiz">Değerlerimiz</div>
+      <div class="about-values">
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 data-en="Transparency" data-tr="Şeffaflık">Şeffaflık</h3>
+          <p data-en="All visit data is public. Every score, every report, every flag." data-tr="Tüm ziyaret verileri halka açıktır. Her puan, her rapor, her uyarı.">Tüm ziyaret verileri halka açıktır. Her puan, her rapor, her uyarı.</p>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 data-en="Community" data-tr="Topluluk">Topluluk</h3>
+          <p data-en="Powered by verified volunteers across all 81 provinces." data-tr="81 ilin tamamındaki doğrulanmış gönüllüler tarafından yürütülür.">81 ilin tamamındaki doğrulanmış gönüllüler tarafından yürütülür.</p>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <h3 data-en="Accuracy" data-tr="Doğruluk">Doğruluk</h3>
+          <p data-en="Every report is a first-hand observation. No hearsay. No anonymous tips." data-tr="Her rapor bizzat yapılan bir gözlemdir. Dedikodu yok. Anonim ihbar yok.">Her rapor bizzat yapılan bir gözlemdir. Dedikodu yok. Anonim ihbar yok.</p>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon" style="background:#E8B84B">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 data-en="Urgency" data-tr="Aciliyet">Aciliyet</h3>
+          <p data-en="Animals can't wait. Critical conditions are flagged and escalated immediately." data-tr="Hayvanlar bekleyemez. Kritik koşullar anında işaretlenir ve yetkililere iletilir.">Hayvanlar bekleyemez. Kritik koşullar anında işaretlenir ve yetkililere iletilir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label" data-en="How it works" data-tr="Nasıl çalışır">Nasıl çalışır</div>
+      <h2 data-en="Anyone can see. Verified members act." data-tr="Herkes görebilir. Doğrulanmış üyeler harekete geçer.">Herkes görebilir. Doğrulanmış üyeler harekete geçer.</h2>
+      <p data-en="The map is public — anyone can see shelter locations, condition scores, and visit history. To submit a visit report or add a new shelter, you need a free account. All accounts are reviewed before they can submit, and members of recognized animal advocacy organizations can apply for Hayvan Dostu verified status, which adds a trust badge to their reports." data-tr="Harita herkese açıktır — herkes barınak konumlarını, durum puanlarını ve ziyaret geçmişini görebilir. Ziyaret raporu göndermek veya yeni barınak eklemek için ücretsiz bir hesap gereklidir. Tüm hesaplar gönderim öncesinde incelenir; tanınan hayvan savunuculuğu kuruluşlarının üyeleri ise raporlarına güven rozeti ekleyen Hayvan Dostu doğrulanmış statüsü için başvurabilir.">Harita herkese açıktır — herkes barınak konumlarını, durum puanlarını ve ziyaret geçmişini görebilir. Ziyaret raporu göndermek veya yeni barınak eklemek için ücretsiz bir hesap gereklidir. Tüm hesaplar gönderim öncesinde incelenir; tanınan hayvan savunuculuğu kuruluşlarının üyeleri ise raporlarına güven rozeti ekleyen Hayvan Dostu doğrulanmış statüsü için başvurabilir.</p>
+    </div>
+
+    <div class="about-cta">
+      <h2 data-en="Join us" data-tr="Bize Katılın">Bize Katılın</h2>
+      <p data-en="If you visit shelters, care about animal welfare, or simply want to help keep this map up to date — create a free account and become part of the network." data-tr="Barınak ziyaret ediyorsanız, hayvan refahını önemsiyorsanız ya da sadece bu haritanın güncel kalmasına katkıda bulunmak istiyorsanız — ücretsiz hesap oluşturun ve ağın bir parçası olun.">Barınak ziyaret ediyorsanız, hayvan refahını önemsiyorsanız ya da sadece bu haritanın güncel kalmasına katkıda bulunmak istiyorsanız — ücretsiz hesap oluşturun ve ağın bir parçası olun.</p>
+      <div class="about-cta-btns">
+        <button class="nav-btn primary" id="about-btn-signup" style="padding:10px 24px;font-size:13px" data-en="Create free account" data-tr="Ücretsiz hesap oluştur">Ücretsiz hesap oluştur</button>
+        <button class="nav-btn" id="about-btn-map" style="padding:10px 24px;font-size:13px" data-en="Explore the map" data-tr="Haritayı keşfet">Haritayı keşfet</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- VISIT GUIDE PAGE -->
+<div class="about-overlay" id="guide-overlay">
+  <div class="about-nav">
+    <div class="about-nav-logo">Barınak<span>Watch</span></div>
+    <button class="about-close" id="btn-close-guide">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <span data-en="Back to map" data-tr="Haritaya dön">Haritaya dön</span>
+    </button>
+  </div>
+
+  <div class="about-hero">
+    <div class="about-eyebrow">Ziyaret Rehberi</div>
+    <h1 class="about-title">Barınak ziyaretini<br><em>doğru yap</em>.</h1>
+    <p class="about-lead">Her rapor birinci elden gözleme dayanmalıdır. Bu rehber, barınağa girdiğinde nelere bakman gerektiğini ve anketi doğru doldurabilmen için sana yol gösterir.</p>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-section">
+      <div class="about-section-label">Ziyaret öncesi</div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">1</div>
+        <div class="guide-step-body">
+          <h3>Barınağı haritadan seç ve geçmişine bak</h3>
+          <p>Ziyaretten önce barınağın önceki raporlarını incele. Tekrarlayan sorunlar (su eksikliği, aşırı kalabalık) varsa özellikle o alanlara dikkat et.</p>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">2</div>
+        <div class="guide-step-body">
+          <h3>Yanında ne götürmelisin</h3>
+          <ul class="guide-checklist">
+            <li>Şarjlı telefon — fotoğraf ve form için şarjın yeterli olsun</li>
+            <li>Kimlik — bazı barınaklar giriş için kimlik isteyebilir</li>
+            <li>Not defteri veya uygulama — gözlemlerini hızlıca not al</li>
+            <li>Sakin bir tutum — personele karşı tarafsız ve nazik ol</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">3</div>
+        <div class="guide-step-body">
+          <h3>Amacını belirt</h3>
+          <p>Barınağa girdiğinde personele ziyaretçi olduğunu ve tesisi gezmek istediğini söyle. Gizli kalmak zorunda değilsin — şeffaf olmak güven oluşturur ve sonuçlarını daha güçlü kılar.</p>
+          <div class="guide-tip">
+            <div class="guide-tip-label">İpucu</div>
+            <p>"Hayvan dostu olarak barınağınızı ziyaret etmek istiyorum" demek çoğu durumda yeterlidir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label">Ankete göre nelere bakmalısın</div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">4</div>
+        <div class="guide-step-body">
+          <h3>Su ve yiyecek erişimi</h3>
+          <p>Kafes veya bölmelerin içinde temiz su kapları var mı? Kaplar dolu mu, temiz mi? Hayvanların son ne zaman beslendiğini personele sorabilirsin.</p>
+          <ul class="guide-checklist">
+            <li>Her bölümde en az bir su kabı bulunmalı</li>
+            <li>Su kirli, yosunlu veya boş olmamalı</li>
+            <li>Yiyecek kalıntıları taze mi yoksa bayat mı?</li>
+            <li>Hayvanlar aç görünüyor mu? (belirgin kemik yapısı, sinirli davranış)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">5</div>
+        <div class="guide-step-body">
+          <h3>Kafes ve alan temizliği</h3>
+          <p>Hem genel temizliği hem de her bölümü ayrı ayrı değerlendir. Anket genel bir temizlik puanı (1-5) soruyor — bunu tüm gözlemlerinin ortalamasına göre ver.</p>
+          <ul class="guide-checklist">
+            <li>Dışkı temizleniyor mu, birikmiş mi?</li>
+            <li>İdrar kokusu çok yoğun mu?</li>
+            <li>Kafes tabanında keskin veya tehlikeli nesne var mı?</li>
+            <li>Hayvanların hareket edebileceği yeterli alan var mı?</li>
+          </ul>
+          <div class="guide-tip">
+            <div class="guide-tip-label">Temizlik puanı rehberi</div>
+            <p><strong>1:</strong> Her yer kirli, dışkı birikmiş, koku dayanılmaz<br>
+            <strong>2:</strong> Genel kirlilik, uzun süredir temizlenmemiş<br>
+            <strong>3:</strong> Orta düzey temizlik, bazı sorunlar var<br>
+            <strong>4:</strong> Genel olarak temiz, küçük eksikler<br>
+            <strong>5:</strong> Pırıl pırıl, bakımlı</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">6</div>
+        <div class="guide-step-body">
+          <h3>Hayvan sağlığı ve güvenliği</h3>
+          <p>Bu bölüm en kritik kısım. Gördüğün her şeyi fotoğrafla belgele.</p>
+          <ul class="guide-checklist">
+            <li><strong>Hasta veya yaralı hayvan:</strong> Açık yara, topallama, göz/burun akıntısı, aşırı zayıflık</li>
+            <li><strong>Fiziksel istismar veya ihmal belirtisi:</strong> Görünür darp izi, korkudan kaçma, anormal yaralanma</li>
+            <li><strong>Aşırı stres belirtisi:</strong> Sürekli dönme, kendini ısırma, kafes barına çarpma, donup kalma, durmayan havlama</li>
+          </ul>
+          <div class="guide-warn">
+            <div class="guide-warn-label">Dikkat</div>
+            <p>Bu belirtilerden herhangi birini görürsen ankette "Evet" işaretle — bu otomatik olarak hayvan hakları kuruluşlarına uyarı gönderilmesini tetikler. Emin olmasan bile işaretle; sonraki ziyaretçiler teyit edebilir.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">7</div>
+        <div class="guide-step-body">
+          <h3>Personel ve yönetim</h3>
+          <p>Ziyaret sırasında personel var mıydı? Sana karşı tutumları nasıldı? Barınakta hiç personel görememen başlı başına önemli bir bulgudur.</p>
+          <ul class="guide-checklist">
+            <li>Kaç personel gördün?</li>
+            <li>Hayvanlarla ilgileniyor muydu, yoksa pasif mi duruyordu?</li>
+            <li>Sana barınağı gezdirmek konusunda isteksiz davrandılar mı?</li>
+            <li>Sorularına dürüst cevap verdiler mi?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">8</div>
+        <div class="guide-step-body">
+          <h3>Fotoğraf çek</h3>
+          <p>Fotoğraflar raporunun en güçlü kanıtıdır. Hem iyi hem kötü koşulları belgele.</p>
+          <ul class="guide-checklist">
+            <li>Genel tesis görünümü (girişten, koridordan)</li>
+            <li>Su ve yiyecek kapları (dolu/boş/kirli)</li>
+            <li>Kafes içleri ve alan durumu</li>
+            <li>Hasta veya stresli görünen hayvanlar (uzaktan, hayvanı korkutmadan)</li>
+            <li>Personelin çalışma alanları</li>
+          </ul>
+          <div class="guide-tip">
+            <div class="guide-tip-label">İpucu</div>
+            <p>Hayvanları fotoğraflarken önce sakin bir ortam oluştur. Stresli bir hayvana yaklaşmaya çalışma.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">9</div>
+        <div class="guide-step-body">
+          <h3>Anketi doldur ve gönder</h3>
+          <p>Barınaktan çıkmadan önce veya çıkar çıkmaz formu doldur — gözlemler hafızada tazeyken. "Ek notlar" alanına ankette yer almayan her şeyi yazabilirsin: kapasite taşması, altyapı sorunları, personelle konuşmalar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-cta">
+      <h2>Hazır mısın?</h2>
+      <p>Ziyaret etmek istediğin barınağı haritadan seç ve başla.</p>
+      <div class="about-cta-btns">
+        <button class="nav-btn primary" id="guide-btn-map" style="padding:10px 24px;font-size:13px">Haritaya dön</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCORING PAGE -->
+<div class="about-overlay" id="scoring-overlay">
+  <div class="about-nav">
+    <div class="about-nav-logo">Barınak<span>Watch</span></div>
+    <button class="about-close" id="btn-close-scoring">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <span>Haritaya dön</span>
+    </button>
+  </div>
+
+  <div class="about-hero">
+    <div class="about-eyebrow">Puanlama Sistemi</div>
+    <h1 class="about-title">Puan nasıl<br><em>hesaplanır</em>?</h1>
+    <p class="about-lead">Her ziyaret raporu, barınağın o anki koşullarını yansıtan bir durum puanı üretir. Puan 0 ile 100 arasındadır ve her ziyarette yeniden hesaplanır.</p>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-section">
+      <div class="about-section-label">Puan aralıkları</div>
+
+      <div class="score-tier" style="background:#E0525208;border:0.5px solid #E0525225">
+        <div class="score-tier-header">
+          <div class="score-tier-dot" style="background:var(--red)"></div>
+          <div>
+            <div class="score-tier-range" style="color:var(--red)">0 – 50</div>
+            <div class="score-tier-label" style="color:#791F1F">Kötü</div>
+          </div>
+        </div>
+        <p>Barınak ciddi sorunlar içeriyor. Temel ihtiyaçlar (su, yiyecek, güvenlik) karşılanmıyor veya istismar/ihmal belirtileri mevcut. Bu barınaklar için ilgili hayvan hakları kuruluşlarına otomatik uyarı gönderilir.</p>
+      </div>
+
+      <div class="score-tier" style="background:#E8B84B08;border:0.5px solid #E8B84B25">
+        <div class="score-tier-header">
+          <div class="score-tier-dot" style="background:var(--yellow)"></div>
+          <div>
+            <div class="score-tier-range" style="color:var(--yellow)">50 – 75</div>
+            <div class="score-tier-label" style="color:#633806">İyileştirmeli</div>
+          </div>
+        </div>
+        <p>Barınak temel standartların bir kısmını karşılıyor ancak önemli eksiklikler var. Koşullar acil tehlike oluşturmuyor ama düzeltilmesi gerekiyor. Sık ziyaret ve takip önerilir.</p>
+      </div>
+
+      <div class="score-tier" style="background:#4CAF7D08;border:0.5px solid #4CAF7D25">
+        <div class="score-tier-header">
+          <div class="score-tier-dot" style="background:var(--green)"></div>
+          <div>
+            <div class="score-tier-range" style="color:var(--green)">75 – 100</div>
+            <div class="score-tier-label" style="color:#27500A">İyi</div>
+          </div>
+        </div>
+        <p>Barınak temel standartları karşılıyor. Hayvanlar güvende, beslenmiş ve bakımlı. Bu barınakların iyi çalışmasını sürdürmesi için düzenli ziyaretlerle takip edilmesi önemlidir.</p>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label">Puan nasıl hesaplanır</div>
+      <h2>Her soru eşit ağırlıkta değil</h2>
+      <p>Anket 9 evet/hayır sorusu ve 1 temizlik puanından oluşur. Her sorunun katkısı hayvan refahına etkisiyle orantılıdır.</p>
+
+      <div class="score-breakdown">
+        <div class="score-breakdown-title">Evet = iyi olan sorular (her biri +10 puan)</div>
+        <div class="score-q-row"><span class="score-q-label">Hayvanlara temiz su veriliyor mu?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Yiyecek düzenli veriliyor mu?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Kafesler / bölmeler temiz mi?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Hayvanların yeterli alanı var mı?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Personel ziyaret sırasında mevcut muydu?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Personel ilgili ve iş birlikçi miydi?</span><span class="score-q-pts">+10</span></div>
+      </div>
+
+      <div class="score-breakdown" style="margin-top:10px">
+        <div class="score-breakdown-title">Hayır = iyi olan sorular (her biri +10 puan)</div>
+        <div class="score-q-row"><span class="score-q-label">Görünürde hasta ya da yaralı hayvan var mı?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Fiziksel istismar ya da ihmal belirtisi var mı?</span><span class="score-q-pts">+10</span></div>
+        <div class="score-q-row"><span class="score-q-label">Hayvanlar aşırı stres belirtisi gösteriyor mu?</span><span class="score-q-pts">+10</span></div>
+      </div>
+
+      <div class="score-breakdown" style="margin-top:10px">
+        <div class="score-breakdown-title">Temizlik puanı (1–5 arası seçim)</div>
+        <div class="score-q-row"><span class="score-q-label">1 puan seçilirse</span><span class="score-q-pts">+0</span></div>
+        <div class="score-q-row"><span class="score-q-label">2 puan seçilirse</span><span class="score-q-pts">+2.5</span></div>
+        <div class="score-q-row"><span class="score-q-label">3 puan seçilirse</span><span class="score-q-pts">+5</span></div>
+        <div class="score-q-row"><span class="score-q-label">4 puan seçilirse</span><span class="score-q-pts">+7.5</span></div>
+        <div class="score-q-row"><span class="score-q-label">5 puan seçilirse</span><span class="score-q-pts">+10</span></div>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-faint);margin-top:12px;line-height:1.6">Toplam maksimum: 100 puan (9 × 10 + 10). Sonuç 100 üzerinden hesaplanır ve yuvarlanır.</p>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label">Örnek hesaplama</div>
+      <h2>Gerçek bir senaryo</h2>
+      <p>Ziyaretçi barınakta su bulunduğunu, yiyeceğin düzenli verildiğini, ancak kafeslerin kirli olduğunu, alanın yetersiz olduğunu, hasta hayvanlar gördüğünü, istismar belirtisi olmadığını, stres belirtisi olduğunu, personelin mevcut ama işbirliksiz olduğunu ve temizliği 2 olarak değerlendirdiğini varsayalım.</p>
+
+      <div class="score-example">
+        <div class="score-example-header">Cevaplar ve puanlar</div>
+        <div class="score-example-row"><span>Temiz su → Evet</span><span style="color:var(--green);font-weight:500">+10</span></div>
+        <div class="score-example-row"><span>Yiyecek → Evet</span><span style="color:var(--green);font-weight:500">+10</span></div>
+        <div class="score-example-row"><span>Kafes temiz → Hayır</span><span style="color:var(--text-faint)">+0</span></div>
+        <div class="score-example-row"><span>Yeterli alan → Hayır</span><span style="color:var(--text-faint)">+0</span></div>
+        <div class="score-example-row"><span>Hasta hayvan yok → Hayır (var)</span><span style="color:var(--text-faint)">+0</span></div>
+        <div class="score-example-row"><span>İstismar yok → Evet (yok)</span><span style="color:var(--green);font-weight:500">+10</span></div>
+        <div class="score-example-row"><span>Stres yok → Hayır (var)</span><span style="color:var(--text-faint)">+0</span></div>
+        <div class="score-example-row"><span>Personel mevcut → Evet</span><span style="color:var(--green);font-weight:500">+10</span></div>
+        <div class="score-example-row"><span>Personel işbirlikçi → Hayır</span><span style="color:var(--text-faint)">+0</span></div>
+        <div class="score-example-row"><span>Temizlik puanı → 2</span><span style="color:var(--green);font-weight:500">+2.5</span></div>
+        <div class="score-example-row total"><span>Toplam</span><span style="color:var(--yellow)">42.5 → 43 / 100 — İyileştirmeli</span></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-section-label">Otomatik uyarı sistemi</div>
+      <h2>Kritik işaretler anında bildirilir</h2>
+      <p>Aşağıdaki sorulardan herhangi birinde olumsuz cevap verilirse sistem otomatik olarak İstanbul, Ankara ve diğer illerdeki hayvan hakları kuruluşlarını bilgilendirir:</p>
+      <ul class="guide-checklist" style="margin-top:12px">
+        <li>Hayvanlara temiz su verilmiyor</li>
+        <li>Görünürde hasta veya yaralı hayvan var</li>
+        <li>Fiziksel istismar veya ihmal belirtisi var</li>
+        <li>Hayvanlar aşırı stres belirtisi gösteriyor</li>
+      </ul>
+      <div class="guide-warn" style="margin-top:16px">
+        <div class="guide-warn-label">Önemli</div>
+        <p>Uyarı sisteminin etkili çalışması için kritik durumları doğru raporlaman gerekiyor. Emin olmadığın durumları ek notlar alanına yaz.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 </body>
