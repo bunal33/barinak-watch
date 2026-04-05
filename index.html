@@ -940,7 +940,7 @@ function openFeedback(){
 }
 function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');}
 
-function submitAddShelter(){
+async function submitAddShelter(){
   const email=document.getElementById('as-email').value.trim();
   const name=document.getElementById('as-name').value.trim();
   const province=document.getElementById('as-province').value.trim();
@@ -956,28 +956,41 @@ function submitAddShelter(){
   if(!lng||isNaN(parseFloat(lng))){document.getElementById('as-lng').classList.add('error');valid=false;}
   if(!source){document.getElementById('as-source').classList.add('error');valid=false;}
   if(!valid)return;
-  const YOUR_EMAIL='barinakwatch@gmail.com';
+
   const district=document.getElementById('as-district').value.trim();
   const address=document.getElementById('as-address').value.trim();
   const cap=document.getElementById('as-cap').value.trim();
   const op=document.getElementById('as-op').value.trim();
   const notes=document.getElementById('as-notes').value.trim();
-  const subject=encodeURIComponent('[Barınak Watch] New shelter: '+name);
-  const body=encodeURIComponent(
-    'NEW SHELTER SUBMISSION\n'+'='.repeat(40)+'\n\n'+
-    'Submitter: '+email+'\n'+
-    'Name: '+name+'\n'+
-    'Province: '+province+'\n'+
-    'District: '+(district||'—')+'\n'+
-    'Address: '+(address||'—')+'\n'+
-    'Lat: '+lat+' / Lng: '+lng+'\n'+
-    'Capacity: '+(cap||'—')+'\n'+
-    'Operator: '+(op||'—')+'\n'+
-    'Source: '+source+'\n'+
-    'Notes: '+(notes||'—')+'\n\n'+
-    'Reply to submitter at: '+email
-  );
-  window.open('mailto:'+YOUR_EMAIL+'?subject='+subject+'&body='+body);
+
+  const btn=document.getElementById('as-submit');
+  btn.textContent='Submitting...';
+  btn.disabled=true;
+
+  const { error } = await sb.from('shelter_submissions').insert({
+    submitted_by_email: email,
+    name,
+    city: province,
+    district: district||null,
+    address: address||null,
+    lat: parseFloat(lat),
+    lng: parseFloat(lng),
+    capacity: cap ? parseInt(cap) : null,
+    operator: op||null,
+    source,
+    notes: notes||null,
+    status: 'pending',
+  });
+
+  btn.textContent='Submit for review';
+  btn.disabled=false;
+
+  if(error){
+    document.getElementById('as-email').classList.add('error');
+    alert('Submission failed: '+error.message);
+    return;
+  }
+
   document.getElementById('add-shelter-form').style.display='none';
   document.getElementById('add-shelter-success').style.display='block';
   document.getElementById('as-success-msg').textContent=
