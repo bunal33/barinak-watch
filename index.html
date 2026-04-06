@@ -362,8 +362,6 @@ textarea.field-input{min-height:72px;resize:vertical;}
 
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-/* Search bar */
-.search-bar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--surface);border-bottom:0.5px solid var(--border);flex-shrink:0;}
 .search-wrap{position:relative;flex:1;max-width:340px;}
 .search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-faint);}
 .search-input{width:100%;padding:7px 10px 7px 32px;font-size:13px;font-family:var(--sans);color:var(--text);border:0.5px solid var(--border-mid);border-radius:8px;background:var(--bg);outline:none;transition:border-color 0.15s;}
@@ -471,14 +469,14 @@ textarea.field-input{min-height:72px;resize:vertical;}
       <div class="stat-item-lbl" data-en="No score yet" data-tr="Rapor yok">Rapor yok</div>
     </div>
   </div>
-</div>
-
-<div class="search-bar">
-  <div class="search-wrap">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input class="search-input" id="shelter-search" type="text" placeholder="Barınak ara..." autocomplete="off" data-en="Search shelters..." data-tr="Barınak ara...">
-    <button class="search-clear" id="search-clear">×</button>
-    <div class="search-results" id="search-results"></div>
+  <!-- Search -->
+  <div style="display:flex;align-items:center;padding:0 16px;margin-left:auto;flex-shrink:0;">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="shelter-search" type="text" placeholder="Barınak ara..." autocomplete="off" data-en="Search shelters..." data-tr="Barınak ara..." style="width:200px;">
+      <button class="search-clear" id="search-clear">×</button>
+      <div class="search-results" id="search-results"></div>
+    </div>
   </div>
 </div>
 
@@ -796,8 +794,6 @@ async function loadProvinces() {
 loadProvinces();
 
 map.fitBounds([[35.8,25.6],[42.1,44.8]],{padding:[20,20]});
-renderStats();
-
 // Province name labels — hardcoded coordinates, no GeoJSON dependency
 PROVINCE_LABELS.forEach(([name,lat,lng])=>{
   L.tooltip({permanent:true,direction:'center',className:'city-label',offset:[0,0]})
@@ -915,13 +911,13 @@ async function loadShelters(){
   }
 
   renderMarkers();
-  updateStats();
+  renderStats();
 }
 
 function showFallbackShelters() {
   // Keep SHELTERS empty — map will just be empty
   renderMarkers();
-  updateStats();
+  renderStats();
 }
 
 function renderMarkers() {
