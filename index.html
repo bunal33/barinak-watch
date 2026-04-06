@@ -378,6 +378,87 @@ textarea.field-input{min-height:72px;resize:vertical;}
 .search-result-city{font-size:11px;color:var(--text-faint);}
 .search-result-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .search-no-results{padding:14px;font-size:13px;color:var(--text-faint);text-align:center;}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+
+  /* Nav — compact */
+  nav { padding: 10px 14px; gap: 8px; }
+  .nav-right { gap: 6px; }
+  .nav-btn:not(.primary):not(#btn-login):not(#btn-about) { display: none; }
+  #btn-about { display: none; }
+  .lang-toggle { display: none; }
+
+  /* Stats bar — scrollable, smaller */
+  .stats-bar { font-size: 11px; }
+  .stats-bar-header { padding: 0 10px; gap: 6px; }
+  .stats-bar-title { font-size: 10px; }
+  .stat-group-label { padding: 0 8px; font-size: 8px; }
+  .stat-item { padding: 8px 10px; min-width: 58px; }
+  .stat-item-num { font-size: 18px; }
+  .stat-item-lbl { font-size: 9px; }
+
+  /* Search bar */
+  .search-bar { padding: 7px 12px; }
+  .search-input { font-size: 13px; }
+
+  /* App — stack vertically, map on top */
+  .app { flex-direction: column; }
+
+  /* Map — fixed height on mobile */
+  #map { flex: none; height: 100%; min-height: 0; }
+
+  /* Side panel — slide up from bottom as a drawer */
+  .side-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    border-left: none;
+    border-top: 0.5px solid var(--border);
+    border-radius: 16px 16px 0 0;
+    z-index: 500;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow-y: auto;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+  }
+
+  .side-panel.mobile-open {
+    transform: translateY(0);
+  }
+
+  /* Drawer handle */
+  .side-panel::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: var(--border-mid);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+
+  /* Map legend — smaller on mobile */
+  .map-legend {
+    bottom: 16px;
+    left: 16px;
+    padding: 10px 12px;
+  }
+  .leg-mode-btn { font-size: 10px; padding: 4px 5px; }
+  .leg-row { font-size: 10px; }
+
+  /* Panel empty state — hide on mobile until opened */
+  .panel-empty { display: none; }
+
+  /* Visit form modal */
+  .modal { max-height: 95vh; margin-top: auto; border-radius: 16px 16px 0 0; }
+  .overlay { padding: 0; align-items: flex-end; }
+}
 </style>
 </head>
 <body>
@@ -698,14 +779,12 @@ const COL={green:"#4CAF7D",yellow:"#E8B84B",red:"#E05252",gray:"#9B9B9B"};
 function renderStats() {
   const counts = {green:0, yellow:0, red:0, gray:0};
   const scores = {'score-good':0, 'score-mid':0, 'score-bad':0, 'score-none':0};
-  console.log('renderStats: SHELTERS.length=', SHELTERS.length, 'sample:', SHELTERS[0]);
   SHELTERS.forEach(s => {
     const ds = statusFromDays(s.days);
     const ss = scoreStatus(s);
     counts[ds] = (counts[ds]||0) + 1;
     scores[ss] = (scores[ss]||0) + 1;
   });
-  console.log('counts:', counts, 'scores:', scores);
   document.getElementById('stat-total').textContent = SHELTERS.length;
   document.getElementById('stat-green').textContent = counts.green;
   document.getElementById('stat-yellow').textContent = counts.yellow;
@@ -855,8 +934,6 @@ async function loadShelters(){
 
   loadingDiv.remove();
 
-  console.log('Supabase response:', { data, error });
-
   if (error) {
     console.error('Shelter load error:', error);
     showFallbackShelters();
@@ -868,8 +945,6 @@ async function loadShelters(){
     showFallbackShelters();
     return;
   }
-
-  console.log('First shelter row:', data[0]);
 
   // Map Supabase columns to app format
   SHELTERS.length = 0;
@@ -1871,6 +1946,35 @@ function pickSearchResult(id) {
 
 // Make pickSearchResult globally accessible
 window.pickSearchResult = pickSearchResult;
+
+
+// ── Mobile panel ──────────────────────────────────────────────────────────────
+function isMobile() { return window.innerWidth <= 768; }
+
+// Patch selectShelter to open drawer on mobile
+const _origSelectShelter = selectShelter;
+selectShelter = function(id) {
+  _origSelectShelter(id);
+  if (isMobile()) {
+    document.querySelector('.side-panel').classList.add('mobile-open');
+  }
+};
+
+// Close panel when tapping the map on mobile
+map.on('click', function() {
+  if (isMobile()) {
+    document.querySelector('.side-panel').classList.remove('mobile-open');
+  }
+});
+
+// Close panel by swiping down
+let touchStartY = 0;
+const panel = document.querySelector('.side-panel');
+panel.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+panel.addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].clientY - touchStartY;
+  if (diff > 60) panel.classList.remove('mobile-open');
+}, { passive: true });
 
 
 // Shelters loaded via loadShelters() which calls updateStats()
