@@ -408,27 +408,24 @@ textarea.field-input{min-height:72px;resize:vertical;}
   /* Map — fixed height on mobile */
   #map { flex: none; height: 100%; min-height: 0; }
 
-  /* Side panel — slide up from bottom as a drawer */
+  /* Side panel — draggable bottom sheet */
   .side-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: auto;
-    max-height: 70vh;
+    height: 42vh;
+    max-height: 92vh;
     border-left: none;
     border-top: 0.5px solid var(--border);
     border-radius: 16px 16px 0 0;
     z-index: 500;
     transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
     overflow-y: auto;
     box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
-  }
-
-  .side-panel.mobile-open {
-    transform: translateY(0);
+    will-change: transform, height;
+    overscroll-behavior: contain;
   }
 
   /* Drawer handle */
@@ -439,8 +436,9 @@ textarea.field-input{min-height:72px;resize:vertical;}
     height: 4px;
     background: var(--border-mid);
     border-radius: 2px;
-    margin: 10px auto 0;
+    margin: 10px auto 6px;
     flex-shrink: 0;
+    cursor: grab;
   }
 
   /* Map legend — smaller on mobile */
@@ -1951,30 +1949,99 @@ window.pickSearchResult = pickSearchResult;
 // ── Mobile panel ──────────────────────────────────────────────────────────────
 function isMobile() { return window.innerWidth <= 768; }
 
+const panel = document.querySelector('.side-panel');
+
+// Snap positions: 'closed' | 'peek' | 'full'
+// peek  = 40% height (see summary)
+// full  = 85% height (scroll visit history)
+let panelState = 'closed';
+const PEEK_H = 0.42;  // fraction of screen height
+const FULL_H = 0.85;
+
+function setPanelState(state, animate = true) {
+  panelState = state;
+  if (!animate) panel.style.transition = 'none';
+  else panel.style.transition = 'transform 0.32s cubic-bezier(0.32,0.72,0,1), height 0.32s cubic-bezier(0.32,0.72,0,1)';
+
+  if (state === 'closed') {
+    panel.style.transform = 'translateY(100%)';
+    panel.style.height = (PEEK_H * window.innerHeight) + 'px';
+  } else if (state === 'peek') {
+    panel.style.transform = 'translateY(0)';
+    panel.style.height = (PEEK_H * window.innerHeight) + 'px';
+  } else if (state === 'full') {
+    panel.style.transform = 'translateY(0)';
+    panel.style.height = (FULL_H * window.innerHeight) + 'px';
+  }
+
+  if (!animate) requestAnimationFrame(() => { panel.style.transition = ''; });
+}
+
 // Patch selectShelter to open drawer on mobile
 const _origSelectShelter = selectShelter;
 selectShelter = function(id) {
   _origSelectShelter(id);
-  if (isMobile()) {
-    document.querySelector('.side-panel').classList.add('mobile-open');
-  }
+  if (isMobile()) setPanelState('peek');
 };
 
 // Close panel when tapping the map on mobile
 map.on('click', function() {
-  if (isMobile()) {
-    document.querySelector('.side-panel').classList.remove('mobile-open');
-  }
+  if (isMobile() && panelState !== 'closed') setPanelState('closed');
 });
 
-// Close panel by swiping down
-let touchStartY = 0;
-const panel = document.querySelector('.side-panel');
-panel.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
-panel.addEventListener('touchend', e => {
-  const diff = e.changedTouches[0].clientY - touchStartY;
-  if (diff > 60) panel.classList.remove('mobile-open');
+// Drag handle — drag to resize
+let dragStartY = 0;
+let dragStartH = 0;
+let isDragging = false;
+
+panel.addEventListener('touchstart', e => {
+  // Only drag from the handle area (top 40px)
+  const touch = e.touches[0];
+  const panelTop = panel.getBoundingClientRect().top;
+  if (touch.clientY - panelTop > 44) return; // not the handle
+  isDragging = true;
+  dragStartY = touch.clientY;
+  dragStartH = panel.getBoundingClientRect().height;
+  panel.style.transition = 'none';
 }, { passive: true });
+
+panel.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const dy = dragStartY - e.touches[0].clientY; // positive = dragging up
+  const newH = Math.min(Math.max(dragStartH + dy, 80), window.innerHeight * 0.92);
+  panel.style.height = newH + 'px';
+  panel.style.transform = 'translateY(0)';
+}, { passive: true });
+
+panel.addEventListener('touchend', e => {
+  if (!isDragging) return;
+  isDragging = false;
+  const currentH = panel.getBoundingClientRect().height;
+  const vh = window.innerHeight;
+  // Snap to nearest state
+  if (currentH < vh * 0.2) {
+    setPanelState('closed');
+  } else if (currentH < vh * 0.62) {
+    setPanelState('peek');
+  } else {
+    setPanelState('full');
+  }
+}, { passive: true });
+
+// Handle tap on the handle bar to toggle between peek and full
+panel.addEventListener('click', e => {
+  if (!isMobile()) return;
+  const panelTop = panel.getBoundingClientRect().top;
+  if (e.clientY - panelTop > 44) return; // not the handle
+  if (panelState === 'peek') setPanelState('full');
+  else if (panelState === 'full') setPanelState('peek');
+});
+
+// Init closed
+if (isMobile()) setPanelState('closed', false);
+window.addEventListener('resize', () => {
+  if (isMobile()) setPanelState(panelState, false);
+});
 
 
 // Shelters loaded via loadShelters() which calls updateStats()
