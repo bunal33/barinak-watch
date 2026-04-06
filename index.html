@@ -330,6 +330,37 @@ textarea.field-input{min-height:72px;resize:vertical;}
 .score-example-row{display:flex;justify-content:space-between;padding:8px 16px;font-size:12px;border-bottom:0.5px solid var(--border);}
 .score-example-row:last-child{border-bottom:none;}
 .score-example-row.total{font-weight:500;background:var(--bg);}
+
+/* Bottom-right stats panel */
+.map-stats{
+  position:absolute;bottom:28px;right:28px;z-index:500;
+  background:var(--surface);border:0.5px solid var(--border);
+  border-radius:10px;padding:12px 16px;pointer-events:none;
+  min-width:200px;
+}
+.stats-title{font-size:10px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+.stats-section{margin-bottom:10px;}
+.stats-section:last-child{margin-bottom:0;}
+.stats-section-label{font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;padding-bottom:4px;border-bottom:0.5px solid var(--border);}
+.stat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 0;}
+.stat-row-left{display:flex;align-items:center;gap:6px;}
+.stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.stat-label{font-size:11px;color:var(--text-mid);}
+.stat-num{font-size:11px;font-weight:500;color:var(--text);}
+
+/* Stats bar */
+.stats-bar{display:flex;align-items:stretch;background:var(--surface);border-bottom:0.5px solid var(--border);flex-shrink:0;overflow-x:auto;}
+.stats-bar::-webkit-scrollbar{display:none;}
+.stats-bar-header{display:flex;align-items:center;gap:10px;padding:0 18px;border-right:0.5px solid var(--border);flex-shrink:0;background:var(--bg);}
+.stats-bar-title{font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;}
+.stat-group{display:flex;align-items:stretch;border-right:0.5px solid var(--border);flex-shrink:0;}
+.stat-group:last-child{border-right:none;}
+.stat-group-label{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-faint);writing-mode:horizontal-tb;display:flex;align-items:center;padding:0 10px;border-right:0.5px solid var(--border);background:var(--bg);}
+.stat-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 18px;gap:4px;min-width:80px;}
+.stat-item-num{font-size:24px;font-weight:500;line-height:1;}
+.stat-item-lbl{font-size:10px;color:var(--text-faint);text-align:center;white-space:nowrap;}
+
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -373,17 +404,65 @@ textarea.field-input{min-height:72px;resize:vertical;}
   <span id="pending-text">Your account is pending approval. You can browse the map but cannot submit visits yet.</span>
 </div>
 
+<div class="stats-bar" id="stats-bar">
+  <div class="stats-bar-header">
+    <svg class="stats-bar-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span class="stats-bar-title" data-en="Network overview" data-tr="Genel İstatistikler">Genel İstatistikler</span>
+  </div>
+  <div class="stat-group">
+    <div class="stat-item" style="background:var(--bg);border-right:0.5px solid var(--border)">
+      <div class="stat-item-num" id="stat-total" style="color:var(--text)">—</div>
+      <div class="stat-item-lbl" data-en="Total shelters" data-tr="Toplam barınak">Toplam barınak</div>
+    </div>
+  </div>
+  <div class="stat-group">
+    <div class="stat-group-label" data-en="Visit date" data-tr="Ziyaret tarihi">Ziyaret tarihi</div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-green" style="color:var(--green)">—</div>
+      <div class="stat-item-lbl" data-en="1–2 weeks" data-tr="1–2 hafta">1–2 hafta</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-yellow" style="color:var(--yellow)">—</div>
+      <div class="stat-item-lbl" data-en="3–4 weeks" data-tr="3–4 hafta">3–4 hafta</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-red" style="color:var(--red)">—</div>
+      <div class="stat-item-lbl" data-en="1+ month" data-tr="1+ ay">1+ ay</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-gray" style="color:var(--gray)">—</div>
+      <div class="stat-item-lbl" data-en="Never visited" data-tr="Hiç ziyaret yok">Hiç ziyaret yok</div>
+    </div>
+  </div>
+  <div class="stat-group">
+    <div class="stat-group-label" data-en="Condition" data-tr="Durum puanı">Durum puanı</div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-good" style="color:var(--green)">—</div>
+      <div class="stat-item-lbl" data-en="Good (75+)" data-tr="İyi (75+)">İyi (75+)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-mid" style="color:var(--yellow)">—</div>
+      <div class="stat-item-lbl" data-en="Needs work" data-tr="İyileştirmeli">İyileştirmeli</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-bad" style="color:var(--red)">—</div>
+      <div class="stat-item-lbl" data-en="Poor (0–50)" data-tr="Kötü (0–50)">Kötü (0–50)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num" id="stat-noscore" style="color:var(--gray)">—</div>
+      <div class="stat-item-lbl" data-en="No score yet" data-tr="Rapor yok">Rapor yok</div>
+    </div>
+  </div>
+</div>
+
 <div class="app">
   <div id="map"></div>
 
   <div class="map-legend">
-    <!-- Mode toggle -->
     <div class="leg-mode-row">
       <button class="leg-mode-btn active" id="mode-btn-date" onclick="setLegendMode('date')" data-en="Visit date" data-tr="Ziyaret tarihi">Ziyaret tarihi</button>
       <button class="leg-mode-btn" id="mode-btn-score" onclick="setLegendMode('score')" data-en="Condition" data-tr="Durum puanı">Durum puanı</button>
     </div>
-
-    <!-- Date filters -->
     <div id="legend-date">
       <div class="leg-row filter-row active" data-filter="green" onclick="toggleFilter('green')">
         <div class="leg-dot" style="background:var(--green)"></div>
@@ -406,8 +485,6 @@ textarea.field-input{min-height:72px;resize:vertical;}
         <span class="leg-check">✓</span>
       </div>
     </div>
-
-    <!-- Score filters -->
     <div id="legend-score" style="display:none">
       <div class="leg-row filter-row active" data-filter="score-good" onclick="toggleFilter('score-good')">
         <div class="leg-dot" style="background:var(--green)"></div>
@@ -567,35 +644,27 @@ const LANG={current:'tr'};
 let selId=null,fstep=1;
 const ans={};
 
-const SHELTERS=[
-  {id:1,name:"İstanbul Pendik Barınağı",city:"İstanbul",lat:40.870,lng:29.260,days:3,cap:350,lv:"3 days ago",lvtr:"3 gün önce",score:82,vis:14,alts:1,
-   hist:[{s:82,d:"Apr 2, 2026",n:"Good overall. Water bowls full. Minor cleanliness issues in section B."},{s:78,d:"Mar 25, 2026",n:"Staff present, cooperative. 2 dogs showing stress."},{s:74,d:"Mar 18, 2026",n:"Food adequate. Needs better ventilation."}]},
-  {id:2,name:"Ankara Mamak Barınağı",city:"Ankara",lat:39.920,lng:32.950,days:18,cap:280,lv:"18 days ago",lvtr:"18 gün önce",score:61,vis:9,alts:2,
-   hist:[{s:61,d:"Mar 18, 2026",n:"Understaffed. Several cages overcrowded."},{s:55,d:"Mar 5, 2026",n:"Food irregular. 3 sick animals observed."},{s:68,d:"Feb 20, 2026",n:"Improvement since last visit."}]},
-  {id:3,name:"İzmir Çiğli Barınağı",city:"İzmir",lat:38.490,lng:27.030,days:5,cap:220,lv:"5 days ago",lvtr:"5 gün önce",score:75,vis:11,alts:0,
-   hist:[{s:75,d:"Mar 31, 2026",n:"Clean facility. Animals calm and well-fed."},{s:72,d:"Mar 24, 2026",n:"One injured cat, receiving care on-site."},{s:80,d:"Mar 17, 2026",n:"Best conditions seen in region."}]},
-  {id:4,name:"Bursa Büyükşehir Barınağı",city:"Bursa",lat:40.190,lng:29.060,days:45,cap:400,lv:"45 days ago",lvtr:"45 gün önce",score:28,vis:5,alts:3,
-   hist:[{s:28,d:"Feb 19, 2026",n:"Severe overcrowding. No fresh water in 2 sections. Alert sent."},{s:34,d:"Feb 5, 2026",n:"Signs of abuse reported. Contacted HAYTAP."},{s:41,d:"Jan 22, 2026",n:"Poor conditions but staff present."}]},
-  {id:5,name:"Adana Büyükşehir Barınağı",city:"Adana",lat:37.000,lng:35.320,days:14,cap:310,lv:"14 days ago",lvtr:"14 gün önce",score:55,vis:7,alts:1,
-   hist:[{s:55,d:"Mar 22, 2026",n:"Mixed conditions. New staff seem untrained."},{s:60,d:"Mar 8, 2026",n:"Food OK. Space tight."},{s:48,d:"Feb 22, 2026",n:"Alert sent for lack of vet care."}]},
-  {id:6,name:"Konya Selçuklu Barınağı",city:"Konya",lat:37.870,lng:32.490,days:38,cap:180,lv:"38 days ago",lvtr:"38 gün önce",score:34,vis:4,alts:2,
-   hist:[{s:34,d:"Feb 27, 2026",n:"Very poor. Animals in distress. Alert sent."},{s:39,d:"Feb 10, 2026",n:"Cages filthy. No staff found during visit."},{s:45,d:"Jan 28, 2026",n:"Declining conditions."}]},
-  {id:7,name:"Trabzon Büyükşehir Barınağı",city:"Trabzon",lat:41.002,lng:39.720,days:null,cap:120,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
-  {id:8,name:"Erzurum Barınağı",city:"Erzurum",lat:39.910,lng:41.270,days:null,cap:90,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
-  {id:9,name:"Diyarbakır Barınağı",city:"Diyarbakır",lat:37.910,lng:40.230,days:52,cap:260,lv:"52 days ago",lvtr:"52 gün önce",score:22,vis:3,alts:4,
-   hist:[{s:22,d:"Feb 13, 2026",n:"Critical. Starvation signs. Multiple alerts sent."},{s:30,d:"Jan 30, 2026",n:"Water supply cut off. Emergency reported."},{s:35,d:"Jan 15, 2026",n:"Severely understaffed."}]},
-  {id:10,name:"Antalya Büyükşehir Barınağı",city:"Antalya",lat:36.890,lng:30.700,days:2,cap:195,lv:"2 days ago",lvtr:"2 gün önce",score:88,vis:18,alts:0,
-   hist:[{s:88,d:"Apr 3, 2026",n:"Excellent conditions. Model facility."},{s:85,d:"Mar 27, 2026",n:"All animals fed and healthy."},{s:90,d:"Mar 20, 2026",n:"New vet on staff — huge improvement."}]},
-  {id:11,name:"Mersin Yenişehir Barınağı",city:"Mersin",lat:36.800,lng:34.630,days:4,cap:230,lv:"4 days ago",lvtr:"4 gün önce",score:30,vis:7,alts:2,
-   hist:[{s:30,d:"Apr 1, 2026",n:"Critical conditions. Severe overcrowding, animals visibly distressed. No clean water in multiple sections. Alert sent."},{s:58,d:"Mar 20, 2026",n:"Adequate but overcrowded."},{s:62,d:"Mar 6, 2026",n:"Food supply improved since last alert."},{s:44,d:"Feb 20, 2026",n:"Alert sent — no water in cat section."}]},
-  {id:12,name:"Gaziantep Barınağı",city:"Gaziantep",lat:37.060,lng:37.380,days:null,cap:150,lv:null,lvtr:null,score:null,vis:0,alts:0,hist:[]},
-  {id:13,name:"Samsun Büyükşehir Barınağı",city:"Samsun",lat:41.286,lng:36.330,days:20,cap:170,lv:"20 days ago",lvtr:"20 gün önce",score:60,vis:5,alts:1,
-   hist:[{s:60,d:"Mar 16, 2026",n:"Reasonable conditions. Overcrowded in winter."},{s:55,d:"Mar 2, 2026",n:"Heating issues in shelter."}]},
-  {id:14,name:"Kayseri Büyükşehir Barınağı",city:"Kayseri",lat:38.730,lng:35.480,days:40,cap:200,lv:"40 days ago",lvtr:"40 gün önce",score:30,vis:3,alts:3,
-   hist:[{s:30,d:"Feb 25, 2026",n:"Critical. No food observed. Alert sent."},{s:38,d:"Feb 11, 2026",n:"Sick animals left without care."}]},
-]
+let SHELTERS=[];
 
 const COL={green:"#4CAF7D",yellow:"#E8B84B",red:"#E05252",gray:"#9B9B9B"};
+
+function renderStats() {
+  const counts = {green:0, yellow:0, red:0, gray:0};
+  const scores = {'score-good':0, 'score-mid':0, 'score-bad':0, 'score-none':0};
+  SHELTERS.forEach(s => {
+    counts[statusFromDays(s.days)] = (counts[statusFromDays(s.days)]||0) + 1;
+    scores[scoreStatus(s)] = (scores[scoreStatus(s)]||0) + 1;
+  });
+  document.getElementById('stat-total').textContent = SHELTERS.length;
+  document.getElementById('stat-green').textContent = counts.green;
+  document.getElementById('stat-yellow').textContent = counts.yellow;
+  document.getElementById('stat-red').textContent = counts.red;
+  document.getElementById('stat-gray').textContent = counts.gray;
+  document.getElementById('stat-good').textContent = scores['score-good'];
+  document.getElementById('stat-mid').textContent = scores['score-mid'];
+  document.getElementById('stat-bad').textContent = scores['score-bad'];
+  document.getElementById('stat-noscore').textContent = scores['score-none'];
+}
 const SLB={
   green:{en:"Visited in last 1–2 weeks",tr:"Son 1–2 haftada ziyaret edildi"},
   yellow:{en:"Visited 3–4 weeks ago",tr:"3–4 hafta önce ziyaret edildi"},
@@ -679,6 +748,7 @@ async function loadProvinces() {
 loadProvinces();
 
 map.fitBounds([[35.8,25.6],[42.1,44.8]],{padding:[20,20]});
+renderStats();
 
 // Province name labels — hardcoded coordinates, no GeoJSON dependency
 PROVINCE_LABELS.forEach(([name,lat,lng])=>{
@@ -720,15 +790,107 @@ function scoreColor(s) {
 function markerColor(s){ return legendMode==='score' ? scoreColor(s) : COL[statusFromDays(s.days)]; }
 
 const markers={};
-SHELTERS.forEach(s=>{
-  markers[s.id]=L.marker([s.lat,s.lng],{icon:mkIcon(markerColor(s)),zIndexOffset:1000})
-    .addTo(map).on('click',()=>selectShelter(s.id));
-});
+
+async function loadShelters(){
+  // Show loading indicator
+  const loadingDiv = document.createElement('div');
+  loadingDiv.id='map-loading';
+  loadingDiv.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999;background:var(--surface);padding:14px 20px;border-radius:10px;border:0.5px solid var(--border);font-size:13px;color:var(--text-mid);display:flex;align-items:center;gap:8px;';
+  loadingDiv.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Barınaklar yükleniyor...';
+  document.querySelector('.app').appendChild(loadingDiv);
+
+  const { data, error } = await sb
+    .from('shelters')
+    .select('*')
+    .order('name');
+
+  loadingDiv.remove();
+
+  console.log('Supabase response:', { data, error });
+
+  if (error) {
+    console.error('Shelter load error:', error);
+    showFallbackShelters();
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    console.warn('No shelters in database, using fallback data');
+    showFallbackShelters();
+    return;
+  }
+
+  console.log('First shelter row:', data[0]);
+
+  // Map Supabase columns to app format
+  SHELTERS.length = 0;
+  data.forEach(row => {
+    SHELTERS.push({
+      id: row.id,
+      name: row.name,
+      city: row.city || '',
+      lat: parseFloat(row.lat),
+      lng: parseFloat(row.lng),
+      days: row.last_visit_days !== null ? parseInt(row.last_visit_days) : null,
+      cap: row.capacity || '—',
+      lv: row.last_visit_days !== null ? row.last_visit_days + ' days ago' : null,
+      lvtr: row.last_visit_days !== null ? row.last_visit_days + ' gün önce' : null,
+      score: row.score !== null ? parseFloat(row.score) : null,
+      vis: row.visit_count || 0,
+      alts: row.alert_count || 0,
+      hist: [],
+    });
+  });
+
+  // Load visit history for each shelter
+  const { data: visits } = await sb
+    .from('visits')
+    .select('shelter_id, score, created_at, notes, username, hayvandostu')
+    .order('created_at', { ascending: false });
+
+  if (visits) {
+    visits.forEach(v => {
+      if (!v.shelter_id) return;
+      const shelter = SHELTERS.find(s => String(s.id) === String(v.shelter_id));
+      if (!shelter) return;
+      if (shelter.hist.length >= 5) return;
+      const date = new Date(v.created_at);
+      const formatted = date.toLocaleDateString('tr-TR', { day:'numeric', month:'short', year:'numeric' });
+      shelter.hist.push({
+        s: Math.round(v.score || 0),
+        d: formatted,
+        n: v.notes || '',
+        username: v.username || null,
+        hayvandostu: v.hayvandostu || false,
+      });
+    });
+  }
+
+  renderMarkers();
+  updateStats();
+}
+
+function showFallbackShelters() {
+  // Keep SHELTERS empty — map will just be empty
+  renderMarkers();
+  updateStats();
+}
+
+function renderMarkers() {
+  // Clear existing markers
+  Object.values(markers).forEach(m => { if(map.hasLayer(m)) map.removeLayer(m); });
+  Object.keys(markers).forEach(k => delete markers[k]);
+
+  SHELTERS.forEach(s=>{
+    markers[s.id]=L.marker([s.lat,s.lng],{icon:mkIcon(markerColor(s)),zIndexOffset:1000})
+      .addTo(map).on('click',()=>selectShelter(s.id));
+  });
+}
 
 function selectShelter(id){
   selId=id;
   const s=SHELTERS.find(x=>x.id===id);
-  SHELTERS.forEach(sh=>markers[sh.id].setIcon(mkIcon(COL[statusFromDays(sh.days)],sh.id===id)));
+  SHELTERS.forEach(sh=>markers[sh.id].setIcon(mkIcon(markerColor(sh),sh.id===id)));
   document.getElementById('panel-empty').style.display='none';
   document.getElementById('shelter-info').classList.add('visible');
   const col=COL[statusFromDays(s.days)];
@@ -746,7 +908,7 @@ function selectShelter(id){
   else{sn.textContent='—';sf.style.width='0%';}
   const vl=document.getElementById('visit-list');
   vl.innerHTML='';
-  if(!s.hist.length){vl.innerHTML=`<div style="font-size:12px;color:var(--text-faint);padding:12px 0">${LANG.current==='en'?'No visits recorded yet.':'Henüz ziyaret kaydı yok.'}</div>`;}
+  if(!s||!s.hist||!s.hist.length){vl.innerHTML=`<div style="font-size:12px;color:var(--text-faint);padding:12px 0">${LANG.current==='en'?'No visits recorded yet.':'Henüz ziyaret kaydı yok.'}</div>`;}
   else s.hist.forEach(v=>{
     const sc=v.s>=75?'#4CAF7D':v.s>=50?'#E8B84B':'#E05252';
     const submitter = v.username ? `<span style="font-size:10px;color:var(--text-faint);margin-left:6px">${v.username}</span>` : '';
@@ -1553,7 +1715,32 @@ document.getElementById('btn-close-scoring').addEventListener('click', () => {
   document.getElementById('scoring-overlay').classList.remove('open');
 });
 
+// ── Stats bar ─────────────────────────────────────────────────────────────────
+function updateStats() {
+  const counts = {green:0, yellow:0, red:0, gray:0, good:0, mid:0, bad:0, noscore:0};
+  SHELTERS.forEach(s => {
+    // Visit date
+    counts[statusFromDays(s.days)] = (counts[statusFromDays(s.days)] || 0) + 1;
+    // Score
+    const ss = scoreStatus(s);
+    if (ss === 'score-good') counts.good++;
+    else if (ss === 'score-mid') counts.mid++;
+    else if (ss === 'score-bad') counts.bad++;
+    else counts.noscore++;
+  });
+  document.getElementById('stat-green').textContent   = counts.green;
+  document.getElementById('stat-yellow').textContent  = counts.yellow;
+  document.getElementById('stat-red').textContent     = counts.red;
+  document.getElementById('stat-gray').textContent    = counts.gray;
+  document.getElementById('stat-good').textContent    = counts.good;
+  document.getElementById('stat-mid').textContent     = counts.mid;
+  document.getElementById('stat-bad').textContent     = counts.bad;
+  document.getElementById('stat-noscore').textContent = counts.noscore;
+}
+// Shelters loaded via loadShelters() which calls updateStats()
+
 // Init
+loadShelters();
 initAuth();
 
 });
