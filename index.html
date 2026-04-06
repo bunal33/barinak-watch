@@ -698,10 +698,14 @@ const COL={green:"#4CAF7D",yellow:"#E8B84B",red:"#E05252",gray:"#9B9B9B"};
 function renderStats() {
   const counts = {green:0, yellow:0, red:0, gray:0};
   const scores = {'score-good':0, 'score-mid':0, 'score-bad':0, 'score-none':0};
+  console.log('renderStats: SHELTERS.length=', SHELTERS.length, 'sample:', SHELTERS[0]);
   SHELTERS.forEach(s => {
-    counts[statusFromDays(s.days)] = (counts[statusFromDays(s.days)]||0) + 1;
-    scores[scoreStatus(s)] = (scores[scoreStatus(s)]||0) + 1;
+    const ds = statusFromDays(s.days);
+    const ss = scoreStatus(s);
+    counts[ds] = (counts[ds]||0) + 1;
+    scores[ss] = (scores[ss]||0) + 1;
   });
+  console.log('counts:', counts, 'scores:', scores);
   document.getElementById('stat-total').textContent = SHELTERS.length;
   document.getElementById('stat-green').textContent = counts.green;
   document.getElementById('stat-yellow').textContent = counts.yellow;
