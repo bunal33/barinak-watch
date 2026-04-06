@@ -361,6 +361,24 @@ textarea.field-input{min-height:72px;resize:vertical;}
 .stat-item-lbl{font-size:10px;color:var(--text-faint);text-align:center;white-space:nowrap;}
 
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Search bar */
+.search-bar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--surface);border-bottom:0.5px solid var(--border);flex-shrink:0;}
+.search-wrap{position:relative;flex:1;max-width:340px;}
+.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-faint);}
+.search-input{width:100%;padding:7px 10px 7px 32px;font-size:13px;font-family:var(--sans);color:var(--text);border:0.5px solid var(--border-mid);border-radius:8px;background:var(--bg);outline:none;transition:border-color 0.15s;}
+.search-input:focus{border-color:var(--green);background:var(--surface);}
+.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-faint);font-size:16px;line-height:1;padding:0;display:none;}
+.search-clear.on{display:block;}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:0.5px solid var(--border-mid);border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.12);z-index:600;max-height:280px;overflow-y:auto;display:none;}
+.search-results.open{display:block;}
+.search-result-item{padding:10px 14px;cursor:pointer;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background 0.12s;}
+.search-result-item:last-child{border-bottom:none;}
+.search-result-item:hover{background:var(--bg);}
+.search-result-name{font-size:13px;font-weight:500;color:var(--text);}
+.search-result-city{font-size:11px;color:var(--text-faint);}
+.search-result-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.search-no-results{padding:14px;font-size:13px;color:var(--text-faint);text-align:center;}
 </style>
 </head>
 <body>
@@ -452,6 +470,15 @@ textarea.field-input{min-height:72px;resize:vertical;}
       <div class="stat-item-num" id="stat-noscore" style="color:var(--gray)">—</div>
       <div class="stat-item-lbl" data-en="No score yet" data-tr="Rapor yok">Rapor yok</div>
     </div>
+  </div>
+</div>
+
+<div class="search-bar">
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="search-input" id="shelter-search" type="text" placeholder="Barınak ara..." autocomplete="off" data-en="Search shelters..." data-tr="Barınak ara...">
+    <button class="search-clear" id="search-clear">×</button>
+    <div class="search-results" id="search-results"></div>
   </div>
 </div>
 
@@ -1124,21 +1151,17 @@ function openFeedback(){
 function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');}
 
 async function submitAddShelter(){
-  const email=document.getElementById('as-email').value.trim();
   const name=document.getElementById('as-name').value.trim();
-  const province=document.getElementById('as-province').value.trim();
+  const province=document.getElementById('as-province').value;
   const lat=document.getElementById('as-lat').value.trim();
   const lng=document.getElementById('as-lng').value.trim();
   const source=document.getElementById('as-source').value.trim();
   let valid=true;
   document.querySelectorAll('#add-shelter-modal .field-input').forEach(i=>i.classList.remove('error'));
-  if(!email||!email.includes('@')){document.getElementById('as-email').classList.add('error');valid=false;}
   if(!name){document.getElementById('as-name').classList.add('error');valid=false;}
-  if(!province){document.getElementById('as-province').classList.add('error');valid=false;}
-  if(!lat||isNaN(parseFloat(lat))){document.getElementById('as-lat').classList.add('error');valid=false;}
-  if(!lng||isNaN(parseFloat(lng))){document.getElementById('as-lng').classList.add('error');valid=false;}
-  if(!source){document.getElementById('as-source').classList.add('error');valid=false;}
   if(!valid)return;
+  // Use logged-in user's email
+  const email = AUTH.user ? AUTH.user.email : '';
 
   const district=document.getElementById('as-district').value.trim();
   const address=document.getElementById('as-address').value.trim();
@@ -1153,14 +1176,14 @@ async function submitAddShelter(){
   const { error } = await sb.from('shelter_submissions').insert({
     submitted_by_email: email,
     name,
-    city: province,
+    city: province || null,
     district: district||null,
     address: address||null,
-    lat: parseFloat(lat),
-    lng: parseFloat(lng),
+    lat: (lat && !isNaN(parseFloat(lat))) ? parseFloat(lat) : null,
+    lng: (lng && !isNaN(parseFloat(lng))) ? parseFloat(lng) : null,
     capacity: cap ? parseInt(cap) : null,
     operator: op||null,
-    source,
+    source: source||null,
     notes: notes||null,
     status: 'pending',
   });
@@ -1750,6 +1773,83 @@ function updateStats() {
   document.getElementById('stat-bad').textContent     = counts.bad;
   document.getElementById('stat-noscore').textContent = counts.noscore;
 }
+// ── Search ────────────────────────────────────────────────────────────────────
+const searchInput = document.getElementById('shelter-search');
+const searchResults = document.getElementById('search-results');
+const searchClear = document.getElementById('search-clear');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  searchClear.classList.toggle('on', q.length > 0);
+
+  if (!q) {
+    searchResults.classList.remove('open');
+    searchResults.innerHTML = '';
+    return;
+  }
+
+  const matches = SHELTERS.filter(s =>
+    s.name.toLowerCase().includes(q) ||
+    (s.city && s.city.toLowerCase().includes(q))
+  ).slice(0, 8);
+
+  if (!matches.length) {
+    searchResults.innerHTML = `<div class="search-no-results">Sonuç bulunamadı</div>`;
+  } else {
+    searchResults.innerHTML = matches.map(s => {
+      const color = markerColor(s);
+      return `<div class="search-result-item" onclick="pickSearchResult('${s.id}')">
+        <div>
+          <div class="search-result-name">${s.name}</div>
+          <div class="search-result-city">${s.city || ''}</div>
+        </div>
+        <div class="search-result-dot" style="background:${color}"></div>
+      </div>`;
+    }).join('');
+  }
+  searchResults.classList.add('open');
+});
+
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClear.classList.remove('on');
+  searchResults.classList.remove('open');
+  searchInput.focus();
+});
+
+// Close results when clicking outside
+document.addEventListener('click', e => {
+  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+    searchResults.classList.remove('open');
+  }
+});
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    searchResults.classList.remove('open');
+    searchInput.blur();
+  }
+});
+
+function pickSearchResult(id) {
+  searchResults.classList.remove('open');
+  searchInput.value = '';
+  searchClear.classList.remove('on');
+
+  const s = SHELTERS.find(x => String(x.id) === String(id));
+  if (!s) return;
+
+  // Fly map to shelter
+  map.flyTo([s.lat, s.lng], 13, { duration: 0.8 });
+
+  // Open shelter panel
+  selectShelter(s.id);
+}
+
+// Make pickSearchResult globally accessible
+window.pickSearchResult = pickSearchResult;
+
+
 // Shelters loaded via loadShelters() which calls updateStats()
 
 // Init
@@ -1772,11 +1872,7 @@ initAuth();
       </div>
       <div class="modal-body">
         <div class="modal-notice" data-en="All submissions are reviewed manually. You'll receive an email when your shelter is approved or if we need more information." data-tr="Tüm başvurular manuel olarak incelenir. Barınağınız onaylandığında veya daha fazla bilgiye ihtiyaç duyduğumuzda e-posta alacaksınız.">All submissions are reviewed manually. You'll receive an email when your shelter is approved or if we need more information.</div>
-        <div class="field-group">
-          <div class="field-label" data-en="Your email" data-tr="E-posta adresiniz">Your email <span class="field-req">*</span></div>
-          <input class="field-input" type="email" id="as-email" placeholder="you@example.com">
-          <div class="field-hint" data-en="We'll send you the result of our review." data-tr="İnceleme sonucunu size göndereceğiz.">We'll send you the result of our review.</div>
-        </div>
+
         <div class="field-group">
           <div class="field-label" data-en="Shelter name (Turkish)" data-tr="Barınak adı (Türkçe)">Shelter name (Turkish) <span class="field-req">*</span></div>
           <input class="field-input" type="text" id="as-name" placeholder="e.g. Pendik Hayvan Barınağı">
