@@ -1210,14 +1210,6 @@ document.getElementById('hd-doc-input').addEventListener('change', function() {
   this.value = '';
 });
 
-// Add demo visit with HD badge to Antalya shelter (for preview)
-SHELTERS.find(s=>s.id===10).hist.unshift({
-  s:91,d:"Apr 5, 2026",
-  n:"Outstanding. All animals healthy, vet on duty. Zero issues found.",
-  username:"@pati_dostu",
-  hayvandostu:true
-});
-
 // Update nav button labels on lang change
 function updateNavLang(l){
   document.getElementById('btn-add-shelter').textContent=l==='en'?'+ Add shelter':'+ Barınak ekle';
