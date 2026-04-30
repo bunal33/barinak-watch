@@ -1,0 +1,2 @@
+case_id,category,action_type,stage,detention_status,title,summary,employer,labor_organization,sector,participant_count,start_date,end_date,last_verified_at,demands,location_id,location_label,province,district,lat,lng,source_title,source_url,source_publisher,source_type,source_published_at
+example-case,labor_action,legal_strike,decision_taken,,Example title,Short verified summary,Employer,Union,Sector,100,2026-01-01,,2026-01-02,"Ücret|TİS",example-location,Factory,İstanbul,Beyoğlu,41.0311,28.9763,Source title,https://example.org/source,Publisher,labor_news,2026-01-02

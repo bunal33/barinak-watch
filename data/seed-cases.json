@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "name": "GrevTakip seed dataset",
+    "last_updated": "2026-04-30",
+    "note": "Small starter dataset for UI validation. Editors should recheck every record before production publication."
+  },
+  "cases": [
+    {
+      "id": "italyan-lisesi-ogretmen-grevi-2026",
+      "category": "labor_action",
+      "action_type": "legal_strike",
+      "stage": "ongoing",
+      "title": "Özel İtalyan Lisesi öğretmenleri grevde",
+      "summary": "Tez-Koop-İş üyesi öğretmenler, ücretler ve çalışma koşulları için başlattıkları grevi 2026 Nisan sonunda sürdürdüklerini açıkladı.",
+      "employer": "Özel İtalyan Lisesi",
+      "labor_organization": "Tez-Koop-İş",
+      "sector": "Eğitim",
+      "participant_count": null,
+      "start_date": "2026-02-02",
+      "end_date": null,
+      "last_verified_at": "2026-04-28",
+      "demands": ["Ücret", "Çalışma koşulları", "Toplu iş sözleşmesi"],
+      "locations": [
+        { "id": "beyoglu-okul", "label": "Özel İtalyan Lisesi", "province": "İstanbul", "district": "Beyoğlu", "lat": 41.0311, "lng": 28.9763 }
+      ],
+      "timeline": [
+        { "date": "2026-01-29", "stage": "decision_taken", "note": "Sendika ikinci dönem başında grev pankartlarının asılacağını duyurdu." },
+        { "date": "2026-02-02", "stage": "started", "note": "Grev uygulaması başladı." },
+        { "date": "2026-04-28", "stage": "ongoing", "note": "Öğretmenler grevin 86. gününde sürdüğünü belirtti." }
+      ],
+      "sources": [
+        {
+          "title": "İtalyan Lisesi öğretmenleri: Müdür işten çıkarmaya yetkili, TİS'e gelince yetkisiz",
+          "url": "https://bianet.org/haber/italyan-lisesi-ogretmenleri-mudur-isten-cikarmaya-yetkili-tise-gelince-yetkisiz-319129",
+          "publisher": "bianet",
+          "source_type": "labor_news",
+          "published_at": "2026-04-28"
+        },
+        {
+          "title": "İtalyan Lisesi'nde yeni dönem grevle başlayacak",
+          "url": "https://sendika.org/2026/01/italyan-lisesinde-yeni-donem-grevle-baslayacak-741733",
+          "publisher": "Sendika.Org",
+          "source_type": "labor_news",
+          "published_at": "2026-01-29"
+        }
+      ]
+    },
+    {
+      "id": "totomak-grev-karari-2026",
+      "category": "labor_action",
+      "action_type": "legal_strike",
+      "stage": "decision_taken",
+      "title": "Totomak'ta grev kararı alındı",
+      "summary": "Birleşik Metal-İş, İzmir şubesine bağlı Totomak fabrikasında TİS görüşmeleri anlaşmazlıkla sonuçlanınca grev kararı aldığını duyurdu.",
+      "employer": "Totomak",
+      "labor_organization": "DİSK/Birleşik Metal-İş",
+      "sector": "Metal",
+      "participant_count": null,
+      "start_date": null,
+      "end_date": null,
+      "last_verified_at": "2026-02-10",
+      "demands": ["Ücret", "Toplu iş sözleşmesi"],
+      "locations": [
+        { "id": "izmir-fabrika", "label": "Totomak fabrikası", "province": "İzmir", "district": "", "lat": 38.4237, "lng": 27.1428 }
+      ],
+      "timeline": [
+        { "date": "2026-02-10", "stage": "decision_taken", "note": "Sendika grev kararını ilan etti; anlaşma olmazsa 26 Şubat'ta grev uygulamasının başlayacağını duyurdu." }
+      ],
+      "sources": [
+        {
+          "title": "Totomak'ta grev kararı: 'Anlaşma olmazsa 26 Şubat'ta grevdeyiz!'",
+          "url": "https://birlesikmetalis.org/totomakta-grev-karari-anlasma-olmazsa-26-subatta-grevdeyiz/",
+          "publisher": "Birleşik Metal-İş",
+          "source_type": "union_statement",
+          "published_at": "2026-02-10"
+        }
+      ]
+    },
+    {
+      "id": "smart-solar-grev-sonuc-2026",
+      "category": "labor_action",
+      "action_type": "legal_strike",
+      "stage": "ended",
+      "title": "Smart Solar grevi kazanımla sonuçlandı",
+      "summary": "Gebze OSB'deki Smart Solar grevi 114. gününde toplu iş sözleşmesinin imzalanmasıyla sona erdi; sendika ücret artışı ve işten çıkarılanların dönüşünü duyurdu.",
+      "employer": "Smart Solar",
+      "labor_organization": "DİSK/Birleşik Metal-İş",
+      "sector": "Metal / enerji ekipmanı",
+      "participant_count": 260,
+      "start_date": "2025-10-22",
+      "end_date": "2026-02-13",
+      "last_verified_at": "2026-02-13",
+      "demands": ["Ücret", "İşe iade", "Kazanılmış haklar"],
+      "locations": [
+        { "id": "gebze-osb", "label": "Smart Solar, Gebze OSB", "province": "Kocaeli", "district": "Gebze", "lat": 40.8046, "lng": 29.4386 }
+      ],
+      "timeline": [
+        { "date": "2025-10-22", "stage": "started", "note": "Birleşik Metal-İş üyesi işçiler greve başladı." },
+        { "date": "2026-02-13", "stage": "ended", "note": "Grev 114. günde TİS imzalanmasıyla sona erdi." }
+      ],
+      "sources": [
+        {
+          "title": "Smart Solar grevinin 114. gününde kazanım",
+          "url": "https://sendika.org/2026/02/smart-solar-grevinin-114-gununde-kazanim-en-dusuk-ucret-yuzde-50-zamlandi-atilan-isciler-geri-alindi-742417",
+          "publisher": "Sendika.Org",
+          "source_type": "labor_news",
+          "published_at": "2026-02-13"
+        }
+      ]
+    },
+    {
+      "id": "arda-tonbul-mesem-2024",
+      "category": "mesem",
+      "action_type": null,
+      "stage": "ended",
+      "title": "MESEM öğrencisi Arda Tonbul iş cinayetinde yaşamını yitirdi",
+      "summary": "14 yaşındaki Arda Tonbul, İstanbul Büyükçekmece'de MESEM kapsamında çalıştırıldığı metal işyerinde geçirdiği iş cinayeti sonrası yaşamını yitirdi.",
+      "employer": "Özkanlar Metal",
+      "labor_organization": "",
+      "sector": "Metal / mesleki eğitim",
+      "participant_count": 1,
+      "start_date": "2024-01-09",
+      "end_date": "2024-01-16",
+      "last_verified_at": "2024-01-17",
+      "demands": ["Çocuk işçiliği", "İşçi sağlığı ve güvenliği", "MESEM denetimi"],
+      "locations": [
+        { "id": "buyukcekmece-fabrika", "label": "Özkanlar Metal", "province": "İstanbul", "district": "Büyükçekmece", "lat": 41.0208, "lng": 28.5858 }
+      ],
+      "timeline": [
+        { "date": "2024-01-09", "stage": "started", "note": "Arda Tonbul'un başı sac büküm makinesine sıkıştı." },
+        { "date": "2024-01-16", "stage": "ended", "note": "Arda Tonbul hastanede yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Mesleki eğitim cinayeti",
+          "url": "https://www.birgun.net/makale/mesleki-egitim-cinayeti-500237",
+          "publisher": "BirGün",
+          "source_type": "news",
+          "published_at": "2024-01-17"
+        },
+        {
+          "title": "Bakan Tekin'den MESEM'de iş cinayetleri önergelerine çelişkili yanıtlar",
+          "url": "https://bianet.org/haber/bakan-tekin-den-mesem-de-is-cinayetleri-onergelerine-celiskili-yanitlar-299860",
+          "publisher": "bianet",
+          "source_type": "news",
+          "published_at": "2024-09-05"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-turkmen-tutuklama-2026",
+      "category": "unionist_detention",
+      "action_type": null,
+      "stage": "ongoing",
+      "detention_status": "arrested",
+      "title": "BİRTEK-SEN Genel Başkanı Mehmet Türkmen tutuklandı",
+      "summary": "BİRTEK-SEN Genel Başkanı Mehmet Türkmen, Gaziantep'teki Sırma Halı işçilerinin ücret eylemine destek açıklaması sonrası tutuklandı.",
+      "employer": "Sırma Halı / Şireci bağlantılı işyeri",
+      "labor_organization": "BİRTEK-SEN",
+      "sector": "Tekstil / halı",
+      "participant_count": null,
+      "start_date": "2026-03-16",
+      "end_date": null,
+      "last_verified_at": "2026-03-17",
+      "demands": ["Sendikal faaliyet özgürlüğü", "Ücret alacakları", "Serbest bırakılma"],
+      "locations": [
+        { "id": "gaziantep-adliye", "label": "Gaziantep", "province": "Gaziantep", "district": "", "lat": 37.0662, "lng": 37.3833 }
+      ],
+      "timeline": [
+        { "date": "2026-03-09", "stage": "started", "note": "Sırma Halı işçileri ücretlerin ödenmemesi nedeniyle iş bırakma eylemi başlattı." },
+        { "date": "2026-03-16", "stage": "ongoing", "note": "Mehmet Türkmen gözaltına alındıktan sonra tutuklandı." }
+      ],
+      "sources": [
+        {
+          "title": "Mehmet Türkmen yine tutuklandı",
+          "url": "https://medyascope.tv/2026/03/16/birtek-sen-genel-baskani-mehmet-turkmen-tutuklandi/",
+          "publisher": "Medyascope",
+          "source_type": "news",
+          "published_at": "2026-03-16"
+        },
+        {
+          "title": "Sendikalardan tutuklanan Mehmet Türkmen'e destek",
+          "url": "https://sendika.org/2026/03/sendikalardan-tutuklanan-mehmet-turkmene-destek-isci-snifinin-mucadelesi-baskilarla-durdurulamaz-744489",
+          "publisher": "Sendika.Org",
+          "source_type": "labor_news",
+          "published_at": "2026-03-18"
+        }
+      ]
+    },
+    {
+      "id": "genel-is-remzi-caliskan-2024",
+      "category": "unionist_detention",
+      "action_type": null,
+      "stage": "ongoing",
+      "detention_status": "arrested",
+      "title": "DİSK/Genel-İş yöneticileri Ankara soruşturmasında tutuklandı",
+      "summary": "Ankara merkezli soruşturma kapsamında DİSK Genel-İş Genel Başkanı Remzi Çalışkan ve Genel-İş Mersin Şube Başkanı Kemal Göksoy'un da aralarında olduğu kişiler tutuklandı.",
+      "employer": "",
+      "labor_organization": "DİSK/Genel-İş",
+      "sector": "Sendikal faaliyet / genel işler",
+      "participant_count": null,
+      "start_date": "2024-11-30",
+      "end_date": null,
+      "last_verified_at": "2024-11-30",
+      "demands": ["Sendikal faaliyet özgürlüğü", "Hukuki takip"],
+      "locations": [
+        { "id": "ankara-adliye", "label": "Ankara", "province": "Ankara", "district": "", "lat": 39.9208, "lng": 32.8541 }
+      ],
+      "timeline": [
+        { "date": "2024-11-30", "stage": "ongoing", "note": "Ankara Cumhuriyet Başsavcılığı soruşturması kapsamında sendika yöneticilerinin tutuklandığı bildirildi." }
+      ],
+      "sources": [
+        {
+          "title": "Ankara'da siyasetçi ve sendikacı 23 kişi tutuklandı",
+          "url": "https://www.dw.com/tr/ankarada-siyaset%C3%A7i-ve-sendikac%C4%B1-23-ki%C5%9Fi-tutukland%C4%B1/a-70926412",
+          "publisher": "DW Türkçe",
+          "source_type": "news",
+          "published_at": "2024-11-30"
+        }
+      ]
+    }
+  ]
+}
