@@ -1,6 +1,6 @@
 # GrevTakip
 
-Static, GitHub Pages friendly labor tracker for Türkiye. It maps worker deaths, ongoing and ended strikes, strike decisions, MESEM schools, and current labor / union arrests.
+Static, GitHub Pages friendly labor tracker for Türkiye. It maps iş cinayetleri, ongoing and ended strikes, strike decisions, MESEM schools, and current labor / union arrests.
 
 ## Files
 
@@ -9,6 +9,7 @@ Static, GitHub Pages friendly labor tracker for Türkiye. It maps worker deaths,
 - `app.js` - Leaflet map, filters, bilingual UI, local/Supabase data loading, and submission fallback.
 - `data/incidents.json` - reviewed incident records with source URLs.
 - `data/mesem-schools.json` - generated MEB/Mesleğim Hayatım MESEM school layer, hidden by default.
+- `data/source-registry.json` - regular update source checklist and archive of used source URLs.
 - `data/seed-cases.json` - compatibility fallback copy of the incident seed records.
 - `data/import-template.csv` - CSV field template for manual imports.
 - `supabase/schema.sql` - Supabase-ready tables, enums, indexes, and public RLS policies.
@@ -24,7 +25,7 @@ Open `http://127.0.0.1:8090/`.
 
 ## Defaults
 
-Default-visible layers are black recent worker deaths, red ongoing strikes, and orange current labor arrests. Green ended strikes, yellow MESEM schools, older worker deaths, strike decisions, postponed/banned strikes, and released arrests are available in filters but hidden at first load.
+Default-visible layers are recent iş cinayetleri, ongoing strikes, and current labor arrests. Ended strikes, MESEM schools, older iş cinayetleri, strike decisions, postponed/banned strikes, and released arrests are available in filters but hidden at first load.
 
 ## Supabase
 

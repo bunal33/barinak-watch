@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GrevTakip</title>
-  <meta name="description" content="Türkiye'de grevleri, işçi ölümlerini, MESEM okullarını ve emek örgütlerine yönelik tutuklamaları izleyen açık harita.">
+  <meta name="description" content="Türkiye'de grevleri, iş cinayetlerini, MESEM okullarını ve emek örgütlerine yönelik tutuklamaları izleyen açık harita.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
         <div class="section-label" data-i18n="stats.label">Genel görünüm</div>
         <div class="stat-grid">
           <div class="stat-tile"><strong id="stat-total">0</strong><span data-i18n="stats.total">Toplam kayıt</span></div>
-          <div class="stat-tile"><strong id="stat-deaths">0</strong><span data-i18n="stats.deaths">Son 6 ay işçi ölümü</span></div>
+          <div class="stat-tile"><strong id="stat-deaths">0</strong><span data-i18n="stats.deaths">Son 6 ay iş cinayeti</span></div>
           <div class="stat-tile"><strong id="stat-strikes">0</strong><span data-i18n="stats.strikes">Süren grev</span></div>
           <div class="stat-tile"><strong id="stat-arrests">0</strong><span data-i18n="stats.arrests">Tutuklu emekçi</span></div>
         </div>
@@ -81,7 +81,7 @@
       <div id="empty-detail" class="empty-state">
         <div class="mini-map-icon">TR</div>
         <h1 data-i18n="empty.title">Haritadan bir kayıt seçin</h1>
-        <p data-i18n="empty.text">Varsayılan harita son altı aydaki işçi ölümlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.</p>
+        <p data-i18n="empty.text">Varsayılan harita son altı aydaki iş cinayetlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.</p>
         <div class="source-context">
           <div class="section-label" data-i18n="empty.context">Bağlam kaynakları</div>
           <a href="https://emekcalisma.org/wp-content/uploads/ECT_2024.pdf" target="_blank" rel="noreferrer">EÇT 2024 İşçi Sınıfı Eylemleri Raporu</a>
@@ -141,8 +141,8 @@
         <button class="icon-btn" type="button" data-close-modal aria-label="Kapat">×</button>
       </div>
       <div class="modal-body prose">
-        <p data-i18n="methodology.p1">GrevTakip; grev, fiili eylem, işçi ölümü, MESEM okulu ve emek örgütlerine yönelik tutuklama kayıtlarını tek haritada gösterir. Bir nokta bir konum örneğidir; aynı vaka birden çok konuma sahip olabilir.</p>
-        <p data-i18n="methodology.p2">Grevler için “grev kararı alındı”, “sürüyor”, “sona erdi” ve “ertelendi/yasaklandı” ayrıdır. İşçi ölümü, MESEM okulu ve tutuklama kayıtları kendi durum etiketlerini kullanır.</p>
+        <p data-i18n="methodology.p1">GrevTakip; grev, fiili eylem, iş cinayeti, MESEM okulu ve emek örgütlerine yönelik tutuklama kayıtlarını tek haritada gösterir. Bir nokta bir konum örneğidir; aynı vaka birden çok konuma sahip olabilir.</p>
+        <p data-i18n="methodology.p2">Grevler için “grev kararı alındı”, “sürüyor”, “sona erdi” ve “ertelendi/yasaklandı” ayrıdır. İş cinayeti, MESEM okulu ve tutuklama kayıtları kendi durum etiketlerini kullanır.</p>
         <p data-i18n="methodology.p3">EÇT ve Cornell yaklaşımından uyarlanan kaynak disiplini kullanılır: sendika açıklamaları, emek haberleri, resmi belgeler ve araştırma raporları güçlü kaynak sayılır; sosyal medya ve tanık aktarımı ek teyit ister.</p>
       </div>
     </section>
@@ -156,7 +156,9 @@
       </div>
       <div class="modal-body source-list">
         <a href="https://emekcalisma.org/wp-content/uploads/ECT_2024.pdf" target="_blank" rel="noreferrer">Emek Çalışmaları Topluluğu 2024 raporu</a>
-        <a href="https://www.isigmeclisi.org/is-cinayetleri-raporlari%26lt" target="_blank" rel="noreferrer">İSİG Meclisi iş cinayetleri raporları</a>
+        <a href="https://www.isigmeclisi.org/is-cinayetleri-raporlari" target="_blank" rel="noreferrer">İSİG Meclisi iş cinayetleri raporları</a>
+        <a href="https://sendika.org/category/emek-sermaye" target="_blank" rel="noreferrer">Sendika.Org Emek-Sermaye haberleri</a>
+        <a href="https://disk.org.tr/category/haberler/" target="_blank" rel="noreferrer">DİSK haberleri</a>
         <a href="https://meslegimhayatim.meb.gov.tr/mesleki-ve-teknik-anadolu-liselerimiz/liselerimiz" target="_blank" rel="noreferrer">MEB / Mesleğim Hayatım kurum listesi</a>
         <a href="https://csgb.gov.tr/yayinlar/calisma-hayati-istatistikleri-e-bulteni/nisan-2026/ucret-ve-sendikal-istatistikler.html" target="_blank" rel="noreferrer">ÇSGB sendikal istatistik bülteni</a>
         <a href="https://arastirma.disk.org.tr/wp-content/uploads/2026/01/Sendikalasma-ve-Toplu-Pazarlik-Rapor-Ocak-2026-1.pdf" target="_blank" rel="noreferrer">DİSK-AR sendikalaşma raporu</a>

@@ -111,6 +111,7 @@ create table public.case_locations (
   lat numeric(9,6) not null,
   lng numeric(9,6) not null,
   geocode_precision public.geocode_precision not null default 'unknown',
+  fatality_count integer check (fatality_count is null or fatality_count >= 0),
   created_at timestamptz not null default now(),
   constraint case_locations_lat check (lat between -90 and 90),
   constraint case_locations_lng check (lng between -180 and 180)

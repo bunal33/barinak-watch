@@ -1,0 +1,183 @@
+{
+  "updated_at": "2026-04-30",
+  "purpose": "Regular update checklist and archive of source URLs used in GrevTakip public data. When a source is used for a public record, keep the exact URL, title, publisher, date, source type, and related data file here.",
+  "archive_policy": [
+    "Prefer source pages with stable article/report URLs over category pages.",
+    "For İSİG monthly iş cinayeti data, record the latest updated monthly count as a research target only; do not publish monthly aggregate counts as map records.",
+    "For social media or informant leads, keep them as leads until corroborated by union, labor-news, official, or report sources.",
+    "When possible, save an external PDF/HTML snapshot outside the repo for long-term archiving; this file records the live URL and metadata."
+  ],
+  "regular_update_sources": [
+    {
+      "name": "İSİG Meclisi - İş Cinayetleri Raporları",
+      "url": "https://www.isigmeclisi.org/is-cinayetleri-raporlari",
+      "cadence": "monthly, usually within the first days of the following month",
+      "use_for": ["iş cinayetleri", "child labor deaths", "sector/province aggregate context"],
+      "source_type": "report"
+    },
+    {
+      "name": "Sendika.Org - Emek-Sermaye",
+      "url": "https://sendika.org/category/emek-sermaye",
+      "cadence": "daily/weekly",
+      "use_for": ["strikes", "workplace actions", "iş cinayetleri", "union/labor arrests"],
+      "source_type": "labor_news"
+    },
+    {
+      "name": "DİSK - Haberler",
+      "url": "https://disk.org.tr/category/haberler/",
+      "cadence": "weekly",
+      "use_for": ["DİSK union statements", "arrests", "strikes", "occupational safety statements"],
+      "source_type": "union"
+    },
+    {
+      "name": "MEB Mesleğim Hayatım - Mesleki ve Teknik Anadolu Liseleri",
+      "url": "https://meslegimhayatim.meb.gov.tr/mesleki-ve-teknik-anadolu-liselerimiz/liselerimiz",
+      "cadence": "manual refresh",
+      "use_for": ["MESEM school list", "institution names", "province/district fallback geocoding"],
+      "source_type": "official"
+    },
+    {
+      "name": "ÇSGB Çalışma Hayatı İstatistikleri E-Bülteni",
+      "url": "https://csgb.gov.tr/yayinlar/calisma-hayati-istatistikleri-e-bulteni/nisan-2026/ucret-ve-sendikal-istatistikler.html",
+      "cadence": "monthly/periodic",
+      "use_for": ["official union statistics", "baseline labor context"],
+      "source_type": "official"
+    },
+    {
+      "name": "DİSK-AR Sendikalaşma ve Toplu Pazarlık Raporu",
+      "url": "https://arastirma.disk.org.tr/wp-content/uploads/2026/01/Sendikalasma-ve-Toplu-Pazarlik-Rapor-Ocak-2026-1.pdf",
+      "cadence": "periodic",
+      "use_for": ["unionization context", "collective bargaining coverage context"],
+      "source_type": "report"
+    },
+    {
+      "name": "Emek Çalışmaları Topluluğu - İşçi Sınıfı Eylemleri Raporu 2024",
+      "url": "https://emekcalisma.org/wp-content/uploads/ECT_2024.pdf",
+      "cadence": "annual",
+      "use_for": ["labor action methodology", "annual action context"],
+      "source_type": "report"
+    },
+    {
+      "name": "Cornell ILR Labor Action Tracker Methodology",
+      "url": "https://striketracker.ilr.cornell.edu/methodology.html",
+      "cadence": "methodology reference",
+      "use_for": ["source discipline", "recording methodology"],
+      "source_type": "methodology"
+    },
+    {
+      "name": "Bianet emek/labor coverage",
+      "url": "https://bianet.org",
+      "cadence": "daily/weekly",
+      "use_for": ["labor news", "strike updates", "court/arrest follow-up", "iş cinayetleri"],
+      "source_type": "labor_news"
+    }
+  ],
+  "isig_monthly_count_basis": [
+    {
+      "period": "2025-10",
+      "fatality_count": 171,
+      "basis": "Updated 2025 annual report count; the original October report headline reported 169.",
+      "source_url": "https://www.isigmeclisi.org/21536-is-cinayetlerine-ve-",
+      "source_published_at": "2026-01-09"
+    },
+    {
+      "period": "2025-11",
+      "fatality_count": 219,
+      "basis": "Updated 2025 annual report count; the original November report headline reported 216.",
+      "source_url": "https://www.isigmeclisi.org/21536-is-cinayetlerine-ve-",
+      "source_published_at": "2026-01-09"
+    },
+    {
+      "period": "2025-12",
+      "fatality_count": 135,
+      "basis": "2025 annual report count.",
+      "source_url": "https://www.isigmeclisi.org/21536-is-cinayetlerine-ve-",
+      "source_published_at": "2026-01-09"
+    },
+    {
+      "period": "2026-01",
+      "fatality_count": 155,
+      "basis": "Updated in the March 2026 report; the original January report headline reported 146.",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "source_published_at": "2026-04-09"
+    },
+    {
+      "period": "2026-02",
+      "fatality_count": 129,
+      "basis": "Updated in the March 2026 report; the original February report headline reported 126.",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "source_published_at": "2026-04-09"
+    },
+    {
+      "period": "2026-03",
+      "fatality_count": 148,
+      "basis": "March 2026 monthly report.",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "source_published_at": "2026-04-09"
+    },
+    {
+      "period": "2026-04",
+      "fatality_count": null,
+      "basis": "Pending full monthly report as of 2026-04-30; use individual sourced incidents until the monthly report is published.",
+      "source_url": "https://www.isigmeclisi.org/is-cinayetleri-raporlari",
+      "source_published_at": null
+    }
+  ],
+  "individual_case_research_progress": {
+    "updated_at": "2026-04-30",
+    "note": "These counts are backlog targets for individual case research. They should not be published as map records unless each case has its own reviewed incident record and location.",
+    "latest_complete_isig_report_months": {
+      "periods": ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
+      "target_fatality_count": 957,
+      "mapped_individual_fatalities_in_these_months": 20,
+      "remaining_individual_case_target": 937
+    },
+    "rolling_current_backlog": {
+      "periods": ["2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"],
+      "known_target_without_pending_april_report": 786,
+      "mapped_individual_fatalities_in_these_months": 21,
+      "remaining_known_target_before_april_report": 765
+    }
+  },
+  "used_sources_archive": [
+    {
+      "data_file": "data/incidents.json",
+      "sources": [
+        "https://bianet.org/haber/akademisyenlerden-tutuklu-sendikaci-mehmet-turkmen-ve-sirma-hali-iscilerine-destek-317894",
+        "https://bianet.org/haber/antalyada-konteyner-yangini-hamile-kadin-ve-5-cocuk-hayatini-kaybetti-317877",
+        "https://bianet.org/haber/bu-yilin-85-inci-cocuk-isci-olumu-9-yasindaki-isa-simsek-hayatini-kaybetti-314032",
+        "https://bianet.org/haber/calistirilirken-olen-91-cocuk-zahra-hosseini-314822",
+        "https://bianet.org/haber/italyan-lisesi-ogretmenleri-mudur-isten-cikarmaya-yetkili-tise-gelince-yetkisiz-319129",
+        "https://bianet.org/haber/jandarmanin-muhurledigi-kacak-madende-is-cinayeti-316545",
+        "https://bianet.org/haber/mehmet-turkmen-hakkinda-iddianame-savcilik-siyasi-yasak-da-istedi-318601",
+        "https://birlesikmetalis.org/dilovasinda-yasanan-katliam-kaza-degildir/",
+        "https://disk.org.tr/2026/04/sendikacilik-suc-degildir-limter-is-genel-baskani-ve-yoneticileri-derhal-serbest-birakilsin/",
+        "https://ekmekvegul.net/gundem/temel-conta-iscilerine-tuvalet-ambargosu-en-temel-ihtiyacimiz-bize-cok-goruldu",
+        "https://sendika.org/2025/11/bu-yilin-84-cocuk-isci-cinayeti-nigdede-traktorun-altinda-kalan-14-yasindaki-metehan-hayatini-kaybetti-737645",
+        "https://sendika.org/2025/12/17-yasindaki-cocuk-isci-zahra-hosseini-basortusunu-makineye-kaptirmasi-sonucu-hayatini-kaybetti-739324",
+        "https://sendika.org/2026/01/diyarbakirda-is-cinayeti-fabrikanin-catisini-onarirken-dusen-isci-hayatini-kaybetti-740749",
+        "https://sendika.org/2026/04/17-yasindaki-cocuk-isci-engin-tuncay-calisirken-hayatini-kaybetti-746267",
+        "https://sendika.org/2026/04/mart-ayinda-en-az-148-isci-hayatini-kaybetti-sekizi-cocuk-altisi-65-yas-ustu-745641",
+        "https://sendika.org/2026/01/kacak-maden-ocaginda-is-cinayeti-uzerine-parcalar-dusen-36-yasindaki-isci-yasamini-yitirdi-740160",
+        "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+        "https://spotturkey.co.uk/trade-union-organiser-basaran-aksu-detained-over-trade-union-activities-and-environmental-activism/",
+        "https://t24.com.tr/haber/kacak-maden-ocaginda-is-cinayeti-uzerine-parcalar-dusen-isci-yasamini-yitirdi%2C1288974",
+        "https://www.birlesikmetalis.org/smart-solar-grevi-kazanimla-sonuclandi/",
+        "https://www.birlesikmetalis.org/totomakta-grev-karari/",
+        "https://www.cumhuriyet.com.tr/turkiye/avukatlardan-dilovasi-patlamasi-raporu-bu-bir-is-cinayeti-ve-orgutlu-ihmal-rejimi-2459580",
+        "https://www.cumhuriyet.com.tr/turkiye/bagimsiz-maden-is-sendikasi-ndan-basaran-aksu-nun-tutuklanmasina-tepki-turkiye-de-isci-sinifina-ve-halka-gozdagi-verilmek-isteniyor-2493983",
+        "https://www.cumhuriyet.com.tr/turkiye/ogretmen-fatma-nur-celik-in-katiline-istenen-ceza-belli-oldu-2494289",
+        "https://www.egitimis.org.tr/sendika-haberleri/ogretmenimiz-fatma-nur-celik-icin-81-ilde-is-biraktik-03-03-2026",
+        "https://www.evrensel.net/haber/509415/mesemli-cocuk-isci-arda-tonbul-yasamini-yitirdi",
+        "https://www.kartal24.com/54858-esp-ve-bagli-kurumlara-operasyon-47-kisi-tutuklandi",
+        "https://www.petrol-is.org.tr/haber/temel-contada-grev-kiriciliginda-son-nokta-104084/"
+      ]
+    },
+    {
+      "data_file": "data/mesem-schools.json",
+      "sources": [
+        "https://meslegimhayatim.meb.gov.tr/mesleki-ve-teknik-anadolu-liselerimiz/liselerimiz"
+      ]
+    }
+  ]
+}

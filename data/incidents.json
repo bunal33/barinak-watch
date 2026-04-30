@@ -175,12 +175,13 @@
       "status": "fatality_recorded",
       "title": "Dilovası Ravive Kozmetik yangını",
       "summary": "Kocaeli Dilovası'nda Ravive Kozmetik'te 8 Kasım 2025'te yaşanan patlama ve yangında çocuk işçiler dahil yedi işçi yaşamını yitirdi. Avukatın Sesi raporu olayı önlenebilir iş cinayeti olarak değerlendirdi.",
-      "worker_name": "Çoklu ölüm: yedi işçi",
+      "worker_name": "Çoklu iş cinayeti: yedi işçi",
       "employer": "Ravive Kozmetik",
       "sector": "Kozmetik / kimya",
       "death_date": "2025-11-08",
       "cause": "Patlama ve yangın",
       "legal_status": "Raporda işveren için olası kast, belediyeler için asli kusur değerlendirmesi yapıldı.",
+      "linked_incident_count": 7,
       "last_verified_at": "2025-12-08",
       "locations": [
         {
@@ -191,7 +192,8 @@
           "district": "Dilovası",
           "lat": 40.7792,
           "lng": 29.5439,
-          "geocode_precision": "district_centroid"
+          "geocode_precision": "district_centroid",
+          "fatality_count": 7
         }
       ],
       "timeline": [
@@ -212,6 +214,95 @@
           "publisher": "Birleşik Metal-İş",
           "type": "union",
           "published_at": "2025-11-08"
+        }
+      ]
+    },
+    {
+      "id": "isa-simsek-gercus-cocuk-is-cinayeti-2025",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "İsa Şimşek tarlada çalıştırılırken yaşamını yitirdi",
+      "summary": "Batman Gercüş'e bağlı Kırkat köyü Konak mezrasında tarlada çalıştırılan 9 yaşındaki çocuk işçi İsa Şimşek, traktörün çarpması sonucu yaşamını yitirdi. İSİG bu vakayı 2025 yılında tespit edilebilen 85'inci çocuk işçi cinayeti olarak duyurdu.",
+      "worker_name": "İsa Şimşek",
+      "worker_age": 9,
+      "employer": "Tarla işi / işveren bilgisi kaynakta belirtilmedi",
+      "sector": "Tarım / çocuk işçilik",
+      "death_date": "2025-12-01",
+      "cause": "Traktör çarpması",
+      "legal_status": "Traktör sürücüsünün gözaltına alındığı ve soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2025-12-01",
+      "locations": [
+        {
+          "id": "isa-simsek-kirkat-konak",
+          "label": "Kırkat köyü Konak mezrası",
+          "province_key": "BATMAN",
+          "province": "Batman",
+          "district": "Gercüş",
+          "lat": 37.561,
+          "lng": 41.385,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2025-12-01", "status": "fatality_recorded", "note": "İsa Şimşek traktör çarpması sonucu yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "İsa Şimşek çocuk işçi cinayeti haberi",
+          "url": "https://bianet.org/haber/bu-yilin-85-inci-cocuk-isci-olumu-9-yasindaki-isa-simsek-hayatini-kaybetti-314032",
+          "publisher": "Bianet",
+          "type": "labor_news",
+          "published_at": "2025-12-01"
+        }
+      ]
+    },
+    {
+      "id": "zahra-hosseini-karaman-osb-is-cinayeti-2025",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Zahra Hosseını Karaman OSB'de çalışırken yaşamını yitirdi",
+      "summary": "Karaman OSB'de Yıldızbaş Soğuk Hava Deposu'nda çalışan 17 yaşındaki Afganistanlı çocuk işçi Zahra Hosseını, plastik enjeksiyon makinesine başörtüsünü kaptırması sonucu ağır yaralanarak yaşamını yitirdi.",
+      "worker_name": "Zahra Hosseını",
+      "worker_age": 17,
+      "employer": "Yıldızbaş Soğuk Hava Deposu",
+      "sector": "Gıda / soğuk hava deposu / çocuk işçilik",
+      "death_date": "2025-12-25",
+      "cause": "Makineye başörtüsünü kaptırma",
+      "legal_status": "Kaynakta hukuki süreç belirtilmedi; İSİG 2025'te tespit edilen 91'inci çocuk işçi cinayeti olduğunu duyurdu.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2025-12-25",
+      "locations": [
+        {
+          "id": "zahra-hosseini-karaman-osb",
+          "label": "Karaman OSB / Yıldızbaş Soğuk Hava Deposu",
+          "province_key": "KARAMAN",
+          "province": "Karaman",
+          "district": "Merkez",
+          "lat": 37.181,
+          "lng": 33.215,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2025-12-25", "status": "fatality_recorded", "note": "Zahra Hosseını makineye başörtüsünü kaptırması sonucu yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "17 yaşındaki çocuk işçi Zahra Hosseını, başörtüsünü makineye kaptırması sonucu hayatını kaybetti",
+          "url": "https://sendika.org/2025/12/17-yasindaki-cocuk-isci-zahra-hosseini-basortusunu-makineye-kaptirmasi-sonucu-hayatini-kaybetti-739324",
+          "publisher": "Sendika.Org",
+          "type": "labor_news",
+          "published_at": "2025-12-25"
+        },
+        {
+          "title": "Çalıştırılırken ölen 91. çocuk: Zahra Hosseını",
+          "url": "https://bianet.org/haber/calistirilirken-olen-91-cocuk-zahra-hosseini-314822",
+          "publisher": "Bianet",
+          "type": "labor_news",
+          "published_at": "2025-12-25"
         }
       ]
     },
@@ -263,10 +354,65 @@
       ]
     },
     {
+      "id": "antalya-kepez-sera-konteyner-yangini-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Kepez'de sera işçilerinin kaldığı konteynerde yangın",
+      "summary": "Antalya Kepez Gaziler Mahallesi'nde seralarda çalışan Suriyeli tarım işçisi ailenin kaldığı konteynerde çıkan yangında 7 aylık hamile Leyle Elali ve çocukları Muna Ahmed, Fatma Ahmed, Hayat Ahmed, Iman Ahmed ve Mahmud Ahmed yaşamını yitirdi.",
+      "worker_name": "Leyle Elali; Muna Ahmed; Fatma Ahmed; Hayat Ahmed; Iman Ahmed; Mahmud Ahmed",
+      "employer": "Sera işletmesi (kaynaklarda isim belirtilmedi)",
+      "sector": "Tarım / göçmen emek / barınma",
+      "death_date": "2026-03-20",
+      "cause": "İşçi barınma alanında konteyner yangını",
+      "legal_status": "Sera sahibi hakkında tutuklama haberleştirildi; İSİG Mart raporu olayı iş cinayetleri bağlamında değerlendirdi.",
+      "linked_incident_count": 6,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "antalya-kepez-gaziler-konteyner",
+          "label": "Gaziler Mahallesi sera işçisi konteyneri",
+          "province_key": "ANTALYA",
+          "province": "Antalya",
+          "district": "Kepez / Gaziler",
+          "lat": 36.983,
+          "lng": 30.748,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 6
+        }
+      ],
+      "timeline": [
+        { "date": "2026-03-20", "status": "fatality_recorded", "note": "Konteyner yangınında altı kişi yaşamını yitirdi." },
+        { "date": "2026-04-09", "status": "fatality_recorded", "note": "İSİG Mart raporu olayı tarım işçilerinin barınma koşulları bağlamında ele aldı." }
+      ],
+      "sources": [
+        {
+          "title": "Antalya’da konteyner yangını: Hamile kadın ve 5 çocuk hayatını kaybetti",
+          "url": "https://bianet.org/haber/antalyada-konteyner-yangini-hamile-kadin-ve-5-cocuk-hayatini-kaybetti-317877",
+          "publisher": "Bianet",
+          "type": "labor_news",
+          "published_at": "2026-03-20"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti: Sekizi çocuk, altısı 65 yaş üstü",
+          "url": "https://sendika.org/2026/04/mart-ayinda-en-az-148-isci-hayatini-kaybetti-sekizi-cocuk-altisi-65-yas-ustu-745641",
+          "publisher": "Sendika.Org",
+          "type": "report",
+          "published_at": "2026-04-09"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
       "id": "ugur-erikoglu-kacak-maden-2026",
       "record_type": "worker_death",
       "status": "fatality_recorded",
-      "title": "Kilimli'de mühürlü kaçak madende işçi ölümü",
+      "title": "Kilimli'de mühürlü kaçak madende iş cinayeti",
       "summary": "Zonguldak Kilimli'de daha önce mühürlendiği bildirilen kaçak kömür ocağını su basması sonucu Uğur Erikoğlu yaşamını yitirdi; bir işçi ağır yaralı kurtarıldı.",
       "worker_name": "Uğur Erikoğlu",
       "employer": "Ruhsatsız maden ocağı",
@@ -304,7 +450,7 @@
       "id": "feyyaz-k-kacak-maden-2026",
       "record_type": "worker_death",
       "status": "fatality_recorded",
-      "title": "Gelik'te kaçak maden ocağında işçi ölümü",
+      "title": "Gelik'te kaçak maden ocağında iş cinayeti",
       "summary": "Zonguldak'ın Kilimli ilçesine bağlı Gelik beldesinde ruhsatsız maden ocağında çalışan Feyyaz K., üzerine parçalar düşmesi sonucu yaşamını yitirdi.",
       "worker_name": "Feyyaz K.",
       "worker_age": 36,
@@ -343,6 +489,128 @@
           "publisher": "T24",
           "type": "news",
           "published_at": "2026-01-07"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-tali-bismil-circir-fabrikasi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Tali çırçır fabrikasının çatısını onarırken düştü",
+      "summary": "Diyarbakır Bismil kırsal Köseli Mahallesi'nde bir çırçır fabrikasının kar nedeniyle çöken çatısını onaran işçi Mehmet Tali, kaynak yaptığı sırada yaklaşık 10 metre yükseklikten düşerek yaşamını yitirdi.",
+      "worker_name": "Mehmet Tali",
+      "employer": "Çırçır fabrikası (işveren adı kaynakta belirtilmedi)",
+      "sector": "Sanayi / çırçır fabrikası / bakım-onarım",
+      "death_date": "2026-01-17",
+      "cause": "Yüksekten düşme",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-01-17",
+      "locations": [
+        {
+          "id": "mehmet-tali-bismil-koseli",
+          "label": "Köseli Mahallesi çırçır fabrikası",
+          "province_key": "DIYARBAKIR",
+          "province": "Diyarbakır",
+          "district": "Bismil / Köseli",
+          "lat": 37.846,
+          "lng": 40.659,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-01-17", "status": "fatality_recorded", "note": "Mehmet Tali fabrika çatısını onarırken yüksekten düşerek yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Diyarbakır’da iş cinayeti: Fabrikanın çatısını onarırken düşen işçi hayatını kaybetti",
+          "url": "https://sendika.org/2026/01/diyarbakirda-is-cinayeti-fabrikanin-catisini-onarirken-dusen-isci-hayatini-kaybetti-740749",
+          "publisher": "Sendika.Org",
+          "type": "labor_news",
+          "published_at": "2026-01-17"
+        }
+      ]
+    },
+    {
+      "id": "engin-tuncay-staj-insaat-is-cinayeti-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Engin Tuncay staj yaptığı inşaatta yaşamını yitirdi",
+      "summary": "Malatya Yeşilyurt'ta staj yaptığı inşaatta çalışan 17 yaşındaki çocuk işçi Engin Tuncay, spiral makinesini getirmek için çıktığı kattan yaklaşık 25 metre yükseklikten düşerek yaşamını yitirdi. İSİG, MESEM veya meslek lisesi statüsünün henüz teyit edilmediğini aktardı.",
+      "worker_name": "Engin Tuncay",
+      "worker_age": 17,
+      "employer": "Staj yapılan inşaat (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat / stajyer çocuk işçilik",
+      "death_date": "2026-04-18",
+      "cause": "Yüksekten düşme",
+      "legal_status": "Kaynakta hukuki süreç belirtilmedi; MESEM/meslek lisesi statüsü İSİG tarafından teyit bekliyor.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-18",
+      "locations": [
+        {
+          "id": "engin-tuncay-yesilyurt",
+          "label": "Yeşilyurt inşaat şantiyesi",
+          "province_key": "MALATYA",
+          "province": "Malatya",
+          "district": "Yeşilyurt",
+          "lat": 38.296,
+          "lng": 38.245,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-04-18", "status": "fatality_recorded", "note": "Engin Tuncay yüksekten düşerek yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "17 yaşındaki çocuk işçi Engin Tuncay çalışırken hayatını kaybetti",
+          "url": "https://sendika.org/2026/04/17-yasindaki-cocuk-isci-engin-tuncay-calisirken-hayatini-kaybetti-746267",
+          "publisher": "Sendika.Org",
+          "type": "labor_news",
+          "published_at": "2026-04-18"
+        }
+      ]
+    },
+    {
+      "id": "metehan-akarsu-nigde-traktor-is-cinayeti-2025",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Metehan Akarsu traktörün altında kalarak yaşamını yitirdi",
+      "summary": "Niğde merkeze bağlı Yeşilgölcük beldesinde ailesiyle çiftçilik yapan 14 yaşındaki Metehan Akarsu, pulluk bağladığı traktörün hareket etmesi sonucu altında kalarak ağır yaralandı ve hastanede yaşamını yitirdi.",
+      "worker_name": "Metehan Akarsu",
+      "worker_age": 14,
+      "employer": "Aile çiftçiliği",
+      "sector": "Tarım / çocuk işçilik",
+      "death_date": "2025-11-17",
+      "cause": "Traktör altında kalma",
+      "legal_status": "Kaynakta hukuki süreç belirtilmedi; İSİG 2025'te tespit edilen 84'üncü çocuk işçi cinayeti olduğunu duyurdu.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2025-11-17",
+      "locations": [
+        {
+          "id": "metehan-akarsu-yesilgolcuk",
+          "label": "Yeşilgölcük beldesi tarla",
+          "province_key": "NIGDE",
+          "province": "Niğde",
+          "district": "Merkez / Yeşilgölcük",
+          "lat": 38.14,
+          "lng": 34.17,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2025-11-17", "status": "fatality_recorded", "note": "Metehan Akarsu traktörün altında kalarak yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Bu yılın 84. çocuk işçi cinayeti: Niğde’de traktörün altında kalan 14 yaşındaki Metehan hayatını kaybetti",
+          "url": "https://sendika.org/2025/11/bu-yilin-84-cocuk-isci-cinayeti-nigdede-traktorun-altinda-kalan-14-yasindaki-metehan-hayatini-kaybetti-737645",
+          "publisher": "Sendika.Org",
+          "type": "labor_news",
+          "published_at": "2025-11-17"
         }
       ]
     },

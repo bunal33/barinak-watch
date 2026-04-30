@@ -2,7 +2,7 @@ const SUPABASE_URL = "";
 const SUPABASE_ANON_KEY = "";
 
 const CONFIG = {
-  incidentsPath: "data/incidents.json",
+  incidentPaths: ["data/incidents.json"],
   mesemPath: "data/mesem-schools.json",
   fallbackSeedPath: "data/seed-cases.json",
   defaultCenter: [39.05, 35.05],
@@ -129,7 +129,7 @@ const COPY = {
   tr: {
     nav: { filters: "Filtre", methodology: "Yöntem", sources: "Kaynaklar", submit: "+ Bildir" },
     common: { cancel: "Vazgeç", close: "Kapat", notSpecified: "Belirtilmedi", source: "Kaynak" },
-    stats: { label: "Genel görünüm", total: "Toplam kayıt", deaths: "Son 6 ay işçi ölümü", strikes: "Süren grev", arrests: "Tutuklu emekçi" },
+    stats: { label: "Genel görünüm", total: "Toplam kayıt", deaths: "Son 6 ay iş cinayeti", strikes: "Süren grev", arrests: "Tutuklu emekçi" },
     filters: {
       panel: "Filtreler",
       panelTitle: "Kayıtları daralt",
@@ -145,17 +145,17 @@ const COPY = {
     map: { results: "sonuç" },
     empty: {
       title: "Haritadan bir kayıt seçin",
-      text: "Varsayılan harita son altı aydaki işçi ölümlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.",
+      text: "Varsayılan harita son altı aydaki iş cinayetlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.",
       context: "Bağlam kaynakları",
     },
     recordType: {
-      worker_death: "İşçi ölümü",
+      worker_death: "İş cinayeti",
       strike: "Grev / işçi eylemi",
       mesem_school: "MESEM okulu",
       union_labor_arrest: "Emek tutuklaması",
     },
     status: {
-      fatality_recorded: "İşçi ölümü kaydı",
+      fatality_recorded: "İş cinayeti kaydı",
       decision_taken: "Grev kararı alındı",
       ongoing: "Sürüyor",
       ended: "Sona erdi",
@@ -166,18 +166,18 @@ const COPY = {
       unknown: "Bilinmiyor",
     },
     layer: {
-      worker_death_recent: "Siyah · son 6 ay işçi ölümü",
-      worker_death_older: "Siyah · eski işçi ölümü",
-      strike_ongoing: "Kırmızı · süren grev",
-      strike_ended: "Yeşil · sona eren grev",
-      strike_decision: "Kontur · grev kararı",
-      strike_postponed: "Gri · ertelenen/yasaklanan grev",
-      mesem_school: "Sarı · MESEM okulu",
-      union_arrest_current: "Turuncu · tutuklu",
-      union_arrest_released: "Gri · tahliye",
+      worker_death_recent: "Son 6 ay iş cinayeti",
+      worker_death_older: "Eski iş cinayeti",
+      strike_ongoing: "Süren grev",
+      strike_ended: "Sona eren grev",
+      strike_decision: "Grev kararı",
+      strike_postponed: "Ertelenen / yasaklanan grev",
+      mesem_school: "MESEM okulu",
+      union_arrest_current: "Tutuklu",
+      union_arrest_released: "Tahliye",
     },
     quickLayer: {
-      worker_death_recent: "İşçi ölümü",
+      worker_death_recent: "İş cinayeti",
       strike_ongoing: "Grev",
       union_arrest_current: "Tutuklu",
       mesem_school: "MESEM",
@@ -197,6 +197,7 @@ const COPY = {
       sector: "Sektör",
       date: "Tarih",
       cause: "Ölüm nedeni / olay",
+      fatalityCount: "İş cinayeti sayısı",
       legalStatus: "Hukuki süreç",
       union: "Sendika / örgüt",
       actionType: "Eylem türü",
@@ -251,13 +252,19 @@ const COPY = {
       badUrl: "Kaynak URL http veya https ile başlamalıdır.",
       badCoords: "Koordinatlar birlikte girilmeli ve sayı olmalıdır.",
     },
-    methodology: { label: "Yöntem", title: "Kayıt ve doğrulama ilkeleri" },
+    methodology: {
+      label: "Yöntem",
+      title: "Kayıt ve doğrulama ilkeleri",
+      p1: "GrevTakip; grev, fiili eylem, iş cinayeti, MESEM okulu ve emek örgütlerine yönelik tutuklama kayıtlarını tek haritada gösterir. Bir nokta bir konum örneğidir; aynı vaka birden çok konuma sahip olabilir.",
+      p2: "Grevler için “grev kararı alındı”, “sürüyor”, “sona erdi” ve “ertelendi/yasaklandı” ayrıdır. İş cinayeti, MESEM okulu ve tutuklama kayıtları kendi durum etiketlerini kullanır.",
+      p3: "EÇT ve Cornell yaklaşımından uyarlanan kaynak disiplini kullanılır: sendika açıklamaları, emek haberleri, resmi belgeler ve araştırma raporları güçlü kaynak sayılır; sosyal medya ve tanık aktarımı ek teyit ister.",
+    },
     sources: { label: "Kaynaklar", title: "Başlangıç kaynak havuzu" },
   },
   en: {
     nav: { filters: "Filter", methodology: "Method", sources: "Sources", submit: "+ Report" },
     common: { cancel: "Cancel", close: "Close", notSpecified: "Not specified", source: "Source" },
-    stats: { label: "Overview", total: "Total records", deaths: "Recent worker deaths", strikes: "Ongoing strikes", arrests: "Jailed labor figures" },
+    stats: { label: "Overview", total: "Total records", deaths: "Recent workplace killings", strikes: "Ongoing strikes", arrests: "Jailed labor figures" },
     filters: {
       panel: "Filters",
       panelTitle: "Narrow records",
@@ -273,17 +280,17 @@ const COPY = {
     map: { results: "results" },
     empty: {
       title: "Select a record on the map",
-      text: "By default the map shows worker deaths in the last six months, ongoing strikes, and current labor arrests.",
+      text: "By default the map shows workplace killings in the last six months, ongoing strikes, and current labor arrests.",
       context: "Context sources",
     },
     recordType: {
-      worker_death: "Worker death",
+      worker_death: "Workplace killing",
       strike: "Strike / labor action",
       mesem_school: "MESEM school",
       union_labor_arrest: "Labor arrest",
     },
     status: {
-      fatality_recorded: "Fatality recorded",
+      fatality_recorded: "Workplace killing recorded",
       decision_taken: "Strike decision taken",
       ongoing: "Ongoing",
       ended: "Ended",
@@ -294,18 +301,18 @@ const COPY = {
       unknown: "Unknown",
     },
     layer: {
-      worker_death_recent: "Black · recent worker death",
-      worker_death_older: "Black · older worker death",
-      strike_ongoing: "Red · ongoing strike",
-      strike_ended: "Green · ended strike",
-      strike_decision: "Outline · strike decision",
-      strike_postponed: "Gray · postponed/banned strike",
-      mesem_school: "Yellow · MESEM school",
-      union_arrest_current: "Orange · jailed",
-      union_arrest_released: "Gray · released",
+      worker_death_recent: "Recent workplace killing",
+      worker_death_older: "Older workplace killing",
+      strike_ongoing: "Ongoing strike",
+      strike_ended: "Ended strike",
+      strike_decision: "Strike decision",
+      strike_postponed: "Postponed / banned strike",
+      mesem_school: "MESEM school",
+      union_arrest_current: "Jailed",
+      union_arrest_released: "Released",
     },
     quickLayer: {
-      worker_death_recent: "Deaths",
+      worker_death_recent: "Killings",
       strike_ongoing: "Strikes",
       union_arrest_current: "Jailed",
       mesem_school: "MESEM",
@@ -325,6 +332,7 @@ const COPY = {
       sector: "Sector",
       date: "Date",
       cause: "Cause / incident",
+      fatalityCount: "Fatalities",
       legalStatus: "Legal process",
       union: "Union / organization",
       actionType: "Action type",
@@ -379,7 +387,13 @@ const COPY = {
       badUrl: "The source URL must start with http or https.",
       badCoords: "Coordinates must be entered together and must be numbers.",
     },
-    methodology: { label: "Method", title: "Recording and verification rules" },
+    methodology: {
+      label: "Method",
+      title: "Recording and verification rules",
+      p1: "GrevTakip maps strikes, de facto labor actions, workplace killings, MESEM schools, and labor-organization arrests in one tracker. One dot is one mapped location instance; one case can have multiple locations.",
+      p2: "Strike records distinguish decision taken, ongoing, ended, and postponed / banned. Workplace killing, MESEM school, and arrest records use their own status labels.",
+      p3: "The source discipline adapts EÇT and Cornell practice: union statements, labor news, official documents, and research reports are stronger sources; social media and witness reports need corroboration.",
+    },
     sources: { label: "Sources", title: "Initial source pool" },
   },
 };
@@ -439,11 +453,11 @@ async function loadRecords() {
   }
 
   try {
-    const [incidents, mesemSchools] = await Promise.all([
-      fetchJson(CONFIG.incidentsPath),
+    const [incidentPayloads, mesemSchools] = await Promise.all([
+      Promise.all(CONFIG.incidentPaths.map(fetchJson)),
       fetchJson(CONFIG.mesemPath),
     ]);
-    state.records = [...extractRecords(incidents), ...extractRecords(mesemSchools)]
+    state.records = [...incidentPayloads.flatMap(extractRecords), ...extractRecords(mesemSchools)]
       .map(normalizeRecord)
       .filter(hasPublicSource);
   } catch (error) {
@@ -487,6 +501,7 @@ function normalizeRecord(raw) {
     lat: raw.lat,
     lng: raw.lng,
     geocode_precision: raw.geocode_precision,
+    fatality_count: raw.fatality_count,
   }] : [];
 
   const locations = (raw.locations?.length ? raw.locations : topLocation).map((location, index) => {
@@ -502,6 +517,7 @@ function normalizeRecord(raw) {
       lat: finiteNumber(location.lat) ?? finiteNumber(raw.lat) ?? center.lat ?? null,
       lng: finiteNumber(location.lng) ?? finiteNumber(raw.lng) ?? center.lng ?? null,
       geocode_precision: location.geocode_precision || raw.geocode_precision || (location.lat && location.lng ? "exact" : "province_centroid"),
+      fatality_count: finiteNumber(location.fatality_count) ?? null,
     };
   }).filter((location) => Number.isFinite(location.lat) && Number.isFinite(location.lng));
 
@@ -580,6 +596,18 @@ function isRecentWorkerDeath(record) {
   const cutoff = new Date();
   cutoff.setMonth(cutoff.getMonth() - CONFIG.recentWorkerDeathMonths);
   return date >= cutoff;
+}
+
+function recentWorkerDeathTotal() {
+  const recentDeaths = state.records.filter((record) => record.record_type === "worker_death" && isRecentWorkerDeath(record));
+  return recentDeaths.reduce((total, record) => total + fatalityCount(record), 0);
+}
+
+function fatalityCount(record) {
+  const linkedCount = finiteNumber(record.linked_incident_count);
+  if (linkedCount > 0) return linkedCount;
+  const locationTotal = record.locations.reduce((total, location) => total + (finiteNumber(location.fatality_count) || 0), 0);
+  return locationTotal > 0 ? locationTotal : 1;
 }
 
 function populateControls() {
@@ -711,7 +739,7 @@ function applyFilters() {
 
 function updateStats() {
   document.getElementById("stat-total").textContent = state.records.length;
-  document.getElementById("stat-deaths").textContent = state.records.filter((record) => record.layer === "worker_death_recent").length;
+  document.getElementById("stat-deaths").textContent = formatCount(recentWorkerDeathTotal());
   document.getElementById("stat-strikes").textContent = state.records.filter((record) => record.layer === "strike_ongoing").length;
   document.getElementById("stat-arrests").textContent = state.records.filter((record) => record.layer === "union_arrest_current").length;
 }
@@ -743,7 +771,7 @@ function renderMarkers() {
       const marker = L.marker([location.lat, location.lng], {
         icon: L.divIcon({
           className: "case-marker-wrap",
-          html: `<div class="case-marker ${record.layer} ${selected}">${escapeHtml(markerLetter(record))}</div>`,
+          html: `<div class="case-marker ${record.layer} ${selected}">${escapeHtml(markerLetter(record, location))}</div>`,
           iconSize: [30, 30],
           iconAnchor: [15, 15],
         }),
@@ -755,8 +783,12 @@ function renderMarkers() {
   });
 }
 
-function markerLetter(record) {
-  if (record.record_type === "worker_death") return "Ö";
+function markerLetter(record, location) {
+  if (record.record_type === "worker_death") {
+    const count = finiteNumber(location?.fatality_count) ?? fatalityCount(record);
+    if (count > 1) return count > 999 ? "999+" : String(count);
+    return "İC";
+  }
   if (record.record_type === "mesem_school") return "M";
   if (record.record_type === "union_labor_arrest") return "T";
   return "G";
@@ -826,6 +858,7 @@ function renderTypeStats(record) {
       detailStat(t("detail.sector"), record.sector),
       detailStat(t("detail.date"), formatDate(record.death_date)),
       detailStat(t("detail.cause"), record.cause),
+      detailStat(t("detail.fatalityCount"), formatCount(fatalityCount(record))),
       detailStat(t("detail.legalStatus"), record.legal_status),
       detailStat(t("detail.lastVerified"), formatDate(record.last_verified_at)),
     ].join("");
@@ -877,9 +910,15 @@ function renderLocations(record) {
   return `<div class="location-list">${record.locations.map((location) => `
     <div class="location-row">
       <strong>${escapeHtml(location.label)}</strong>
-      <span>${escapeHtml([location.district, location.province].filter(Boolean).join(", "))}</span><br>
+      <span>${escapeHtml(renderLocationSubtitle(location))}</span><br>
       <span>${escapeHtml(t("detail.geocode"))}: ${escapeHtml(t(`geocodePrecision.${location.geocode_precision || "unknown"}`))}</span>
     </div>`).join("")}</div>`;
+}
+
+function renderLocationSubtitle(location) {
+  const parts = [location.district, location.province].filter(Boolean);
+  if (location.fatality_count) parts.push(`${formatCount(location.fatality_count)} ${state.lang === "tr" ? "iş cinayeti" : "fatalities"}`);
+  return parts.join(", ");
 }
 
 function renderTimeline(record) {
