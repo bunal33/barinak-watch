@@ -2,226 +2,422 @@ const SUPABASE_URL = "";
 const SUPABASE_ANON_KEY = "";
 
 const CONFIG = {
-  seedPath: "data/seed-cases.json",
+  incidentsPath: "data/incidents.json",
+  mesemPath: "data/mesem-schools.json",
+  fallbackSeedPath: "data/seed-cases.json",
   defaultCenter: [39.05, 35.05],
   defaultZoom: 6,
+  recentWorkerDeathMonths: 6,
 };
 
-const TR_PROVINCES = [
-  ["Adana", 37.0, 35.32], ["Adıyaman", 37.76, 38.28], ["Afyonkarahisar", 38.76, 30.54],
-  ["Ağrı", 39.72, 43.05], ["Aksaray", 38.37, 34.04], ["Amasya", 40.65, 35.83],
-  ["Ankara", 39.92, 32.85], ["Antalya", 37.07, 30.69], ["Ardahan", 41.11, 42.70],
-  ["Artvin", 41.18, 41.82], ["Aydın", 37.84, 28.0], ["Balıkesir", 39.64, 27.88],
-  ["Bartın", 41.64, 32.34], ["Batman", 37.88, 41.13], ["Bayburt", 40.25, 40.23],
-  ["Bilecik", 40.15, 29.98], ["Bingöl", 38.88, 40.5], ["Bitlis", 38.4, 42.11],
-  ["Bolu", 40.74, 31.61], ["Burdur", 37.72, 30.29], ["Bursa", 40.18, 29.06],
-  ["Çanakkale", 40.15, 26.41], ["Çankırı", 40.6, 33.62], ["Çorum", 40.55, 34.96],
-  ["Denizli", 37.78, 29.09], ["Diyarbakır", 37.91, 40.22], ["Düzce", 40.84, 31.16],
-  ["Edirne", 41.68, 26.56], ["Elazığ", 38.68, 39.22], ["Erzincan", 39.75, 39.5],
-  ["Erzurum", 39.9, 41.27], ["Eskişehir", 39.78, 30.52], ["Gaziantep", 37.06, 37.38],
-  ["Giresun", 40.91, 38.39], ["Gümüşhane", 40.46, 39.48], ["Hakkari", 37.58, 43.74],
-  ["Hatay", 36.4, 36.35], ["Iğdır", 39.89, 44.05], ["Isparta", 37.76, 30.55],
-  ["İstanbul", 41.01, 28.98], ["İzmir", 38.42, 27.14], ["Kahramanmaraş", 37.58, 36.93],
-  ["Karabük", 41.2, 32.63], ["Karaman", 37.18, 33.22], ["Kars", 40.6, 43.1],
-  ["Kastamonu", 41.38, 33.78], ["Kayseri", 38.72, 35.48], ["Kırıkkale", 39.85, 33.52],
-  ["Kırklareli", 41.73, 27.22], ["Kırşehir", 39.15, 34.16], ["Kilis", 36.72, 37.12],
-  ["Kocaeli", 40.77, 29.94], ["Konya", 37.87, 32.48], ["Kütahya", 39.42, 29.98],
-  ["Malatya", 38.35, 38.31], ["Manisa", 38.61, 27.43], ["Mardin", 37.31, 40.74],
-  ["Mersin", 36.8, 34.63], ["Muğla", 37.22, 28.36], ["Muş", 38.73, 41.49],
-  ["Nevşehir", 38.62, 34.71], ["Niğde", 37.97, 34.68], ["Ordu", 40.98, 37.88],
-  ["Osmaniye", 37.07, 36.25], ["Rize", 41.03, 40.52], ["Sakarya", 40.78, 30.4],
-  ["Samsun", 41.29, 36.33], ["Siirt", 37.93, 41.94], ["Sinop", 42.03, 35.15],
-  ["Sivas", 39.75, 37.02], ["Şanlıurfa", 37.16, 38.79], ["Şırnak", 37.52, 42.46],
-  ["Tekirdağ", 40.98, 27.51], ["Tokat", 40.31, 36.55], ["Trabzon", 41.0, 39.72],
-  ["Tunceli", 39.11, 39.55], ["Uşak", 38.68, 29.41], ["Van", 38.5, 43.37],
-  ["Yalova", 40.65, 29.27], ["Yozgat", 39.82, 34.81], ["Zonguldak", 41.45, 31.79],
+const PROVINCES = [
+  { key: "ADANA", name: "Adana", lat: 37.0, lng: 35.32 },
+  { key: "ADIYAMAN", name: "Adıyaman", lat: 37.76, lng: 38.28 },
+  { key: "AFYONKARAHISAR", name: "Afyonkarahisar", lat: 38.76, lng: 30.54 },
+  { key: "AGRI", name: "Ağrı", lat: 39.72, lng: 43.05 },
+  { key: "AKSARAY", name: "Aksaray", lat: 38.37, lng: 34.04 },
+  { key: "AMASYA", name: "Amasya", lat: 40.65, lng: 35.83 },
+  { key: "ANKARA", name: "Ankara", lat: 39.92, lng: 32.85 },
+  { key: "ANTALYA", name: "Antalya", lat: 37.07, lng: 30.69 },
+  { key: "ARDAHAN", name: "Ardahan", lat: 41.11, lng: 42.7 },
+  { key: "ARTVIN", name: "Artvin", lat: 41.18, lng: 41.82 },
+  { key: "AYDIN", name: "Aydın", lat: 37.84, lng: 28.0 },
+  { key: "BALIKESIR", name: "Balıkesir", lat: 39.64, lng: 27.88 },
+  { key: "BARTIN", name: "Bartın", lat: 41.64, lng: 32.34 },
+  { key: "BATMAN", name: "Batman", lat: 37.88, lng: 41.13 },
+  { key: "BAYBURT", name: "Bayburt", lat: 40.25, lng: 40.23 },
+  { key: "BILECIK", name: "Bilecik", lat: 40.15, lng: 29.98 },
+  { key: "BINGOL", name: "Bingöl", lat: 38.88, lng: 40.5 },
+  { key: "BITLIS", name: "Bitlis", lat: 38.4, lng: 42.11 },
+  { key: "BOLU", name: "Bolu", lat: 40.74, lng: 31.61 },
+  { key: "BURDUR", name: "Burdur", lat: 37.72, lng: 30.29 },
+  { key: "BURSA", name: "Bursa", lat: 40.18, lng: 29.06 },
+  { key: "CANAKKALE", name: "Çanakkale", lat: 40.15, lng: 26.41 },
+  { key: "CANKIRI", name: "Çankırı", lat: 40.6, lng: 33.62 },
+  { key: "CORUM", name: "Çorum", lat: 40.55, lng: 34.96 },
+  { key: "DENIZLI", name: "Denizli", lat: 37.78, lng: 29.09 },
+  { key: "DIYARBAKIR", name: "Diyarbakır", lat: 37.91, lng: 40.22 },
+  { key: "DUZCE", name: "Düzce", lat: 40.84, lng: 31.16 },
+  { key: "EDIRNE", name: "Edirne", lat: 41.68, lng: 26.56 },
+  { key: "ELAZIG", name: "Elazığ", lat: 38.68, lng: 39.22 },
+  { key: "ERZINCAN", name: "Erzincan", lat: 39.75, lng: 39.5 },
+  { key: "ERZURUM", name: "Erzurum", lat: 39.9, lng: 41.27 },
+  { key: "ESKISEHIR", name: "Eskişehir", lat: 39.78, lng: 30.52 },
+  { key: "GAZIANTEP", name: "Gaziantep", lat: 37.06, lng: 37.38 },
+  { key: "GIRESUN", name: "Giresun", lat: 40.91, lng: 38.39 },
+  { key: "GUMUSHANE", name: "Gümüşhane", lat: 40.46, lng: 39.48 },
+  { key: "HAKKARI", name: "Hakkari", lat: 37.58, lng: 43.74 },
+  { key: "HATAY", name: "Hatay", lat: 36.4, lng: 36.35 },
+  { key: "IGDIR", name: "Iğdır", lat: 39.89, lng: 44.05 },
+  { key: "ISPARTA", name: "Isparta", lat: 37.76, lng: 30.55 },
+  { key: "ISTANBUL", name: "İstanbul", lat: 41.01, lng: 28.98 },
+  { key: "IZMIR", name: "İzmir", lat: 38.42, lng: 27.14 },
+  { key: "KAHRAMANMARAS", name: "Kahramanmaraş", lat: 37.58, lng: 36.93 },
+  { key: "KARABUK", name: "Karabük", lat: 41.2, lng: 32.63 },
+  { key: "KARAMAN", name: "Karaman", lat: 37.18, lng: 33.22 },
+  { key: "KARS", name: "Kars", lat: 40.6, lng: 43.1 },
+  { key: "KASTAMONU", name: "Kastamonu", lat: 41.38, lng: 33.78 },
+  { key: "KAYSERI", name: "Kayseri", lat: 38.72, lng: 35.48 },
+  { key: "KILIS", name: "Kilis", lat: 36.72, lng: 37.12 },
+  { key: "KIRIKKALE", name: "Kırıkkale", lat: 39.85, lng: 33.52 },
+  { key: "KIRKLARELI", name: "Kırklareli", lat: 41.73, lng: 27.22 },
+  { key: "KIRSEHIR", name: "Kırşehir", lat: 39.15, lng: 34.16 },
+  { key: "KOCAELI", name: "Kocaeli", lat: 40.77, lng: 29.94 },
+  { key: "KONYA", name: "Konya", lat: 37.87, lng: 32.48 },
+  { key: "KUTAHYA", name: "Kütahya", lat: 39.42, lng: 29.98 },
+  { key: "MALATYA", name: "Malatya", lat: 38.35, lng: 38.31 },
+  { key: "MANISA", name: "Manisa", lat: 38.61, lng: 27.43 },
+  { key: "MARDIN", name: "Mardin", lat: 37.31, lng: 40.74 },
+  { key: "MERSIN", name: "Mersin", lat: 36.8, lng: 34.63 },
+  { key: "MUGLA", name: "Muğla", lat: 37.22, lng: 28.36 },
+  { key: "MUS", name: "Muş", lat: 38.73, lng: 41.49 },
+  { key: "NEVSEHIR", name: "Nevşehir", lat: 38.62, lng: 34.71 },
+  { key: "NIGDE", name: "Niğde", lat: 37.97, lng: 34.68 },
+  { key: "ORDU", name: "Ordu", lat: 40.98, lng: 37.88 },
+  { key: "OSMANIYE", name: "Osmaniye", lat: 37.07, lng: 36.25 },
+  { key: "RIZE", name: "Rize", lat: 41.03, lng: 40.52 },
+  { key: "SAKARYA", name: "Sakarya", lat: 40.78, lng: 30.4 },
+  { key: "SAMSUN", name: "Samsun", lat: 41.29, lng: 36.33 },
+  { key: "SANLIURFA", name: "Şanlıurfa", lat: 37.16, lng: 38.79 },
+  { key: "SIIRT", name: "Siirt", lat: 37.93, lng: 41.94 },
+  { key: "SINOP", name: "Sinop", lat: 42.03, lng: 35.15 },
+  { key: "SIRNAK", name: "Şırnak", lat: 37.52, lng: 42.46 },
+  { key: "SIVAS", name: "Sivas", lat: 39.75, lng: 37.02 },
+  { key: "TEKIRDAG", name: "Tekirdağ", lat: 40.98, lng: 27.51 },
+  { key: "TOKAT", name: "Tokat", lat: 40.31, lng: 36.55 },
+  { key: "TRABZON", name: "Trabzon", lat: 41.0, lng: 39.72 },
+  { key: "TUNCELI", name: "Tunceli", lat: 39.11, lng: 39.55 },
+  { key: "USAK", name: "Uşak", lat: 38.68, lng: 29.41 },
+  { key: "VAN", name: "Van", lat: 38.5, lng: 43.37 },
+  { key: "YALOVA", name: "Yalova", lat: 40.65, lng: 29.27 },
+  { key: "YOZGAT", name: "Yozgat", lat: 39.82, lng: 34.81 },
+  { key: "ZONGULDAK", name: "Zonguldak", lat: 41.45, lng: 31.79 },
 ];
 
-const PROVINCE_CENTER = Object.fromEntries(TR_PROVINCES.map(([name, lat, lng]) => [name, { lat, lng }]));
-const TAXONOMY = {
-  category: ["labor_action", "mesem", "unionist_detention"],
-  stage: ["decision_taken", "started", "ongoing", "ended", "postponed_banned", "cancelled", "unknown"],
-  actionType: ["legal_strike", "fiili_wildcat", "protest", "bargaining_dispute", "solidarity_action"],
-};
-const COLORS = {
-  decision_taken: "#c9881f",
-  started: "#cf3f35",
-  ongoing: "#257b83",
-  ended: "#347d57",
-  postponed_banned: "#6e5bbd",
-  cancelled: "#7c807c",
-  unknown: "#7c807c",
+const PROVINCE_BY_KEY = Object.fromEntries(PROVINCES.map((item) => [item.key, item]));
+const PROVINCE_BY_NAME = Object.fromEntries(PROVINCES.map((item) => [item.name, item]));
+
+const RECORD_TYPES = ["worker_death", "strike", "mesem_school", "union_labor_arrest"];
+const ACTION_TYPES = ["legal_strike", "fiili_wildcat", "protest", "bargaining_dispute", "solidarity_action"];
+const LAYER_ORDER = [
+  "worker_death_recent",
+  "strike_ongoing",
+  "union_arrest_current",
+  "strike_decision",
+  "strike_ended",
+  "strike_postponed",
+  "worker_death_older",
+  "mesem_school",
+  "union_arrest_released",
+];
+const DEFAULT_LAYERS = ["worker_death_recent", "strike_ongoing", "union_arrest_current"];
+const QUICK_LAYERS = ["worker_death_recent", "strike_ongoing", "union_arrest_current", "mesem_school"];
+
+const LAYER_COLORS = {
+  worker_death_recent: "#111111",
+  worker_death_older: "#111111",
+  strike_ongoing: "#d72d2d",
+  strike_ended: "#2f8f4e",
+  strike_decision: "#f7f4ea",
+  strike_postponed: "#7c6f64",
+  mesem_school: "#e3b505",
+  union_arrest_current: "#e76f00",
+  union_arrest_released: "#7c6f64",
 };
 
 const COPY = {
   tr: {
-    nav: { methodology: "Yöntem", sources: "Kaynaklar", submit: "+ Eylem/Kaynak Bildir" },
-    stats: { label: "Genel görünüm", total: "Doğrulanmış kayıt", active: "Süren grev/eylem", decision: "Grev kararı", mesem: "MESEM kaydı" },
-    filters: { search: "Ara", searchPlaceholder: "İşveren, sendika, il, talep...", province: "İl", sector: "Sektör", allProvinces: "Tüm iller", allSectors: "Tüm sektörler", category: "Kategori", stage: "Aşama", actionType: "Eylem türü" },
+    nav: { filters: "Filtre", methodology: "Yöntem", sources: "Kaynaklar", submit: "+ Bildir" },
+    common: { cancel: "Vazgeç", close: "Kapat", notSpecified: "Belirtilmedi", source: "Kaynak" },
+    stats: { label: "Genel görünüm", total: "Toplam kayıt", deaths: "Son 6 ay işçi ölümü", strikes: "Süren grev", arrests: "Tutuklu emekçi" },
+    filters: {
+      panel: "Filtreler",
+      panelTitle: "Kayıtları daralt",
+      search: "Ara",
+      searchPlaceholder: "İşveren, sendika, okul, il...",
+      province: "İl",
+      sector: "Sektör",
+      allProvinces: "Tüm iller",
+      allSectors: "Tüm sektörler",
+      layers: "Katmanlar",
+      actionType: "Grev / eylem türü",
+    },
     map: { results: "sonuç" },
-    empty: { title: "Haritadan bir kayıt seçin", text: "Grevler, fiili eylemler, MESEM vakaları ve sendikacılara yönelik davalar aynı veri modelinde izlenir.", context: "Bağlam kaynakları" },
+    empty: {
+      title: "Haritadan bir kayıt seçin",
+      text: "Varsayılan harita son altı aydaki işçi ölümlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.",
+      context: "Bağlam kaynakları",
+    },
+    recordType: {
+      worker_death: "İşçi ölümü",
+      strike: "Grev / işçi eylemi",
+      mesem_school: "MESEM okulu",
+      union_labor_arrest: "Emek tutuklaması",
+    },
+    status: {
+      fatality_recorded: "İşçi ölümü kaydı",
+      decision_taken: "Grev kararı alındı",
+      ongoing: "Sürüyor",
+      ended: "Sona erdi",
+      postponed_banned: "Ertelendi / yasaklandı",
+      active_school: "Aktif okul",
+      currently_arrested: "Tutuklu",
+      released: "Tahliye",
+      unknown: "Bilinmiyor",
+    },
+    layer: {
+      worker_death_recent: "Siyah · son 6 ay işçi ölümü",
+      worker_death_older: "Siyah · eski işçi ölümü",
+      strike_ongoing: "Kırmızı · süren grev",
+      strike_ended: "Yeşil · sona eren grev",
+      strike_decision: "Kontur · grev kararı",
+      strike_postponed: "Gri · ertelenen/yasaklanan grev",
+      mesem_school: "Sarı · MESEM okulu",
+      union_arrest_current: "Turuncu · tutuklu",
+      union_arrest_released: "Gri · tahliye",
+    },
+    quickLayer: {
+      worker_death_recent: "İşçi ölümü",
+      strike_ongoing: "Grev",
+      union_arrest_current: "Tutuklu",
+      mesem_school: "MESEM",
+    },
+    actionType: {
+      legal_strike: "Yasal grev",
+      fiili_wildcat: "Fiili / wildcat",
+      protest: "Protesto",
+      bargaining_dispute: "TİS / pazarlık uyuşmazlığı",
+      solidarity_action: "Dayanışma eylemi",
+    },
+    detail: {
+      summary: "Özet",
+      workerName: "İşçi",
+      age: "Yaş",
+      employer: "İşveren / kurum",
+      sector: "Sektör",
+      date: "Tarih",
+      cause: "Ölüm nedeni / olay",
+      legalStatus: "Hukuki süreç",
+      union: "Sendika / örgüt",
+      actionType: "Eylem türü",
+      workers: "Yaklaşık katılımcı",
+      demands: "Talepler / konular",
+      decisionDate: "Karar tarihi",
+      startDate: "Başlangıç",
+      endDate: "Bitiş",
+      schoolName: "Okul adı",
+      institutionCode: "Kurum kodu",
+      activeDate: "Bilinen aktiflik",
+      linkedIncidents: "Bağlı olay sayısı",
+      person: "Kişi / grup",
+      role: "Görev / rol",
+      detentionDate: "Tutuklama tarihi",
+      custodyStatus: "Mevcut durum",
+      accusation: "Suçlama / hukuki durum",
+      locations: "Konumlar",
+      timeline: "Zaman çizelgesi",
+      sources: "Kaynaklar",
+      lastVerified: "Son teyit",
+      geocode: "Konum kesinliği",
+    },
+    geocodePrecision: {
+      exact: "tam koordinat",
+      district_centroid: "ilçe merkezi",
+      province_centroid: "il merkezi",
+      unknown: "bilinmiyor",
+    },
     submit: {
-      label: "İnceleme kuyruğu", title: "Eylem veya kaynak bildir", category: "Kategori", province: "İl", caseTitle: "Başlık",
-      caseTitlePlaceholder: "Örn. Özel İtalyan Lisesi öğretmenleri grevde", summary: "Kısa özet",
-      summaryPlaceholder: "Ne oldu, kimler dahil, hangi talep veya hak ihlali var?", location: "Konum adı",
-      locationPlaceholder: "Fabrika, okul, adliye, meydan...", date: "Tarih", sourceUrl: "Kaynak URL",
-      sourceTitle: "Kaynak başlığı", contact: "İletişim", contactPlaceholder: "İsteğe bağlı e-posta",
+      label: "İnceleme kuyruğu",
+      title: "Eylem veya kaynak bildir",
+      recordType: "Kayıt türü",
+      province: "İl",
+      caseTitle: "Başlık",
+      caseTitlePlaceholder: "Örn. Özel İtalyan Lisesi öğretmenleri grevde",
+      summary: "Kısa özet",
+      summaryPlaceholder: "Ne oldu, kimler dahil, hangi talep veya hak ihlali var?",
+      location: "Konum adı",
+      locationPlaceholder: "Fabrika, okul, adliye, meydan...",
+      date: "Tarih",
+      sourceUrl: "Kaynak URL",
+      sourceTitle: "Kaynak başlığı",
+      contact: "İletişim",
+      contactPlaceholder: "İsteğe bağlı e-posta",
       note: "Bildirimler editör incelemesinden sonra yayımlanır. Sosyal medya veya tanık aktarımı tek başına doğrulanmış kayıt sayılmaz.",
-      send: "İncelemeye gönder", successTitle: "Bildirim alındı",
+      send: "İncelemeye gönder",
+      successTitle: "Bildirim alındı",
       successLocal: "Supabase yapılandırılmadığı için bildirim bu tarayıcıda demo kuyruğuna kaydedildi.",
       successRemote: "Bildirim Supabase inceleme kuyruğuna kaydedildi.",
-      required: "Kategori, başlık, özet, il ve en az bir geçerli kaynak URL zorunludur.",
-      badCoords: "Koordinatlar birlikte ve geçerli sayı olarak girilmeli.",
+      missing: "Kayıt türü, başlık, özet, il ve kaynak URL zorunludur.",
+      badUrl: "Kaynak URL http veya https ile başlamalıdır.",
+      badCoords: "Koordinatlar birlikte girilmeli ve sayı olmalıdır.",
     },
-    common: { cancel: "Vazgeç", close: "Kapat" },
-    methodology: {
-      label: "Yöntem", title: "Kayıt ve doğrulama ilkeleri",
-      p1: "GrevTakip, tek bir veri modelinde işyeri temelli eylemleri, genel eylemleri, dayanışma eylemlerini, MESEM vakalarını ve sendikacılara yönelik gözaltı/tutuklama kayıtlarını izler.",
-      p2: "Grev kararı ile grevin başlaması ayrı aşamalardır. Bir kayıt \"grev kararı alındı\" aşamasında olabilir, daha sonra \"grev başladı\", \"sürüyor\", \"sona erdi\" veya \"ertelendi/yasaklandı\" aşamasına taşınabilir.",
-      p3: "EÇT ve Cornell yaklaşımından uyarlanan kaynak disiplini kullanılır: sendika açıklamaları, emek haberleri, resmi belgeler ve araştırma raporları güçlü kaynak sayılır; sosyal medya ve tanık aktarımı ek teyit ister.",
-    },
+    methodology: { label: "Yöntem", title: "Kayıt ve doğrulama ilkeleri" },
     sources: { label: "Kaynaklar", title: "Başlangıç kaynak havuzu" },
-    detail: { employer: "İşveren / kurum", union: "Sendika / örgüt", sector: "Sektör", workers: "Yaklaşık katılımcı", startDate: "Başlangıç", endDate: "Bitiş", demands: "Talepler / konular", locations: "Konumlar", timeline: "Zaman çizelgesi", sources: "Kaynaklar", detentionStatus: "Hukuki durum", lastVerified: "Son teyit", noData: "Belirtilmedi" },
-    category: { labor_action: "İşçi eylemi", mesem: "MESEM", unionist_detention: "Tutuklu sendikacı" },
-    stage: { decision_taken: "Grev kararı alındı", started: "Grev başladı", ongoing: "Sürüyor", ended: "Sona erdi", postponed_banned: "Ertelendi / yasaklandı", cancelled: "İptal / anlaşma", unknown: "Bilinmiyor" },
-    actionType: { legal_strike: "Yasal grev", fiili_wildcat: "Fiili grev", protest: "Protesto", bargaining_dispute: "TİS uyuşmazlığı", solidarity_action: "Dayanışma" },
-    detentionStatus: { detained: "Gözaltında", arrested: "Tutuklu", convicted: "Hükümlü", released: "Serbest", trial_ongoing: "Yargılama sürüyor", unknown: "Bilinmiyor" },
   },
   en: {
-    nav: { methodology: "Method", sources: "Sources", submit: "+ Report Action/Source" },
-    stats: { label: "Overview", total: "Verified records", active: "Active strikes/actions", decision: "Strike decisions", mesem: "MESEM records" },
-    filters: { search: "Search", searchPlaceholder: "Employer, union, province, demand...", province: "Province", sector: "Sector", allProvinces: "All provinces", allSectors: "All sectors", category: "Category", stage: "Stage", actionType: "Action type" },
+    nav: { filters: "Filter", methodology: "Method", sources: "Sources", submit: "+ Report" },
+    common: { cancel: "Cancel", close: "Close", notSpecified: "Not specified", source: "Source" },
+    stats: { label: "Overview", total: "Total records", deaths: "Recent worker deaths", strikes: "Ongoing strikes", arrests: "Jailed labor figures" },
+    filters: {
+      panel: "Filters",
+      panelTitle: "Narrow records",
+      search: "Search",
+      searchPlaceholder: "Employer, union, school, province...",
+      province: "Province",
+      sector: "Sector",
+      allProvinces: "All provinces",
+      allSectors: "All sectors",
+      layers: "Layers",
+      actionType: "Strike / action type",
+    },
     map: { results: "results" },
-    empty: { title: "Select a map record", text: "Strikes, wildcat actions, MESEM cases, and cases against unionists share one data model.", context: "Context sources" },
+    empty: {
+      title: "Select a record on the map",
+      text: "By default the map shows worker deaths in the last six months, ongoing strikes, and current labor arrests.",
+      context: "Context sources",
+    },
+    recordType: {
+      worker_death: "Worker death",
+      strike: "Strike / labor action",
+      mesem_school: "MESEM school",
+      union_labor_arrest: "Labor arrest",
+    },
+    status: {
+      fatality_recorded: "Fatality recorded",
+      decision_taken: "Strike decision taken",
+      ongoing: "Ongoing",
+      ended: "Ended",
+      postponed_banned: "Postponed / banned",
+      active_school: "Active school",
+      currently_arrested: "Currently jailed",
+      released: "Released",
+      unknown: "Unknown",
+    },
+    layer: {
+      worker_death_recent: "Black · recent worker death",
+      worker_death_older: "Black · older worker death",
+      strike_ongoing: "Red · ongoing strike",
+      strike_ended: "Green · ended strike",
+      strike_decision: "Outline · strike decision",
+      strike_postponed: "Gray · postponed/banned strike",
+      mesem_school: "Yellow · MESEM school",
+      union_arrest_current: "Orange · jailed",
+      union_arrest_released: "Gray · released",
+    },
+    quickLayer: {
+      worker_death_recent: "Deaths",
+      strike_ongoing: "Strikes",
+      union_arrest_current: "Jailed",
+      mesem_school: "MESEM",
+    },
+    actionType: {
+      legal_strike: "Legal strike",
+      fiili_wildcat: "Wildcat / de facto",
+      protest: "Protest",
+      bargaining_dispute: "Bargaining dispute",
+      solidarity_action: "Solidarity action",
+    },
+    detail: {
+      summary: "Summary",
+      workerName: "Worker",
+      age: "Age",
+      employer: "Employer / institution",
+      sector: "Sector",
+      date: "Date",
+      cause: "Cause / incident",
+      legalStatus: "Legal process",
+      union: "Union / organization",
+      actionType: "Action type",
+      workers: "Approx. participants",
+      demands: "Demands / issues",
+      decisionDate: "Decision date",
+      startDate: "Start",
+      endDate: "End",
+      schoolName: "School name",
+      institutionCode: "Institution code",
+      activeDate: "Known active",
+      linkedIncidents: "Linked incidents",
+      person: "Person / group",
+      role: "Role",
+      detentionDate: "Arrest date",
+      custodyStatus: "Current status",
+      accusation: "Accusation / legal status",
+      locations: "Locations",
+      timeline: "Timeline",
+      sources: "Sources",
+      lastVerified: "Last verified",
+      geocode: "Geocode precision",
+    },
+    geocodePrecision: {
+      exact: "exact",
+      district_centroid: "district centroid",
+      province_centroid: "province centroid",
+      unknown: "unknown",
+    },
     submit: {
-      label: "Review queue", title: "Report an action or source", category: "Category", province: "Province", caseTitle: "Title",
-      caseTitlePlaceholder: "Example: Private Italian High School teachers on strike", summary: "Short summary",
-      summaryPlaceholder: "What happened, who is involved, what demand or rights violation is at issue?", location: "Location name",
-      locationPlaceholder: "Factory, school, courthouse, square...", date: "Date", sourceUrl: "Source URL",
-      sourceTitle: "Source title", contact: "Contact", contactPlaceholder: "Optional email",
-      note: "Reports are published only after editor review. Social media or witness leads alone are not verified records.",
-      send: "Send for review", successTitle: "Report received",
+      label: "Review queue",
+      title: "Report an action or source",
+      recordType: "Record type",
+      province: "Province",
+      caseTitle: "Title",
+      caseTitlePlaceholder: "E.g. Italian High School teachers are on strike",
+      summary: "Short summary",
+      summaryPlaceholder: "What happened, who is involved, what demand or rights violation is at issue?",
+      location: "Location name",
+      locationPlaceholder: "Factory, school, courthouse, square...",
+      date: "Date",
+      sourceUrl: "Source URL",
+      sourceTitle: "Source title",
+      contact: "Contact",
+      contactPlaceholder: "Optional email",
+      note: "Reports are published after editorial review. Social media or witness accounts alone are not treated as verified records.",
+      send: "Send for review",
+      successTitle: "Report received",
       successLocal: "Supabase is not configured, so the report was saved to this browser's demo queue.",
       successRemote: "The report was saved to the Supabase review queue.",
-      required: "Category, title, summary, province, and at least one valid source URL are required.",
-      badCoords: "Coordinates must be entered together as valid numbers.",
+      missing: "Record type, title, summary, province, and source URL are required.",
+      badUrl: "The source URL must start with http or https.",
+      badCoords: "Coordinates must be entered together and must be numbers.",
     },
-    common: { cancel: "Cancel", close: "Close" },
-    methodology: {
-      label: "Method", title: "Recording and verification principles",
-      p1: "GrevTakip tracks workplace actions, general labor actions, solidarity actions, MESEM cases, and detention/arrest cases against unionists in one data model.",
-      p2: "A strike decision and strike start are separate stages. A record can move from decision taken to started, ongoing, ended, or postponed/banned.",
-      p3: "The source discipline is adapted from EÇT and Cornell: union statements, labor news, official records, and research reports are strong sources; social media and informant leads require corroboration.",
-    },
-    sources: { label: "Sources", title: "Starter source pool" },
-    detail: { employer: "Employer / institution", union: "Union / organization", sector: "Sector", workers: "Approx. participants", startDate: "Start", endDate: "End", demands: "Demands / issues", locations: "Locations", timeline: "Timeline", sources: "Sources", detentionStatus: "Legal status", lastVerified: "Last verified", noData: "Not specified" },
-    category: { labor_action: "Labor action", mesem: "MESEM", unionist_detention: "Jailed unionist" },
-    stage: { decision_taken: "Strike decision taken", started: "Strike started", ongoing: "Ongoing", ended: "Ended", postponed_banned: "Postponed / banned", cancelled: "Cancelled / agreement", unknown: "Unknown" },
-    actionType: { legal_strike: "Legal strike", fiili_wildcat: "Wildcat action", protest: "Protest", bargaining_dispute: "Bargaining dispute", solidarity_action: "Solidarity" },
-    detentionStatus: { detained: "Detained", arrested: "Arrested", convicted: "Convicted", released: "Released", trial_ongoing: "Trial ongoing", unknown: "Unknown" },
+    methodology: { label: "Method", title: "Recording and verification rules" },
+    sources: { label: "Sources", title: "Initial source pool" },
   },
 };
 
 const state = {
   lang: "tr",
-  cases: [],
+  records: [],
   filtered: [],
   markers: new Map(),
-  selectedCaseId: null,
-  selectedLocationId: null,
-  categoryFilters: new Set(TAXONOMY.category),
-  stageFilters: new Set(TAXONOMY.stage),
-  actionFilters: new Set(TAXONOMY.actionType),
+  selectedRecordId: null,
+  map: null,
+  sb: null,
+  layerFilters: new Set(DEFAULT_LAYERS),
+  actionFilters: new Set(ACTION_TYPES),
   search: "",
   province: "",
   sector: "",
-  map: null,
-  sb: null,
 };
 
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-  setupLanguage();
-  setupMap();
-  setupModals();
-  setupSubmissionForm();
+  initMap();
   initSupabase();
-  renderStaticSelects();
-  renderFilterGroups();
-  bindFilters();
-  await loadData();
-  renderAll();
+  bindStaticEvents();
+  await loadRecords();
+  populateControls();
+  applyTranslations();
+  applyFilters();
 }
 
-function t(path) {
-  return path.split(".").reduce((value, key) => value && value[key], COPY[state.lang]) || path;
-}
-
-function setupLanguage() {
-  document.getElementById("lang-btn").addEventListener("click", () => {
-    state.lang = state.lang === "tr" ? "en" : "tr";
-    renderAll();
-  });
-}
-
-function applyLanguage() {
-  document.documentElement.lang = state.lang;
-  document.getElementById("lang-btn").textContent = state.lang === "tr" ? "EN" : "TR";
-  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => { el.placeholder = t(el.dataset.i18nPlaceholder); });
-}
-
-function setupMap() {
-  state.map = L.map("map", { center: CONFIG.defaultCenter, zoom: CONFIG.defaultZoom, minZoom: 5, maxZoom: 13, zoomControl: true });
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: "abcd",
-    maxZoom: 20,
+function initMap() {
+  state.map = L.map("map", { zoomControl: false }).setView(CONFIG.defaultCenter, CONFIG.defaultZoom);
+  L.control.zoom({ position: "topright" }).addTo(state.map);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(state.map);
-  const labelPane = state.map.createPane("labels");
-  labelPane.style.zIndex = 450;
-  labelPane.style.pointerEvents = "none";
-  TR_PROVINCES.forEach(([name, lat, lng]) => {
-    L.marker([lat, lng], {
-      pane: "labels",
-      interactive: false,
-      icon: L.divIcon({ className: "province-label", html: name, iconSize: [90, 16], iconAnchor: [45, 8] }),
-    }).addTo(state.map);
-  });
-}
-
-function setupModals() {
-  [["open-submit-btn", "submit-modal"], ["methodology-btn", "methodology-modal"], ["sources-btn", "sources-modal"]].forEach(([buttonId, modalId]) => {
-    document.getElementById(buttonId).addEventListener("click", () => openModal(modalId));
-  });
-  document.querySelectorAll(".modal-backdrop").forEach((backdrop) => {
-    backdrop.addEventListener("click", (event) => {
-      if (event.target === backdrop) closeModal(backdrop.id);
-    });
-  });
-  document.querySelectorAll("[data-close-modal]").forEach((button) => {
-    button.addEventListener("click", () => closeModal(button.closest(".modal-backdrop").id));
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") document.querySelectorAll(".modal-backdrop.open").forEach((modal) => closeModal(modal.id));
-  });
-}
-
-function openModal(id) {
-  if (id === "submit-modal") {
-    document.getElementById("submission-form").hidden = false;
-    document.getElementById("submission-success").hidden = true;
-  }
-  const modal = document.getElementById(id);
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
 }
 
 function initSupabase() {
@@ -229,432 +425,673 @@ function initSupabase() {
   state.sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
-async function loadData() {
+async function loadRecords() {
   if (state.sb) {
-    try {
-      const { data, error } = await state.sb
-        .from("cases")
-        .select("*, case_locations(*), case_sources(*), case_timeline(*)")
-        .eq("verification_status", "verified")
-        .order("start_date", { ascending: false });
-      if (error) throw error;
-      state.cases = (data || []).map(normalizeSupabaseCase);
-      if (state.cases.length) return;
-    } catch (error) {
-      showLoadNotice(`Supabase okunamadı, seed veri kullanılıyor: ${error.message}`);
+    const { data, error } = await state.sb
+      .from("cases")
+      .select("*, case_locations(*), case_sources(*), case_timeline(*)")
+      .eq("verification_status", "verified");
+    if (!error && Array.isArray(data)) {
+      state.records = data.map(normalizeSupabaseRecord).filter(hasPublicSource);
+      return;
     }
+    showLoadNotice(`Supabase okunamadı, statik veri kullanılıyor: ${error?.message || "bilinmeyen hata"}`);
   }
+
   try {
-    const response = await fetch(CONFIG.seedPath, { cache: "no-store" });
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-    const payload = await response.json();
-    state.cases = (payload.cases || []).map(normalizeSeedCase);
+    const [incidents, mesemSchools] = await Promise.all([
+      fetchJson(CONFIG.incidentsPath),
+      fetchJson(CONFIG.mesemPath),
+    ]);
+    state.records = [...extractRecords(incidents), ...extractRecords(mesemSchools)]
+      .map(normalizeRecord)
+      .filter(hasPublicSource);
   } catch (error) {
-    showLoadNotice(`Seed veri yüklenemedi: ${error.message}`);
-    state.cases = [];
+    showLoadNotice(`Yeni veri dosyaları okunamadı, seed yedeği deneniyor: ${error.message}`);
+    const fallback = await fetchJson(CONFIG.fallbackSeedPath);
+    state.records = extractRecords(fallback).map(normalizeRecord).filter(hasPublicSource);
   }
 }
 
-function normalizeSupabaseCase(row) {
-  return normalizeSeedCase({
+async function fetchJson(path) {
+  const response = await fetch(path, { cache: "no-store" });
+  if (!response.ok) throw new Error(`${path} ${response.status}`);
+  return response.json();
+}
+
+function extractRecords(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (Array.isArray(payload.records)) return payload.records;
+  if (Array.isArray(payload.cases)) return payload.cases;
+  return [];
+}
+
+function normalizeSupabaseRecord(row) {
+  return normalizeRecord({
     ...row,
-    action_type: row.action_type || null,
-    detention_status: row.detention_status || null,
-    locations: row.case_locations || [],
-    sources: row.case_sources || [],
-    timeline: row.case_timeline || [],
+    locations: row.case_locations || row.locations || [],
+    sources: row.case_sources || row.sources || [],
+    timeline: row.case_timeline || row.timeline || [],
   });
 }
 
-function normalizeSeedCase(row) {
-  return {
-    id: row.id,
-    category: row.category,
-    action_type: row.action_type || null,
-    stage: row.stage || "unknown",
-    detention_status: row.detention_status || null,
-    title: row.title || "",
-    summary: row.summary || "",
-    employer: row.employer || "",
-    labor_organization: row.labor_organization || "",
-    sector: row.sector || "",
-    participant_count: row.participant_count ?? null,
-    start_date: row.start_date || null,
-    end_date: row.end_date || null,
-    last_verified_at: row.last_verified_at || null,
-    demands: row.demands || [],
-    locations: (row.locations || []).map((location, index) => ({
-      id: location.id || `${row.id}-loc-${index + 1}`,
-      label: location.label || location.province || "",
-      province: location.province || "",
-      district: location.district || "",
-      lat: Number(location.lat),
-      lng: Number(location.lng),
-      address: location.address || "",
+function normalizeRecord(raw) {
+  const provinceFromKey = raw.province_key ? PROVINCE_BY_KEY[raw.province_key]?.name : null;
+  const fallbackProvince = provinceFromKey || raw.province || "";
+  const topLocation = raw.lat || raw.lng || fallbackProvince ? [{
+    id: `${raw.id || raw.public_id || raw.title}-loc`,
+    label: raw.location_label || raw.school_name || raw.employer || raw.title,
+    province_key: raw.province_key,
+    province: fallbackProvince,
+    district: raw.district || "",
+    lat: raw.lat,
+    lng: raw.lng,
+    geocode_precision: raw.geocode_precision,
+  }] : [];
+
+  const locations = (raw.locations?.length ? raw.locations : topLocation).map((location, index) => {
+    const provinceKey = location.province_key || raw.province_key || keyForProvince(location.province || fallbackProvince);
+    const province = PROVINCE_BY_KEY[provinceKey]?.name || location.province || fallbackProvince;
+    const center = PROVINCE_BY_KEY[provinceKey] || PROVINCE_BY_NAME[province] || {};
+    return {
+      id: location.id || `${raw.id || raw.public_id || "record"}-${index}`,
+      label: location.label || raw.location_label || raw.school_name || raw.employer || raw.title || province,
+      province_key: provinceKey || "",
+      province,
+      district: cleanTitle(location.district || raw.district || ""),
+      lat: finiteNumber(location.lat) ?? finiteNumber(raw.lat) ?? center.lat ?? null,
+      lng: finiteNumber(location.lng) ?? finiteNumber(raw.lng) ?? center.lng ?? null,
+      geocode_precision: location.geocode_precision || raw.geocode_precision || (location.lat && location.lng ? "exact" : "province_centroid"),
+    };
+  }).filter((location) => Number.isFinite(location.lat) && Number.isFinite(location.lng));
+
+  const record = {
+    id: String(raw.id || raw.public_id || slugify(raw.title || cryptoRandomId())),
+    public_id: raw.public_id || raw.id || "",
+    record_type: raw.record_type || raw.category || "strike",
+    status: raw.status || raw.stage || "unknown",
+    action_type: raw.action_type || null,
+    title: raw.title || raw.school_name || "İsimsiz kayıt",
+    summary: raw.summary || "",
+    worker_name: raw.worker_name || "",
+    worker_age: raw.worker_age || raw.age || null,
+    person_name: raw.person_name || raw.person || "",
+    school_name: raw.school_name || "",
+    institution_code: raw.institution_code || "",
+    employer: raw.employer || "",
+    labor_organization: raw.labor_organization || raw.union || "",
+    role: raw.role || "",
+    sector: raw.sector || "",
+    cause: raw.cause || raw.cause_of_death || "",
+    demands: Array.isArray(raw.demands) ? raw.demands : stringList(raw.demands),
+    participant_count: raw.participant_count || null,
+    decision_date: raw.decision_date || null,
+    start_date: raw.start_date || null,
+    end_date: raw.end_date || null,
+    death_date: raw.death_date || raw.event_date || null,
+    detention_date: raw.detention_date || raw.arrest_date || null,
+    known_active_date: raw.known_active_date || raw.active_date || null,
+    custody_status: raw.custody_status || raw.detention_status || "",
+    accusation: raw.accusation || "",
+    legal_status: raw.legal_status || "",
+    linked_incident_count: raw.linked_incident_count ?? null,
+    last_verified_at: raw.last_verified_at || raw.updated_at || null,
+    locations,
+    sources: (raw.sources || []).map((source) => ({
+      title: source.title || source.source_title || source.url || "",
+      url: source.url || source.source_url || "",
+      publisher: source.publisher || source.source_publisher || "",
+      type: source.type || source.source_type || "",
+      published_at: source.published_at || source.source_published_at || null,
     })),
-    timeline: (row.timeline || []).map((item) => ({ date: item.date || null, stage: item.stage || "unknown", note: item.note || "" })),
-    sources: (row.sources || []).map((source) => ({
-      title: source.title || source.url,
-      url: source.url,
-      publisher: source.publisher || "",
-      source_type: source.source_type || "news",
-      published_at: source.published_at || null,
+    timeline: (raw.timeline || []).map((item) => ({
+      date: item.date || null,
+      status: item.status || item.stage || raw.status || "unknown",
+      note: item.note || "",
     })),
   };
+
+  record.layer = getLayer(record);
+  record.search_blob = buildSearchBlob(record);
+  return record;
 }
 
-function showLoadNotice(message) {
-  const notice = document.createElement("div");
-  notice.className = "load-error";
-  notice.textContent = message;
-  document.querySelector(".map-region").appendChild(notice);
-  setTimeout(() => notice.remove(), 6500);
+function hasPublicSource(record) {
+  return record.sources.some((source) => /^https?:\/\//i.test(source.url));
 }
 
-function renderAll() {
-  applyLanguage();
-  renderStaticSelects();
-  renderDynamicSelects();
-  renderFilterGroups();
-  applyFilters();
-  renderStats();
-  renderLegend();
-  renderMarkers();
-  renderSelectedDetail();
+function getLayer(record) {
+  if (record.record_type === "worker_death") {
+    return isRecentWorkerDeath(record) ? "worker_death_recent" : "worker_death_older";
+  }
+  if (record.record_type === "mesem_school") return "mesem_school";
+  if (record.record_type === "union_labor_arrest") {
+    return record.status === "released" ? "union_arrest_released" : "union_arrest_current";
+  }
+  if (record.status === "ended") return "strike_ended";
+  if (record.status === "decision_taken") return "strike_decision";
+  if (record.status === "postponed_banned") return "strike_postponed";
+  return "strike_ongoing";
 }
 
-function renderStaticSelects() {
-  const provinceFilter = document.getElementById("province-filter");
-  const provinceValue = state.province || provinceFilter.value || "";
-  provinceFilter.innerHTML = [`<option value="">${t("filters.allProvinces")}</option>`]
-    .concat(TR_PROVINCES.map(([name]) => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`))
+function isRecentWorkerDeath(record) {
+  const date = parseDate(record.death_date || record.start_date || record.decision_date);
+  if (!date) return false;
+  const cutoff = new Date();
+  cutoff.setMonth(cutoff.getMonth() - CONFIG.recentWorkerDeathMonths);
+  return date >= cutoff;
+}
+
+function populateControls() {
+  const provinceOptions = [`<option value="">${t("filters.allProvinces")}</option>`]
+    .concat(PROVINCES.map((province) => `<option value="${escapeHtml(province.name)}">${escapeHtml(province.name)}</option>`));
+  document.getElementById("province-filter").innerHTML = provinceOptions.join("");
+  document.getElementById("submission-province").innerHTML = `<option value=""></option>${PROVINCES.map((province) => `<option value="${escapeHtml(province.name)}">${escapeHtml(province.name)}</option>`).join("")}`;
+
+  const sectors = Array.from(new Set(state.records.map((item) => item.sector).filter(Boolean))).sort((a, b) => a.localeCompare(b, "tr"));
+  document.getElementById("sector-filter").innerHTML = [`<option value="">${t("filters.allSectors")}</option>`]
+    .concat(sectors.map((sector) => `<option value="${escapeHtml(sector)}">${escapeHtml(sector)}</option>`)).join("");
+
+  document.getElementById("submission-record-type").innerHTML = RECORD_TYPES
+    .map((recordType) => `<option value="${recordType}">${t(`recordType.${recordType}`)}</option>`)
     .join("");
-  provinceFilter.value = provinceValue;
 
-  const submissionProvince = document.getElementById("submission-province");
-  const submissionProvinceValue = submissionProvince.value || "";
-  submissionProvince.innerHTML = `<option value=""></option>${TR_PROVINCES.map(([name]) => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("")}`;
-  submissionProvince.value = submissionProvinceValue;
-
-  const submissionCategory = document.getElementById("submission-category");
-  const submissionCategoryValue = submissionCategory.value || "labor_action";
-  submissionCategory.innerHTML = TAXONOMY.category.map((category) => `<option value="${category}">${t(`category.${category}`)}</option>`).join("");
-  submissionCategory.value = submissionCategoryValue;
+  renderCheckboxGroup("layer-filters", LAYER_ORDER, state.layerFilters, "layer");
+  renderCheckboxGroup("action-filters", ACTION_TYPES, state.actionFilters, "actionType");
 }
 
-function renderDynamicSelects() {
-  const sectorFilter = document.getElementById("sector-filter");
-  const sectorValue = state.sector || sectorFilter.value || "";
-  const sectors = Array.from(new Set(state.cases.map((item) => item.sector).filter(Boolean))).sort((a, b) => a.localeCompare(b, "tr"));
-  sectorFilter.innerHTML = [`<option value="">${t("filters.allSectors")}</option>`]
-    .concat(sectors.map((sector) => `<option value="${escapeHtml(sector)}">${escapeHtml(sector)}</option>`))
-    .join("");
-  sectorFilter.value = sectors.includes(sectorValue) ? sectorValue : "";
-}
-
-function renderFilterGroups() {
-  renderCheckboxGroup("category-filters", TAXONOMY.category, state.categoryFilters, "category");
-  renderCheckboxGroup("stage-filters", TAXONOMY.stage, state.stageFilters, "stage");
-  renderCheckboxGroup("action-filters", TAXONOMY.actionType, state.actionFilters, "actionType");
-}
-
-function renderCheckboxGroup(containerId, values, activeSet, labelKey) {
+function renderCheckboxGroup(containerId, values, selectedSet, labelKey) {
   document.getElementById(containerId).innerHTML = values.map((value) => {
-    const checked = activeSet.has(value) ? "checked" : "";
-    const dot = labelKey === "stage" ? `<span class="check-dot" style="background:${COLORS[value]}"></span>` : "<span></span>";
-    return `<label class="check-row"><input type="checkbox" value="${value}" data-filter-group="${labelKey}" ${checked}><span>${t(`${labelKey}.${value}`)}</span>${dot}</label>`;
+    const checked = selectedSet.has(value) ? "checked" : "";
+    const color = labelKey === "layer" ? LAYER_COLORS[value] : "#ffffff";
+    const border = value === "strike_decision" ? "border-color:#575047" : "";
+    return `
+      <label class="check-row">
+        <input type="checkbox" value="${escapeHtml(value)}" data-filter-group="${labelKey}" ${checked}>
+        <span>${escapeHtml(t(`${labelKey}.${value}`))}</span>
+        <i class="check-dot" style="background:${color};${border}"></i>
+      </label>`;
   }).join("");
 }
 
-function bindFilters() {
+function bindStaticEvents() {
   document.getElementById("search-input").addEventListener("input", (event) => {
     state.search = event.target.value.trim().toLocaleLowerCase("tr");
-    updateView();
+    applyFilters();
   });
   document.getElementById("province-filter").addEventListener("change", (event) => {
     state.province = event.target.value;
-    updateView();
+    applyFilters();
   });
   document.getElementById("sector-filter").addEventListener("change", (event) => {
     state.sector = event.target.value;
-    updateView();
+    applyFilters();
   });
   document.querySelector(".filters").addEventListener("change", (event) => {
     if (!event.target.matches("[data-filter-group]")) return;
     const group = event.target.dataset.filterGroup;
-    const set = group === "category" ? state.categoryFilters : group === "stage" ? state.stageFilters : state.actionFilters;
-    if (event.target.checked) set.add(event.target.value);
-    else if (set.size > 1) set.delete(event.target.value);
-    else event.target.checked = true;
-    updateView();
+    const set = group === "layer" ? state.layerFilters : state.actionFilters;
+    event.target.checked ? set.add(event.target.value) : set.delete(event.target.value);
+    applyFilters();
   });
+  document.getElementById("mobile-chipbar").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-quick-layer]");
+    if (!button) return;
+    const layer = button.dataset.quickLayer;
+    state.layerFilters.has(layer) ? state.layerFilters.delete(layer) : state.layerFilters.add(layer);
+    populateControls();
+    applyFilters();
+  });
+  document.getElementById("mobile-filter-btn").addEventListener("click", openFilters);
+  document.getElementById("close-filter-btn").addEventListener("click", closeFilters);
+  document.getElementById("drawer-scrim").addEventListener("click", closeFilters);
+  document.getElementById("lang-btn").addEventListener("click", toggleLanguage);
+  document.getElementById("open-submit-btn").addEventListener("click", () => openModal("submit-modal"));
+  document.getElementById("methodology-btn").addEventListener("click", () => openModal("methodology-modal"));
+  document.getElementById("sources-btn").addEventListener("click", () => openModal("sources-modal"));
+  document.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeOpenModal));
+  document.querySelectorAll(".modal-backdrop").forEach((backdrop) => {
+    backdrop.addEventListener("click", (event) => {
+      if (event.target === backdrop) closeOpenModal();
+    });
+  });
+  document.getElementById("submission-form").addEventListener("submit", submitReport);
 }
 
-function updateView() {
+function openFilters() {
+  document.body.classList.add("filters-open");
+  document.getElementById("drawer-scrim").hidden = false;
+  setTimeout(() => state.map.invalidateSize(), 200);
+}
+
+function closeFilters() {
+  document.body.classList.remove("filters-open");
+  document.getElementById("drawer-scrim").hidden = true;
+}
+
+function toggleLanguage() {
+  state.lang = state.lang === "tr" ? "en" : "tr";
+  document.documentElement.lang = state.lang;
+  document.getElementById("lang-btn").textContent = state.lang === "tr" ? "EN" : "TR";
+  populateControls();
+  applyTranslations();
   applyFilters();
-  renderStats();
-  renderMarkers();
-  renderSelectedDetail();
+  if (state.selectedRecordId) renderDetail(getSelectedRecord());
+}
+
+function applyTranslations() {
+  document.querySelectorAll("[data-i18n]").forEach((node) => {
+    node.textContent = t(node.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+    node.placeholder = t(node.dataset.i18nPlaceholder);
+  });
 }
 
 function applyFilters() {
-  const actionFilterActive = state.actionFilters.size < TAXONOMY.actionType.length;
-  state.filtered = state.cases.filter((item) => {
-    if (!state.categoryFilters.has(item.category)) return false;
-    if (!state.stageFilters.has(item.stage)) return false;
-    if (actionFilterActive && !state.actionFilters.has(item.action_type)) return false;
-    if (state.sector && item.sector !== state.sector) return false;
-    if (state.province && !item.locations.some((location) => location.province === state.province)) return false;
-    return !state.search || searchableText(item).includes(state.search);
+  state.filtered = state.records.filter((record) => {
+    if (!state.layerFilters.has(record.layer)) return false;
+    if (state.province && !record.locations.some((location) => location.province === state.province)) return false;
+    if (state.sector && record.sector !== state.sector) return false;
+    if (record.record_type === "strike" && record.action_type && !state.actionFilters.has(record.action_type)) return false;
+    if (state.search && !record.search_blob.includes(state.search)) return false;
+    return true;
   });
-  document.getElementById("result-count").textContent = state.filtered.length;
-  if (state.selectedCaseId && !state.filtered.some((item) => item.id === state.selectedCaseId)) {
-    state.selectedCaseId = null;
-    state.selectedLocationId = null;
+
+  if (state.selectedRecordId && !state.filtered.some((record) => record.id === state.selectedRecordId)) {
+    clearSelection();
   }
+
+  updateStats();
+  renderLegend();
+  renderMobileChips();
+  renderMarkers();
+  document.getElementById("result-count").textContent = state.filtered.length;
 }
 
-function searchableText(item) {
-  return [
-    item.title, item.summary, item.employer, item.labor_organization, item.sector, item.demands.join(" "),
-    item.locations.map((location) => `${location.label} ${location.province} ${location.district}`).join(" "),
-  ].join(" ").toLocaleLowerCase("tr");
-}
-
-function renderStats() {
-  document.getElementById("stat-total").textContent = state.cases.length;
-  document.getElementById("stat-active").textContent = state.cases.filter((item) => ["started", "ongoing"].includes(item.stage)).length;
-  document.getElementById("stat-decision").textContent = state.cases.filter((item) => item.stage === "decision_taken").length;
-  document.getElementById("stat-mesem").textContent = state.cases.filter((item) => item.category === "mesem").length;
+function updateStats() {
+  document.getElementById("stat-total").textContent = state.records.length;
+  document.getElementById("stat-deaths").textContent = state.records.filter((record) => record.layer === "worker_death_recent").length;
+  document.getElementById("stat-strikes").textContent = state.records.filter((record) => record.layer === "strike_ongoing").length;
+  document.getElementById("stat-arrests").textContent = state.records.filter((record) => record.layer === "union_arrest_current").length;
 }
 
 function renderLegend() {
-  document.getElementById("legend-card").innerHTML = ["decision_taken", "started", "ongoing", "ended", "postponed_banned"]
-    .map((stage) => `<div class="legend-row"><span class="legend-dot" style="background:${COLORS[stage]}"></span>${t(`stage.${stage}`)}</div>`)
-    .join("");
+  document.getElementById("legend-card").innerHTML = LAYER_ORDER.map((layer) => {
+    const border = layer === "strike_decision" ? "border-color:#575047" : "";
+    return `<div class="legend-row"><span class="legend-dot" style="background:${LAYER_COLORS[layer]};${border}"></span>${escapeHtml(t(`layer.${layer}`))}</div>`;
+  }).join("");
+}
+
+function renderMobileChips() {
+  const counts = Object.fromEntries(QUICK_LAYERS.map((layer) => [layer, state.records.filter((record) => record.layer === layer).length]));
+  document.getElementById("mobile-chipbar").innerHTML = QUICK_LAYERS.map((layer) => {
+    const active = state.layerFilters.has(layer) ? "active" : "";
+    return `<button class="quick-chip ${active}" type="button" data-quick-layer="${layer}">
+      <span class="quick-dot" style="background:${LAYER_COLORS[layer]}"></span>${escapeHtml(t(`quickLayer.${layer}`))} ${counts[layer]}
+    </button>`;
+  }).join("");
 }
 
 function renderMarkers() {
   state.markers.forEach((marker) => marker.remove());
   state.markers.clear();
-  state.filtered.forEach((item) => {
-    item.locations.forEach((location) => {
-      if (!Number.isFinite(location.lat) || !Number.isFinite(location.lng)) return;
-      const selected = item.id === state.selectedCaseId && location.id === state.selectedLocationId;
+
+  state.filtered.forEach((record) => {
+    record.locations.forEach((location) => {
+      const selected = record.id === state.selectedRecordId ? "selected" : "";
       const marker = L.marker([location.lat, location.lng], {
         icon: L.divIcon({
-          className: "",
-          html: `<div class="case-marker ${selected ? "selected" : ""}" style="background:${COLORS[item.stage] || COLORS.unknown}">${markerLetter(item.category)}</div>`,
-          iconSize: selected ? [34, 34] : [28, 28],
-          iconAnchor: selected ? [17, 17] : [14, 14],
+          className: "case-marker-wrap",
+          html: `<div class="case-marker ${record.layer} ${selected}">${escapeHtml(markerLetter(record))}</div>`,
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
         }),
+        title: record.title,
       }).addTo(state.map);
-      marker.on("click", () => selectCase(item.id, location.id));
-      marker.bindTooltip(`${item.title} (${location.province})`);
-      state.markers.set(`${item.id}:${location.id}`, marker);
+      marker.on("click", () => selectRecord(record.id, location));
+      state.markers.set(`${record.id}:${location.id}`, marker);
     });
   });
 }
 
-function markerLetter(category) {
-  if (category === "mesem") return "M";
-  if (category === "unionist_detention") return "S";
+function markerLetter(record) {
+  if (record.record_type === "worker_death") return "Ö";
+  if (record.record_type === "mesem_school") return "M";
+  if (record.record_type === "union_labor_arrest") return "T";
   return "G";
 }
 
-function selectCase(caseId, locationId) {
-  state.selectedCaseId = caseId;
-  state.selectedLocationId = locationId;
+function selectRecord(recordId, location) {
+  state.selectedRecordId = recordId;
+  document.body.classList.add("detail-open");
+  closeFilters();
+  renderDetail(getSelectedRecord());
   renderMarkers();
-  renderSelectedDetail();
+  if (location) state.map.flyTo([location.lat, location.lng], Math.max(state.map.getZoom(), 8), { duration: 0.45 });
+  setTimeout(() => state.map.invalidateSize(), 220);
 }
 
-function renderSelectedDetail() {
+function clearSelection() {
+  state.selectedRecordId = null;
+  document.body.classList.remove("detail-open");
+  document.getElementById("case-detail").hidden = true;
+  document.getElementById("empty-detail").hidden = false;
+  renderMarkers();
+}
+
+function getSelectedRecord() {
+  return state.records.find((record) => record.id === state.selectedRecordId) || null;
+}
+
+function renderDetail(record) {
   const detail = document.getElementById("case-detail");
   const empty = document.getElementById("empty-detail");
-  const item = state.cases.find((candidate) => candidate.id === state.selectedCaseId);
-  if (!item) {
-    detail.hidden = true;
-    empty.hidden = false;
+  if (!record) {
+    clearSelection();
     return;
   }
   empty.hidden = true;
   detail.hidden = false;
-  const labels = COPY[state.lang].detail;
+
   detail.innerHTML = `
     <header class="detail-header">
-      <div class="chip-row">
-        ${chip(t(`category.${item.category}`))}
-        ${item.action_type ? chip(t(`actionType.${item.action_type}`)) : ""}
-        ${chip(t(`stage.${item.stage}`), COLORS[item.stage])}
-        ${item.detention_status ? chip(t(`detentionStatus.${item.detention_status}`)) : ""}
+      <div class="detail-topline">
+        <div class="chip-row">
+          ${chip(t(`recordType.${record.record_type}`), null)}
+          ${chip(t(`status.${record.status}`), LAYER_COLORS[record.layer], record.layer === "strike_decision")}
+        </div>
+        <div class="detail-actions">
+          <button class="icon-btn" type="button" data-close-detail aria-label="${escapeHtml(t("common.close"))}">×</button>
+        </div>
       </div>
-      <h2>${escapeHtml(item.title)}</h2>
-      <p class="case-summary">${escapeHtml(item.summary)}</p>
+      <h2>${escapeHtml(record.title)}</h2>
+      <p class="case-summary">${escapeHtml(record.summary || t("common.notSpecified"))}</p>
     </header>
-    <div class="detail-stats">
-      ${detailStat(labels.employer, item.employer || labels.noData)}
-      ${detailStat(labels.union, item.labor_organization || labels.noData)}
-      ${detailStat(labels.sector, item.sector || labels.noData)}
-      ${detailStat(labels.workers, formatCount(item.participant_count) || labels.noData)}
-      ${detailStat(labels.startDate, formatDate(item.start_date) || labels.noData)}
-      ${detailStat(labels.endDate, formatDate(item.end_date) || labels.noData)}
-      ${item.detention_status ? detailStat(labels.detentionStatus, t(`detentionStatus.${item.detention_status}`)) : ""}
-      ${detailStat(labels.lastVerified, formatDate(item.last_verified_at) || labels.noData)}
-    </div>
-    ${item.demands.length ? detailSection(labels.demands, `<div class="chip-row">${item.demands.map((value) => chip(value)).join("")}</div>`) : ""}
-    ${detailSection(labels.locations, renderLocations(item))}
-    ${detailSection(labels.timeline, renderTimeline(item))}
-    ${detailSection(labels.sources, renderSources(item))}
+    <div class="detail-stats">${renderTypeStats(record)}</div>
+    ${record.demands.length ? detailSection(t("detail.demands"), `<div class="chip-row">${record.demands.map((demand) => chip(demand)).join("")}</div>`) : ""}
+    ${detailSection(t("detail.locations"), renderLocations(record))}
+    ${detailSection(t("detail.timeline"), renderTimeline(record))}
+    ${detailSection(t("detail.sources"), renderSources(record))}
   `;
+  detail.querySelector("[data-close-detail]").addEventListener("click", clearSelection);
 }
 
-function chip(label, color) {
-  const style = color ? `style="border-color:${color}55;color:${color};background:${color}12"` : "";
-  return `<span class="chip" ${style}>${escapeHtml(label)}</span>`;
+function renderTypeStats(record) {
+  if (record.record_type === "worker_death") {
+    return [
+      detailStat(t("detail.workerName"), record.worker_name),
+      detailStat(t("detail.age"), record.worker_age),
+      detailStat(t("detail.employer"), record.employer),
+      detailStat(t("detail.sector"), record.sector),
+      detailStat(t("detail.date"), formatDate(record.death_date)),
+      detailStat(t("detail.cause"), record.cause),
+      detailStat(t("detail.legalStatus"), record.legal_status),
+      detailStat(t("detail.lastVerified"), formatDate(record.last_verified_at)),
+    ].join("");
+  }
+  if (record.record_type === "mesem_school") {
+    return [
+      detailStat(t("detail.schoolName"), record.school_name || record.title),
+      detailStat(t("detail.institutionCode"), record.institution_code),
+      detailStat(t("detail.sector"), record.sector),
+      detailStat(t("detail.activeDate"), formatDate(record.known_active_date)),
+      detailStat(t("detail.linkedIncidents"), record.linked_incident_count),
+      detailStat(t("detail.lastVerified"), formatDate(record.last_verified_at)),
+    ].join("");
+  }
+  if (record.record_type === "union_labor_arrest") {
+    return [
+      detailStat(t("detail.person"), record.person_name || record.title),
+      detailStat(t("detail.union"), record.labor_organization),
+      detailStat(t("detail.role"), record.role),
+      detailStat(t("detail.detentionDate"), formatDate(record.detention_date)),
+      detailStat(t("detail.custodyStatus"), t(`status.${record.status}`)),
+      detailStat(t("detail.accusation"), record.accusation || record.legal_status),
+      detailStat(t("detail.lastVerified"), formatDate(record.last_verified_at)),
+    ].join("");
+  }
+  return [
+    detailStat(t("detail.employer"), record.employer),
+    detailStat(t("detail.union"), record.labor_organization),
+    detailStat(t("detail.sector"), record.sector),
+    detailStat(t("detail.actionType"), record.action_type ? t(`actionType.${record.action_type}`) : ""),
+    detailStat(t("detail.workers"), formatCount(record.participant_count)),
+    detailStat(t("detail.decisionDate"), formatDate(record.decision_date)),
+    detailStat(t("detail.startDate"), formatDate(record.start_date)),
+    detailStat(t("detail.endDate"), formatDate(record.end_date)),
+    detailStat(t("detail.lastVerified"), formatDate(record.last_verified_at)),
+  ].join("");
 }
 
 function detailStat(label, value) {
-  return `<div class="detail-stat"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`;
+  const display = value || value === 0 ? String(value) : t("common.notSpecified");
+  return `<div class="detail-stat"><span>${escapeHtml(label)}</span><strong>${escapeHtml(display)}</strong></div>`;
 }
 
 function detailSection(title, content) {
   return `<section class="detail-section"><h3>${escapeHtml(title)}</h3>${content}</section>`;
 }
 
-function renderLocations(item) {
-  return `<div class="location-list">${item.locations.map((location) => `
-    <button class="location-item" type="button" data-case-id="${escapeAttr(item.id)}" data-location-id="${escapeAttr(location.id)}">
-      <strong>${escapeHtml(location.label || location.province)}</strong>
-      <span>${escapeHtml([location.district, location.province].filter(Boolean).join(", "))}</span>
-    </button>`).join("")}</div>`;
-}
-
-document.addEventListener("click", (event) => {
-  const button = event.target.closest(".location-item");
-  if (!button) return;
-  const item = state.cases.find((candidate) => candidate.id === button.dataset.caseId);
-  const location = item && item.locations.find((candidate) => candidate.id === button.dataset.locationId);
-  if (!location) return;
-  selectCase(item.id, location.id);
-  state.map.flyTo([location.lat, location.lng], Math.max(state.map.getZoom(), 8), { duration: 0.5 });
-});
-
-function renderTimeline(item) {
-  if (!item.timeline.length) return `<p class="case-summary">${COPY[state.lang].detail.noData}</p>`;
-  return `<div class="timeline">${item.timeline.map((entry) => `
-    <div class="timeline-item">
-      <div class="timeline-date">${formatDate(entry.date) || ""}</div>
-      <div class="timeline-body"><strong>${escapeHtml(t(`stage.${entry.stage}`))}</strong><br>${escapeHtml(entry.note)}</div>
+function renderLocations(record) {
+  return `<div class="location-list">${record.locations.map((location) => `
+    <div class="location-row">
+      <strong>${escapeHtml(location.label)}</strong>
+      <span>${escapeHtml([location.district, location.province].filter(Boolean).join(", "))}</span><br>
+      <span>${escapeHtml(t("detail.geocode"))}: ${escapeHtml(t(`geocodePrecision.${location.geocode_precision || "unknown"}`))}</span>
     </div>`).join("")}</div>`;
 }
 
-function renderSources(item) {
-  if (!item.sources.length) return `<p class="case-summary">${COPY[state.lang].detail.noData}</p>`;
-  return `<div class="source-items">${item.sources.map((source) => `
-    <a class="source-link" href="${escapeAttr(source.url)}" target="_blank" rel="noreferrer">
-      ${escapeHtml(source.title)}${source.publisher ? ` <span>(${escapeHtml(source.publisher)})</span>` : ""}
+function renderTimeline(record) {
+  if (!record.timeline.length) return `<p class="case-summary">${escapeHtml(t("common.notSpecified"))}</p>`;
+  return `<div class="timeline-list">${record.timeline.map((item) => `
+    <div class="timeline-row">
+      <div class="timeline-date">${escapeHtml(formatDate(item.date) || "")}</div>
+      <div class="timeline-body"><strong>${escapeHtml(t(`status.${item.status}`))}</strong>${escapeHtml(item.note)}</div>
+    </div>`).join("")}</div>`;
+}
+
+function renderSources(record) {
+  return `<div class="source-list">${record.sources.map((source) => `
+    <a class="source-row" href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">
+      <strong>${escapeHtml(source.title || t("common.source"))}</strong>
+      <span>${escapeHtml([source.publisher, formatDate(source.published_at)].filter(Boolean).join(" · "))}</span>
     </a>`).join("")}</div>`;
 }
 
-function setupSubmissionForm() {
-  document.getElementById("submission-form").addEventListener("submit", submitLead);
+function chip(label, color, outlined = false) {
+  const dot = color ? `<span class="chip-dot" style="background:${color};${outlined ? "border-color:#575047" : ""}"></span>` : "";
+  return `<span class="chip">${dot}${escapeHtml(label)}</span>`;
 }
 
-async function submitLead(event) {
+async function submitReport(event) {
   event.preventDefault();
   const errorBox = document.getElementById("submission-error");
-  errorBox.classList.remove("on");
   errorBox.textContent = "";
-  const payload = collectSubmission();
+  const payload = buildSubmissionPayload();
   const validationError = validateSubmission(payload);
   if (validationError) {
     errorBox.textContent = validationError;
-    errorBox.classList.add("on");
     return;
   }
-  let remote = false;
-  if (state.sb) {
-    const { error } = await state.sb.from("case_submissions").insert(payload);
-    if (error) {
-      errorBox.textContent = error.message;
-      errorBox.classList.add("on");
-      return;
+
+  try {
+    if (state.sb) {
+      const { error } = await state.sb.from("case_submissions").insert(payload);
+      if (error) throw error;
+      showSubmissionSuccess(t("submit.successRemote"));
+    } else {
+      const pending = JSON.parse(localStorage.getItem("grevtakip_pending_submissions") || "[]");
+      pending.push({ ...payload, local_id: cryptoRandomId(), created_at: new Date().toISOString() });
+      localStorage.setItem("grevtakip_pending_submissions", JSON.stringify(pending));
+      showSubmissionSuccess(t("submit.successLocal"));
     }
-    remote = true;
-  } else {
-    const saved = JSON.parse(localStorage.getItem("grevtakip_pending_submissions") || "[]");
-    saved.push({ ...payload, saved_at: new Date().toISOString() });
-    localStorage.setItem("grevtakip_pending_submissions", JSON.stringify(saved));
+  } catch (error) {
+    errorBox.textContent = error.message || String(error);
   }
-  document.getElementById("submission-form").reset();
-  document.getElementById("submission-form").hidden = true;
-  document.getElementById("submission-success").hidden = false;
-  document.getElementById("submission-success-copy").textContent = remote ? t("submit.successRemote") : t("submit.successLocal");
 }
 
-function collectSubmission() {
+function buildSubmissionPayload() {
   const province = document.getElementById("submission-province").value;
-  const center = PROVINCE_CENTER[province] || {};
+  const center = PROVINCE_BY_NAME[province] || {};
   const latRaw = document.getElementById("submission-lat").value;
   const lngRaw = document.getElementById("submission-lng").value;
   return {
-    category: document.getElementById("submission-category").value,
+    record_type: document.getElementById("submission-record-type").value,
     title: document.getElementById("submission-title").value.trim(),
     summary: document.getElementById("submission-summary").value.trim(),
     province,
-    location_label: document.getElementById("submission-location").value.trim() || province,
+    province_key: keyForProvince(province),
+    location_label: document.getElementById("submission-location").value.trim(),
     event_date: document.getElementById("submission-date").value || null,
     lat: latRaw ? Number(latRaw) : center.lat || null,
     lng: lngRaw ? Number(lngRaw) : center.lng || null,
+    geocode_precision: latRaw && lngRaw ? "exact" : "province_centroid",
     source_url: document.getElementById("submission-source-url").value.trim(),
     source_title: document.getElementById("submission-source-title").value.trim(),
-    contact_email: document.getElementById("submission-contact").value.trim(),
+    submitter_contact: document.getElementById("submission-contact").value.trim(),
     status: "needs_review",
-    raw_payload: {},
   };
 }
 
 function validateSubmission(payload) {
-  if (!payload.category || !payload.title || !payload.summary || !payload.province || !isValidUrl(payload.source_url)) {
-    return t("submit.required");
-  }
+  if (!payload.record_type || !payload.title || !payload.summary || !payload.province || !payload.source_url) return t("submit.missing");
+  if (!/^https?:\/\//i.test(payload.source_url)) return t("submit.badUrl");
   const latEntered = Boolean(document.getElementById("submission-lat").value);
   const lngEntered = Boolean(document.getElementById("submission-lng").value);
   if (latEntered !== lngEntered || !Number.isFinite(payload.lat) || !Number.isFinite(payload.lng)) return t("submit.badCoords");
   return "";
 }
 
-function isValidUrl(value) {
-  try {
-    const url = new URL(value);
-    return ["http:", "https:"].includes(url.protocol);
-  } catch {
-    return false;
+function showSubmissionSuccess(message) {
+  document.getElementById("submission-form").hidden = true;
+  document.getElementById("submission-success").hidden = false;
+  document.getElementById("submission-success-copy").textContent = message;
+}
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.setAttribute("aria-hidden", "false");
+  if (id === "submit-modal") {
+    document.getElementById("submission-form").hidden = false;
+    document.getElementById("submission-success").hidden = true;
+    document.getElementById("submission-error").textContent = "";
   }
 }
 
-function formatDate(value) {
+function closeOpenModal() {
+  document.querySelectorAll(".modal-backdrop").forEach((modal) => modal.setAttribute("aria-hidden", "true"));
+}
+
+function showLoadNotice(message) {
+  const notice = document.createElement("div");
+  notice.className = "load-notice";
+  notice.textContent = message;
+  document.querySelector(".map-region").appendChild(notice);
+  setTimeout(() => notice.remove(), 8000);
+}
+
+function buildSearchBlob(record) {
+  const values = [
+    record.title,
+    record.summary,
+    record.worker_name,
+    record.person_name,
+    record.school_name,
+    record.employer,
+    record.labor_organization,
+    record.sector,
+    record.cause,
+    record.legal_status,
+    record.accusation,
+    ...record.demands,
+    ...record.locations.flatMap((location) => [location.label, location.province, location.district]),
+    ...record.sources.flatMap((source) => [source.title, source.publisher]),
+  ];
+  return values.filter(Boolean).join(" ").toLocaleLowerCase("tr");
+}
+
+function stringList(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  return String(value).split(/[;,]/).map((item) => item.trim()).filter(Boolean);
+}
+
+function finiteNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function keyForProvince(name) {
+  if (!name) return "";
+  const existing = PROVINCE_BY_NAME[name];
+  if (existing) return existing.key;
+  const normalized = normalizeAscii(name);
+  return PROVINCES.find((province) => normalizeAscii(province.name) === normalized || province.key === normalized)?.key || "";
+}
+
+function cleanTitle(value) {
   if (!value) return "";
+  return String(value)
+    .toLocaleLowerCase("tr")
+    .split(/\s+/)
+    .map((word) => word ? word[0].toLocaleUpperCase("tr") + word.slice(1) : "")
+    .join(" ");
+}
+
+function normalizeAscii(value) {
+  return String(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/İ/g, "I")
+    .replace(/ı/g, "i")
+    .toUpperCase();
+}
+
+function parseDate(value) {
+  if (!value) return null;
   const date = new Date(`${value}T00:00:00`);
-  if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(state.lang === "tr" ? "tr-TR" : "en-US", { day: "2-digit", month: "short", year: "numeric" }).format(date);
+  return Number.isNaN(date.valueOf()) ? null : date;
+}
+
+function formatDate(value) {
+  const date = parseDate(value);
+  if (!date) return "";
+  return new Intl.DateTimeFormat(state.lang === "tr" ? "tr-TR" : "en", { year: "numeric", month: "short", day: "numeric" }).format(date);
 }
 
 function formatCount(value) {
-  if (value === null || value === undefined || value === "") return "";
-  return new Intl.NumberFormat(state.lang === "tr" ? "tr-TR" : "en-US").format(value);
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "";
+  return new Intl.NumberFormat(state.lang === "tr" ? "tr-TR" : "en").format(number);
+}
+
+function slugify(value) {
+  return normalizeAscii(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || cryptoRandomId();
+}
+
+function cryptoRandomId() {
+  if (crypto?.randomUUID) return crypto.randomUUID();
+  return Math.random().toString(36).slice(2);
+}
+
+function t(path) {
+  const parts = path.split(".");
+  let value = COPY[state.lang];
+  for (const part of parts) value = value?.[part];
+  return value || path;
 }
 
 function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  }[char]));
 }
 
-function escapeAttr(value) {
-  return escapeHtml(value).replaceAll("`", "&#096;");
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/`/g, "&#096;");
 }

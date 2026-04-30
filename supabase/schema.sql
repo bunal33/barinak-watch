@@ -1,7 +1,25 @@
-create type public.case_category as enum (
-  'labor_action',
-  'mesem',
-  'unionist_detention'
+-- GrevTakip public data schema
+-- Run in Supabase SQL editor. The static app also works without Supabase.
+
+create extension if not exists pgcrypto;
+
+create type public.record_type as enum (
+  'worker_death',
+  'strike',
+  'mesem_school',
+  'union_labor_arrest'
+);
+
+create type public.record_status as enum (
+  'fatality_recorded',
+  'decision_taken',
+  'ongoing',
+  'ended',
+  'postponed_banned',
+  'active_school',
+  'currently_arrested',
+  'released',
+  'unknown'
 );
 
 create type public.action_type as enum (
@@ -10,25 +28,6 @@ create type public.action_type as enum (
   'protest',
   'bargaining_dispute',
   'solidarity_action'
-);
-
-create type public.case_stage as enum (
-  'decision_taken',
-  'started',
-  'ongoing',
-  'ended',
-  'postponed_banned',
-  'cancelled',
-  'unknown'
-);
-
-create type public.detention_status as enum (
-  'detained',
-  'arrested',
-  'convicted',
-  'released',
-  'trial_ongoing',
-  'unknown'
 );
 
 create type public.verification_status as enum (
@@ -40,97 +39,138 @@ create type public.verification_status as enum (
 
 create type public.source_type as enum (
   'official',
-  'union_statement',
+  'union',
   'labor_news',
+  'report',
   'news',
-  'research_report',
   'social_media',
   'informant',
+  'solidarity',
   'other'
 );
 
+create type public.geocode_precision as enum (
+  'exact',
+  'district_centroid',
+  'province_centroid',
+  'unknown'
+);
+
 create table public.cases (
-  id text primary key,
-  category public.case_category not null,
+  id uuid primary key default gen_random_uuid(),
+  public_id text unique not null,
+  record_type public.record_type not null,
+  status public.record_status not null default 'unknown',
   action_type public.action_type,
-  stage public.case_stage not null default 'unknown',
-  detention_status public.detention_status,
   title text not null,
   summary text not null,
+  worker_name text,
+  worker_age integer check (worker_age is null or worker_age between 0 and 110),
+  person_name text,
+  school_name text,
+  institution_code text,
   employer text,
   labor_organization text,
+  role text,
   sector text,
+  cause text,
+  demands text[] not null default '{}',
   participant_count integer check (participant_count is null or participant_count >= 0),
+  decision_date date,
   start_date date,
   end_date date,
-  last_verified_at date,
-  demands text[] not null default '{}',
+  death_date date,
+  detention_date date,
+  known_active_date date,
+  custody_status text,
+  accusation text,
+  legal_status text,
+  linked_incident_count integer not null default 0 check (linked_incident_count >= 0),
   verification_status public.verification_status not null default 'draft',
+  last_verified_at date,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  constraint strike_action_type_only check (
+    record_type = 'strike' or action_type is null
+  ),
+  constraint status_matches_type check (
+    (record_type = 'worker_death' and status in ('fatality_recorded', 'unknown')) or
+    (record_type = 'strike' and status in ('decision_taken', 'ongoing', 'ended', 'postponed_banned', 'unknown')) or
+    (record_type = 'mesem_school' and status in ('active_school', 'unknown')) or
+    (record_type = 'union_labor_arrest' and status in ('currently_arrested', 'released', 'unknown'))
+  )
 );
 
 create table public.case_locations (
-  id text primary key,
-  case_id text not null references public.cases(id) on delete cascade,
+  id uuid primary key default gen_random_uuid(),
+  case_id uuid not null references public.cases(id) on delete cascade,
   label text not null,
+  province_key text,
   province text not null,
   district text,
-  address text,
-  lat numeric(10, 6) not null,
-  lng numeric(10, 6) not null,
-  created_at timestamptz not null default now()
+  lat numeric(9,6) not null,
+  lng numeric(9,6) not null,
+  geocode_precision public.geocode_precision not null default 'unknown',
+  created_at timestamptz not null default now(),
+  constraint case_locations_lat check (lat between -90 and 90),
+  constraint case_locations_lng check (lng between -180 and 180)
 );
 
 create table public.case_sources (
-  id bigint generated always as identity primary key,
-  case_id text not null references public.cases(id) on delete cascade,
+  id uuid primary key default gen_random_uuid(),
+  case_id uuid not null references public.cases(id) on delete cascade,
   title text not null,
   url text not null,
   publisher text,
-  source_type public.source_type not null default 'news',
+  type public.source_type not null default 'other',
   published_at date,
   created_at timestamptz not null default now(),
   constraint case_sources_http_url check (url ~* '^https?://')
 );
 
 create table public.case_timeline (
-  id bigint generated always as identity primary key,
-  case_id text not null references public.cases(id) on delete cascade,
+  id uuid primary key default gen_random_uuid(),
+  case_id uuid not null references public.cases(id) on delete cascade,
   date date,
-  stage public.case_stage not null default 'unknown',
+  status public.record_status not null default 'unknown',
   note text not null,
   created_at timestamptz not null default now()
 );
 
 create table public.case_submissions (
-  id bigint generated always as identity primary key,
-  category public.case_category not null,
+  id uuid primary key default gen_random_uuid(),
+  record_type public.record_type not null,
   title text not null,
   summary text not null,
   province text not null,
+  province_key text,
   location_label text,
   event_date date,
-  lat numeric(10, 6),
-  lng numeric(10, 6),
+  lat numeric(9,6),
+  lng numeric(9,6),
+  geocode_precision public.geocode_precision not null default 'unknown',
   source_url text not null,
   source_title text,
-  contact_email text,
+  submitter_contact text,
   status public.verification_status not null default 'needs_review',
   raw_payload jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   reviewed_at timestamptz,
   reviewer_note text,
-  constraint case_submissions_http_url check (source_url ~* '^https?://')
+  constraint case_submissions_http_url check (source_url ~* '^https?://'),
+  constraint case_submissions_lat check (lat is null or lat between -90 and 90),
+  constraint case_submissions_lng check (lng is null or lng between -180 and 180),
+  constraint case_submissions_coords_pair check ((lat is null and lng is null) or (lat is not null and lng is not null))
 );
 
-create index cases_category_idx on public.cases(category);
-create index cases_stage_idx on public.cases(stage);
+create index cases_record_type_idx on public.cases(record_type);
+create index cases_status_idx on public.cases(status);
 create index cases_action_type_idx on public.cases(action_type);
-create index cases_verification_status_idx on public.cases(verification_status);
-create index case_locations_case_id_idx on public.case_locations(case_id);
-create index case_sources_case_id_idx on public.case_sources(case_id);
-create index case_timeline_case_id_idx on public.case_timeline(case_id);
+create index cases_verification_idx on public.cases(verification_status);
+create index case_locations_case_idx on public.case_locations(case_id);
+create index case_locations_province_idx on public.case_locations(province);
+create index case_sources_case_idx on public.case_sources(case_id);
+create index case_timeline_case_idx on public.case_timeline(case_id);
 create index case_submissions_status_idx on public.case_submissions(status);
 
 alter table public.cases enable row level security;
@@ -139,34 +179,42 @@ alter table public.case_sources enable row level security;
 alter table public.case_timeline enable row level security;
 alter table public.case_submissions enable row level security;
 
-create policy "Read verified cases"
+create policy "public can read verified cases"
 on public.cases for select
 using (verification_status = 'verified');
 
-create policy "Read locations for verified cases"
+create policy "public can read verified case locations"
 on public.case_locations for select
-using (exists (
-  select 1 from public.cases c
-  where c.id = case_locations.case_id
-  and c.verification_status = 'verified'
-));
+using (
+  exists (
+    select 1 from public.cases
+    where cases.id = case_locations.case_id
+      and cases.verification_status = 'verified'
+  )
+);
 
-create policy "Read sources for verified cases"
+create policy "public can read verified case sources"
 on public.case_sources for select
-using (exists (
-  select 1 from public.cases c
-  where c.id = case_sources.case_id
-  and c.verification_status = 'verified'
-));
+using (
+  exists (
+    select 1 from public.cases
+    where cases.id = case_sources.case_id
+      and cases.verification_status = 'verified'
+  )
+);
 
-create policy "Read timeline for verified cases"
+create policy "public can read verified case timeline"
 on public.case_timeline for select
-using (exists (
-  select 1 from public.cases c
-  where c.id = case_timeline.case_id
-  and c.verification_status = 'verified'
-));
+using (
+  exists (
+    select 1 from public.cases
+    where cases.id = case_timeline.case_id
+      and cases.verification_status = 'verified'
+  )
+);
 
-create policy "Anyone can submit leads"
+create policy "public can submit cases for review"
 on public.case_submissions for insert
 with check (status = 'needs_review');
+
+-- Editors should be granted through Supabase auth/RLS policies or service-role workflows.

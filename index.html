@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GrevTakip</title>
-  <meta name="description" content="Türkiye'de grevleri, işçi eylemlerini, MESEM vakalarını ve sendikacılara yönelik tutuklamaları izleyen açık harita.">
+  <meta name="description" content="Türkiye'de grevleri, işçi ölümlerini, MESEM okullarını ve emek örgütlerine yönelik tutuklamaları izleyen açık harita.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,41 +18,58 @@
       <span>Grev<span>Takip</span></span>
     </div>
     <nav class="nav-actions" aria-label="Ana menü">
-      <button class="ghost-btn" id="methodology-btn" type="button" data-i18n="nav.methodology">Yöntem</button>
-      <button class="ghost-btn" id="sources-btn" type="button" data-i18n="nav.sources">Kaynaklar</button>
+      <button class="ghost-btn mobile-filter-btn" id="mobile-filter-btn" type="button" data-i18n="nav.filters">Filtre</button>
+      <button class="ghost-btn desktop-nav" id="methodology-btn" type="button" data-i18n="nav.methodology">Yöntem</button>
+      <button class="ghost-btn desktop-nav" id="sources-btn" type="button" data-i18n="nav.sources">Kaynaklar</button>
       <button class="ghost-btn" id="lang-btn" type="button" aria-label="Switch language">EN</button>
-      <button class="primary-btn" id="open-submit-btn" type="button" data-i18n="nav.submit">+ Eylem/Kaynak Bildir</button>
+      <button class="primary-btn" id="open-submit-btn" type="button" data-i18n="nav.submit">+ Bildir</button>
     </nav>
   </header>
 
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+
   <main class="app-shell">
-    <aside class="left-rail" aria-label="Filtreler">
+    <aside class="left-rail" id="filter-panel" aria-label="Filtreler">
+      <div class="rail-header">
+        <div>
+          <div class="section-label" data-i18n="filters.panel">Filtreler</div>
+          <strong data-i18n="filters.panelTitle">Kayıtları daralt</strong>
+        </div>
+        <button class="icon-btn mobile-only" id="close-filter-btn" type="button" aria-label="Filtreleri kapat">×</button>
+      </div>
+
       <section class="summary-block">
         <div class="section-label" data-i18n="stats.label">Genel görünüm</div>
         <div class="stat-grid">
-          <div class="stat-tile"><strong id="stat-total">0</strong><span data-i18n="stats.total">Doğrulanmış kayıt</span></div>
-          <div class="stat-tile"><strong id="stat-active">0</strong><span data-i18n="stats.active">Süren grev/eylem</span></div>
-          <div class="stat-tile"><strong id="stat-decision">0</strong><span data-i18n="stats.decision">Grev kararı</span></div>
-          <div class="stat-tile"><strong id="stat-mesem">0</strong><span data-i18n="stats.mesem">MESEM kaydı</span></div>
+          <div class="stat-tile"><strong id="stat-total">0</strong><span data-i18n="stats.total">Toplam kayıt</span></div>
+          <div class="stat-tile"><strong id="stat-deaths">0</strong><span data-i18n="stats.deaths">Son 6 ay işçi ölümü</span></div>
+          <div class="stat-tile"><strong id="stat-strikes">0</strong><span data-i18n="stats.strikes">Süren grev</span></div>
+          <div class="stat-tile"><strong id="stat-arrests">0</strong><span data-i18n="stats.arrests">Tutuklu emekçi</span></div>
         </div>
       </section>
 
       <section class="filters">
         <label class="search-wrap" for="search-input">
           <span data-i18n="filters.search">Ara</span>
-          <input id="search-input" type="search" autocomplete="off" data-i18n-placeholder="filters.searchPlaceholder" placeholder="İşveren, sendika, il, talep...">
+          <input id="search-input" type="search" autocomplete="off" data-i18n-placeholder="filters.searchPlaceholder" placeholder="İşveren, sendika, okul, il...">
         </label>
         <div class="field-pair">
           <label for="province-filter"><span data-i18n="filters.province">İl</span><select id="province-filter"></select></label>
           <label for="sector-filter"><span data-i18n="filters.sector">Sektör</span><select id="sector-filter"></select></label>
         </div>
-        <div class="filter-group"><div class="section-label" data-i18n="filters.category">Kategori</div><div id="category-filters" class="check-list"></div></div>
-        <div class="filter-group"><div class="section-label" data-i18n="filters.stage">Aşama</div><div id="stage-filters" class="check-list"></div></div>
-        <div class="filter-group"><div class="section-label" data-i18n="filters.actionType">Eylem türü</div><div id="action-filters" class="check-list"></div></div>
+        <div class="filter-group">
+          <div class="section-label" data-i18n="filters.layers">Katmanlar</div>
+          <div id="layer-filters" class="check-list"></div>
+        </div>
+        <div class="filter-group">
+          <div class="section-label" data-i18n="filters.actionType">Grev / eylem türü</div>
+          <div id="action-filters" class="check-list"></div>
+        </div>
       </section>
     </aside>
 
     <section class="map-region" aria-label="Harita">
+      <div class="mobile-chipbar" id="mobile-chipbar" aria-label="Hızlı katmanlar"></div>
       <div id="map"></div>
       <div class="map-tools">
         <div class="legend-card" id="legend-card"></div>
@@ -60,11 +77,11 @@
       </div>
     </section>
 
-    <aside class="detail-panel" aria-label="Kayıt ayrıntıları">
+    <aside class="detail-panel" id="detail-panel" aria-label="Kayıt ayrıntıları">
       <div id="empty-detail" class="empty-state">
         <div class="mini-map-icon">TR</div>
         <h1 data-i18n="empty.title">Haritadan bir kayıt seçin</h1>
-        <p data-i18n="empty.text">Grevler, fiili eylemler, MESEM vakaları ve sendikacılara yönelik davalar aynı veri modelinde izlenir.</p>
+        <p data-i18n="empty.text">Varsayılan harita son altı aydaki işçi ölümlerini, süren grevleri ve güncel emek tutuklamalarını gösterir.</p>
         <div class="source-context">
           <div class="section-label" data-i18n="empty.context">Bağlam kaynakları</div>
           <a href="https://emekcalisma.org/wp-content/uploads/ECT_2024.pdf" target="_blank" rel="noreferrer">EÇT 2024 İşçi Sınıfı Eylemleri Raporu</a>
@@ -84,7 +101,7 @@
       </div>
       <form id="submission-form" class="modal-body" novalidate>
         <div class="field-pair">
-          <label for="submission-category"><span data-i18n="submit.category">Kategori</span><select id="submission-category" required></select></label>
+          <label for="submission-record-type"><span data-i18n="submit.recordType">Kayıt türü</span><select id="submission-record-type" required></select></label>
           <label for="submission-province"><span data-i18n="submit.province">İl</span><select id="submission-province" required></select></label>
         </div>
         <label for="submission-title"><span data-i18n="submit.caseTitle">Başlık</span><input id="submission-title" type="text" required maxlength="140" data-i18n-placeholder="submit.caseTitlePlaceholder" placeholder="Örn. Özel İtalyan Lisesi öğretmenleri grevde"></label>
@@ -124,8 +141,8 @@
         <button class="icon-btn" type="button" data-close-modal aria-label="Kapat">×</button>
       </div>
       <div class="modal-body prose">
-        <p data-i18n="methodology.p1">GrevTakip, tek bir veri modelinde işyeri temelli eylemleri, genel eylemleri, dayanışma eylemlerini, MESEM vakalarını ve sendikacılara yönelik gözaltı/tutuklama kayıtlarını izler.</p>
-        <p data-i18n="methodology.p2">Grev kararı ile grevin başlaması ayrı aşamalardır. Bir kayıt "grev kararı alındı" aşamasında olabilir, daha sonra "grev başladı", "sürüyor", "sona erdi" veya "ertelendi/yasaklandı" aşamasına taşınabilir.</p>
+        <p data-i18n="methodology.p1">GrevTakip; grev, fiili eylem, işçi ölümü, MESEM okulu ve emek örgütlerine yönelik tutuklama kayıtlarını tek haritada gösterir. Bir nokta bir konum örneğidir; aynı vaka birden çok konuma sahip olabilir.</p>
+        <p data-i18n="methodology.p2">Grevler için “grev kararı alındı”, “sürüyor”, “sona erdi” ve “ertelendi/yasaklandı” ayrıdır. İşçi ölümü, MESEM okulu ve tutuklama kayıtları kendi durum etiketlerini kullanır.</p>
         <p data-i18n="methodology.p3">EÇT ve Cornell yaklaşımından uyarlanan kaynak disiplini kullanılır: sendika açıklamaları, emek haberleri, resmi belgeler ve araştırma raporları güçlü kaynak sayılır; sosyal medya ve tanık aktarımı ek teyit ister.</p>
       </div>
     </section>
@@ -138,17 +155,18 @@
         <button class="icon-btn" type="button" data-close-modal aria-label="Kapat">×</button>
       </div>
       <div class="modal-body source-list">
-        <a href="https://emekcalisma.org/raporlar/" target="_blank" rel="noreferrer">Emek Çalışmaları Topluluğu raporları</a>
-        <a href="https://www.aile.gov.tr/istatistikler/calisma-hayati-istatistikleri/calisma-genel-mudurlugu-istatistikleri/grev-ve-lokavt-istatistikleri/" target="_blank" rel="noreferrer">Resmi grev ve lokavt istatistikleri</a>
-        <a href="https://csgb.gov.tr/yayinlar/calisma-hayati-istatistikleri-e-bulteni/nisan-2026/ucret-ve-sendikal-istatistikler.html" target="_blank" rel="noreferrer">ÇSGB ücret ve sendikal istatistikler bülteni</a>
-        <a href="https://arastirma.disk.org.tr/wp-content/uploads/2026/01/Sendikalasma-ve-Toplu-Pazarlik-Rapor-Ocak-2026-1.pdf" target="_blank" rel="noreferrer">DİSK-AR Sendikalaşma ve Toplu Pazarlık Raporu</a>
-        <a href="https://striketracker.ilr.cornell.edu/methodology.html" target="_blank" rel="noreferrer">Cornell/ILR-LER Labor Action Tracker yöntemi</a>
+        <a href="https://emekcalisma.org/wp-content/uploads/ECT_2024.pdf" target="_blank" rel="noreferrer">Emek Çalışmaları Topluluğu 2024 raporu</a>
+        <a href="https://www.isigmeclisi.org/is-cinayetleri-raporlari%26lt" target="_blank" rel="noreferrer">İSİG Meclisi iş cinayetleri raporları</a>
+        <a href="https://meslegimhayatim.meb.gov.tr/mesleki-ve-teknik-anadolu-liselerimiz/liselerimiz" target="_blank" rel="noreferrer">MEB / Mesleğim Hayatım kurum listesi</a>
+        <a href="https://csgb.gov.tr/yayinlar/calisma-hayati-istatistikleri-e-bulteni/nisan-2026/ucret-ve-sendikal-istatistikler.html" target="_blank" rel="noreferrer">ÇSGB sendikal istatistik bülteni</a>
+        <a href="https://arastirma.disk.org.tr/wp-content/uploads/2026/01/Sendikalasma-ve-Toplu-Pazarlik-Rapor-Ocak-2026-1.pdf" target="_blank" rel="noreferrer">DİSK-AR sendikalaşma raporu</a>
+        <a href="https://striketracker.ilr.cornell.edu/methodology.html" target="_blank" rel="noreferrer">Cornell Strike Tracker methodology</a>
       </div>
     </section>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
