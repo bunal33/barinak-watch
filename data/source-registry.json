@@ -737,6 +737,60 @@
         "Muammer Sünger"
       ],
       "note": "Third pass over names 81-120 in the İSİG January 2026 memorial list. Exact death dates not verified in this pass use month-precision death_date 2026-01; same-name records from other months are not treated as duplicates."
+    },
+    "january_2026_final_entries_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-01",
+      "source_url": "https://www.isigmeclisi.org/21558-is-cinayetlerine-karsi-orgutlu-mucadeleyi-yukseltelim-ocak-ayinda-e",
+      "reviewed_name_range": "121-146",
+      "reviewed_count": 26,
+      "records_added": 26,
+      "already_present_names": [],
+      "unnamed_worker_placeholders_added": [
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #2)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #3)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #4)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #5)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #6)"
+      ],
+      "report_only_records_pending_detail": [
+        "Cüneyt Akgül",
+        "Rıdvan İlgaz",
+        "Baran Sami Vural",
+        "Şemsettin Mehmet G.",
+        "Nesimi Kaya",
+        "Tamer Aman",
+        "Yağmur Şenli",
+        "Mustafa Demir",
+        "Muhittin Aksoy",
+        "Asım Koç",
+        "Yiğit Efe Akpınar",
+        "İlyas Bilgin",
+        "Mustafa Yiğit (Hacı Simitçi)",
+        "Akif Kılıç",
+        "Hakkı Ünal",
+        "Emrah Şahin",
+        "Remzi Kurt",
+        "Süleyman Karamanoğlu",
+        "Ekrem Yamşak",
+        "Osman Solmaz",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #2)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #3)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #4)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #5)",
+        "İsmi öğrenilemeyen işçi (Ocak 2026 #6)"
+      ],
+      "note": "Final pass over the remaining entries in the İSİG January 2026 memorial list. The report has 26 remaining entries after the first 120, including six unnamed workers; this is fewer than the requested 35 because the report total is 146."
+    },
+    "january_2026_full_list_review": {
+      "updated_at": "2026-05-01",
+      "source_url": "https://www.isigmeclisi.org/21558-is-cinayetlerine-karsi-orgutlu-mucadeleyi-yukseltelim-ocak-ayinda-e",
+      "expected_fatality_count": 146,
+      "covered_person_entries": 146,
+      "missing_person_entries": [],
+      "coverage_method": "Occurrence-count validation over the January memorial list; six unnamed workers are represented by explicit placeholders."
     }
   },
   "used_sources_archive": [
