@@ -315,6 +315,69 @@
         "Emin Durmaz"
       ],
       "note": "Third pass over names 75-111 in the İSİG March 2026 memorial list. These records are report-backed placeholders until individual date, place, sector, and cause are verified."
+    },
+    "march_2026_final_37_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-03",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "reviewed_name_range": "112-148",
+      "reviewed_count": 37,
+      "records_added": 31,
+      "already_covered_by_existing_records": [
+        "Leyle Elali",
+        "Muna Ahmed",
+        "Fatma Ahmed",
+        "Hayat Ahmed",
+        "Iman Ahmed",
+        "Mahmud Ahmed"
+      ],
+      "existing_records_enriched_with_isig_source": 0,
+      "unnamed_worker_placeholders_added": [
+        "İsmi öğrenilemeyen işçi (Mart 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Mart 2026 #2)"
+      ],
+      "report_only_records_pending_detail": [
+        "Serkan Ünal",
+        "İsmail Enes Can",
+        "Süleyman Cemre Kahraman",
+        "Harun Dilli",
+        "Niyaz Muhammed Eskandari",
+        "Farız Varlık",
+        "Kıvanç Özsoy",
+        "Abdulbaki Altıngezen",
+        "Figen Karakayacı",
+        "Recep Berkan Hodlioğlu",
+        "İbrahim Batmaz",
+        "Volkan Köksal",
+        "Yusuf Ayyıldız",
+        "Ahmet Güneş",
+        "Medine Yavuz",
+        "Mehmet Dönmez",
+        "Hasan Deniz",
+        "Nail Biçer",
+        "Ali Telli",
+        "Erol Durdurmuş",
+        "Mustafa Çoklu",
+        "Hasan Şen",
+        "Mustafa Doğan",
+        "Hayati Şahin",
+        "Ali Altın",
+        "Mehmet Evran",
+        "Mustafa Ünal",
+        "Fadime Eren",
+        "Hatice Oflaz",
+        "İsmi öğrenilemeyen işçi (Mart 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Mart 2026 #2)"
+      ],
+      "note": "Final pass over entries 112-148 in the İSİG March 2026 memorial list. Six Antalya container-fire fatalities are already represented by one linked multi-fatality record, so they were counted as covered rather than duplicated."
+    },
+    "march_2026_full_list_review": {
+      "updated_at": "2026-05-01",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "expected_fatality_count": 148,
+      "covered_person_entries": 148,
+      "missing_person_entries": [],
+      "coverage_method": "Exact worker_name match plus semicolon-split names for existing multi-fatality records; two unnamed workers are represented by explicit placeholders."
     }
   },
   "used_sources_archive": [
