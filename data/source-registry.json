@@ -468,6 +468,53 @@
         "Ramazan Katılmış"
       ],
       "note": "Second pass over names 33-64 in the İSİG February 2026 memorial list. These records are report-backed placeholders until individual date, place, sector, and cause are verified."
+    },
+    "february_2026_third_32_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-02",
+      "source_url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+      "reviewed_name_range": "65-96",
+      "reviewed_count": 32,
+      "records_added": 32,
+      "already_present_names": [],
+      "repeated_name_placeholders_added": [
+        "Muhammet Gündüz"
+      ],
+      "report_only_records_pending_detail": [
+        "Tayran Atun",
+        "Muhammed Yıldız",
+        "Nidal İsmail",
+        "Erkan Uzun",
+        "Mehmet Özgür Yıldız",
+        "Abdullah Ahmed El Selim",
+        "Murat İpek",
+        "Mehmet Doğan",
+        "Cemal Temiz",
+        "Hakan Küçük",
+        "Mücahid Sarıdaş",
+        "Dursun Tadik",
+        "Şafak Tatar",
+        "Mehmet .",
+        "Elmaddin Gurbanov",
+        "Bayram İpek",
+        "Hüsamettin Dam",
+        "İhsan Akman",
+        "Muhammet Gündüz",
+        "Yavuz Trabzonluoğlu",
+        "Enver Çavdar",
+        "Rıza Gövenç",
+        "Celal Karatut",
+        "Murat Ersoy",
+        "İsa Çiçekli",
+        "Mehmet Küçükbaş",
+        "Harun Yavaş",
+        "Abuzer Karamoçu",
+        "İbrahim Çetin",
+        "İzzet Karaağaç",
+        "Kadriye Şakır",
+        "Hüseyin Buhan"
+      ],
+      "note": "Third pass over entries 65-96 in the İSİG February 2026 memorial list. Muhammet Gündüz appears twice in the report list, so the second occurrence is represented by a separate placeholder record."
     }
   },
   "used_sources_archive": [
