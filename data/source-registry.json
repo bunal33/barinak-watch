@@ -214,6 +214,57 @@
         "Mustafa Kanat"
       ],
       "note": "First pass over the first 37 names in the İSİG March 2026 memorial list. Report-only records should be enriched with individual date, place, sector, and cause as independent sources are found."
+    },
+    "march_2026_second_37_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-03",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "reviewed_name_range": "38-74",
+      "reviewed_count": 37,
+      "records_added": 36,
+      "already_present_names": [
+        "Fatma Nur Çelik"
+      ],
+      "existing_records_enriched_with_isig_source": 1,
+      "report_only_records_pending_detail": [
+        "Dilan Karaman",
+        "Coşkun Seçim",
+        "Mehmet Yakup Kirişçi",
+        "Kerem Şengün",
+        "Nami Yaylak",
+        "Mahmut Arata",
+        "Tuncay Gür",
+        "Ayşe Çimenkaya",
+        "Atakan Asar",
+        "Mehmet Duran",
+        "Engin Er",
+        "Ahmad Hassan",
+        "Murat Çınardağ",
+        "Ferhat Balk",
+        "H.Ö.",
+        "Turan Yıldız",
+        "Mustafa Şeker",
+        "Abdullah Gün",
+        "Ejder Yıldırım",
+        "Nusrettin Avunan",
+        "Mehmet Can Aydoğan",
+        "Hacı İldeniz",
+        "Ayhan Keleş",
+        "Şaban Yılmaz",
+        "Sıddık Andaç",
+        "Serdal Güven",
+        "Celal Acar",
+        "Yusuf Gençtürk",
+        "İsmet Çatal",
+        "Caner Şehit",
+        "Mevlüt Tuzcu",
+        "Muhammed Arvani",
+        "İbrahim Çağında",
+        "Selçuk Aydın",
+        "Afif Değirmencioğlu",
+        "İbrahim Kıral"
+      ],
+      "note": "Second pass over names 38-74 in the İSİG March 2026 memorial list. These records are report-backed placeholders until individual date, place, sector, and cause are verified."
     }
   },
   "used_sources_archive": [
