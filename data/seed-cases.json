@@ -615,6 +615,393 @@
       ]
     },
     {
+      "id": "ibrahim-tasdelen-alasehir-elektrik-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "İbrahim Taşdelen kaynak yaparken yüksek gerilime kapıldı",
+      "summary": "Manisa Alaşehir'de Alaşehir-Sarıgöl karayolu Üzümlü Kavşağı mevkiindeki yaş sebze meyve işyerinde çatıda kaynak yapan 20 yaşındaki İbrahim Taşdelen, yüksek gerilim hattına kapılarak yaşamını yitirdi.",
+      "worker_name": "İbrahim Taşdelen",
+      "worker_age": 20,
+      "employer": "Yaş sebze meyve işyeri / kaynak işi",
+      "sector": "Gıda / bakım-onarım",
+      "death_date": "2026-02-23",
+      "cause": "Elektrik çarpması",
+      "legal_status": "Soruşturma kapsamında işveren ve işyeri sahibinin gözaltına alındığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-02-24",
+      "locations": [
+        {
+          "id": "ibrahim-tasdelen-alasehir-uzumlu",
+          "label": "Alaşehir-Sarıgöl yolu Üzümlü Kavşağı işyeri",
+          "province_key": "MANISA",
+          "province": "Manisa",
+          "district": "Alaşehir / Üzümlü",
+          "lat": 38.3508,
+          "lng": 28.5172,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-02-23", "status": "fatality_recorded", "note": "İbrahim Taşdelen çatıda kaynak yaparken yüksek gerilime kapıldı." },
+        { "date": "2026-02-24", "status": "fatality_recorded", "note": "İşveren ve işyeri sahibi hakkında gözaltı işlemi haberleştirildi." }
+      ],
+      "sources": [
+        {
+          "title": "Kaynak yaparken elektrik akımına kapıldı",
+          "url": "https://www.sondakika.com/guncel/haber-kaynak-yaparken-elektrik-akimina-kapildi-19597092/",
+          "publisher": "Son Dakika / DHA",
+          "type": "news",
+          "published_at": "2026-02-24"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "sami-can-saricam-salgam-tesisi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Sami Can şalgam tesisindeki makinede yaralanıp yaşamını yitirdi",
+      "summary": "Adana Sarıçam'daki şalgam üretim tesisinde çalışan 22 yaşındaki Sami Can, temizlik yaptığı havuç yıkama ve doğrama makinesine el ve ayağını kaptırdıktan sonra kaldırıldığı hastanede yaşamını yitirdi.",
+      "worker_name": "Sami Can",
+      "worker_age": 22,
+      "employer": "Şalgam üretim tesisi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Gıda üretimi",
+      "death_date": "2026-02-18",
+      "cause": "Makineye sıkışma / kesilme",
+      "legal_status": "Olaya ilişkin soruşturmanın sürdüğü haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-02-18",
+      "locations": [
+        {
+          "id": "sami-can-saricam",
+          "label": "Sarıçam şalgam üretim tesisi",
+          "province_key": "ADANA",
+          "province": "Adana",
+          "district": "Sarıçam",
+          "lat": 37.041,
+          "lng": 35.43,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-02-14", "status": "fatality_recorded", "note": "Sami Can makineye el ve ayağını kaptırarak ağır yaralandı." },
+        { "date": "2026-02-18", "status": "fatality_recorded", "note": "Tedavi gördüğü hastanede yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Şalgam tesisi işçisi hayatını kaybetti",
+          "url": "https://www.sondakika.com/amp/haber-salgam-tesisi-iscisi-hayatini-kaybetti-19578597/",
+          "publisher": "Son Dakika / AA",
+          "type": "news",
+          "published_at": "2026-02-18"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "nebo-ramazan-eyyubiye-misir-silosu-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Nebo Ramazan mısır silosuna düşerek yaşamını yitirdi",
+      "summary": "Şanlıurfa Eyyübiye kırsal Açmalı Mahallesi'nde gündelikçi olarak çalışmaya giden 55 yaşındaki Suriye uyruklu Nebo Ramazan, 4 metrelik mısır dolu siloya düşerek yaşamını yitirdi.",
+      "worker_name": "Nebo Ramazan",
+      "worker_age": 55,
+      "employer": "Mısır silosu / işyeri sahibi Y.K.",
+      "sector": "Tarım / gıda depolama / göçmen emek",
+      "death_date": "2026-02-02",
+      "cause": "Silo içine düşme / boğulma",
+      "legal_status": "İşyeri sahibi Y.K.'nin gözaltına alındığı ve soruşturmanın sürdüğü haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-02-02",
+      "locations": [
+        {
+          "id": "nebo-ramazan-eyyubiye-acmali",
+          "label": "Açmalı Mahallesi mısır silosu",
+          "province_key": "SANLIURFA",
+          "province": "Şanlıurfa",
+          "district": "Eyyübiye / Açmalı",
+          "lat": 37.109,
+          "lng": 38.757,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-02-02", "status": "fatality_recorded", "note": "Nebo Ramazan mısır silosuna düşerek yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Şanlıurfa'da mısır silosuna düşen işçi hayatını kaybetti",
+          "url": "https://www.urfadasin.com/sanliurfada-misir-silosuna-dusen-isci-hayatini-kaybetti/amp",
+          "publisher": "Urfadasın",
+          "type": "news",
+          "published_at": "2026-02-02"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "idris-artuc-hakkari-maden-gocuk-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "İdris Artuç Hakkari'de maden göçüğünde yaşamını yitirdi",
+      "summary": "Hakkari'de Ölmez Madencilik Şirketi'ne ait maden ocağında meydana gelen göçükte 35 yaşındaki işçi İdris Artuç ağır yaralandı; Hakkari Devlet Hastanesi'nde yapılan müdahalelere rağmen yaşamını yitirdi.",
+      "worker_name": "İdris Artuç",
+      "worker_age": 35,
+      "employer": "Ölmez Madencilik",
+      "sector": "Madencilik",
+      "death_date": "2026-02-28",
+      "cause": "Maden ocağı göçüğü",
+      "legal_status": "Olaya dair inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-02-28",
+      "locations": [
+        {
+          "id": "idris-artuc-hakkari-maden",
+          "label": "Ölmez Madencilik maden ocağı",
+          "province_key": "HAKKARI",
+          "province": "Hakkari",
+          "district": "Hakkari",
+          "lat": 37.574,
+          "lng": 43.74,
+          "geocode_precision": "province_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-02-28", "status": "fatality_recorded", "note": "İdris Artuç maden ocağındaki göçük sonrası yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Maden ocağında iş cinayeti",
+          "url": "https://mezopotamyaajansi35.com/tum-haberler/content/view/303968",
+          "publisher": "Mezopotamya Ajansı",
+          "type": "labor_news",
+          "published_at": "2026-02-28"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "recep-koca-balya-maden-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Recep Koca Balya'da maden ocağında yaşamını yitirdi",
+      "summary": "Balıkesir Balya'da bir maden ocağında çalışan 34 yaşındaki Recep Koca, başına taş düşmesi sonucu yaşamını yitirdi.",
+      "worker_name": "Recep Koca",
+      "worker_age": 34,
+      "employer": "Maden ocağı (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik",
+      "death_date": "2026-02-20",
+      "cause": "Başına taş düşmesi",
+      "legal_status": "Maden sahasında inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-02-20",
+      "locations": [
+        {
+          "id": "recep-koca-balya-maden",
+          "label": "Balya maden ocağı",
+          "province_key": "BALIKESIR",
+          "province": "Balıkesir",
+          "district": "Balya",
+          "lat": 39.748,
+          "lng": 27.578,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-02-20", "status": "fatality_recorded", "note": "Recep Koca başına taş düşmesi sonucu yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Balıkesir'de maden ocağında iş cinayeti",
+          "url": "https://artigercek.com/emek/balikesirde-maden-ocaginda-is-cinayeti-343431h",
+          "publisher": "Artı Gerçek",
+          "type": "labor_news",
+          "published_at": "2026-02-20"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "cumhur-onbay-hayrabolu-fabrika-patlama-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Cumhur Önbay Hayrabolu'da fabrika patlamasında yaşamını yitirdi",
+      "summary": "Tekirdağ Hayrabolu'da faaliyet gösteren kemik tozu üretim fabrikasında meydana gelen patlamada 48 yaşındaki işçi Cumhur Önbay olay yerinde yaşamını yitirdi.",
+      "worker_name": "Cumhur Önbay",
+      "worker_age": 48,
+      "employer": "Kemik tozu üretim fabrikası",
+      "sector": "Sanayi / hayvansal yan ürün işleme",
+      "death_date": "2026-03-13",
+      "cause": "Patlama",
+      "legal_status": "Patlamanın nedeninin belirlenmesi için çalışma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-13",
+      "locations": [
+        {
+          "id": "cumhur-onbay-hayrabolu-fabrika",
+          "label": "Hayrabolu kemik tozu üretim fabrikası",
+          "province_key": "TEKIRDAG",
+          "province": "Tekirdağ",
+          "district": "Hayrabolu",
+          "lat": 41.214,
+          "lng": 27.106,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-03-13", "status": "fatality_recorded", "note": "Cumhur Önbay fabrika patlamasında yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Tekirdağ'da yağ fabrikasında patlamada 48 yaşındaki işçi hayatını kaybetti",
+          "url": "https://nedenisguvenligi.com/tekirdagda-yag-fabrikasinda-patlamada-48-yasindaki-isci-hayatini-kaybetti/",
+          "publisher": "Neden İş Güvenliği",
+          "type": "labor_news",
+          "published_at": "2026-03-13"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "bunyamin-bese-gaziantep-forklift-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Bünyamin Beşe forklift sepetinden düşerek yaşamını yitirdi",
+      "summary": "Gaziantep 4. Organize Sanayi Bölgesi'ndeki bir halı fabrikasında forklift sepetine bindirilen 54 yaşındaki Bünyamin Beşe yüksekten düşerek ağır yaralandı; hastanedeki bir haftalık yaşam mücadelesinin ardından yaşamını yitirdi.",
+      "worker_name": "Bünyamin Beşe",
+      "worker_age": 54,
+      "employer": "Halı fabrikası (işveren adı kaynakta belirtilmedi)",
+      "sector": "Tekstil / halı",
+      "death_date": "2026-03-14",
+      "cause": "Forklift sepetinden yüksekten düşme",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "bunyamin-bese-gaziantep-osb",
+          "label": "Gaziantep 4. OSB halı fabrikası",
+          "province_key": "GAZIANTEP",
+          "province": "Gaziantep",
+          "district": "Şehitkamil / 4. OSB",
+          "lat": 37.189,
+          "lng": 37.336,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-03-07", "status": "fatality_recorded", "note": "Bünyamin Beşe forklift sepetinden düşerek ağır yaralandı." },
+        { "date": "2026-03-14", "status": "fatality_recorded", "note": "Hastanedeki yaşam mücadelesinin ardından yaşamını yitirdi." }
+      ],
+      "sources": [
+        {
+          "title": "Gaziantep’te forklift kazası: Fabrika işçisi Bünyamin Beşe hayatını kaybetti",
+          "url": "https://www.gzt.com/gundem/gaziantepte-forklift-kazasi-fabrika-iscisi-bunyamin-bese-hayatini-kaybetti-yerel-haberler-4023756",
+          "publisher": "GZT",
+          "type": "news",
+          "published_at": "2026-03-14"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "yasin-soylu-islahiye-maden-kamyon-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Yasin Soylu İslahiye'de maden kamyonu devrilince yaşamını yitirdi",
+      "summary": "Gaziantep İslahiye Sulumağara Mahallesi'ndeki bir maden ocağında çalışan 23 yaşındaki kamyon sürücüsü Yasin Soylu, kullandığı kamyonun uçuruma yuvarlanıp yanması sonucu yaşamını yitirdi.",
+      "worker_name": "Yasin Soylu",
+      "worker_age": 23,
+      "employer": "Özel maden şirketi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik / taşımacılık",
+      "death_date": "2026-03-29",
+      "cause": "Maden sahasında kamyon devrilmesi ve yangın",
+      "legal_status": "Kaza ile ilgili soruşturmanın sürdüğü haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-29",
+      "locations": [
+        {
+          "id": "yasin-soylu-islahiye-sulumagara",
+          "label": "Sulumağara Mahallesi maden ocağı",
+          "province_key": "GAZIANTEP",
+          "province": "Gaziantep",
+          "district": "İslahiye / Sulumağara",
+          "lat": 37.034,
+          "lng": 36.724,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        { "date": "2026-03-29", "status": "fatality_recorded", "note": "Yasin Soylu'nun kullandığı kamyon maden sahasında devrilerek yandı." }
+      ],
+      "sources": [
+        {
+          "title": "Uçuruma yuvarlanan kamyonun sürücüsü hayatını kaybetti",
+          "url": "https://www.yenidonem.com.tr/asayis/ucuruma-yuvarlanan-kamyonun-surucusu-hayatini-kaybetti-394074",
+          "publisher": "Yeni Dönem / İHA",
+          "type": "news",
+          "published_at": "2026-03-29"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
       "id": "arda-tonbul-mesem-2024",
       "record_type": "worker_death",
       "status": "fatality_recorded",

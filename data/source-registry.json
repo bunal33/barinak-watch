@@ -129,14 +129,14 @@
     "latest_complete_isig_report_months": {
       "periods": ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
       "target_fatality_count": 957,
-      "mapped_individual_fatalities_in_these_months": 20,
-      "remaining_individual_case_target": 937
+      "mapped_individual_fatalities_in_these_months": 28,
+      "remaining_individual_case_target": 929
     },
     "rolling_current_backlog": {
       "periods": ["2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"],
       "known_target_without_pending_april_report": 786,
-      "mapped_individual_fatalities_in_these_months": 21,
-      "remaining_known_target_before_april_report": 765
+      "mapped_individual_fatalities_in_these_months": 29,
+      "remaining_known_target_before_april_report": 757
     }
   },
   "used_sources_archive": [
@@ -153,15 +153,24 @@
         "https://birlesikmetalis.org/dilovasinda-yasanan-katliam-kaza-degildir/",
         "https://disk.org.tr/2026/04/sendikacilik-suc-degildir-limter-is-genel-baskani-ve-yoneticileri-derhal-serbest-birakilsin/",
         "https://ekmekvegul.net/gundem/temel-conta-iscilerine-tuvalet-ambargosu-en-temel-ihtiyacimiz-bize-cok-goruldu",
+        "https://artigercek.com/emek/balikesirde-maden-ocaginda-is-cinayeti-343431h",
+        "https://mezopotamyaajansi35.com/tum-haberler/content/view/303968",
         "https://sendika.org/2025/11/bu-yilin-84-cocuk-isci-cinayeti-nigdede-traktorun-altinda-kalan-14-yasindaki-metehan-hayatini-kaybetti-737645",
         "https://sendika.org/2025/12/17-yasindaki-cocuk-isci-zahra-hosseini-basortusunu-makineye-kaptirmasi-sonucu-hayatini-kaybetti-739324",
         "https://sendika.org/2026/01/diyarbakirda-is-cinayeti-fabrikanin-catisini-onarirken-dusen-isci-hayatini-kaybetti-740749",
         "https://sendika.org/2026/04/17-yasindaki-cocuk-isci-engin-tuncay-calisirken-hayatini-kaybetti-746267",
         "https://sendika.org/2026/04/mart-ayinda-en-az-148-isci-hayatini-kaybetti-sekizi-cocuk-altisi-65-yas-ustu-745641",
         "https://sendika.org/2026/01/kacak-maden-ocaginda-is-cinayeti-uzerine-parcalar-dusen-36-yasindaki-isci-yasamini-yitirdi-740160",
+        "https://www.gzt.com/gundem/gaziantepte-forklift-kazasi-fabrika-iscisi-bunyamin-bese-hayatini-kaybetti-yerel-haberler-4023756",
         "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+        "https://www.isigmeclisi.org/21588-yasamak-ve-",
+        "https://nedenisguvenligi.com/tekirdagda-yag-fabrikasinda-patlamada-48-yasindaki-isci-hayatini-kaybetti/",
         "https://spotturkey.co.uk/trade-union-organiser-basaran-aksu-detained-over-trade-union-activities-and-environmental-activism/",
         "https://t24.com.tr/haber/kacak-maden-ocaginda-is-cinayeti-uzerine-parcalar-dusen-isci-yasamini-yitirdi%2C1288974",
+        "https://www.sondakika.com/amp/haber-salgam-tesisi-iscisi-hayatini-kaybetti-19578597/",
+        "https://www.sondakika.com/guncel/haber-kaynak-yaparken-elektrik-akimina-kapildi-19597092/",
+        "https://www.urfadasin.com/sanliurfada-misir-silosuna-dusen-isci-hayatini-kaybetti/amp",
+        "https://www.yenidonem.com.tr/asayis/ucuruma-yuvarlanan-kamyonun-surucusu-hayatini-kaybetti-394074",
         "https://www.birlesikmetalis.org/smart-solar-grevi-kazanimla-sonuclandi/",
         "https://www.birlesikmetalis.org/totomakta-grev-karari/",
         "https://www.cumhuriyet.com.tr/turkiye/avukatlardan-dilovasi-patlamasi-raporu-bu-bir-is-cinayeti-ve-orgutlu-ihmal-rejimi-2459580",
