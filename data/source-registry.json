@@ -515,6 +515,60 @@
         "Hüseyin Buhan"
       ],
       "note": "Third pass over entries 65-96 in the İSİG February 2026 memorial list. Muhammet Gündüz appears twice in the report list, so the second occurrence is represented by a separate placeholder record."
+    },
+    "february_2026_final_entries_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-02",
+      "source_url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+      "reviewed_name_range": "97-126",
+      "reviewed_count": 30,
+      "records_added": 30,
+      "already_present_names": [],
+      "unnamed_worker_placeholders_added": [
+        "İsmi öğrenilemeyen işçi (Şubat 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Şubat 2026 #2)"
+      ],
+      "report_only_records_pending_detail": [
+        "Ömer Yılmaz",
+        "Hüsniye Selvi",
+        "Yashar Ghasamı",
+        "Gökmen Değirmenci",
+        "Selman Aras",
+        "Tolga Göçmenli",
+        "Doğan Gümüşbaş",
+        "Emrah Sevim",
+        "Mehmet Cengiz",
+        "Anıl Kazım Göçmenli",
+        "Mahmut Ercan",
+        "Ramazan Aslan",
+        "Mevlana Dalaslan",
+        "Hasan Filik",
+        "Ahmet Temiz",
+        "Berkan Karakaya",
+        "Zikri Ulusoy",
+        "İskender Yücetaş",
+        "Aşkın Gültekin",
+        "Muhammet Emin Torun",
+        "Ramazan Urgun",
+        "Abdullah Karakaş",
+        "Bayram Kök",
+        "Niyazi Topçu",
+        "Enver Keklik",
+        "Özgünç Meşedüzü",
+        "Mustafa Ünlü",
+        "Ramazan U.",
+        "İsmi öğrenilemeyen işçi (Şubat 2026 #1)",
+        "İsmi öğrenilemeyen işçi (Şubat 2026 #2)"
+      ],
+      "note": "Final pass over the remaining entries in the İSİG February 2026 memorial list. The report has 30 remaining entries after the first 96, including two unnamed workers."
+    },
+    "february_2026_full_list_review": {
+      "updated_at": "2026-05-01",
+      "source_url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+      "expected_fatality_count": 126,
+      "covered_person_entries": 126,
+      "missing_person_entries": [],
+      "coverage_method": "Occurrence-count validation over the February memorial list; Muhammet Gündüz is expected twice and two unnamed workers are represented by explicit placeholders."
     }
   },
   "used_sources_archive": [
