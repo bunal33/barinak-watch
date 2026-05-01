@@ -171,8 +171,8 @@
         "2026-03"
       ],
       "target_fatality_count": 957,
-      "mapped_individual_fatalities_in_these_months": 28,
-      "remaining_individual_case_target": 929
+      "mapped_individual_fatalities_in_these_months": 48,
+      "remaining_individual_case_target": 909
     },
     "rolling_current_backlog": {
       "periods": [
@@ -184,11 +184,36 @@
         "2026-04"
       ],
       "known_target_without_pending_april_report": 786,
-      "mapped_individual_fatalities_before_pending_april_report": 28,
-      "remaining_known_target_before_april_report": 758,
+      "mapped_individual_fatalities_before_pending_april_report": 48,
+      "remaining_known_target_before_april_report": 738,
       "mapped_april_records_so_far": 19,
       "mapped_april_fatalities_so_far": 21,
       "april_target_status": "pending_full_isig_monthly_report"
+    },
+    "march_2026_first_37_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-03",
+      "source_url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+      "reviewed_first_n_names": 37,
+      "records_added": 34,
+      "already_present_names": [
+        "Cumhur Önbay",
+        "Bünyamin Beşe",
+        "Yasin Soylu"
+      ],
+      "report_only_records_pending_detail": [
+        "Fatih Tutkal",
+        "Mehmet Alkan",
+        "Yusuf El İsa",
+        "Mehmet Kaymaz",
+        "Halil Kaplan",
+        "Ali Avcı",
+        "Mücahit Kurtuluş",
+        "Yakup Çapan",
+        "Mehmet Şahintaş",
+        "Mustafa Kanat"
+      ],
+      "note": "First pass over the first 37 names in the İSİG March 2026 memorial list. Report-only records should be enriched with individual date, place, sector, and cause as independent sources are found."
     }
   },
   "used_sources_archive": [
@@ -206,8 +231,14 @@
         "https://birlesikmetalis.org/dilovasinda-yasanan-katliam-kaza-degildir/",
         "https://disk.org.tr/2026/04/sendikacilik-suc-degildir-limter-is-genel-baskani-ve-yoneticileri-derhal-serbest-birakilsin/",
         "https://ekmekvegul.net/gundem/temel-conta-iscilerine-tuvalet-ambargosu-en-temel-ihtiyacimiz-bize-cok-goruldu",
+        "https://haberdairesi.com/konya/iscileri-tasiyan-midibus-trafik-levhasina-carpti-1-olu-9-yarali-154936h",
+        "https://haberdairesi.com/turkiye/isci-6-kattan-dusup-oldu-154175h",
+        "https://haberts.com.tr/madende-gocuk-altinda-kalan-isci-kurtarilamadi",
+        "https://halktv.com.tr/gundem/motosikletli-kurye-katledildi-922479h",
+        "https://medyabar.com/haber/23948877/karasuda-is-kazasi-vincin-altinda-kalan-isci-hayatini-kaybetti",
         "https://mezopotamyaajansi35.com/tum-haberler/content/view/303968",
         "https://nedenisguvenligi.com/tekirdagda-yag-fabrikasinda-patlamada-48-yasindaki-isci-hayatini-kaybetti/",
+        "https://olaymedya.com/haber/23902514/gaziantepte-feci-kaza-isci-kemal-kekecin-aci-sonu",
         "https://sendika.org/2025/11/bu-yilin-84-cocuk-isci-cinayeti-nigdede-traktorun-altinda-kalan-14-yasindaki-metehan-hayatini-kaybetti-737645",
         "https://sendika.org/2025/12/17-yasindaki-cocuk-isci-zahra-hosseini-basortusunu-makineye-kaptirmasi-sonucu-hayatini-kaybetti-739324",
         "https://sendika.org/2026/01/diyarbakirda-is-cinayeti-fabrikanin-catisini-onarirken-dusen-isci-hayatini-kaybetti-740749",
@@ -220,8 +251,13 @@
         "https://t24.com.tr/gundem/zonguldakta-is-cinayeti-emekliligine-1-ay-kalan-madenci-elektrik-akimina-kapilarak-hayatini-kaybetti%2C1314918",
         "https://t24.com.tr/haber/kacak-maden-ocaginda-is-cinayeti-uzerine-parcalar-dusen-isci-yasamini-yitirdi%2C1288974",
         "https://www.24saatgazetesi.com/manisada-is-kazasi-kanalizasyon-calismasinda-gocuk-altinda-kalan-1-isci-hayatini-kaybetti",
+        "https://www.antalyahurses.com/kayitlarda-meslek-hastaligi-yok-gercekte-is-cinayeti-var/510645/",
+        "https://www.aydindenge.com.tr/soke/25/03/2026/sokede-feci-kaza-58-yasindaki-vedat-koc-hayatini-kaybetti",
         "https://www.birlesikmetalis.org/smart-solar-grevi-kazanimla-sonuclandi/",
         "https://www.birlesikmetalis.org/totomakta-grev-karari/",
+        "https://www.bursahaberdar.com/bursada-motosiklet-kullanan-kadin-hayatini-kaybetti/",
+        "https://www.cankiripostasi.com/cankiri-da-lpg-yuklu-tir-yandi-2-olu-1-yarali/26722/",
+        "https://www.cayhaber.net/cayeli-bakirde-yine-is-kazasi-aci-haber-geldi",
         "https://www.cumhuriyet.com.tr/turkiye/avukatlardan-dilovasi-patlamasi-raporu-bu-bir-is-cinayeti-ve-orgutlu-ihmal-rejimi-2459580",
         "https://www.cumhuriyet.com.tr/turkiye/bagimsiz-maden-is-sendikasi-ndan-basaran-aksu-nun-tutuklanmasina-tepki-turkiye-de-isci-sinifina-ve-halka-gozdagi-verilmek-isteniyor-2493983",
         "https://www.cumhuriyet.com.tr/turkiye/ogretmen-fatma-nur-celik-in-katiline-istenen-ceza-belli-oldu-2494289",
@@ -230,8 +266,11 @@
         "https://www.egitimis.org.tr/sendika-haberleri/ogretmenimiz-fatma-nur-celik-icin-81-ilde-is-biraktik-03-03-2026",
         "https://www.evrensel.net/haber/509415/mesemli-cocuk-isci-arda-tonbul-yasamini-yitirdi",
         "https://www.geredemedyatakip.com.tr/genel/fabrikada-feci-is-kazasi-28-yasindaki-isci-makineye-sikisarak-hayatini-kaybetti.html",
+        "https://www.gunhaber.com.tr/haber/Antalya-da-dinlenirken-kalp-krizinden-yasamini-yitirdi/566088",
         "https://www.gzt.com/gundem/gaziantepte-forklift-kazasi-fabrika-iscisi-bunyamin-bese-hayatini-kaybetti-yerel-haberler-4023756",
         "https://www.haber3.com/guncel/3-sayfa/elektrik-akimina-kapilan-19-yasindaki-genc-isci-hayatini-kaybetti-haberi-6252433",
+        "https://www.haberibizden.com/gundem/isci-servis-araci-takla-atti-3-olu-6-yarali/139227",
+        "https://www.haberturk.com/kayseri-haberleri/36550633-kayseride-beton-mikseri-operatoru-is-kazasinda-oldu",
         "https://www.iscihaber.net/ankara/ankarada-is-kazasi-ust-gecitten-dusen-adami-otomobil-ezdi/224540",
         "https://www.iscihaber.net/aydin/aydinda-feci-is-kazasi-tas-kirma-makinesine-kolunu-kaptiran-isci-hayatini-kaybetti/223088",
         "https://www.iscihaber.net/bursa/bursa-gemlikte-is-kazasi-60-yasindaki-isci-oldu/225897",
@@ -240,6 +279,7 @@
         "https://www.iscihaber.net/iscinin-gundemi/izmirde-gemi-sokum-tesisinde-uzerine-metal-parca-dusen-65-yasindaki-isci-oldu/224577",
         "https://www.iscihaber.net/kars/karsta-is-makinesinin-altinda-kalan-operator-hayatini-kaybetti/225718",
         "https://www.iscihaber.net/kayseri/kayseri-melikgazide-insaattan-dusen-isci-oldu/219341",
+        "https://www.iscihaber.net/kirikkale/kirikkalede-fabrikada-is-kazasi-10-metreden-dusen-isci-ozan-turhan-hayatini-kaybetti/215597",
         "https://www.iscihaber.net/kocaeli/kocaelide-fabrikada-feci-is-kazasi-makineye-sikisan-28-yasindaki-isci-hayatini-kaybetti/219609",
         "https://www.iscihaber.net/manisa/manisa-alasehirde-feci-is-kazasi-elektrik-akimina-kapilan-19-yasindaki-isci-hayatini-kaybetti/220799",
         "https://www.iscihaber.net/mersin/mersin-anamurda-bir-isci-insaat-iskelesinden-duserek-hayatini-kaybetti/225653",
@@ -247,15 +287,22 @@
         "https://www.iscihaber.net/zonguldak/zonguldakta-emekliligine-1-ay-kalan-madenci-elektrik-akimina-kapilarak-hayatini-kaybetti/222344",
         "https://www.isigmeclisi.org/21588-yasamak-ve-",
         "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+        "https://www.kariyermedya.net/kirat-ta-facia-kacak-ocakta-can-kaybi/",
         "https://www.kartal24.com/54858-esp-ve-bagli-kurumlara-operasyon-47-kisi-tutuklandi",
+        "https://www.konyapostasi.com.tr/21-yasindaki-genc-isten-ciktiktan-sonra-olu-bulundu",
         "https://www.medyaege.com.tr/service/amp/cigli-aritma-tesisinde-is-kazasi-1-isci-hayatini-kaybetti-274517h.htm",
         "https://www.nethaber.com.tr/samsun-da-is-kazasi-kamyonun-altinda-kalan-isci-hayatini-kaybetti/1707201/",
+        "https://www.olaymedya.com/haber/23915109/gaziantepte-insaat-iscisi-saban-ozgezer-hayatini-kaybetti",
+        "https://www.ortadogugazetesi.com/mobilya-atolyesinde-korkunc-kaza-5-aylik-hamile-kadin-isci-can-verdi",
         "https://www.petrol-is.org.tr/haber/temel-contada-grev-kiriciliginda-son-nokta-104084/",
+        "https://www.politikahaber.com/kutahyada-is-cinayeti-maden-iscisi-gocuk-altinda-kaldi/",
         "https://www.sondakika.com/amp/haber-salgam-tesisi-iscisi-hayatini-kaybetti-19578597/",
         "https://www.sondakika.com/guncel/haber-kaynak-yaparken-elektrik-akimina-kapildi-19597092/",
         "https://www.t24.com.tr/gundem/manisada-is-cinayeti-kanalizasyon-calismasinda-gocuk-altina-kalan-isci-hayatini-kaybetti%2C1315031",
+        "https://www.unyekent.com/haber/yemek_yerken_fenalasti_kurtarilamadi-58386.html",
         "https://www.urfadasin.com/sanliurfada-misir-silosuna-dusen-isci-hayatini-kaybetti/amp",
-        "https://www.yenidonem.com.tr/asayis/ucuruma-yuvarlanan-kamyonun-surucusu-hayatini-kaybetti-394074"
+        "https://www.yenidonem.com.tr/asayis/ucuruma-yuvarlanan-kamyonun-surucusu-hayatini-kaybetti-394074",
+        "https://www.yurtegitsen.org.tr/uluyazi-kampusumuzden-memur-adil-karaca-son-yolculuguna-ugurlandi"
       ]
     },
     {

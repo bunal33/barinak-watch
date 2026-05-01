@@ -2203,6 +2203,1525 @@
           "published_at": "2026-04-30"
         }
       ]
+    },
+    {
+      "id": "ozan-turhan-kirikkale-tuz-fabrikasi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ozan Turhan Kırıkkale Delice’de tuz fabrikasında yüksekten düşerek yaşamını yitirdi",
+      "summary": "Kırıkkale Delice ilçesi Çerikli beldesindeki Safir Tuz Fabrikası’nda çatı montaj çalışması yapan 48 yaşındaki Ozan Turhan yaklaşık 10 metre yükseklikten düştü; kaldırıldığı hastanede yaşamını yitirdi.",
+      "worker_name": "Ozan Turhan",
+      "worker_age": 48,
+      "employer": "Safir Tuz Fabrikası (çatı montaj çalışması)",
+      "sector": "Sanayi / tuz fabrikası",
+      "death_date": "2026-03-24",
+      "cause": "Yüksekten düşme",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "ozan-turhan-delice-cerikli",
+          "label": "Safir Tuz Fabrikası, Çerikli",
+          "province_key": "KIRIKKALE",
+          "province": "Kırıkkale",
+          "district": "Delice / Çerikli",
+          "lat": 39.953,
+          "lng": 34.027,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-24",
+          "status": "fatality_recorded",
+          "note": "Ozan Turhan için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kırıkkale’de fabrikada iş kazası: 10 metreden düşen işçi Ozan Turhan hayatını kaybetti",
+          "url": "https://www.iscihaber.net/kirikkale/kirikkalede-fabrikada-is-kazasi-10-metreden-dusen-isci-ozan-turhan-hayatini-kaybetti/215597",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-03-24"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mustafa-celik-manavgat-firin-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mustafa Çelik Manavgat’ta çalıştığı fırında fenalaşarak yaşamını yitirdi",
+      "summary": "Antalya Manavgat’ta bir fırında çalışan 51 yaşındaki Mustafa Çelik, işyeri önünde dinlendiği sırada kalp krizi geçirdi; hastaneye kaldırıldı ancak kurtarılamadı.",
+      "worker_name": "Mustafa Çelik",
+      "worker_age": 51,
+      "employer": "Fırın (işveren adı kaynakta belirtilmedi)",
+      "sector": "Gıda / fırın",
+      "death_date": "2026-03-12",
+      "cause": "Kalp krizi",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "mustafa-celik-manavgat-firin",
+          "label": "Manavgat fırın işyeri",
+          "province_key": "ANTALYA",
+          "province": "Antalya",
+          "district": "Manavgat",
+          "lat": 36.787,
+          "lng": 31.443,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-12",
+          "status": "fatality_recorded",
+          "note": "Mustafa Çelik için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Antalya’da dinlenirken kalp krizinden yaşamını yitirdi",
+          "url": "https://www.gunhaber.com.tr/haber/Antalya-da-dinlenirken-kalp-krizinden-yasamini-yitirdi/566088",
+          "publisher": "Gün Haber",
+          "type": "news",
+          "published_at": "2026-03-12"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "vedat-koc-soke-maden-santiyesi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Vedat Koç Söke’de maden şantiyesinde TIR çarpması sonucu yaşamını yitirdi",
+      "summary": "Aydın Söke Yenikent Mahallesi’ndeki maden ocağı şantiyesinde kamyonunun önünde duran 58 yaşındaki Vedat Koç, geri manevra yapan TIR’ın çarpması sonucu olay yerinde yaşamını yitirdi.",
+      "worker_name": "Vedat Koç",
+      "worker_age": 58,
+      "employer": "Maden ocağı şantiyesi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik / şantiye taşımacılığı",
+      "death_date": "2026-03-25",
+      "cause": "Geri manevra yapan TIR çarpması",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "vedat-koc-soke-yenikent",
+          "label": "Yenikent maden ocağı şantiyesi",
+          "province_key": "AYDIN",
+          "province": "Aydın",
+          "district": "Söke / Yenikent",
+          "lat": 37.751,
+          "lng": 27.41,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-25",
+          "status": "fatality_recorded",
+          "note": "Vedat Koç için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Söke’de feci kaza: 58 yaşındaki Vedat Koç hayatını kaybetti",
+          "url": "https://www.aydindenge.com.tr/soke/25/03/2026/sokede-feci-kaza-58-yasindaki-vedat-koc-hayatini-kaybetti",
+          "publisher": "Aydın Denge",
+          "type": "news",
+          "published_at": "2026-03-25"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "huseyin-tuzcu-kirat-kacak-maden-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Hüseyin Tuzcu Zonguldak Kırat’ta kaçak maden ocağında yaşamını yitirdi",
+      "summary": "Zonguldak Merkez Kırat Mahallesi’nde kaçak maden ocağında çalışan 62 yaşındaki Hüseyin Tuzcu ölümcül iş kazasında yaşamını yitirdi.",
+      "worker_name": "Hüseyin Tuzcu",
+      "worker_age": 62,
+      "employer": "Kaçak maden ocağı",
+      "sector": "Madencilik / kaçak ocak",
+      "cause": "Kaçak maden ocağında ölümcül kaza",
+      "legal_status": "Tekil olay tarihi bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporu ve ek kaynaklara dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "huseyin-tuzcu-zonguldak-kirat",
+          "label": "Kırat Mahallesi kaçak maden ocağı",
+          "province_key": "ZONGULDAK",
+          "province": "Zonguldak",
+          "district": "Merkez / Kırat",
+          "lat": 41.451,
+          "lng": 31.793,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Hüseyin Tuzcu aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kırat’ta facia: kaçak ocakta can kaybı",
+          "url": "https://www.kariyermedya.net/kirat-ta-facia-kacak-ocakta-can-kaybi/",
+          "publisher": "Kariyer Medya",
+          "type": "news"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "bahar-durmaz-efeler-mobilya-atolyesi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Bahar Durmaz Efeler’de mobilya atölyesinde asansör halatına sıkışarak yaşamını yitirdi",
+      "summary": "Aydın Efeler Ovaeymir Mahallesi’nde mobilya atölyesinde çalışan 25 yaşındaki beş aylık hamile Bahar Durmaz’ın boğazı asansör halatına sıkıştı; ağır yaralı kaldırıldığı hastanede yaşamını yitirdi.",
+      "worker_name": "Bahar Durmaz",
+      "worker_age": 25,
+      "employer": "Mobilya atölyesi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Ağaç / mobilya atölyesi",
+      "death_date": "2026-03-31",
+      "cause": "Asansör halatına sıkışma",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "bahar-durmaz-efeler-ovaeymir",
+          "label": "Ovaeymir mobilya atölyesi",
+          "province_key": "AYDIN",
+          "province": "Aydın",
+          "district": "Efeler / Ovaeymir",
+          "lat": 37.852,
+          "lng": 27.841,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-31",
+          "status": "fatality_recorded",
+          "note": "Bahar Durmaz için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mobilya atölyesinde korkunç kaza: 5 aylık hamile kadın işçi can verdi",
+          "url": "https://www.ortadogugazetesi.com/mobilya-atolyesinde-korkunc-kaza-5-aylik-hamile-kadin-isci-can-verdi",
+          "publisher": "Ortadoğu Gazetesi",
+          "type": "news",
+          "published_at": "2026-03-31"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "bayram-bostanci-kayseri-beton-santrali-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Bayram Bostancı Kayseri’de beton mikserinin içine düşerek yaşamını yitirdi",
+      "summary": "Kayseri OSB’deki beton santralinde mikser operatörü olarak çalışan 43 yaşındaki Bayram Bostancı, boşaltım sırasında dengesini kaybederek beton mikserinin içine düştü ve yaşamını yitirdi.",
+      "worker_name": "Bayram Bostancı",
+      "worker_age": 43,
+      "employer": "Beton santrali (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat / beton santrali",
+      "death_date": "2026-03-03",
+      "cause": "Beton mikserinin içine düşme",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "bayram-bostanci-kayseri-osb",
+          "label": "Kayseri OSB beton santrali",
+          "province_key": "KAYSERI",
+          "province": "Kayseri",
+          "district": "Organize Sanayi Bölgesi",
+          "lat": 38.736,
+          "lng": 35.58,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-03",
+          "status": "fatality_recorded",
+          "note": "Bayram Bostancı için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kayseri’de beton mikseri operatörü iş kazasında öldü",
+          "url": "https://www.haberturk.com/kayseri-haberleri/36550633-kayseride-beton-mikseri-operatoru-is-kazasinda-oldu",
+          "publisher": "Habertürk / İHA",
+          "type": "news",
+          "published_at": "2026-03-03"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "suleyman-bicer-kutahya-insaat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Süleyman Biçer Kütahya’da inşaatın 6. katından düşerek yaşamını yitirdi",
+      "summary": "Kütahya Gaybiefendi Mahallesi’nde bir inşaatta çalışan Süleyman Biçer, 6. kattan düşerek yaşamını yitirdi.",
+      "worker_name": "Süleyman Biçer",
+      "employer": "İnşaat (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-03-02",
+      "cause": "Yüksekten düşme",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "suleyman-bicer-kutahya-gaybiefendi",
+          "label": "Gaybiefendi Mahallesi inşaatı",
+          "province_key": "KUTAHYA",
+          "province": "Kütahya",
+          "district": "Merkez / Gaybiefendi",
+          "lat": 39.424,
+          "lng": 29.985,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-02",
+          "status": "fatality_recorded",
+          "note": "Süleyman Biçer için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İşçi 6. kattan düşüp öldü",
+          "url": "https://haberdairesi.com/turkiye/isci-6-kattan-dusup-oldu-154175h",
+          "publisher": "Haber Dairesi",
+          "type": "news",
+          "published_at": "2026-03-02"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "murat-kaya-tavsanli-maden-gocuk-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Murat Kaya Tavşanlı’da açık maden ocağında göçük altında kalarak yaşamını yitirdi",
+      "summary": "Kütahya Tavşanlı Gümüşgölcük köyü yakınlarındaki açık maden ocağında meydana gelen göçükte 42 yaşındaki maden işçisi Murat Kaya yaşamını yitirdi.",
+      "worker_name": "Murat Kaya",
+      "worker_age": 42,
+      "employer": "Açık maden ocağı (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik",
+      "death_date": "2026-03-06",
+      "cause": "Maden ocağında göçük",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "murat-kaya-tavsanli-gumusgolcuk",
+          "label": "Gümüşgölcük açık maden ocağı",
+          "province_key": "KUTAHYA",
+          "province": "Kütahya",
+          "district": "Tavşanlı / Gümüşgölcük",
+          "lat": 39.542,
+          "lng": 29.499,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-06",
+          "status": "fatality_recorded",
+          "note": "Murat Kaya için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kütahya’da iş cinayeti: Maden işçisi göçük altında kaldı",
+          "url": "https://www.politikahaber.com/kutahyada-is-cinayeti-maden-iscisi-gocuk-altinda-kaldi/",
+          "publisher": "Politika Haber",
+          "type": "labor_news",
+          "published_at": "2026-03-06"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "ali-kemal-helvaci-karasu-vinc-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ali Kemal Helvacı Karasu’da devrilen vincin altında kalarak yaşamını yitirdi",
+      "summary": "Sakarya Karasu’da yolun karşısına geçmek isteyen 45 yaşındaki tersane işçisi Ali Kemal Helvacı, devrilen vincin altında kalarak yaşamını yitirdi.",
+      "worker_name": "Ali Kemal Helvacı",
+      "worker_age": 45,
+      "employer": "Tersane (işveren adı kaynakta belirtilmedi)",
+      "sector": "Gemi / tersane",
+      "death_date": "2026-03-15",
+      "cause": "Devrilen vincin altında kalma",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "ali-kemal-helvaci-karasu",
+          "label": "Karasu Doğu Karadeniz Caddesi",
+          "province_key": "SAKARYA",
+          "province": "Sakarya",
+          "district": "Karasu",
+          "lat": 41.104,
+          "lng": 30.692,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-15",
+          "status": "fatality_recorded",
+          "note": "Ali Kemal Helvacı için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Karasu’da iş kazası: Vincin altında kalan işçi hayatını kaybetti",
+          "url": "https://medyabar.com/haber/23948877/karasuda-is-kazasi-vincin-altinda-kalan-isci-hayatini-kaybetti",
+          "publisher": "Medyabar",
+          "type": "news",
+          "published_at": "2026-03-15"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "yusuf-celik-adana-motokurye-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Yusuf Çelik Adana’da iş çıkışı sulama kanalında ölü bulundu",
+      "summary": "Adana Yüreğir’de motokurye olarak çalışan 21 yaşındaki Yusuf Çelik, işten çıktıktan sonra kayboldu; motosikleti ve cenazesi DSİ sulama kanalında bulundu.",
+      "worker_name": "Yusuf Çelik",
+      "worker_age": 21,
+      "employer": "Motokurye (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / motokurye",
+      "death_date": "2026-03-29",
+      "cause": "Sulama kanalında ölüm",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "yusuf-celik-yuregir-sulama-kanali",
+          "label": "Yüreğir DSİ sulama kanalı",
+          "province_key": "ADANA",
+          "province": "Adana",
+          "district": "Yüreğir / Eski Misis Yolu",
+          "lat": 36.987,
+          "lng": 35.367,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-29",
+          "status": "fatality_recorded",
+          "note": "Yusuf Çelik için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "21 yaşındaki genç işten çıktıktan sonra ölü bulundu!",
+          "url": "https://www.konyapostasi.com.tr/21-yasindaki-genc-isten-ciktiktan-sonra-olu-bulundu",
+          "publisher": "Konya Postası",
+          "type": "news",
+          "published_at": "2026-03-29"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "kemal-kekec-gaziantep-tekstil-makine-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Kemal Kekeç Gaziantep’te tekstil makinesine sıkışarak yaşamını yitirdi",
+      "summary": "Gaziantep Şehitkamil 3. Organize Sanayi Bölgesi’ndeki tekstil fabrikasında çalışan 35 yaşındaki Kemal Kekeç, çalıştığı makinenin dişlileri arasına sıkışarak yaşamını yitirdi.",
+      "worker_name": "Kemal Kekeç",
+      "worker_age": 35,
+      "employer": "Tekstil fabrikası (işveren adı kaynakta belirtilmedi)",
+      "sector": "Tekstil / fabrika",
+      "death_date": "2026-03-07",
+      "cause": "Makinenin dişlileri arasına sıkışma",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "kemal-kekec-gaziantep-3-osb",
+          "label": "Gaziantep 3. OSB tekstil fabrikası",
+          "province_key": "GAZIANTEP",
+          "province": "Gaziantep",
+          "district": "Şehitkamil / 3. OSB",
+          "lat": 37.147,
+          "lng": 37.381,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-07",
+          "status": "fatality_recorded",
+          "note": "Kemal Kekeç için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gaziantep’te feci kaza: İşçi Kemal Kekeç’in acı sonu",
+          "url": "https://olaymedya.com/haber/23902514/gaziantepte-feci-kaza-isci-kemal-kekecin-aci-sonu",
+          "publisher": "Olay Medya",
+          "type": "news",
+          "published_at": "2026-03-07"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "saban-ozgezer-sahinbey-insaat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Şaban Özgezer Gaziantep Şahinbey’de inşaattan düşerek yaşamını yitirdi",
+      "summary": "Gaziantep Şahinbey Kızılhisar Mahallesi’nde çalışan inşaat işçisi Şaban Özgezer, üç katlı binadan düşerek yaşamını yitirdi.",
+      "worker_name": "Şaban Özgezer",
+      "employer": "İnşaat (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-03-11",
+      "cause": "Yüksekten düşme",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "saban-ozgezer-sahinbey-kizilhisar",
+          "label": "Kızılhisar Mahallesi inşaatı",
+          "province_key": "GAZIANTEP",
+          "province": "Gaziantep",
+          "district": "Şahinbey / Kızılhisar",
+          "lat": 37.067,
+          "lng": 37.383,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-11",
+          "status": "fatality_recorded",
+          "note": "Şaban Özgezer için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gaziantep’te inşaat işçisi Şaban Özgezer hayatını kaybetti",
+          "url": "https://www.olaymedya.com/haber/23915109/gaziantepte-insaat-iscisi-saban-ozgezer-hayatini-kaybetti",
+          "publisher": "Olay Medya",
+          "type": "news",
+          "published_at": "2026-03-11"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mikail-aktas-bursa-motokurye-siddet-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mikail Aktaş Bursa’da kurye olarak çalışırken uğradığı saldırıda yaşamını yitirdi",
+      "summary": "Bursa Yıldırım Ulus Mahallesi’nde Yemeksepeti kuryesi Mikail Aktaş, trafikte tartıştığı bir sürücünün bıçaklı saldırısı sonucu yaşamını yitirdi.",
+      "worker_name": "Mikail Aktaş",
+      "employer": "Yemeksepeti",
+      "sector": "Taşımacılık / platform kuryeliği",
+      "death_date": "2026-03-16",
+      "cause": "İş sırasında şiddet / bıçaklı saldırı",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "mikail-aktas-yildirim-ulus",
+          "label": "Ulus Mahallesi",
+          "province_key": "BURSA",
+          "province": "Bursa",
+          "district": "Yıldırım / Ulus",
+          "lat": 40.192,
+          "lng": 29.089,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-16",
+          "status": "fatality_recorded",
+          "note": "Mikail Aktaş için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Motosikletli kurye katledildi",
+          "url": "https://halktv.com.tr/gundem/motosikletli-kurye-katledildi-922479h",
+          "publisher": "Halk TV",
+          "type": "news",
+          "published_at": "2026-03-17"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "nazim-erkut-yesilyurt-unye-fabrika-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Nazım Erkut Yeşilyurt Ünye’de çalıştığı fabrikada fenalaşarak yaşamını yitirdi",
+      "summary": "Ordu Ünye İnkur Mahallesi’nde bir fabrikada çalışan 60 yaşındaki Nazım Erkut Yeşilyurt yemek yerken fenalaştı; kalp krizi şüphesiyle yapılan müdahaleye rağmen kurtarılamadı.",
+      "worker_name": "Nazım Erkut Yeşilyurt",
+      "worker_age": 60,
+      "employer": "Fabrika (işveren adı kaynakta belirtilmedi)",
+      "sector": "Sanayi / fabrika",
+      "death_date": "2026-03-14",
+      "cause": "Kalp krizi şüphesi / fenalaşma",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "nazim-erkut-yesilyurt-unye-inkur",
+          "label": "İnkur Mahallesi fabrikası",
+          "province_key": "ORDU",
+          "province": "Ordu",
+          "district": "Ünye / İnkur",
+          "lat": 41.128,
+          "lng": 37.288,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-14",
+          "status": "fatality_recorded",
+          "note": "Nazım Erkut Yeşilyurt için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yemek yerken fenalaştı, kurtarılamadı",
+          "url": "https://www.unyekent.com/haber/yemek_yerken_fenalasti_kurtarilamadi-58386.html",
+          "publisher": "Ünye Kent",
+          "type": "news",
+          "published_at": "2026-03-14"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "samet-cingoz-konya-isci-servisi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Samet Cingöz Konya’da işçi servis kazasında yaşamını yitirdi",
+      "summary": "Konya Ereğli yolunda işçileri taşıyan midibüs trafik levhasına çarptı; Samet Cingöz yaşamını yitirirken dokuz işçi yaralandı.",
+      "worker_name": "Samet Cingöz",
+      "employer": "İşçi servisi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / işçi servisi",
+      "death_date": "2026-03-12",
+      "cause": "Servis / trafik kazası",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "samet-cingoz-konya-eregli-yolu",
+          "label": "Konya-Ereğli yolu servis kazası",
+          "province_key": "KONYA",
+          "province": "Konya",
+          "district": "Ereğli yolu",
+          "lat": 37.513,
+          "lng": 34.047,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-12",
+          "status": "fatality_recorded",
+          "note": "Samet Cingöz için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İşçileri taşıyan midibüs trafik levhasına çarptı: 1 ölü, 9 yaralı",
+          "url": "https://haberdairesi.com/konya/iscileri-tasiyan-midibus-trafik-levhasina-carpti-1-olu-9-yarali-154936h",
+          "publisher": "Haber Dairesi",
+          "type": "news",
+          "published_at": "2026-03-12"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "erol-cetinkaya-cankiri-lpg-tir-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Erol Çetinkaya Çankırı’da LPG yüklü TIR yangınında yaşamını yitirdi",
+      "summary": "Çankırı Eldivan Gölezkayı köyü mevkiinde LPG yüklü TIR’ın devrilerek alev alması sonucu sürücülerden 68 yaşındaki Erol Çetinkaya yaşamını yitirdi.",
+      "worker_name": "Erol Çetinkaya",
+      "worker_age": 68,
+      "employer": "LPG taşımacılığı (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / TIR",
+      "death_date": "2026-03-30",
+      "cause": "LPG yüklü TIR devrilmesi ve yangın",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "erol-cetinkaya-eldivan-golezkayi",
+          "label": "Gölezkayı mevkii TIR yangını",
+          "province_key": "CANKIRI",
+          "province": "Çankırı",
+          "district": "Eldivan / Gölezkayı",
+          "lat": 40.536,
+          "lng": 33.499,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-30",
+          "status": "fatality_recorded",
+          "note": "Erol Çetinkaya için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Çankırı’da LPG yüklü TIR yandı: 2 ölü, 1 yaralı",
+          "url": "https://www.cankiripostasi.com/cankiri-da-lpg-yuklu-tir-yandi-2-olu-1-yarali/26722/",
+          "publisher": "Çankırı Postası",
+          "type": "news",
+          "published_at": "2026-03-30"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "erkan-eray-ceyhan-nevsehir-pomza-madeni-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Erkan Eray Ceyhan Nevşehir’de pomza madeninde göçük altında kalarak yaşamını yitirdi",
+      "summary": "Nevşehir Kavak beldesi yakınlarındaki pomza madeninde meydana gelen göçükte işçi Erkan Eray Ceyhan yaşamını yitirdi.",
+      "worker_name": "Erkan Eray Ceyhan",
+      "employer": "Pomza madeni (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik / pomza madeni",
+      "death_date": "2026-03-24",
+      "cause": "Maden ocağında göçük",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "erkan-eray-ceyhan-nevsehir-kavak",
+          "label": "Kavak beldesi pomza madeni",
+          "province_key": "NEVSEHIR",
+          "province": "Nevşehir",
+          "district": "Kavak",
+          "lat": 38.625,
+          "lng": 34.713,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-24",
+          "status": "fatality_recorded",
+          "note": "Erkan Eray Ceyhan için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Madende göçük altında kalan işçi kurtarılamadı",
+          "url": "https://haberts.com.tr/madende-gocuk-altinda-kalan-isci-kurtarilamadi",
+          "publisher": "HaberTS",
+          "type": "news",
+          "published_at": "2026-03-24"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "emrah-karaaslan-mardin-isci-servisi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Emrah Karaaslan Mardin’de işçi servis kazasında yaşamını yitirdi",
+      "summary": "Mardin Kızıltepe-Şenyurt karayolunda işçi servis aracının takla atması sonucu işçi Emrah Karaaslan yaşamını yitirdi; aynı kazada Serhat Ekinci ve Sinan Duran da öldü, altı kişi yaralandı.",
+      "worker_name": "Emrah Karaaslan",
+      "employer": "İşçi servisi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / işçi servisi",
+      "death_date": "2026-03-30",
+      "cause": "İşçi servis aracı kazası",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "emrah-karaaslan-kiziltepe-senyurt",
+          "label": "Kızıltepe-Şenyurt karayolu servis kazası",
+          "province_key": "MARDIN",
+          "province": "Mardin",
+          "district": "Kızıltepe / Şenyurt yolu",
+          "lat": 37.193,
+          "lng": 40.584,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-30",
+          "status": "fatality_recorded",
+          "note": "Emrah Karaaslan için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İşçi servis aracı takla attı: 3 ölü, 6 yaralı",
+          "url": "https://www.haberibizden.com/gundem/isci-servis-araci-takla-atti-3-olu-6-yarali/139227",
+          "publisher": "Haberi Bizden",
+          "type": "news",
+          "published_at": "2026-03-30"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "serhat-ekinci-mardin-isci-servisi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Serhat Ekinci Mardin’de işçi servis kazasında yaşamını yitirdi",
+      "summary": "Mardin Kızıltepe-Şenyurt karayolunda işçi servis aracının takla atması sonucu sürücü Serhat Ekinci yaşamını yitirdi; aynı kazada Emrah Karaaslan ve Sinan Duran da öldü, altı kişi yaralandı.",
+      "worker_name": "Serhat Ekinci",
+      "employer": "İşçi servisi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / işçi servisi",
+      "death_date": "2026-03-30",
+      "cause": "İşçi servis aracı kazası",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "serhat-ekinci-kiziltepe-senyurt",
+          "label": "Kızıltepe-Şenyurt karayolu servis kazası",
+          "province_key": "MARDIN",
+          "province": "Mardin",
+          "district": "Kızıltepe / Şenyurt yolu",
+          "lat": 37.193,
+          "lng": 40.584,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-30",
+          "status": "fatality_recorded",
+          "note": "Serhat Ekinci için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İşçi servis aracı takla attı: 3 ölü, 6 yaralı",
+          "url": "https://www.haberibizden.com/gundem/isci-servis-araci-takla-atti-3-olu-6-yarali/139227",
+          "publisher": "Haberi Bizden",
+          "type": "news",
+          "published_at": "2026-03-30"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mustafa-deveci-kepez-kaymakamlik-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mustafa Deveci Antalya Kepez Kaymakamlığı’nda çalışırken yaşamını yitirdi",
+      "summary": "Antalya Kepez Kaymakamlığı’nda market bölümünde çalışan Mustafa Deveci’nin mesai saatlerinde yaşamına son verdiği; olayın mobbing iddialarıyla İSİG tarafından iş cinayeti listesine alındığı haberleştirildi.",
+      "worker_name": "Mustafa Deveci",
+      "employer": "Kepez Kaymakamlığı market bölümü",
+      "sector": "Kamu hizmeti / büro",
+      "cause": "İşyerinde intihar / mobbing iddiası",
+      "legal_status": "Olay mobbing iddiasıyla haberleştirildi; tekil olay tarihi bu geçişte doğrulanamadı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "mustafa-deveci-kepez-kaymakamligi",
+          "label": "Kepez Kaymakamlığı",
+          "province_key": "ANTALYA",
+          "province": "Antalya",
+          "district": "Kepez",
+          "lat": 36.983,
+          "lng": 30.748,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mustafa Deveci aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kayıtlarda meslek hastalığı yok, gerçekte iş cinayeti var",
+          "url": "https://www.antalyahurses.com/kayitlarda-meslek-hastaligi-yok-gercekte-is-cinayeti-var/510645/",
+          "publisher": "Antalya Hürses",
+          "type": "labor_news"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "tolga-pala-cayeli-bakir-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Tolga Pala Çayeli Bakır işletmesinde iş kazasında yaşamını yitirdi",
+      "summary": "Rize Çayeli’nde Çayeli Bakır İşletmeleri’nde meydana gelen iş kazasında Tolga Pala yaşamını yitirdi.",
+      "worker_name": "Tolga Pala",
+      "employer": "Çayeli Bakır İşletmeleri",
+      "sector": "Madencilik / bakır işletmesi",
+      "cause": "Maden işletmesinde iş kazası",
+      "legal_status": "Kaynakta hukuki süreç ve olay tarihi ayrıntısı belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "tolga-pala-cayeli-bakir",
+          "label": "Çayeli Bakır İşletmeleri",
+          "province_key": "RIZE",
+          "province": "Rize",
+          "district": "Çayeli",
+          "lat": 41.087,
+          "lng": 40.722,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Tolga Pala aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Çayeli Bakır’da yine iş kazası, acı haber geldi!",
+          "url": "https://www.cayhaber.net/cayeli-bakirde-yine-is-kazasi-aci-haber-geldi",
+          "publisher": "Çay Haber",
+          "type": "news"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "nagihan-karadeniz-mudanya-motokurye-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Nagihan Karadeniz Bursa Mudanya’da motokurye kazasında yaşamını yitirdi",
+      "summary": "Bursa Mudanya’da Trendyol kuryesi olarak çalışan 45 yaşındaki Nagihan Karadeniz, motosikletinin kontrolünü kaybederek dere yatağına savruldu ve yaşamını yitirdi.",
+      "worker_name": "Nagihan Karadeniz",
+      "worker_age": 45,
+      "employer": "Trendyol",
+      "sector": "Taşımacılık / platform kuryeliği",
+      "death_date": "2026-03-31",
+      "cause": "Motosiklet kazası",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "nagihan-karadeniz-mudanya",
+          "label": "Mudanya motokurye kazası",
+          "province_key": "BURSA",
+          "province": "Bursa",
+          "district": "Mudanya",
+          "lat": 40.375,
+          "lng": 28.883,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-31",
+          "status": "fatality_recorded",
+          "note": "Nagihan Karadeniz için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bursa’da motosiklet kullanan kadın hayatını kaybetti",
+          "url": "https://www.bursahaberdar.com/bursada-motosiklet-kullanan-kadin-hayatini-kaybetti/",
+          "publisher": "Bursa Haberdar",
+          "type": "news",
+          "published_at": "2026-04-01"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "sinan-duran-mardin-isci-servisi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Sinan Duran Mardin’de işçi servis kazasında yaşamını yitirdi",
+      "summary": "Mardin Kızıltepe-Şenyurt karayolunda işçi servis aracının takla atması sonucu işçi Sinan Duran yaşamını yitirdi; aynı kazada Emrah Karaaslan ve Serhat Ekinci de öldü, altı kişi yaralandı.",
+      "worker_name": "Sinan Duran",
+      "employer": "İşçi servisi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık / işçi servisi",
+      "death_date": "2026-03-30",
+      "cause": "İşçi servis aracı kazası",
+      "legal_status": "Kaynaklarda hukuki süreç belirtilmedi; İSİG Mart 2026 raporu adını aylık listede yayımladı.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "sinan-duran-kiziltepe-senyurt",
+          "label": "Kızıltepe-Şenyurt karayolu servis kazası",
+          "province_key": "MARDIN",
+          "province": "Mardin",
+          "district": "Kızıltepe / Şenyurt yolu",
+          "lat": 37.193,
+          "lng": 40.584,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-03-30",
+          "status": "fatality_recorded",
+          "note": "Sinan Duran için ölümcül iş olayı haberleştirildi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İşçi servis aracı takla attı: 3 ölü, 6 yaralı",
+          "url": "https://www.haberibizden.com/gundem/isci-servis-araci-takla-atti-3-olu-6-yarali/139227",
+          "publisher": "Haberi Bizden",
+          "type": "news",
+          "published_at": "2026-03-30"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "adil-karaca-yozgat-okul-personeli-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Adil Karaca Yozgat’ta okul personeli olarak çalışırken yaşamını yitirdi",
+      "summary": "Yozgat’ta Gazi Mustafa Kemal İmam Hatip Ortaokulu / Uluyazı kampüsünde görevli okul personeli Adil Karaca’nın yaşamını yitirdiği duyuruldu; İSİG Mart 2026 raporunda aylık iş cinayeti listesinde yer aldı.",
+      "worker_name": "Adil Karaca",
+      "employer": "Gazi Mustafa Kemal İmam Hatip Ortaokulu / Uluyazı kampüsü",
+      "sector": "Eğitim / kamu hizmeti",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay tarihi ve ölüm nedeni bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporu ve sendika duyurusuna dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "locations": [
+        {
+          "id": "adil-karaca-yozgat-okul",
+          "label": "Gazi Mustafa Kemal İmam Hatip Ortaokulu / Uluyazı kampüsü",
+          "province_key": "YOZGAT",
+          "province": "Yozgat",
+          "district": "Merkez",
+          "lat": 39.82,
+          "lng": 34.81,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Adil Karaca aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Uluyazı kampüsümüzden memur Adil Karaca son yolculuğuna uğurlandı",
+          "url": "https://www.yurtegitsen.org.tr/uluyazi-kampusumuzden-memur-adil-karaca-son-yolculuguna-ugurlandi",
+          "publisher": "Yurt Eğitim Sen",
+          "type": "union"
+        },
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "fatih-tutkal-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Fatih Tutkal İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Fatih Tutkal, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Fatih Tutkal",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Fatih Tutkal aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-alkan-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Alkan İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Mehmet Alkan, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mehmet Alkan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mehmet Alkan aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "yusuf-el-isa-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Yusuf El İsa İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Yusuf El İsa, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Yusuf El İsa",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Yusuf El İsa aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-kaymaz-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Kaymaz İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Mehmet Kaymaz, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mehmet Kaymaz",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mehmet Kaymaz aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "halil-kaplan-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Halil Kaplan İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Halil Kaplan, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Halil Kaplan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Halil Kaplan aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "ali-avci-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ali Avcı İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Ali Avcı, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ali Avcı",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Ali Avcı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mucahit-kurtulus-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mücahit Kurtuluş İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Mücahit Kurtuluş, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mücahit Kurtuluş",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mücahit Kurtuluş aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "yakup-capan-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Yakup Çapan İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Yakup Çapan, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Yakup Çapan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Yakup Çapan aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-sahintas-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Şahintaş İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Mehmet Şahintaş, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mehmet Şahintaş",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mehmet Şahintaş aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "mustafa-kanat-isig-mart-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mustafa Kanat İSİG Mart 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Mart 2026 iş cinayetleri raporunda Mustafa Kanat, Mart ayında hayatını kaybeden işçiler arasında anıldı. Bu ilk geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mustafa Kanat",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Mart 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-09",
+      "timeline": [
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart 2026 raporunda Mustafa Kanat aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mart ayında en az 148 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21603-is-cinayetlerine-ve-cocuk-isciligine-karsi-mucadeleye-mart-ayinda",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-04-09"
+        }
+      ]
     }
   ]
 }
