@@ -533,6 +533,13 @@
           "publisher": "Bianet",
           "type": "labor_news",
           "published_at": "2026-02-10"
+        },
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
         }
       ]
     },
@@ -6743,6 +6750,760 @@
           "publisher": "İSİG Meclisi",
           "type": "report",
           "published_at": "2026-04-09"
+        }
+      ]
+    },
+    {
+      "id": "ali-gunay-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ali Günay İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ali Günay, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ali Günay",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "zafer-c-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Zafer C. İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Zafer C., Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Zafer C.",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "yunus-bulut-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Yunus Bulut İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Yunus Bulut, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Yunus Bulut",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ziya-kiret-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ziya Kiret İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ziya Kiret, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ziya Kiret",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "veysel-orucoglu-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Veysel Oruçoğlu İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Veysel Oruçoğlu, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Veysel Oruçoğlu",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ubeyd-dincbas-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ubeyd Dinçbaş İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ubeyd Dinçbaş, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ubeyd Dinçbaş",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "salih-kolcu-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Salih Kolcu İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Salih Kolcu, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Salih Kolcu",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "arif-gokkaya-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Arif Gökkaya İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Arif Gökkaya, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Arif Gökkaya",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-cimenoglu-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Çimenoğlu İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Mehmet Çimenoğlu, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mehmet Çimenoğlu",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "serif-ramazan-ersoz-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Şerif Ramazan Ersöz İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Şerif Ramazan Ersöz, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Şerif Ramazan Ersöz",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "harun-kervan-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Harun Kervan İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Harun Kervan, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Harun Kervan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ali-ertem-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ali Ertem İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ali Ertem, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ali Ertem",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "zihni-altun-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Zihni Altun İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Zihni Altun, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Zihni Altun",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "bulent-ozdemir-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Bülent Özdemir İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Bülent Özdemir, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Bülent Özdemir",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "musa-gorgulu-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Musa Görgülü İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Musa Görgülü, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Musa Görgülü",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "o-d-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ö.D. İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ö.D., Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ö.D.",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "mehmet-nurullah-kaya-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mehmet Nurullah Kaya İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Mehmet Nurullah Kaya, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Mehmet Nurullah Kaya",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ramazan-colak-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ramazan Çolak İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ramazan Çolak, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ramazan Çolak",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ahmet-emre-colak-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ahmet Emre Çolak İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ahmet Emre Çolak, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ahmet Emre Çolak",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "cengiz-ceylan-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Cengiz Ceylan İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Cengiz Ceylan, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Cengiz Ceylan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "ali-karadeniz-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ali Karadeniz İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Ali Karadeniz, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Ali Karadeniz",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "kazim-ozturk-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Kazım Öztürk İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Kazım Öztürk, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Kazım Öztürk",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "turker-cetinkaya-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Türker Çetinkaya İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Türker Çetinkaya, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Türker Çetinkaya",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "erdal-iscan-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Erdal İşcan İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Erdal İşcan, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Erdal İşcan",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "seref-catalbas-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Şeref Çatalbaş İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Şeref Çatalbaş, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Şeref Çatalbaş",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
+        }
+      ]
+    },
+    {
+      "id": "mecit-delicay-isig-subat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Meçit Deliçay İSİG Şubat 2026 listesinde kaydedildi",
+      "summary": "İSİG Meclisi'nin Şubat 2026 iş cinayetleri raporunda Meçit Deliçay, Şubat ayında hayatını kaybeden işçiler arasında anıldı. Bu geçişte tekil olay tarihi, yer, sektör ve ölüm nedeni bağımsız haberle doğrulanamadı.",
+      "worker_name": "Meçit Deliçay",
+      "sector": "Kaynakta belirtilmedi",
+      "cause": "Kaynakta belirtilmedi",
+      "legal_status": "Tekil olay ayrıntısı bu geçişte doğrulanamadı; kayıt İSİG Şubat 2026 raporundaki isim listesine dayanmaktadır.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-03-10",
+      "timeline": [
+        {
+          "date": "2026-03-10",
+          "status": "fatality_recorded",
+          "note": "İSİG Şubat 2026 raporunda adı aylık iş cinayeti listesinde yayımlandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Şubat ayında en az 126 işçi hayatını kaybetti",
+          "url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+          "publisher": "İSİG Meclisi",
+          "type": "report",
+          "published_at": "2026-03-10"
         }
       ]
     }

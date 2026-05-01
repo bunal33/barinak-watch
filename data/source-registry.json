@@ -378,6 +378,51 @@
       "covered_person_entries": 148,
       "missing_person_entries": [],
       "coverage_method": "Exact worker_name match plus semicolon-split names for existing multi-fatality records; two unnamed workers are represented by explicit placeholders."
+    },
+    "february_2026_first_32_review": {
+      "updated_at": "2026-05-01",
+      "period": "2026-02",
+      "source_url": "https://www.isigmeclisi.org/21588-yasamak-ve-",
+      "reviewed_first_n_names": 32,
+      "records_added": 26,
+      "already_present_names": [
+        "İbrahim Taşdelen",
+        "Sami Can",
+        "Nebo Ramazan",
+        "İdris Artuç",
+        "Recep Koca",
+        "Uğur Erikoğlu"
+      ],
+      "existing_records_enriched_with_isig_source": 1,
+      "report_only_records_pending_detail": [
+        "Ali Günay",
+        "Zafer C.",
+        "Yunus Bulut",
+        "Ziya Kiret",
+        "Veysel Oruçoğlu",
+        "Ubeyd Dinçbaş",
+        "Salih Kolcu",
+        "Arif Gökkaya",
+        "Mehmet Çimenoğlu",
+        "Şerif Ramazan Ersöz",
+        "Harun Kervan",
+        "Ali Ertem",
+        "Zihni Altun",
+        "Bülent Özdemir",
+        "Musa Görgülü",
+        "Ö.D.",
+        "Mehmet Nurullah Kaya",
+        "Ramazan Çolak",
+        "Ahmet Emre Çolak",
+        "Cengiz Ceylan",
+        "Ali Karadeniz",
+        "Kazım Öztürk",
+        "Türker Çetinkaya",
+        "Erdal İşcan",
+        "Şeref Çatalbaş",
+        "Meçit Deliçay"
+      ],
+      "note": "First pass over the first 32 names in the İSİG February 2026 memorial list. Report-only records should be enriched with individual date, place, sector, and cause as independent sources are found."
     }
   },
   "used_sources_archive": [
