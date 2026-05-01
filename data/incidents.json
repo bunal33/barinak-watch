@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-30",
+  "updated_at": "2026-05-01",
   "description": "Reviewed MVP incident records. Public records must keep at least one source URL.",
   "records": [
     {
@@ -15,7 +15,11 @@
       "participant_count": 27,
       "decision_date": "2026-01-29",
       "start_date": "2026-02-02",
-      "demands": ["Toplu iş sözleşmesi", "Ücret eşitsizliğinin giderilmesi", "Çalışma koşulları"],
+      "demands": [
+        "Toplu iş sözleşmesi",
+        "Ücret eşitsizliğinin giderilmesi",
+        "Çalışma koşulları"
+      ],
       "last_verified_at": "2026-04-28",
       "locations": [
         {
@@ -30,9 +34,21 @@
         }
       ],
       "timeline": [
-        { "date": "2026-01-29", "status": "decision_taken", "note": "Sendika grev kararını duyurdu." },
-        { "date": "2026-02-02", "status": "ongoing", "note": "Grev uygulaması başladı." },
-        { "date": "2026-04-28", "status": "ongoing", "note": "Bianet, grevin 86. gününde sürdüğünü bildirdi." }
+        {
+          "date": "2026-01-29",
+          "status": "decision_taken",
+          "note": "Sendika grev kararını duyurdu."
+        },
+        {
+          "date": "2026-02-02",
+          "status": "ongoing",
+          "note": "Grev uygulaması başladı."
+        },
+        {
+          "date": "2026-04-28",
+          "status": "ongoing",
+          "note": "Bianet, grevin 86. gününde sürdüğünü bildirdi."
+        }
       ],
       "sources": [
         {
@@ -56,7 +72,11 @@
       "sector": "Otomotiv yan sanayi",
       "participant_count": 25,
       "start_date": "2024-12-12",
-      "demands": ["Sendika hakkının tanınması", "Toplu sözleşme", "Ücret ve çalışma koşullarının iyileştirilmesi"],
+      "demands": [
+        "Sendika hakkının tanınması",
+        "Toplu sözleşme",
+        "Ücret ve çalışma koşullarının iyileştirilmesi"
+      ],
       "last_verified_at": "2026-04-18",
       "locations": [
         {
@@ -71,8 +91,16 @@
         }
       ],
       "timeline": [
-        { "date": "2024-12-12", "status": "ongoing", "note": "İşçiler grev sürecine başladı." },
-        { "date": "2026-04-18", "status": "ongoing", "note": "Ekmek ve Gül, grevin neredeyse bir buçuk yıldır sürdüğünü aktardı." }
+        {
+          "date": "2024-12-12",
+          "status": "ongoing",
+          "note": "İşçiler grev sürecine başladı."
+        },
+        {
+          "date": "2026-04-18",
+          "status": "ongoing",
+          "note": "Ekmek ve Gül, grevin neredeyse bir buçuk yıldır sürdüğünü aktardı."
+        }
       ],
       "sources": [
         {
@@ -102,7 +130,10 @@
       "labor_organization": "Birleşik Metal-İş",
       "sector": "Metal",
       "decision_date": "2026-02-10",
-      "demands": ["Toplu iş sözleşmesi", "Ücret artışı"],
+      "demands": [
+        "Toplu iş sözleşmesi",
+        "Ücret artışı"
+      ],
       "last_verified_at": "2026-02-10",
       "locations": [
         {
@@ -117,7 +148,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-10", "status": "decision_taken", "note": "Sendika grev kararını ilan etti." }
+        {
+          "date": "2026-02-10",
+          "status": "decision_taken",
+          "note": "Sendika grev kararını ilan etti."
+        }
       ],
       "sources": [
         {
@@ -141,7 +176,11 @@
       "sector": "Metal / enerji ekipmanı",
       "start_date": "2025-10-22",
       "end_date": "2026-02-13",
-      "demands": ["Toplu iş sözleşmesi", "Ücret artışı", "Sosyal haklar"],
+      "demands": [
+        "Toplu iş sözleşmesi",
+        "Ücret artışı",
+        "Sosyal haklar"
+      ],
       "last_verified_at": "2026-02-13",
       "locations": [
         {
@@ -156,8 +195,16 @@
         }
       ],
       "timeline": [
-        { "date": "2025-10-22", "status": "ongoing", "note": "İşçiler grev uygulamasına geçti." },
-        { "date": "2026-02-13", "status": "ended", "note": "TİS imzalanmasıyla grev sona erdi." }
+        {
+          "date": "2025-10-22",
+          "status": "ongoing",
+          "note": "İşçiler grev uygulamasına geçti."
+        },
+        {
+          "date": "2026-02-13",
+          "status": "ended",
+          "note": "TİS imzalanmasıyla grev sona erdi."
+        }
       ],
       "sources": [
         {
@@ -197,8 +244,16 @@
         }
       ],
       "timeline": [
-        { "date": "2025-11-08", "status": "fatality_recorded", "note": "Patlama ve yangında işçiler yaşamını yitirdi." },
-        { "date": "2025-12-08", "status": "fatality_recorded", "note": "Avukatın Sesi İnisiyatifi raporu kamuoyuna yansıdı." }
+        {
+          "date": "2025-11-08",
+          "status": "fatality_recorded",
+          "note": "Patlama ve yangında işçiler yaşamını yitirdi."
+        },
+        {
+          "date": "2025-12-08",
+          "status": "fatality_recorded",
+          "note": "Avukatın Sesi İnisiyatifi raporu kamuoyuna yansıdı."
+        }
       ],
       "sources": [
         {
@@ -246,7 +301,11 @@
         }
       ],
       "timeline": [
-        { "date": "2025-12-01", "status": "fatality_recorded", "note": "İsa Şimşek traktör çarpması sonucu yaşamını yitirdi." }
+        {
+          "date": "2025-12-01",
+          "status": "fatality_recorded",
+          "note": "İsa Şimşek traktör çarpması sonucu yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -287,7 +346,11 @@
         }
       ],
       "timeline": [
-        { "date": "2025-12-25", "status": "fatality_recorded", "note": "Zahra Hosseını makineye başörtüsünü kaptırması sonucu yaşamını yitirdi." }
+        {
+          "date": "2025-12-25",
+          "status": "fatality_recorded",
+          "note": "Zahra Hosseını makineye başörtüsünü kaptırması sonucu yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -333,8 +396,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-02", "status": "fatality_recorded", "note": "Fatma Nur Çelik okulda uğradığı saldırı sonucu yaşamını yitirdi." },
-        { "date": "2026-03-03", "status": "fatality_recorded", "note": "Eğitim-İş 81 ilde iş bıraktığını duyurdu." }
+        {
+          "date": "2026-03-02",
+          "status": "fatality_recorded",
+          "note": "Fatma Nur Çelik okulda uğradığı saldırı sonucu yaşamını yitirdi."
+        },
+        {
+          "date": "2026-03-03",
+          "status": "fatality_recorded",
+          "note": "Eğitim-İş 81 ilde iş bıraktığını duyurdu."
+        }
       ],
       "sources": [
         {
@@ -381,8 +452,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-20", "status": "fatality_recorded", "note": "Konteyner yangınında altı kişi yaşamını yitirdi." },
-        { "date": "2026-04-09", "status": "fatality_recorded", "note": "İSİG Mart raporu olayı tarım işçilerinin barınma koşulları bağlamında ele aldı." }
+        {
+          "date": "2026-03-20",
+          "status": "fatality_recorded",
+          "note": "Konteyner yangınında altı kişi yaşamını yitirdi."
+        },
+        {
+          "date": "2026-04-09",
+          "status": "fatality_recorded",
+          "note": "İSİG Mart raporu olayı tarım işçilerinin barınma koşulları bağlamında ele aldı."
+        }
       ],
       "sources": [
         {
@@ -434,7 +513,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-10", "status": "fatality_recorded", "note": "Madenin su basması sonucu bir işçi yaşamını yitirdi." }
+        {
+          "date": "2026-02-10",
+          "status": "fatality_recorded",
+          "note": "Madenin su basması sonucu bir işçi yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -473,7 +556,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-01-07", "status": "fatality_recorded", "note": "Feyyaz K. hastanede yaşamını yitirdi." }
+        {
+          "date": "2026-01-07",
+          "status": "fatality_recorded",
+          "note": "Feyyaz K. hastanede yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -520,7 +607,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-01-17", "status": "fatality_recorded", "note": "Mehmet Tali fabrika çatısını onarırken yüksekten düşerek yaşamını yitirdi." }
+        {
+          "date": "2026-01-17",
+          "status": "fatality_recorded",
+          "note": "Mehmet Tali fabrika çatısını onarırken yüksekten düşerek yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -561,7 +652,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-04-18", "status": "fatality_recorded", "note": "Engin Tuncay yüksekten düşerek yaşamını yitirdi." }
+        {
+          "date": "2026-04-18",
+          "status": "fatality_recorded",
+          "note": "Engin Tuncay yüksekten düşerek yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -602,7 +697,11 @@
         }
       ],
       "timeline": [
-        { "date": "2025-11-17", "status": "fatality_recorded", "note": "Metehan Akarsu traktörün altında kalarak yaşamını yitirdi." }
+        {
+          "date": "2025-11-17",
+          "status": "fatality_recorded",
+          "note": "Metehan Akarsu traktörün altında kalarak yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -643,8 +742,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-23", "status": "fatality_recorded", "note": "İbrahim Taşdelen çatıda kaynak yaparken yüksek gerilime kapıldı." },
-        { "date": "2026-02-24", "status": "fatality_recorded", "note": "İşveren ve işyeri sahibi hakkında gözaltı işlemi haberleştirildi." }
+        {
+          "date": "2026-02-23",
+          "status": "fatality_recorded",
+          "note": "İbrahim Taşdelen çatıda kaynak yaparken yüksek gerilime kapıldı."
+        },
+        {
+          "date": "2026-02-24",
+          "status": "fatality_recorded",
+          "note": "İşveren ve işyeri sahibi hakkında gözaltı işlemi haberleştirildi."
+        }
       ],
       "sources": [
         {
@@ -692,8 +799,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-14", "status": "fatality_recorded", "note": "Sami Can makineye el ve ayağını kaptırarak ağır yaralandı." },
-        { "date": "2026-02-18", "status": "fatality_recorded", "note": "Tedavi gördüğü hastanede yaşamını yitirdi." }
+        {
+          "date": "2026-02-14",
+          "status": "fatality_recorded",
+          "note": "Sami Can makineye el ve ayağını kaptırarak ağır yaralandı."
+        },
+        {
+          "date": "2026-02-18",
+          "status": "fatality_recorded",
+          "note": "Tedavi gördüğü hastanede yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -741,7 +856,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-02", "status": "fatality_recorded", "note": "Nebo Ramazan mısır silosuna düşerek yaşamını yitirdi." }
+        {
+          "date": "2026-02-02",
+          "status": "fatality_recorded",
+          "note": "Nebo Ramazan mısır silosuna düşerek yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -789,7 +908,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-28", "status": "fatality_recorded", "note": "İdris Artuç maden ocağındaki göçük sonrası yaşamını yitirdi." }
+        {
+          "date": "2026-02-28",
+          "status": "fatality_recorded",
+          "note": "İdris Artuç maden ocağındaki göçük sonrası yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -837,7 +960,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-20", "status": "fatality_recorded", "note": "Recep Koca başına taş düşmesi sonucu yaşamını yitirdi." }
+        {
+          "date": "2026-02-20",
+          "status": "fatality_recorded",
+          "note": "Recep Koca başına taş düşmesi sonucu yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -885,7 +1012,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-13", "status": "fatality_recorded", "note": "Cumhur Önbay fabrika patlamasında yaşamını yitirdi." }
+        {
+          "date": "2026-03-13",
+          "status": "fatality_recorded",
+          "note": "Cumhur Önbay fabrika patlamasında yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -933,8 +1064,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-07", "status": "fatality_recorded", "note": "Bünyamin Beşe forklift sepetinden düşerek ağır yaralandı." },
-        { "date": "2026-03-14", "status": "fatality_recorded", "note": "Hastanedeki yaşam mücadelesinin ardından yaşamını yitirdi." }
+        {
+          "date": "2026-03-07",
+          "status": "fatality_recorded",
+          "note": "Bünyamin Beşe forklift sepetinden düşerek ağır yaralandı."
+        },
+        {
+          "date": "2026-03-14",
+          "status": "fatality_recorded",
+          "note": "Hastanedeki yaşam mücadelesinin ardından yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -982,7 +1121,11 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-29", "status": "fatality_recorded", "note": "Yasin Soylu'nun kullandığı kamyon maden sahasında devrilerek yandı." }
+        {
+          "date": "2026-03-29",
+          "status": "fatality_recorded",
+          "note": "Yasin Soylu'nun kullandığı kamyon maden sahasında devrilerek yandı."
+        }
       ],
       "sources": [
         {
@@ -1028,8 +1171,16 @@
         }
       ],
       "timeline": [
-        { "date": "2024-01-09", "status": "fatality_recorded", "note": "Arda Tonbul çalıştığı işyerinde ağır yaralandı." },
-        { "date": "2024-01-16", "status": "fatality_recorded", "note": "Hastanede yaşamını yitirdi." }
+        {
+          "date": "2024-01-09",
+          "status": "fatality_recorded",
+          "note": "Arda Tonbul çalıştığı işyerinde ağır yaralandı."
+        },
+        {
+          "date": "2024-01-16",
+          "status": "fatality_recorded",
+          "note": "Hastanede yaşamını yitirdi."
+        }
       ],
       "sources": [
         {
@@ -1068,8 +1219,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-03-16", "status": "currently_arrested", "note": "Türkmen tutuklandı." },
-        { "date": "2026-04-16", "status": "currently_arrested", "note": "Bianet, iddianame ve tutukluluk sürecini haberleştirdi." }
+        {
+          "date": "2026-03-16",
+          "status": "currently_arrested",
+          "note": "Türkmen tutuklandı."
+        },
+        {
+          "date": "2026-04-16",
+          "status": "currently_arrested",
+          "note": "Bianet, iddianame ve tutukluluk sürecini haberleştirdi."
+        }
       ],
       "sources": [
         {
@@ -1115,8 +1274,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-02-05", "status": "currently_arrested", "note": "İlk tutuklamalar bildirildi." },
-        { "date": "2026-04-20", "status": "currently_arrested", "note": "DİSK sendikacıların serbest bırakılması çağrısı yaptı." }
+        {
+          "date": "2026-02-05",
+          "status": "currently_arrested",
+          "note": "İlk tutuklamalar bildirildi."
+        },
+        {
+          "date": "2026-04-20",
+          "status": "currently_arrested",
+          "note": "DİSK sendikacıların serbest bırakılması çağrısı yaptı."
+        }
       ],
       "sources": [
         {
@@ -1162,8 +1329,16 @@
         }
       ],
       "timeline": [
-        { "date": "2026-04-10", "status": "currently_arrested", "note": "Başaran Aksu'nun tutuklandığı açıklandı." },
-        { "date": "2026-04-11", "status": "currently_arrested", "note": "Dayanışma açıklamaları ve tepkiler sürdü." }
+        {
+          "date": "2026-04-10",
+          "status": "currently_arrested",
+          "note": "Başaran Aksu'nun tutuklandığı açıklandı."
+        },
+        {
+          "date": "2026-04-11",
+          "status": "currently_arrested",
+          "note": "Dayanışma açıklamaları ve tepkiler sürdü."
+        }
       ],
       "sources": [
         {
@@ -1179,6 +1354,853 @@
           "publisher": "SPOT Turkey",
           "type": "solidarity",
           "published_at": "2026-04-11"
+        }
+      ]
+    },
+    {
+      "id": "sabri-kilinc-cigli-izsu-aritma-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Sabri Kılınç Çiğli arıtma tesisinde yaşamını yitirdi",
+      "summary": "İzmir Çiğli Kaklıç Mahallesi'ndeki İZSU Arıtma Tesisi'nde görevli işçi Sabri Kılınç, kullandığı araçla tesis içindeki çamur çukuruna düştü; sağlık ekipleri Kılınç'ın yaşamını yitirdiğini belirledi.",
+      "worker_name": "Sabri Kılınç",
+      "worker_age": 38,
+      "employer": "İZSU Arıtma Tesisi",
+      "sector": "Belediye / arıtma tesisi",
+      "death_date": "2026-04-02",
+      "cause": "Araçla çamur çukuruna düşme",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-02",
+      "locations": [
+        {
+          "id": "sabri-kilinc-cigli-kaklic",
+          "label": "İZSU Çiğli Atık Su Arıtma Tesisi",
+          "province_key": "IZMIR",
+          "province": "İzmir",
+          "district": "Çiğli / Kaklıç",
+          "lat": 38.531,
+          "lng": 26.958,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-02",
+          "status": "fatality_recorded",
+          "note": "Sabri Kılınç arıtma tesisindeki çamur çukuruna düşen araçta yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Çiğli arıtma tesisinde iş kazası: 1 işçi hayatını kaybetti",
+          "url": "https://www.medyaege.com.tr/service/amp/cigli-aritma-tesisinde-is-kazasi-1-isci-hayatini-kaybetti-274517h.htm",
+          "publisher": "Medya Ege",
+          "type": "news",
+          "published_at": "2026-04-02"
+        }
+      ]
+    },
+    {
+      "id": "dilovasi-celik-sac-yuksekten-dusme-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Dilovası'nda çelik-sac fabrikasında üç işçi yüksekten düşerek yaşamını yitirdi",
+      "summary": "Kocaeli Dilovası'nda çelik ve sac üretimi yapan bir fabrikada dört işçi yaklaşık 10 metre yükseklikten düştü. Tamer A., Resul K. ve İsmail M. hastanede yapılan müdahalelere rağmen yaşamını yitirdi; bir işçinin tedavisi sürdü.",
+      "worker_name": "Tamer A.; Resul K.; İsmail M.",
+      "employer": "Çelik ve sac üretimi fabrikası (işveren adı kaynakta belirtilmedi)",
+      "sector": "Metal / çelik-sac üretimi",
+      "death_date": "2026-04-05",
+      "cause": "Yaklaşık 10 metreden yüksekten düşme",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 3,
+      "last_verified_at": "2026-04-05",
+      "locations": [
+        {
+          "id": "dilovasi-celik-sac-fabrikasi",
+          "label": "Dilovası çelik-sac fabrikası",
+          "province_key": "KOCAELI",
+          "province": "Kocaeli",
+          "district": "Dilovası",
+          "lat": 40.779,
+          "lng": 29.543,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 3
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-05",
+          "status": "fatality_recorded",
+          "note": "Dört işçi yüksekten düştü; üç işçi yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kocaeli'de iş cinayeti: Yüksekten düşen 3 işçi hayatını kaybetti!",
+          "url": "https://t24.com.tr/gundem/kocaelide-is-cinayeti-yuksekten-dusen-3-isci-hayatini-kaybetti%2C1312426",
+          "publisher": "T24",
+          "type": "labor_news",
+          "published_at": "2026-04-05"
+        },
+        {
+          "title": "Son Dakika... Kocaeli'de iş cinayeti: Fabrikada yüksekten düşen 3 işçi hayatını kaybetti",
+          "url": "https://www.cumhuriyet.com.tr/turkiye/son-dakika-kocaeli-de-is-cinayeti-fabrikada-yuksekten-dusen-3-isci-hayatini-kaybetti-2492599",
+          "publisher": "Cumhuriyet",
+          "type": "labor_news",
+          "published_at": "2026-04-05"
+        }
+      ]
+    },
+    {
+      "id": "ik-melikgazi-insaat-yuksekten-dusme-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "İ.K. Melikgazi'de inşaatın dördüncü katından düşerek yaşamını yitirdi",
+      "summary": "Kayseri Melikgazi Mimarsinan Mahallesi'nde bir inşaatta çalışan İ.K., dördüncü kattan düşerek ağır yaralandı; hastanede yapılan müdahalelere rağmen yaşamını yitirdi.",
+      "worker_name": "İ.K.",
+      "employer": "İnşaat şantiyesi (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-04-06",
+      "cause": "Dördüncü kattan düşme",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-06",
+      "locations": [
+        {
+          "id": "ik-melikgazi-mimarsinan",
+          "label": "Mimarsinan Mahallesi inşaatı",
+          "province_key": "KAYSERI",
+          "province": "Kayseri",
+          "district": "Melikgazi / Mimarsinan",
+          "lat": 38.736,
+          "lng": 35.58,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-06",
+          "status": "fatality_recorded",
+          "note": "İ.K. dördüncü kattan düşerek yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kayseri Melikgazi'de inşaattan düşen işçi öldü",
+          "url": "https://www.iscihaber.net/kayseri/kayseri-melikgazide-insaattan-dusen-isci-oldu/219341",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-06"
+        }
+      ]
+    },
+    {
+      "id": "bekir-can-kadas-sivas-beton-kalibi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Bekir Can Kadaş Sivas'ta beton kalıbına düşerek yaşamını yitirdi",
+      "summary": "Sivas Organize Sanayi Bölgesi'nde bir inşaatta çalışan 29 yaşındaki Bekir Can Kadaş, beton pompası kolundan beton kalıbına düştü ve hastanede yaşamını yitirdi.",
+      "worker_name": "Bekir Can Kadaş",
+      "worker_age": 29,
+      "employer": "İnşaat şantiyesi (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-04-07",
+      "cause": "Beton pompası kolundan beton kalıbına düşme",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-07",
+      "locations": [
+        {
+          "id": "bekir-can-kadas-sivas-osb",
+          "label": "Sivas Organize Sanayi Bölgesi inşaatı",
+          "province_key": "SIVAS",
+          "province": "Sivas",
+          "district": "Merkez / Ahmet Turan Gazi OSB",
+          "lat": 39.747,
+          "lng": 37.017,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-07",
+          "status": "fatality_recorded",
+          "note": "Bekir Can Kadaş beton kalıbına düşerek yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sivas'ta iş cinayeti: İnşaatta beton kalıbına düşen işçi hayatını kaybetti",
+          "url": "https://t24.com.tr/gundem/sivasta-is-cinayeti-insaatta-beton-kalibina-dusen-isci-hayatini-kaybetti%2C1312777",
+          "publisher": "T24",
+          "type": "labor_news",
+          "published_at": "2026-04-07"
+        },
+        {
+          "title": "Sivas'ta iş cinayeti: Beton kalıbına düşen inşaat işçisi öldü",
+          "url": "https://www.cumhuriyet.com.tr/turkiye/sivas-ta-is-cinayeti-beton-kalibina-dusen-insaat-iscisi-oldu-2493161",
+          "publisher": "Cumhuriyet",
+          "type": "labor_news",
+          "published_at": "2026-04-07"
+        }
+      ]
+    },
+    {
+      "id": "sercan-aktas-basiskele-goodyear-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Sercan Aktaş Başiskele'de lastik sarma makinesine sıkışarak yaşamını yitirdi",
+      "summary": "Kocaeli Başiskele'deki Goodyear fabrikasında çalışan 28 yaşındaki Sercan Aktaş, lastik sarma makinesine sıkışarak ağır yaralandı ve hastanede yaşamını yitirdi.",
+      "worker_name": "Sercan Aktaş",
+      "worker_age": 28,
+      "employer": "Goodyear",
+      "sector": "Lastik / otomotiv yan sanayi",
+      "death_date": "2026-04-07",
+      "cause": "Lastik sarma makinesine sıkışma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-07",
+      "locations": [
+        {
+          "id": "sercan-aktas-basiskele-goodyear",
+          "label": "Başiskele Goodyear fabrikası",
+          "province_key": "KOCAELI",
+          "province": "Kocaeli",
+          "district": "Başiskele",
+          "lat": 40.711,
+          "lng": 29.916,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-07",
+          "status": "fatality_recorded",
+          "note": "Sercan Aktaş lastik sarma makinesine sıkışarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kocaeli'de fabrikada feci iş kazası: Makineye sıkışan 28 yaşındaki işçi hayatını kaybetti",
+          "url": "https://www.iscihaber.net/kocaeli/kocaelide-fabrikada-feci-is-kazasi-makineye-sikisan-28-yasindaki-isci-hayatini-kaybetti/219609",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-07"
+        },
+        {
+          "title": "Fabrikada feci iş kazası: 28 yaşındaki işçi makineye sıkışarak hayatını kaybetti",
+          "url": "https://www.geredemedyatakip.com.tr/genel/fabrikada-feci-is-kazasi-28-yasindaki-isci-makineye-sikisarak-hayatini-kaybetti.html",
+          "publisher": "Gerede Medya Takip",
+          "type": "news",
+          "published_at": "2026-04-08"
+        }
+      ]
+    },
+    {
+      "id": "muhammet-arda-bagirgan-alasehir-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Muhammet Arda Bağırgan Alaşehir'de elektrik akımına kapılarak yaşamını yitirdi",
+      "summary": "Manisa Alaşehir Yeşilyurt Mahallesi'nde kaynak yaptığı sırada elektrik akımına kapılan 19 yaşındaki Muhammet Arda Bağırgan hastanede yaşamını yitirdi.",
+      "worker_name": "Muhammet Arda Bağırgan",
+      "worker_age": 19,
+      "employer": "Kaynak işi / inşaat sahası (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat / kaynak",
+      "death_date": "2026-04-11",
+      "cause": "Kaynak yaparken elektrik akımına kapılma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-11",
+      "locations": [
+        {
+          "id": "muhammet-arda-bagirgan-alasehir-yesilyurt",
+          "label": "Yeşilyurt Mahallesi kaynak işi",
+          "province_key": "MANISA",
+          "province": "Manisa",
+          "district": "Alaşehir / Yeşilyurt",
+          "lat": 38.35,
+          "lng": 28.517,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-11",
+          "status": "fatality_recorded",
+          "note": "Muhammet Arda Bağırgan kaynak yaptığı sırada elektrik akımına kapılarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Manisa Alaşehir'de feci iş kazası: Elektrik akımına kapılan 19 yaşındaki işçi hayatını kaybetti",
+          "url": "https://www.iscihaber.net/manisa/manisa-alasehirde-feci-is-kazasi-elektrik-akimina-kapilan-19-yasindaki-isci-hayatini-kaybetti/220799",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-11"
+        },
+        {
+          "title": "Elektrik akımına kapılan 19 yaşındaki genç işçi hayatını kaybetti",
+          "url": "https://www.haber3.com/guncel/3-sayfa/elektrik-akimina-kapilan-19-yasindaki-genc-isci-hayatini-kaybetti-haberi-6252433",
+          "publisher": "Haber3",
+          "type": "news",
+          "published_at": "2026-04-11"
+        }
+      ]
+    },
+    {
+      "id": "mahmud-dadas-dortyol-erzin-tir-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Mahmut Dadaş tamir ettiği tırın altında kalarak yaşamını yitirdi",
+      "summary": "Hatay Dörtyol-Erzin yolu üzerinde kullandığı tırı tamir etmeye çalışan 42 yaşındaki şoför Mahmut Dadaş, tırın hareket etmesiyle aracın altında kalarak yaşamını yitirdi.",
+      "worker_name": "Mahmut Dadaş",
+      "worker_age": 42,
+      "employer": "Tır şoförü (işveren adı kaynakta belirtilmedi)",
+      "sector": "Taşımacılık",
+      "death_date": "2026-04-16",
+      "cause": "Tamir ettiği tırın altında kalma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-16",
+      "locations": [
+        {
+          "id": "mahmud-dadas-dortyol-erzin",
+          "label": "Dörtyol-Erzin yolu tır tamiri sahası",
+          "province_key": "HATAY",
+          "province": "Hatay",
+          "district": "Dörtyol / Erzin yolu",
+          "lat": 36.84,
+          "lng": 36.23,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-16",
+          "status": "fatality_recorded",
+          "note": "Mahmut Dadaş tamir ettiği tırın altında kalarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hatay'da feci iş kazası: Tamir ettiği tırın altında kalan şoför hayatını kaybetti",
+          "url": "https://www.iscihaber.net/hatay/hatayda-feci-is-kazasi-tamir-ettigi-tirin-altinda-kalan-sofor-hayatini-kaybetti/222085",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "id": "ah-kayapinar-hastane-insaati-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "A.H. Kayapınar'da hastane inşaatında elektrik akımına kapılarak yaşamını yitirdi",
+      "summary": "Diyarbakır Kayapınar Fırat Mahallesi'nde yapımı süren bir hastane inşaatında iki işçi elektrik akımına kapıldı. A.H. yaşamını yitirdi, diğer işçi yaralandı.",
+      "worker_name": "A.H.",
+      "employer": "Hastane inşaatı (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-04-16",
+      "cause": "Elektrik akımına kapılma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-16",
+      "locations": [
+        {
+          "id": "ah-kayapinar-firat-hastane",
+          "label": "Fırat Mahallesi hastane inşaatı",
+          "province_key": "DIYARBAKIR",
+          "province": "Diyarbakır",
+          "district": "Kayapınar / Fırat",
+          "lat": 37.93,
+          "lng": 40.16,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-16",
+          "status": "fatality_recorded",
+          "note": "A.H. hastane inşaatında elektrik akımına kapılarak yaşamını yitirdi; bir işçi yaralandı."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Diyarbakır'da elektrik akımına kapılan işçilerden 1'i öldü, diğeri yaralı",
+          "url": "https://www.iscihaber.net/diyarbakir/diyarbakirda-elektrik-akimina-kapilan-iscilerden-1i-oldu-digeri-yarali/222175",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "id": "suat-kulakci-zonguldak-maden-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Suat Kulakçı Zonguldak'ta maden ocağında elektrik akımına kapılarak yaşamını yitirdi",
+      "summary": "Zonguldak Asma Mahallesi'ndeki özel bir kömür ocağında çalışan 49 yaşındaki Suat Kulakçı, elektrik akımına kapılarak yaşamını yitirdi; haberlerde emekliliğine bir ay kaldığı aktarıldı.",
+      "worker_name": "Suat Kulakçı",
+      "worker_age": 49,
+      "employer": "Özel kömür ocağı (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik",
+      "death_date": "2026-04-17",
+      "cause": "Maden ocağında elektrik akımına kapılma",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-17",
+      "locations": [
+        {
+          "id": "suat-kulakci-zonguldak-asma",
+          "label": "Asma Mahallesi özel kömür ocağı",
+          "province_key": "ZONGULDAK",
+          "province": "Zonguldak",
+          "district": "Merkez / Asma",
+          "lat": 41.451,
+          "lng": 31.793,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-17",
+          "status": "fatality_recorded",
+          "note": "Suat Kulakçı maden ocağında elektrik akımına kapılarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Zonguldak'ta iş cinayeti: Emekliliğine 1 ay kalan madenci elektrik akımına kapılarak hayatını kaybetti",
+          "url": "https://t24.com.tr/gundem/zonguldakta-is-cinayeti-emekliligine-1-ay-kalan-madenci-elektrik-akimina-kapilarak-hayatini-kaybetti%2C1314918",
+          "publisher": "T24",
+          "type": "labor_news",
+          "published_at": "2026-04-17"
+        },
+        {
+          "title": "Zonguldak'ta emekliliğine 1 ay kalan madenci elektrik akımına kapılarak hayatını kaybetti",
+          "url": "https://www.iscihaber.net/zonguldak/zonguldakta-emekliligine-1-ay-kalan-madenci-elektrik-akimina-kapilarak-hayatini-kaybetti/222344",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "ramazan-kuren-sehzadeler-kanalizasyon-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ramazan Küren Şehzadeler'de kanalizasyon göçüğünde yaşamını yitirdi",
+      "summary": "Manisa Şehzadeler Sancaklıbozköy Mahallesi'nde kanalizasyon çalışması sırasında meydana gelen göçükte 55 yaşındaki Ramazan Küren toprak altında kalarak yaşamını yitirdi.",
+      "worker_name": "Ramazan Küren",
+      "worker_age": 55,
+      "employer": "Kanalizasyon çalışması (işveren adı kaynakta belirtilmedi)",
+      "sector": "Altyapı / kanalizasyon",
+      "death_date": "2026-04-17",
+      "cause": "Kanalizasyon çalışmasında göçük",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-17",
+      "locations": [
+        {
+          "id": "ramazan-kuren-sancaklibozkoy",
+          "label": "Sancaklıbozköy kanalizasyon çalışması",
+          "province_key": "MANISA",
+          "province": "Manisa",
+          "district": "Şehzadeler / Sancaklıbozköy",
+          "lat": 38.642,
+          "lng": 27.36,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-17",
+          "status": "fatality_recorded",
+          "note": "Ramazan Küren kanalizasyon çalışmasındaki göçükte yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Manisa'da iş cinayeti: Kanalizasyon çalışmasında göçük altına kalan işçi hayatını kaybetti",
+          "url": "https://www.t24.com.tr/gundem/manisada-is-cinayeti-kanalizasyon-calismasinda-gocuk-altina-kalan-isci-hayatini-kaybetti%2C1315031",
+          "publisher": "T24",
+          "type": "labor_news",
+          "published_at": "2026-04-17"
+        },
+        {
+          "title": "Manisa'da iş kazası: Kanalizasyon çalışmasında göçük altında kalan 1 işçi hayatını kaybetti",
+          "url": "https://www.24saatgazetesi.com/manisada-is-kazasi-kanalizasyon-calismasinda-gocuk-altinda-kalan-1-isci-hayatini-kaybetti",
+          "publisher": "24 Saat Gazetesi",
+          "type": "news",
+          "published_at": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "furkan-alemdar-kosk-tas-ocagi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Furkan Alemdar Köşk'te taş kırma makinesine kolunu kaptırarak yaşamını yitirdi",
+      "summary": "Aydın Köşk Başçayır Mahallesi'ndeki bir taş ocağında çalışan Furkan Alemdar, taş kırma makinesine kolunu kaptırdı; hastanede yapılan müdahalelere rağmen yaşamını yitirdi.",
+      "worker_name": "Furkan Alemdar",
+      "worker_age": 40,
+      "employer": "Taş ocağı (işveren adı kaynakta belirtilmedi)",
+      "sector": "Madencilik / taş ocağı",
+      "death_date": "2026-04-20",
+      "cause": "Taş kırma makinesine kolunu kaptırma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-20",
+      "locations": [
+        {
+          "id": "furkan-alemdar-kosk-bascayir",
+          "label": "Başçayır Mahallesi taş ocağı",
+          "province_key": "AYDIN",
+          "province": "Aydın",
+          "district": "Köşk / Başçayır",
+          "lat": 37.85,
+          "lng": 28.05,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-20",
+          "status": "fatality_recorded",
+          "note": "Furkan Alemdar taş kırma makinesine kolunu kaptırarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Aydın'da feci iş kazası: Taş kırma makinesine kolunu kaptıran işçi hayatını kaybetti",
+          "url": "https://www.iscihaber.net/aydin/aydinda-feci-is-kazasi-tas-kirma-makinesine-kolunu-kaptiran-isci-hayatini-kaybetti/223088",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-20"
+        }
+      ]
+    },
+    {
+      "id": "galip-avci-aliaga-gemi-sokum-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Galip Avcı Aliağa gemi söküm tesisinde üzerine metal parça düşerek yaşamını yitirdi",
+      "summary": "İzmir Aliağa'daki Sök Denizcilik gemi söküm tesisinde çalışan 65 yaşındaki Galip Avcı, üzerine metal parça düşmesi sonucu yaşamını yitirdi.",
+      "worker_name": "Galip Avcı",
+      "worker_age": 65,
+      "employer": "Sök Denizcilik",
+      "sector": "Gemi söküm",
+      "death_date": "2026-04-25",
+      "cause": "Üzerine metal parça düşmesi",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-25",
+      "locations": [
+        {
+          "id": "galip-avci-aliaga-gemi-sokum",
+          "label": "Sök Denizcilik gemi söküm tesisi",
+          "province_key": "IZMIR",
+          "province": "İzmir",
+          "district": "Aliağa",
+          "lat": 38.799,
+          "lng": 26.972,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-25",
+          "status": "fatality_recorded",
+          "note": "Galip Avcı üzerine metal parça düşmesi sonucu yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "İzmir'de gemi söküm tesisinde üzerine metal parça düşen 65 yaşındaki işçi öldü",
+          "url": "https://www.iscihaber.net/iscinin-gundemi/izmirde-gemi-sokum-tesisinde-uzerine-metal-parca-dusen-65-yasindaki-isci-oldu/224577",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-25"
+        }
+      ]
+    },
+    {
+      "id": "vd-yenimahalle-ust-gecit-reklam-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "V.D. Yenimahalle'de üst geçitten düşüp otomobil altında kalarak yaşamını yitirdi",
+      "summary": "Ankara Yenimahalle'de üst geçide reklam afişi astığı belirtilen V.D., dengesini kaybedip yola düştü ve bir otomobilin çarpması sonucu yaşamını yitirdi.",
+      "worker_name": "V.D.",
+      "worker_age": 43,
+      "employer": "Reklam/afiş asma işi (işveren adı kaynakta belirtilmedi)",
+      "sector": "Reklam / hizmet",
+      "death_date": "2026-04-25",
+      "cause": "Üst geçitten düşme ve otomobil çarpması",
+      "legal_status": "Olayla ilgili inceleme başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-25",
+      "locations": [
+        {
+          "id": "vd-yenimahalle-fsm",
+          "label": "Yenimahalle üst geçit reklam çalışması",
+          "province_key": "ANKARA",
+          "province": "Ankara",
+          "district": "Yenimahalle",
+          "lat": 39.97,
+          "lng": 32.75,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-25",
+          "status": "fatality_recorded",
+          "note": "V.D. üst geçitten yola düştü ve otomobilin çarpması sonucu yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ankara'da iş kazası: Üst geçitten düşen adamı otomobil ezdi",
+          "url": "https://www.iscihaber.net/ankara/ankarada-is-kazasi-ust-gecitten-dusen-adami-otomobil-ezdi/224540",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-25"
+        }
+      ]
+    },
+    {
+      "id": "ahmet-yigitce-alacam-hafriyat-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Ahmet Yiğitce Alaçam'da kamyon altında kalarak yaşamını yitirdi",
+      "summary": "Samsun Alaçam Yenicami Mahallesi'nde kamyonun altında kalan 44 yaşındaki işçi Ahmet Yiğitce yaşamını yitirdi.",
+      "worker_name": "Ahmet Yiğitce",
+      "worker_age": 44,
+      "employer": "Hafriyat / kamyon çalışması (işveren adı kaynakta belirtilmedi)",
+      "sector": "Hafriyat / taşımacılık",
+      "death_date": "2026-04-28",
+      "cause": "Kamyonun altında kalma",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-28",
+      "locations": [
+        {
+          "id": "ahmet-yigitce-alacam-yenicami",
+          "label": "Yenicami Mahallesi kamyon çalışması",
+          "province_key": "SAMSUN",
+          "province": "Samsun",
+          "district": "Alaçam / Yenicami",
+          "lat": 41.613,
+          "lng": 35.598,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-28",
+          "status": "fatality_recorded",
+          "note": "Ahmet Yiğitce kamyonun altında kalarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Samsun'da iş kazası: Kamyonun altında kalan işçi hayatını kaybetti",
+          "url": "https://www.nethaber.com.tr/samsun-da-is-kazasi-kamyonun-altinda-kalan-isci-hayatini-kaybetti/1707201/",
+          "publisher": "Net Haber / İHA",
+          "type": "news",
+          "published_at": "2026-04-28"
+        }
+      ]
+    },
+    {
+      "id": "salih-koca-ilkadim-hastane-insaati-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Salih Koca İlkadım'da hastane inşaatında metal plaka isabetiyle yaşamını yitirdi",
+      "summary": "Samsun İlkadım Kale Mahallesi'ndeki Dünyagöz Hastanesi inşaatında çalışan 43 yaşındaki Salih Koca, çatıdan düşen metal plakanın isabet etmesi sonucu yaşamını yitirdi.",
+      "worker_name": "Salih Koca",
+      "worker_age": 43,
+      "employer": "Dünyagöz Hastanesi inşaatı",
+      "sector": "İnşaat",
+      "death_date": "2026-04-29",
+      "cause": "Çatıdan düşen metal plakanın isabet etmesi",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-29",
+      "locations": [
+        {
+          "id": "salih-koca-ilkadim-kale",
+          "label": "Kale Mahallesi Dünyagöz Hastanesi inşaatı",
+          "province_key": "SAMSUN",
+          "province": "Samsun",
+          "district": "İlkadım / Kale",
+          "lat": 41.286,
+          "lng": 36.333,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-29",
+          "status": "fatality_recorded",
+          "note": "Salih Koca çatıdan düşen metal plakanın isabet etmesi sonucu yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Samsun'da iş kazası: Plaka işçinin ölümüne neden oldu",
+          "url": "https://www.iscihaber.net/samsun/samsunda-is-kazasi-plaka-iscinin-olumune-neden-oldu/225610",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-29"
+        }
+      ]
+    },
+    {
+      "id": "kemal-tatar-anamur-iskele-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Kemal Tatar Anamur'da inşaat iskelesinden düşerek yaşamını yitirdi",
+      "summary": "Mersin Anamur Güngören Mahallesi'nde üç katlı binanın çatı seviyesindeki iskelede çalışan Kemal Tatar, dengesini kaybederek düştü ve olay yerinde yaşamını yitirdi.",
+      "worker_name": "Kemal Tatar",
+      "employer": "İnşaat şantiyesi (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat",
+      "death_date": "2026-04-29",
+      "cause": "İskeleden düşme",
+      "legal_status": "Olayla ilgili soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-29",
+      "locations": [
+        {
+          "id": "kemal-tatar-anamur-gungoren",
+          "label": "Güngören Mahallesi bina inşaatı",
+          "province_key": "MERSIN",
+          "province": "Mersin",
+          "district": "Anamur / Güngören",
+          "lat": 36.075,
+          "lng": 32.836,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-29",
+          "status": "fatality_recorded",
+          "note": "Kemal Tatar çatı seviyesindeki iskeleden düşerek yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mersin Anamur'da bir işçi inşaat iskelesinden düşerek hayatını kaybetti",
+          "url": "https://www.iscihaber.net/mersin/mersin-anamurda-bir-isci-insaat-iskelesinden-duserek-hayatini-kaybetti/225653",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-29"
+        }
+      ]
+    },
+    {
+      "id": "abdullah-a-kagizman-is-makinesi-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "Abdullah A. Kağızman'da iş makinesinin altında kalarak yaşamını yitirdi",
+      "summary": "Kars Kağızman Camuşlu köyünde çalışma yapan operatör Abdullah A., kepçenin paletini kontrol etmek için araçtan indiği sırada iş makinesinin altında kalarak yaşamını yitirdi.",
+      "worker_name": "Abdullah A.",
+      "employer": "İş makinesi çalışması (işveren adı kaynakta belirtilmedi)",
+      "sector": "İnşaat / yol-yapı / iş makinesi",
+      "death_date": "2026-04-29",
+      "cause": "İş makinesinin altında kalma",
+      "legal_status": "Olay yerindeki incelemelerin ardından cenazenin otopsi için morga kaldırıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-29",
+      "locations": [
+        {
+          "id": "abdullah-a-kagizman-camuslu",
+          "label": "Camuşlu köyü iş makinesi sahası",
+          "province_key": "KARS",
+          "province": "Kars",
+          "district": "Kağızman / Camuşlu",
+          "lat": 40.157,
+          "lng": 43.134,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-29",
+          "status": "fatality_recorded",
+          "note": "Abdullah A. iş makinesinin altında kalarak yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kars'ta iş makinesinin altında kalan operatör hayatını kaybetti",
+          "url": "https://www.iscihaber.net/kars/karsta-is-makinesinin-altinda-kalan-operator-hayatini-kaybetti/225718",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-29"
+        }
+      ]
+    },
+    {
+      "id": "ibrahim-alkan-gemlik-castrol-2026",
+      "record_type": "worker_death",
+      "status": "fatality_recorded",
+      "title": "İbrahim Alkan Gemlik Castrol tesisinde yaşamını yitirdi",
+      "summary": "Bursa Gemlik Ata Mahallesi fabrikalar bölgesindeki Castrol üretim tesislerinde çalışan 60 yaşındaki İbrahim Alkan iş kazası sonucu yaşamını yitirdi; olayın ardından tesiste çalışmalar geçici olarak durduruldu.",
+      "worker_name": "İbrahim Alkan",
+      "worker_age": 60,
+      "employer": "Castrol üretim tesisleri",
+      "sector": "Petro-kimya / üretim tesisi",
+      "death_date": "2026-04-30",
+      "cause": "Kaynakta ayrıntısı belirtilmeyen ölümlü iş kazası",
+      "legal_status": "Gemlik Cumhuriyet Başsavcılığı tarafından geniş çaplı soruşturma başlatıldığı haberleştirildi.",
+      "linked_incident_count": 1,
+      "last_verified_at": "2026-04-30",
+      "locations": [
+        {
+          "id": "ibrahim-alkan-gemlik-castrol",
+          "label": "Ata Mahallesi Castrol üretim tesisleri",
+          "province_key": "BURSA",
+          "province": "Bursa",
+          "district": "Gemlik / Ata",
+          "lat": 40.43,
+          "lng": 29.16,
+          "geocode_precision": "district_centroid",
+          "fatality_count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-30",
+          "status": "fatality_recorded",
+          "note": "İbrahim Alkan Castrol üretim tesislerinde iş kazası sonucu yaşamını yitirdi."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bursa Gemlik'te iş kazası: 60 yaşındaki işçi öldü",
+          "url": "https://www.iscihaber.net/bursa/bursa-gemlikte-is-kazasi-60-yasindaki-isci-oldu/225897",
+          "publisher": "İşçi Haber",
+          "type": "news",
+          "published_at": "2026-04-30"
         }
       ]
     }
