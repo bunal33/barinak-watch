@@ -569,6 +569,15 @@
       "covered_person_entries": 126,
       "missing_person_entries": [],
       "coverage_method": "Occurrence-count validation over the February memorial list; Muhammet Gündüz is expected twice and two unnamed workers are represented by explicit placeholders."
+    },
+    "report_month_death_date_backfill": {
+      "updated_at": "2026-05-01",
+      "months": {
+        "2026-03": 118,
+        "2026-02": 120
+      },
+      "records_updated": 238,
+      "note": "For İSİG monthly report-backed worker-death records without an exact death_date, death_date is stored at month precision as YYYY-MM so recent/older layer classification uses the report month without inventing an exact day."
     }
   },
   "used_sources_archive": [

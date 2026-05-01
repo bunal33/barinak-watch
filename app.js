@@ -1089,14 +1089,18 @@ function normalizeAscii(value) {
 
 function parseDate(value) {
   if (!value) return null;
-  const date = new Date(`${value}T00:00:00`);
+  const normalized = String(value);
+  const date = new Date(`${normalized.length === 7 ? `${normalized}-01` : normalized}T00:00:00`);
   return Number.isNaN(date.valueOf()) ? null : date;
 }
 
 function formatDate(value) {
   const date = parseDate(value);
   if (!date) return "";
-  return new Intl.DateTimeFormat(state.lang === "tr" ? "tr-TR" : "en", { year: "numeric", month: "short", day: "numeric" }).format(date);
+  const options = String(value).length === 7
+    ? { year: "numeric", month: "short" }
+    : { year: "numeric", month: "short", day: "numeric" };
+  return new Intl.DateTimeFormat(state.lang === "tr" ? "tr-TR" : "en", options).format(date);
 }
 
 function formatCount(value) {
